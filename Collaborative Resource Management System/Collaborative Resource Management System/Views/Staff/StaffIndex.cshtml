@@ -39,11 +39,19 @@
     <body>
         <h1>Staff Page</h1>
         <div id="staff-buttons">
-            <button class="button">Checkout</button>
-            <button class="button">Checkin</button>
-        </div>
-        <div>
-            <a href="@Url.Action("Index", "Home")">Log Out</a>
+            <div>
+                <a href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
+            </div> 
+            <p>
+            </p>
+            <div>
+                <a href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
+            </div>
+            <p>
+            </p>
+            <div>
+                <a href="@Url.Action("Index", "Home")">Log Out</a>
+            </div>
         </div>
     </body>
     </html>

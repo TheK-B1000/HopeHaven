@@ -39,13 +39,24 @@
     <body>
         <h1>Editor Page</h1>
         <div id="editor-buttons">
-            <button class="button">Edit Inventory</button>
-            <button class="button">Checkout</button>
-            <button class="button">Checkin</button>
-        </div>
-
-        <div>
-            <a href="@Url.Action("Index", "Home")">Log Out</a>
+            <div>
+                <a href="@Url.Action("Edit", "Inventory")">Manage Inventory</a>
+            </div>
+            <p>
+            </p>
+            <div>
+                <a href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
+            </div> 
+                <p>
+            </p>
+            <div>
+                <a href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
+                </div>
+            <p>
+            </p>
+                <div>
+                    <a href="@Url.Action("Index", "Home")">Log Out</a>
+                </div>
         </div>
 
     </body>
