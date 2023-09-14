@@ -6,10 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Collaborative_Resource_Management_System</RootNamespace>
   </PropertyGroup>
-
-	<ItemGroup>
-		<Folder Include="wwwroot\" />
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
 	</ItemGroup>
@@ -19,6 +15,10 @@
 	
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="wwwroot\StyleSheet.css" />
   </ItemGroup>
 
 </Project>
