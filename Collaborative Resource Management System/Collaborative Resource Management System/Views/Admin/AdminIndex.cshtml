@@ -40,15 +40,32 @@
     <body>
         <h1>Admin Page</h1>
         <div id="admin-buttons">
-            <button class="button">Edit Users</button>
-            <button class="button">Manage Inventory</button>
-            <button class="button">Checkout</button>
-            <button class="button">Reports</button>
+
+            <div>
+                <a href="@Url.Action("Edit", "User")">Edit Users</a>
+            </div>
+            <p>
+            </p>
+           <div>
+                <a href="@Url.Action("Edit", "Inventory")">Manage Inventory</a>
+            </div>
+            <p>
+            </p>
+            <div>
+                <a href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
+            </div> 
+                <p>
+            </p>
+            <div>
+                <a href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
+                </div>
+            <p>
+            </p>
+                <div>
+                    <a href="@Url.Action("Index", "Home")">Log Out</a>
+                </div>
         </div>
 
-        <div>
-            <a href="@Url.Action("Index", "Home")">Log Out</a>
-        </div>
     </body>
     </html>
 }
