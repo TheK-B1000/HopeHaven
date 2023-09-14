@@ -1,0 +1,87 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRMS Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 8em;
+            margin-top: 20px;
+        }
+
+        #pin-container {
+            margin: 20px auto;
+            width: 200px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px;
+            font-size: 1.5em;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        #pin-input {
+            grid-column: span 3;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CRMS</h1>
+    <div id="pin-container">
+        <div class="button" onclick="appendPin(1)">1</div>
+        <div class="button" onclick="appendPin(2)">2</div>
+        <div class="button" onclick="appendPin(3)">3</div>
+        <div class="button" onclick="appendPin(4)">4</div>
+        <div class="button" onclick="appendPin(5)">5</div>
+        <div class="button" onclick="appendPin(6)">6</div>
+        <div class="button" onclick="appendPin(7)">7</div>
+        <div class="button" onclick="appendPin(8)">8</div>
+        <div class="button" onclick="appendPin(9)">9</div>
+        <div class="button" onclick="clearPin()">Clear</div>
+        <div class="button" onclick="appendPin(0)">0</div>
+        <div class="button" onclick="submitPin()">Submit</div>
+    </div>
+    <input type="text" id="pin-input" readonly>
+
+    <div>
+        <a href="@Url.Action("AdminIndex", "Admin")">Admin page</a>
+    </div>
+    <div>
+        <a href="@Url.Action("EditorIndex", "Editor")">Editor page</a>
+    </div>
+    <div>
+        <a href="@Url.Action("StaffIndex", "Staff")">Staff page</a>
+    </div>
+    <script>
+        let pin = '';
+        const pinInput = document.getElementById('pin-input');
+
+        function appendPin(number) {
+            pin += number;
+            pinInput.value = pin;
+        }
+
+        function clearPin() {
+            pin = '';
+            pinInput.value = '';
+        }
+
+        function submitPin() {
+            // Handle PIN submission here (e.g., validation and authentication)
+            alert(`Submitted PIN: ${pin}`);
+        }
+    </script>
+</body>
+</html>
