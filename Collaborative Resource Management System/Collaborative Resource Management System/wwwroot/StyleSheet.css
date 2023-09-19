@@ -1,0 +1,42 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em; 
+    margin-top: 20px;
+}
+
+#admin-buttons, #editor-buttons {
+    margin: 20px auto;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+#pin-container {
+    margin: 20px auto;
+    width: 200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    border: 1px solid #ccc;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#pin-input {
+    grid-column: span 3;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 10px;
+}
