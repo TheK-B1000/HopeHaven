@@ -1,57 +1,52 @@
 ﻿<html>
 <head>
-    <title>Add Item</title>
+    <title>Add Inventory</title>
 </head>
 <body>
 
-    <h1>Add Inventory</h1>
+    <h1>Add Inventory Item</h1>
 
     <div id="admin-buttons">
         <button class="button" onclick="showConsumable()">Consumable</button>
         <button class="button" onclick="showNonConsumable()">Non-consumable</button>
     </div>
 
-    <div id="attributes-container">
-    </div>
+       
+        <h2>Consumable</h2>
 
-    <script>
-        function showConsumable() {
-            const content =
-                <h2>Consumable - Entity < /h2>
-                <form>
-            ItemID: <input type="text" name = "itemID" > <br>
-                Name: <input type="text" name = "name" > <br>
-                    Description: <input type="text" name = "description" > <br>
-                        Date: <input type="date" name = "date" > <br>
-                            Price per: <input type="number" name = "pricePer" > <br>
-                                Quantity available: <input type="number" name = "quantityAvailable" > <br>
-                                    Minimum quantity: <input type="number" name = "minQuantity" > <br>
-                                        Date created: <input type="date" name = "dateCreated" > <br>
-                                            Date updated: <input type="date" name = "dateUpdated" > <br>
-                                                RoomID: <input type="text" name = "roomID" > <br>
-                                                    <input type="submit" value = "Submit" >
-                                                        </form>
-                ;
-            document.getElementById('attributes-container').innerHTML = content;
-        }
-        function showNonConsumable() {
-            const content =
-                <h2>Non - consumable - Entity < /h2>
-                <form>
-            ItemID: <input type="text" name = "itemID" > <br>
-                Name: <input type="text" name = "name" > <br>
-                    Description: <input type="text" name = "description" > <br>
-                        Asset tag: <input type="text" name = "assetTag" > <br>
-                            General ledger: <input type="text" name = "generalLedger" > <br>
-                                Date created: <input type="date" name = "dateCreated" > <br>
-                                    Date updated: <input type="date" name = "dateUpdated" > <br>
-                                        RoomID: <input type="text" name = "roomID" > <br>
-                                            <input type="submit" value = "Submit" >
-                                                </form>
-                ;
-            document.getElementById('attributes-container').innerHTML = content;
-        }
-    </script>
+        <form action="#" method="POST">
+            <label for="itemID">ItemID:</label><br>
+            <input type="text" id="itemID" name="itemID"><br><br>
 
-</body>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="description">Description:</label><br>
+            <input type="text" id="description" name="description"><br><br>
+
+            <label for="date">Date:</label><br>
+            <input type="date" id="date" name="date"><br><br>
+
+            <label for="pricePer">Price per:</label><br>
+            <input type="number" id="pricePer" name="pricePer"><br><br>
+
+            <label for="quantityAvailable">Quantity available:</label><br>
+            <input type="number" id="quantityAvailable" name="quantityAvailable"><br><br>
+
+            <label for="minQuantity">Minimum quantity:</label><br>
+            <input type="number" id="minQuantity" name="minQuantity"><br><br>
+
+            <label for="dateCreated">Date created:</label><br>
+            <input type="date" id="dateCreated" name="dateCreated"><br><br>
+
+            <label for="dateUpdated">Date updated:</label><br>
+            <input type="date" id="dateUpdated" name="dateUpdated"><br><br>
+
+            <label for="roomID">RoomID:</label><br>
+            <input type="text" id="roomID" name="roomID"><br><br>
+
+            <input type="submit" value="Add">
+        </form>
+
+    </body>
 </html>
