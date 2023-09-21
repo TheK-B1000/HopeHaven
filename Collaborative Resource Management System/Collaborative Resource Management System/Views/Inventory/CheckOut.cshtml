@@ -1,6 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    <title>Check-Out Page</title>
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-out Screen</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+</head>
+<body>
+    <h1>Check-out</h1>
+    <p>Hello {user}, what would you like to check out?</p>
+    <div id="editor-buttons">
+        <!-- Mock list of items available for checkout -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Item ID</th>
+                    <th>Price</th>
+                    <th>Is Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="path_to_image1.jpg" alt="Item Image" width="100"></td>
+                    <td>12345</td>
+                    <td>$100</td>
+                    <td>Yes</td>
+                </tr>
+                <!-- ... Additional rows for other items ... -->
+            </tbody>
+        </table>
+        <input type="text" placeholder="Item ID" class="button">
+        <input type="text" placeholder="Quantity" class="button">
+        <button class="button">Submit</button>
+    </div>
+    <a href="@Url.Action("Index", "Home")" class="button">Back</a>
+</body>
+</html>
+

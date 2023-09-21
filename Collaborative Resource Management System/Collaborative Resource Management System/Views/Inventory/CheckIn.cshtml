@@ -1,6 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    <title>Check-In Page</title>
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in Screen</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+</head>
+<body>
+    <h1>Check-in</h1>
+    <p>Hello {user}, you have ___ items checked out, what would you like to check in?</p>
+    <div id="admin-buttons">
+        <!-- Available items section -->
+        <div class="available-items">
+            <h2>Available Items</h2>
+            <div class="item">
+                <span>Smart Board</span>
+                <button class="button" onclick="addItem('Smart Board')">Add to Cart</button>
+            </div>
+            <div class="item">
+                <span>Laptop</span>
+                <button class="button" onclick="addItem('Laptop')">Add to Cart</button>
+            </div>
+        </div>
+        <!-- Divider -->
+        <hr>
+        <!-- Cart section -->
+        <div class="cart">
+            <h2>Cart</h2>
+            <!-- Items will be added here dynamically using JavaScript -->
+        </div>
+        <button class="button">Submit</button>
+    </div>
+    <a href="@Url.Action("Index", "Home")" class="button">Back</a>
+    <script>
+        function addItem(itemName) {
+            // Remove the item from the available-items section
+            let items = document.querySelectorAll('.available-items .item');
+            items.forEach(item => {
+                if (item.querySelector('span').textContent === itemName) {
+                    item.remove();
+                }
+            });
+
+            // Add the item to the cart section
+            let cart = document.querySelector('.cart');
+            let newItem = document.createElement('div');
+            newItem.textContent = itemName;
+            cart.appendChild(newItem);
+        }
+    </script>
+</body>
+</html>
