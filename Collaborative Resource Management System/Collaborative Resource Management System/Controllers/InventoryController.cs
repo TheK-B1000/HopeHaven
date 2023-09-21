@@ -25,5 +25,9 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
     }
 }
