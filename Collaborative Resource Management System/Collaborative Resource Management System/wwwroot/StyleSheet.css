@@ -8,6 +8,22 @@ h1 {
     margin-top: 20px;
 }
 
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
 #admin-buttons, #editor-buttons {
     margin: 20px auto;
     width: 300px;
