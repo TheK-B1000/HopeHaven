@@ -14,10 +14,6 @@
 	</ItemGroup>
 	
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-	
-  <ItemGroup>
     <None Include="wwwroot\StyleSheet.css" />
   </ItemGroup>
 
