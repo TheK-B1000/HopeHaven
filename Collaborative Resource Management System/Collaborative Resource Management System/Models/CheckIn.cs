@@ -4,14 +4,10 @@ namespace Collaborative_Resource_Management_System.Models
 {
     public class CheckIn
     {
-        public int RecordID { get; set; }
-
+        public int CheckInID { get; set; }
         public string AssetTag { get; set; }
-
         public DateTime CheckInDate { get; set; }
+        public int UserID { get; set; }
 
-        public TimeSpan CheckInTime { get; set; }
-
-        public int CheckedInByUserID { get; set; }
     }
 }
