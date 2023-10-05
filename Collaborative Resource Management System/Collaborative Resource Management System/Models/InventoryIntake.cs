@@ -6,6 +6,6 @@
         public int ItemID { get; set; }
         public DateTime IntakeDate { get; set; }
         public int Quantity { get; set; }
-        public decimal PurchasePrice { get; set; }
+        public float PurchasePrice { get; set; }
     }
 }
