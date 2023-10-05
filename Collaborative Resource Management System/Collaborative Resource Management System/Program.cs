@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
+
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 
@@ -17,10 +17,18 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseRouting();
+
 app.UseAuthorization();
+
 app.MapGet("/hi", () => "Hello!");
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
+
+DbInitializer.SeedData(app.Services);
+
 app.Run();
