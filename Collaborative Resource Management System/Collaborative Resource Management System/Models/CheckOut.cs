@@ -9,7 +9,7 @@ namespace Collaborative_Resource_Management_System.Models
         public int ItemID { get; set; }
         public DateTime CheckOutDate { get; set; }
         public DateTime ReturnDate { get; set; }
-        public decimal Price { get; set; }
+        public float Price { get; set; }
         public int DepartmentID { get; set; }
         public string Notes { get; set; }
     }
