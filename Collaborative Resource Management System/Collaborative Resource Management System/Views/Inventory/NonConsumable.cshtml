@@ -1,0 +1,17 @@
+﻿@model Collaborative_Resource_Management_System.Models.NonConsumable
+
+<form action="/Inventory/AddNonConsumable" method="POST">
+    <div class="form-group">
+        <label for="nonConsumableID">Non-Consumable ID:</label>
+        <input type="number" id="nonConsumableID" name="NonConsumableID" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="assetTag">Asset Tag:</label>
+        <input type="text" id="assetTag" name="AssetTag" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="itemID">Item ID:</label>
+        <input type="number" id="itemID" name="ItemID" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
