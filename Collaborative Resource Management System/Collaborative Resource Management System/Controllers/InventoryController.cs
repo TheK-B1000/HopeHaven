@@ -28,6 +28,20 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpGet]
+        public IActionResult LoadItemType(string itemType)
+        {
+            if (itemType == "Consumable")
+            {
+                return PartialView("Consumable", new Consumable());
+            }
+            else if (itemType == "NonConsumable")
+            {
+                return PartialView("NonConsumable", new NonConsumable());
+            }
+            return BadRequest("Invalid item type.");
+        }
+
+        [HttpGet]
         public IActionResult Add()
         {
             return View();

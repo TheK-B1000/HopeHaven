@@ -1,0 +1,21 @@
+﻿@model Collaborative_Resource_Management_System.Models.Consumable
+
+<form action="/Inventory/AddConsumable" method="POST">
+    <div class="form-group">
+        <label for="itemID">Item ID:</label>
+        <input type="number" id="itemID" name="ItemID" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="pricePerUnit">Price per Unit:</label>
+        <input type="number" id="pricePerUnit" name="PricePerUnit" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="quantityAvailable">Quantity Available:</label>
+        <input type="number" id="quantityAvailable" name="QuantityAvailable" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="minimumQuantity">Minimum Quantity:</label>
+        <input type="number" id="minimumQuantity" name="MinimumQuantity" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
