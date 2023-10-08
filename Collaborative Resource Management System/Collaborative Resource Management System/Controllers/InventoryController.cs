@@ -68,8 +68,6 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
             return View();
         }
-
-        [HttpGet]
         public IActionResult Add()
         {
             return View();
