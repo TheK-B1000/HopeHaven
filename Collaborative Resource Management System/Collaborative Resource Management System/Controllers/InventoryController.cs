@@ -41,6 +41,34 @@ namespace Collaborative_Resource_Management_System.Controllers
             return BadRequest("Invalid item type.");
         }
 
+        [HttpPost]
+        public IActionResult AddConsumable(Consumable consumable)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Consumables.Add(consumable);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Manage");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddNonConsumable(NonConsumable nonConsumable)
+        {
+            if (ModelState.IsValid)
+            {
+                context.NonConsumables.Add(nonConsumable);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Manage");
+            }
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -54,7 +82,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             {
                 context.Consumables.Add(consumable);
                 context.SaveChanges();
-                return View();
+                return View("Manage");
             }
             return View(consumable);
         }
