@@ -2,8 +2,36 @@
 
 <form action="/Inventory/AddConsumable" method="POST">
     <div class="form-group">
-        <label for="itemID">Item ID:</label>
-        <input type="number" id="itemID" name="ItemID" class="form-control" required />
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        <input type="text" id="Description" name="Description" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="RoomNumber">Room Number:</label>
+        <input type="number" id="RoomNumber" name="RoomNumber" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="CategoryID">Category ID:</label>
+        <input type="number" id="CategoryID" name="CategoryID" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="GeneralLedger">General Ledger:</label>
+        <input type="text" id="GeneralLedger" name="GeneralLedger" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="ItemType">Item Type:</label>
+        <input type="text" id="ItemType" name="ItemType" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Comments">Comments:</label>
+        <input type="text" id="Comments" name="Comments" class="form-control" required />
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="Active" name="Active">
+        <label class="form-check-label" for="Active">Active</label>
     </div>
     <div class="form-group">
         <label for="pricePerUnit">Price per Unit:</label>
