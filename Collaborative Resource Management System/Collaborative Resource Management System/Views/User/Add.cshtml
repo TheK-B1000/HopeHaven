@@ -6,18 +6,43 @@
 
     <h1>Add User</h1>
 
-    <form action="#" method="POST">
-        <label for="id">ID:</label><br>
-        <input type="text" id="id" name="id"><br><br>
+    <form action="/User/Add" method="POST">
+        <label for="UserID">ID:</label><br>
+        <input type="text" id="UserID" name="UserID"><br><br>
 
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br><br>
+        <label for="Name">Name:</label><br>
+        <input type="text" id="Name" name="Name"><br><br>
 
-        <label for="type">Type:</label><br>
-        <input type="text" id="type" name="type"><br><br>
+        <label for="Type">Type:</label><br>
+        <select id="Type" name="Type">
+            <option value="Admin">Admin</option>
+            <option value="Editor">Editor</option>
+            <option value="Staff">Staff</option>
+        </select><br><br>
 
-        <label for="pin">PIN:</label><br>
-        <input type="password" id="pin" name="pin"><br><br>
+        <label for="PIN">PIN:</label><br>
+        <input type="password" id="PIN" name="PIN"><br><br>
+
+        <label for="Password">Password:</label><br>
+        <input type="password" id="Password" name="Password"><br><br>
+
+        <label for="DeptID">Department ID:</label><br>
+        <input type="text" id="DeptID" name="DeptID"><br><br>
+
+        <label for="CreatedBy">Created By:</label><br>
+        <input type="text" id="CreatedBy" name="CreatedBy"><br><br>
+
+        <label for="EditedBy">Edited By:</label><br>
+        <input type="text" id="EditedBy" name="EditedBy"><br><br>
+
+        <label for="CreatedDate">Created Date:</label><br>
+        <input type="date" id="CreatedDate" name="CreatedDate"><br><br>
+
+        <label for="EditedDate">Edited Date:</label><br>
+        <input type="date" id="EditedDate" name="EditedDate"><br><br>
+
+        <label for="Active">Active:</label><br>
+        <input type="checkbox" id="Active" name="Active"><br><br>
 
         <input type="submit" value="Add">
     </form>

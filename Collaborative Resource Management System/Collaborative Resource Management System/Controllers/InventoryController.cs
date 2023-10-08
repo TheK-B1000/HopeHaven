@@ -74,18 +74,6 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public IActionResult Add(Consumable consumable)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Consumables.Add(consumable);
-                context.SaveChanges();
-                return View("Manage");
-            }
-            return View(consumable);
-        }
         public IActionResult Edit()
         {
             return View();
