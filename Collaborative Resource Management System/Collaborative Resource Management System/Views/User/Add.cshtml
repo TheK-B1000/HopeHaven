@@ -1,51 +1,77 @@
 ﻿<html>
 <head>
     <title>Add User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 
-    <h1>Add User</h1>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Add User</h1>
 
-    <form action="/User/Add" method="POST">
-        <label for="UserID">ID:</label><br>
-        <input type="text" id="UserID" name="UserID"><br><br>
+        <form action="/User/Add" method="POST">
+            <div class="form-group">
+                <label for="UserID">ID:</label>
+                <input type="text" class="form-control" id="UserID" name="UserID">
+            </div>
 
-        <label for="Name">Name:</label><br>
-        <input type="text" id="Name" name="Name"><br><br>
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" id="Name" name="Name">
+            </div>
 
-        <label for="Type">Type:</label><br>
-        <select id="Type" name="Type">
-            <option value="Admin">Admin</option>
-            <option value="Editor">Editor</option>
-            <option value="Staff">Staff</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="Type">Type:</label>
+                <select class="form-control" id="Type" name="Type">
+                    <option value="Admin">Admin</option>
+                    <option value="Editor">Editor</option>
+                    <option value="Staff">Staff</option>
+                </select>
+            </div>
 
-        <label for="PIN">PIN:</label><br>
-        <input type="password" id="PIN" name="PIN"><br><br>
+            <div class="form-group">
+                <label for="PIN">PIN:</label>
+                <input type="password" class="form-control" id="PIN" name="PIN">
+            </div>
 
-        <label for="Password">Password:</label><br>
-        <input type="password" id="Password" name="Password"><br><br>
+            <div class="form-group">
+                <label for="Password">Password:</label>
+                <input type="password" class="form-control" id="Password" name="Password">
+            </div>
 
-        <label for="DeptID">Department ID:</label><br>
-        <input type="text" id="DeptID" name="DeptID"><br><br>
+            <div class="form-group">
+                <label for="DeptID">Department ID:</label>
+                <input type="text" class="form-control" id="DeptID" name="DeptID">
+            </div>
 
-        <label for="CreatedBy">Created By:</label><br>
-        <input type="text" id="CreatedBy" name="CreatedBy"><br><br>
+            <div class="form-group">
+                <label for="CreatedBy">Created By:</label>
+                <input type="text" class="form-control" id="CreatedBy" name="CreatedBy">
+            </div>
 
-        <label for="EditedBy">Edited By:</label><br>
-        <input type="text" id="EditedBy" name="EditedBy"><br><br>
+            <div class="form-group">
+                <label for="EditedBy">Edited By:</label>
+                <input type="text" class="form-control" id="EditedBy" name="EditedBy">
+            </div>
 
-        <label for="CreatedDate">Created Date:</label><br>
-        <input type="date" id="CreatedDate" name="CreatedDate"><br><br>
+            <div class="form-group">
+                <label for="CreatedDate">Created Date:</label>
+                <input type="date" class="form-control" id="CreatedDate" name="CreatedDate">
+            </div>
 
-        <label for="EditedDate">Edited Date:</label><br>
-        <input type="date" id="EditedDate" name="EditedDate"><br><br>
+            <div class="form-group">
+                <label for="EditedDate">Edited Date:</label>
+                <input type="date" class="form-control" id="EditedDate" name="EditedDate">
+            </div>
 
-        <label for="Active">Active:</label><br>
-        <input type="checkbox" id="Active" name="Active"><br><br>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="Active" name="Active">
+                <label class="form-check-label" for="Active">Active</label>
+            </div>
 
-        <input type="submit" value="Add">
-    </form>
+            <button type="submit" class="btn btn-primary mt-4">Add</button>
+        </form>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
