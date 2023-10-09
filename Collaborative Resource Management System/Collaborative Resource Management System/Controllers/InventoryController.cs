@@ -72,9 +72,60 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-        public IActionResult Edit()
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var item = await context.InventoryItems
+                .FirstOrDefaultAsync(i => i.InventoryItemID == id);
+
+            if (item == null)
+                return NotFound();
+
+            if (item.ItemType == ItemType.Consumable)
+            {
+                var consumable = await context.Consumables
+                    .FirstOrDefaultAsync(c => c.ItemID == id);
+                if (consumable == null)
+                    return NotFound();
+
+                return View("EditConsumable", consumable);
+            }
+            else if (item.ItemType == ItemType.NonConsumable)
+            {
+                var nonConsumable = await context.NonConsumables
+                    .FirstOrDefaultAsync(nc => nc.ItemID == id);
+                if (nonConsumable == null)
+                    return NotFound();
+
+                return View("EditNonConsumable", nonConsumable);
+            }
+
+            return BadRequest("Unknown item type.");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditConsumable(Consumable consumable)
+        {
+            if (!ModelState.IsValid)
+                return View(consumable);
+
+            context.Update(consumable);
+            await context.SaveChangesAsync();
+
+            return RedirectToAction("Manage");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditNonConsumable(NonConsumable nonConsumable)
+        {
+            if (!ModelState.IsValid)
+                return View(nonConsumable);
+
+            context.Update(nonConsumable);
+            await context.SaveChangesAsync();
+
+            return RedirectToAction("Manage");
         }
         public IActionResult Confirmation()
         {

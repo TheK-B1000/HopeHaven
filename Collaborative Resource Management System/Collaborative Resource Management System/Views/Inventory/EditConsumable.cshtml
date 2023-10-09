@@ -1,0 +1,34 @@
+﻿@model Collaborative_Resource_Management_System.Models.Consumable
+
+<html>
+<head>
+    <title>Edit Consumable Item</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <h1>Edit Consumable Item</h1>
+
+    <form action="/Inventory/EditConsumable" method="POST">
+        
+        <div class="form-group">
+            <label for="PricePerUnit">Price per Unit:</label>
+            <input type="number" class="form-control" id="PricePerUnit" name="PricePerUnit" value="@Model.PricePerUnit" required />
+        </div>
+
+        <div class="form-group">
+            <label for="QuantityAvailable">Quantity Available:</label>
+            <input type="number" class="form-control" id="QuantityAvailable" name="QuantityAvailable" value="@Model.QuantityAvailable" required />
+        </div>
+
+        <div class="form-group">
+            <label for="MinimumQuantity">Minimum Quantity:</label>
+            <input type="number" class="form-control" id="MinimumQuantity" name="MinimumQuantity" value="@Model.MinimumQuantity" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
