@@ -1,12 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     <title>Manage Users</title>
 }
 
 <body>
-    <a href="@Url.Action("Add", "User")">Add User</a>
-    <a href="@Url.Action("Edit", "User")">Edit Users</a>
-
+    <form action="@Url.Action("Add", "User")" method="POST">
+        <input type="submit" value="Add User" />
+    </form>
+    <form action="@Url.Action("Edit", "User")" method="POST">
+        <input type="submit" value="Edit User" />
+    </form>
 </body>

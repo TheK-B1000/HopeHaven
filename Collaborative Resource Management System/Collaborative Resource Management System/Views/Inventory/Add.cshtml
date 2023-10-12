@@ -1,52 +1,50 @@
 ﻿<html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Add Inventory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 
-    <h1>Add Inventory Item</h1>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Add Inventory</h1>
 
-    <div id="admin-buttons">
-        <button class="button" onclick="showConsumable()">Consumable</button>
-        <button class="button" onclick="showNonConsumable()">Non-consumable</button>
+        <div class="btn-group mb-4" role="group">
+            <button id="loadConsumable" class="btn btn-primary">Add Consumable</button>
+            <button id="loadNonConsumable" class="btn btn-secondary">Add Non-Consumable</button>
+        </div>
+
+        <div id="formContainer">
+        </div>
     </div>
 
-       
-        <h2>Consumable</h2>
+    <script>
+        document.getElementById('loadConsumable').addEventListener('click', function () {
+            loadItemType('Consumable');
+        });
 
-        <form action="#" method="POST">
-            <label for="itemID">ItemID:</label><br>
-            <input type="text" id="itemID" name="itemID"><br><br>
+        document.getElementById('loadNonConsumable').addEventListener('click', function () {
+            loadItemType('NonConsumable');
+        });
 
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name"><br><br>
+        function loadItemType(itemType) {
+            var url = '/Inventory/LoadItemType?itemType=' + itemType;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('formContainer').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+    </script>
 
-            <label for="description">Description:</label><br>
-            <input type="text" id="description" name="description"><br><br>
-
-            <label for="date">Date:</label><br>
-            <input type="date" id="date" name="date"><br><br>
-
-            <label for="pricePer">Price per:</label><br>
-            <input type="number" id="pricePer" name="pricePer"><br><br>
-
-            <label for="quantityAvailable">Quantity available:</label><br>
-            <input type="number" id="quantityAvailable" name="quantityAvailable"><br><br>
-
-            <label for="minQuantity">Minimum quantity:</label><br>
-            <input type="number" id="minQuantity" name="minQuantity"><br><br>
-
-            <label for="dateCreated">Date created:</label><br>
-            <input type="date" id="dateCreated" name="dateCreated"><br><br>
-
-            <label for="dateUpdated">Date updated:</label><br>
-            <input type="date" id="dateUpdated" name="dateUpdated"><br><br>
-
-            <label for="roomID">RoomID:</label><br>
-            <input type="text" id="roomID" name="roomID"><br><br>
-
-            <input type="submit" value="Add">
-        </form>
-
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -3,9 +3,15 @@
 }
 
 <body>
-    
-    <a href="@Url.Action("Add", "Inventory")">Add Item</a>
-    <a href="@Url.Action("Edit", "Inventory")">Edit Item</a>
-    <a href="@Url.Action("Report", "Report")">Inventory Report</a>
-
+    <form action="@Url.Action("Add", "Inventory")" method="POST">
+        <input type="submit" value="Add Inventory Item" />
+    </form>
+    <form action="@Url.Action("Edit", "Inventory")" method="GET">
+        <label for="id">Item ID:</label>
+        <input type="text" id="id" name="id" required />
+        <input type="submit" value="Edit Inventory Item" />
+    </form>
+    <form action="@Url.Action("Report", "Report")" method="GET">
+        <input type="submit" value="Inventory Report" />
+    </form>
 </body>

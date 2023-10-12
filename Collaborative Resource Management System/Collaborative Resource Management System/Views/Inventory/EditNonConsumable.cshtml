@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Non-Consumable Item</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4">Edit Non-Consumable Item</h1>
+
+        <form action="/Inventory/EditNonConsumable" method="POST">
+            <input type="hidden" name="ItemID" value="@Model.ItemID" />
+
+            <div class="form-group">
+                <label for="assetTag">Asset Tag:</label>
+                <input type="text" class="form-control" id="assetTag" name="AssetTag" value="@Model.AssetTag" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Save</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
