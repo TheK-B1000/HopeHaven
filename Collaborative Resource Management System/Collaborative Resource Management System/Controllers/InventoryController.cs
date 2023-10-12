@@ -87,7 +87,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             if (inventoryItem.ItemType == ItemType.Consumable)
             {
                 var consumable = await context.Consumables
-                    .FirstOrDefaultAsync(c => c.ItemID == id);
+                    .FirstOrDefaultAsync(c => c.ConsumableID == id); 
                 if (consumable == null)
                     return NotFound();
 
@@ -96,7 +96,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             else if (inventoryItem.ItemType == ItemType.NonConsumable)
             {
                 var nonConsumable = await context.NonConsumables
-                    .FirstOrDefaultAsync(nc => nc.ItemID == id);
+                    .FirstOrDefaultAsync(nc => nc.NonConsumableID == id);  
                 if (nonConsumable == null)
                     return NotFound();
 
@@ -105,6 +105,7 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             return View(viewModel);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Edit(InventoryEditType viewModel)
