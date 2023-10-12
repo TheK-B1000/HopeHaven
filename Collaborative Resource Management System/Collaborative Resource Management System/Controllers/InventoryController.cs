@@ -12,8 +12,6 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             context = dbContext;
         }
-
-
         public IActionResult CheckIn()
         {
             return View();
@@ -75,58 +73,56 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var item = await context.InventoryItems
+            var inventoryItem = await context.InventoryItems
                 .FirstOrDefaultAsync(i => i.InventoryItemID == id);
 
-            if (item == null)
+            if (inventoryItem == null)
                 return NotFound();
 
-            if (item.ItemType == ItemType.Consumable)
+            InventoryEditType viewModel = new InventoryEditType
+            {
+                InventoryItem = inventoryItem
+            };
+
+            if (inventoryItem.ItemType == ItemType.Consumable)
             {
                 var consumable = await context.Consumables
                     .FirstOrDefaultAsync(c => c.ItemID == id);
                 if (consumable == null)
                     return NotFound();
 
-                return View("EditConsumable", consumable);
+                viewModel.Consumable = consumable;
             }
-            else if (item.ItemType == ItemType.NonConsumable)
+            else if (inventoryItem.ItemType == ItemType.NonConsumable)
             {
                 var nonConsumable = await context.NonConsumables
                     .FirstOrDefaultAsync(nc => nc.ItemID == id);
                 if (nonConsumable == null)
                     return NotFound();
 
-                return View("EditNonConsumable", nonConsumable);
+                viewModel.NonConsumable = nonConsumable;
             }
 
-            return BadRequest("Unknown item type.");
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> EditConsumable(Consumable consumable)
-        {
-            if (!ModelState.IsValid)
-                return View(consumable);
-
-            context.Update(consumable);
-            await context.SaveChangesAsync();
-
-            return RedirectToAction("Manage");
+            return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditNonConsumable(NonConsumable nonConsumable)
+        public async Task<IActionResult> Edit(InventoryEditType viewModel)
         {
             if (!ModelState.IsValid)
-                return View(nonConsumable);
+                return View(viewModel);
 
-            context.Update(nonConsumable);
+            context.Update(viewModel.InventoryItem);
+            if (viewModel.InventoryItem.ItemType == ItemType.Consumable)
+                context.Update(viewModel.Consumable);
+            else if (viewModel.InventoryItem.ItemType == ItemType.NonConsumable)
+                context.Update(viewModel.NonConsumable);
+
             await context.SaveChangesAsync();
 
-            return RedirectToAction("Manage");
+            return RedirectToAction(nameof(Manage));
         }
+
         public IActionResult Confirmation()
         {
             return View();
