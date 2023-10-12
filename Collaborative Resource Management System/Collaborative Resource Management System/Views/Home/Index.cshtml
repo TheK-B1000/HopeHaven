@@ -21,17 +21,7 @@
         <div class="button" onclick="appendPin(0)">0</div>
         <div class="button" onclick="submitPin()">Submit</div>
     </div>
-    <input type="text" id="pin-input" readonly>
-
-    <div>
-        <a href="@Url.Action("AdminIndex", "Admin")">Admin page</a>
-    </div>
-    <div>
-        <a href="@Url.Action("EditorIndex", "Editor")">Editor page</a>
-    </div>
-    <div>
-        <a href="@Url.Action("StaffIndex", "Staff")">Staff page</a>
-    </div>
+    <input type="text" id="pin-input" placeholder="6 Digit Pin" >
     <script>
         let pin = '';
         const pinInput = document.getElementById('pin-input');
@@ -47,9 +37,24 @@
         }
 
         function submitPin() {
-            // Handle PIN submission here (e.g., validation and authentication)
-            alert(`Submitted PIN: ${pin}`);
-        }
+            if (pin === '1111') {
+                window.location.href = '@Url.Action("AdminIndex", "Admin")';
+                clearPin();
+            }
+            else if (pin === '2222') {
+                window.location.href = '@Url.Action("EditorIndex", "Editor")';
+                clearPin();
+            }
+            else if (pin === '3333') {
+                window.location.href = '@Url.Action("StaffIndex", "Staff")';
+                clearPin();
+            }
+            else {
+                alert('Incorrect PIN Number. Please try again.')
+                clearPin();
+            }
+            
+         }
     </script>
 </body>
 </html>
