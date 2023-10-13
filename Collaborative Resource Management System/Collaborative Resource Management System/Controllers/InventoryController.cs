@@ -142,12 +142,14 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public IActionResult NonConsumableItems()
         {
-            var nonConsumables = context.NonConsumables.ToList();
-            return View(nonConsumables);
+            var nonConsumableInventoryItems = NonConsumableInventoryGrid();
+            return View(nonConsumableInventoryItems);
         }
+
         public List<ConsumableInventoryItems> ConsumableInventoryGrid()
         {
             var combinedData = from inventory in context.InventoryItems
+                               where inventory.ItemType == ItemType.Consumable
                                join consumable in context.Consumables on inventory.InventoryItemID equals consumable.ItemID
                                select new ConsumableInventoryItems
                                {
@@ -163,6 +165,27 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             return combinedData.ToList();
         }
+
+        public List<NonConsumableInventoryItems> NonConsumableInventoryGrid()
+        {
+            var combinedData = from inventory in context.InventoryItems
+                               where inventory.ItemType == ItemType.NonConsumable
+                               join nonConsumable in context.NonConsumables on inventory.InventoryItemID equals nonConsumable.ItemID
+                               select new NonConsumableInventoryItems
+                               {
+                                   InventoryItemID = inventory.InventoryItemID,
+                                   Name = inventory.Name,
+                                   Description = inventory.Description,
+                                   CreatedBy = inventory.CreatedBy,
+                                   CreatedDate = inventory.CreatedDate,
+                                   Comments = inventory.Comments,
+                                   AssetTag = nonConsumable.AssetTag,
+                                   NonConsumableID = nonConsumable.NonConsumableID
+                               };
+
+            return combinedData.ToList();
+        }
+
 
     }
 }
