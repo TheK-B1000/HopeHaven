@@ -10,32 +10,13 @@
     </head>
     <body>
         <h1>Admin Page</h1>
-        <div id="admin-buttons">
 
-            <div>
-                <a href="@Url.Action("Manage", "User")">Edit Users</a>
-            </div>
-            <p>
-            </p>
-           <div>
-                <a href="@Url.Action("Manage", "Inventory")">Manage Inventory</a>
-            </div>
-            <p>
-            </p>
-            <div>
-                <a href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
-            </div> 
-                <p>
-            </p>
-            <div>
-                <a href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
-                </div>
-            <p>
-            </p>
-                <div>
-                    <a href="@Url.Action("Index", "Home")">Log Out</a>
-                </div>
-        </div>
+        <a href="@Url.Action("Manage", "User")" class="button-link">Edit Users</a>
+        <a href="@Url.Action("Manage", "Inventory")" class="button-link">Manage Inventory</a>
+        <a href="@Url.Action("CheckIn", "Inventory")" class="button-link">Check-In</a>
+        <a href="@Url.Action("CheckOut", "Inventory")" class="button-link">Check-Out</a>
+        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
+        
        
     </body>
     </html>

@@ -3,23 +3,12 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Staff Page</title>
+        <link rel="stylesheet" href="~/StyleSheet.css" />
     </head>
     <body>
         <h1>Staff Page</h1>
-        <div id="staff-buttons">
-            <div>
-                <a href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
-            </div> 
-            <p>
-            </p>
-            <div>
-                <a href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
-            </div>
-            <p>
-            </p>
-            <div>
-                <a href="@Url.Action("Index", "Home")">Log Out</a>
-            </div>
-        </div>
+        <a href="@Url.Action("CheckIn", "Inventory")" class="button-link">Check-In</a>
+        <a href="@Url.Action("CheckOut", "Inventory")" class="button-link">Check-Out</a>
+        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
     </body>
     </html>
