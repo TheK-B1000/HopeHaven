@@ -1,12 +1,8 @@
 ﻿@{
-    <title>Admin Homepage</title>
-
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Admin Home";
+}
     <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="~/StyleSheet.css" />
-    </head>
     <body>
         <h1>Admin Page</h1>
 
@@ -14,9 +10,9 @@
         <a href="@Url.Action("Manage", "Inventory")" class="button-link">Manage Inventory</a>
         <a href="@Url.Action("CheckIn", "Inventory")" class="button-link">Check-In</a>
         <a href="@Url.Action("CheckOut", "Inventory")" class="button-link">Check-Out</a>
-        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
+       
         
        
     </body>
     </html>
-}
+

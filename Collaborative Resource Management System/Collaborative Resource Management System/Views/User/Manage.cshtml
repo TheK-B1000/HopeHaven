@@ -1,15 +1,9 @@
 ﻿@{
-    <title>Manage Users</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Manage Users";
+}
 
-    <html>
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
-
+<html>
 <body>
     <form action="@Url.Action("Add", "User")" method="POST">
         <input type="submit" value="Add User" />
@@ -24,4 +18,3 @@
         <div> New add and edit are not working</div> 
 </body>
 </html>
-}
