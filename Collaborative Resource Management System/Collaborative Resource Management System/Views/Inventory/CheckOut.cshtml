@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Catalog</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/StyleSheet.css" />
 </head>
 
 <body>
@@ -18,8 +19,9 @@
             </div>
         </div>
     </div>
-
-    <a href="@Url.Action("Index", "Home")" class="button">Back</a>
-    <a href="@Url.Action("Cart", "Inventory")" class="button">Cart</a>
+    <div>
+    <a href="@Url.Action("Index", "Home")" class="button-link">Back</a>
+    <a href="@Url.Action("Cart", "Inventory")" class="button-link">Cart</a>
+    </div>
 </body>
 </html>

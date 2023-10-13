@@ -1,8 +1,8 @@
 ﻿<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check-in Screen</title>
-    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Check-in</title>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
 </head>
 <body>
     <h1>Check-in</h1>
@@ -12,21 +12,22 @@
             <h2>Available Items</h2>
             <div class="item">
                 <span>Smart Board</span>
-                <button class="button" onclick="addItem('Smart Board')">Add to Cart</button>
+                <button class="button-link" onclick="addItem('Smart Board')">Add to Cart</button>
             </div>
+            <br>
             <div class="item">
                 <span>Laptop</span>
-                <button class="button" onclick="addItem('Laptop')">Add to Cart</button>
+                <button class="button-link" onclick="addItem('Laptop')">Add to Cart</button>
             </div>
         </div>
         <hr>
         <div class="cart">
             <h2>Cart</h2>
         </div>
-        <button class="button">Submit</button>
+        <button class="button-link">Submit</button>
     </div>
-    <a href="@Url.Action("Index", "Home")" class="button">Back</a>
-    <a href="@Url.Action("Confirmation", "Inventory")" class="button">Confirm</a>
+    <a href="@Url.Action("Confirmation", "Inventory")" class="button-link">Confirm</a>
+    <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
     <script>
         function addItem(itemName) {
             let items = document.querySelectorAll('.available-items .item');
