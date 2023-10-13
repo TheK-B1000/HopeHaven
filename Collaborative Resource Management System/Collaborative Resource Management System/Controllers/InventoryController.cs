@@ -149,6 +149,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         public List<ConsumableInventoryItems> ConsumableInventoryGrid()
         {
             var combinedData = from inventory in context.InventoryItems
+                               where inventory.ItemType == ItemType.Consumable
                                join consumable in context.Consumables on inventory.InventoryItemID equals consumable.ItemID
                                select new ConsumableInventoryItems
                                {
@@ -168,6 +169,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         public List<NonConsumableInventoryItems> NonConsumableInventoryGrid()
         {
             var combinedData = from inventory in context.InventoryItems
+                               where inventory.ItemType == ItemType.NonConsumable
                                join nonConsumable in context.NonConsumables on inventory.InventoryItemID equals nonConsumable.ItemID
                                select new NonConsumableInventoryItems
                                {
