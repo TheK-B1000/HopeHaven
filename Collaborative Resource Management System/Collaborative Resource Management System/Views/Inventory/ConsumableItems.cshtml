@@ -1,7 +1,6 @@
-﻿@model List<Collaborative_Resource_Management_System.Models.Consumable>
+﻿@model IEnumerable<Collaborative_Resource_Management_System.Models.ConsumableInventoryItems>
 
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +13,9 @@
         <h1>Consumables</h1>
         <div class="container">
             <div class="row mb-4">
-
                 <div class="col-md-3">
                     <input type="text" class="form-control" placeholder="Search consumables...">
                 </div>
-
                 <div class="col-md-3">
                     <select class="form-control" id="priceFilter">
                         <option value="">Select Price Range</option>
@@ -26,7 +23,6 @@
                         <option value="10-50">$10 - $50</option>
                     </select>
                 </div>
-
                 <div class="col-md-3">
                     <select class="form-control" id="createdByFilter">
                         <option value="">Select Created By</option>
@@ -34,7 +30,6 @@
                         <option value="User2">User2</option>
                     </select>
                 </div>
-
                 <div class="col-md-3">
                     <select class="form-control" id="categoryFilter">
                         <option value="">Select Category</option>
@@ -42,14 +37,39 @@
                         <option value="Category2">Category2</option>
                     </select>
                 </div>
-
             </div>
-
         </div>
-    </div>
 
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Created By</th>
+                    <th>Created Date</th>
+                    <th>Comments</th>
+                    <th>Price Per Unit</th>
+                    <th>Quantity Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.CreatedBy</td>
+                        <td>@item.CreatedDate.ToShortDateString()</td>
+                        <td>@item.Comments</td>
+                        <td>@item.PricePerUnit.ToString("C")</td>
+                        <td>@item.QuantityAvailable</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Add additional scripts for filtering and searching functionality -->
 </body>
 </html>
