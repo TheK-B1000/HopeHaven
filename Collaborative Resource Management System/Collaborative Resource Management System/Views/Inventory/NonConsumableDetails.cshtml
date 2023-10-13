@@ -1,0 +1,32 @@
+﻿@model Collaborative_Resource_Management_System.Models.NonConsumableInventoryItems
+
+<html>
+<head>
+    <title>@Model.Name Details</title>
+</head>
+<body>
+
+    <div class="item-details">
+        <div class="item-pic">
+            <img src="" alt="@Model.Name" />
+        </div>
+
+        <div class="item-info">
+            <h2>@Model.Name</h2>
+            <p>Description: @Model.Description</p>
+
+            <button id="addToCart">Add to Cart</button>
+            <button id="checkout">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("addToCart").addEventListener("click", function () {
+        });
+
+        document.getElementById("checkout").addEventListener("click", function () {
+        });
+    </script>
+
+</body>
+</html>
