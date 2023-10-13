@@ -136,14 +136,32 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public IActionResult ConsumableItems()
         {
-            var consumables = context.Consumables.ToList();
-            return View(consumables);
+            var consumableInventoryItems = ConsumableInventoryGrid();
+            return View(consumableInventoryItems);
         }
 
         public IActionResult NonConsumableItems()
         {
             var nonConsumables = context.NonConsumables.ToList();
             return View(nonConsumables);
+        }
+        public List<ConsumableInventoryItems> ConsumableInventoryGrid()
+        {
+            var combinedData = from inventory in context.InventoryItems
+                               join consumable in context.Consumables on inventory.InventoryItemID equals consumable.ItemID
+                               select new ConsumableInventoryItems
+                               {
+                                   InventoryItemID = inventory.InventoryItemID,
+                                   Name = inventory.Name,
+                                   Description = inventory.Description,
+                                   CreatedBy = inventory.CreatedBy,
+                                   CreatedDate = inventory.CreatedDate,
+                                   Comments = inventory.Comments,
+                                   PricePerUnit = consumable.PricePerUnit,
+                                   QuantityAvailable = consumable.QuantityAvailable
+                               };
+
+            return combinedData.ToList();
         }
 
     }
