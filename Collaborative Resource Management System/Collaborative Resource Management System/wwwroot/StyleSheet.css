@@ -51,28 +51,39 @@ th {
 }
 
 #pin-container {
-    margin: 20px auto;
-    width: 200px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 90px);
     gap: 10px;
-    justify-content: center;
-    align-items: center;
+    max-width: 260px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .button {
-    padding: 10px 20px;
-    font-size: 1.5em;
+    background-color: #f1f1f1;
     border: 1px solid #ccc;
-    margin: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+    .button:hover {
+        background-color: #ddd;
+    }
+
 #pin-input {
-    grid-column: span 3;
+    margin-top: 20px;
+    font-size: 18px;
     text-align: center;
-    font-size: 1.5em;
     padding: 10px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .button-link {

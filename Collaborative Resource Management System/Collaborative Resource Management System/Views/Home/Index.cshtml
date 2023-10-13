@@ -17,17 +17,28 @@
         <div class="button" onclick="appendPin(7)">7</div>
         <div class="button" onclick="appendPin(8)">8</div>
         <div class="button" onclick="appendPin(9)">9</div>
-        <div class="button" onclick="clearPin()">Clear</div>
+        <div class="button" onclick="deleteDigit()">Delete</div>
         <div class="button" onclick="appendPin(0)">0</div>
         <div class="button" onclick="submitPin()">Submit</div>
     </div>
     <input type="text" id="pin-input" placeholder="6 Digit Pin" >
+
+    <div>Admin: 111111    Editor: 222222     Staff: 333333</div>
+
     <script>
         let pin = '';
         const pinInput = document.getElementById('pin-input');
 
         function appendPin(number) {
             pin += number;
+            pinInput.value = pin;
+            if (pin.length === 6) {
+                submitPin();
+            }
+        }
+
+        function deleteDigit() { 
+            pin = pin.slice(0, -1);
             pinInput.value = pin;
         }
 
@@ -37,15 +48,15 @@
         }
 
         function submitPin() {
-            if (pin === '1111') {
+            if (pin === '111111') {
                 window.location.href = '@Url.Action("AdminIndex", "Admin")';
                 clearPin();
             }
-            else if (pin === '2222') {
+            else if (pin === '222222') {
                 window.location.href = '@Url.Action("EditorIndex", "Editor")';
                 clearPin();
             }
-            else if (pin === '3333') {
+            else if (pin === '333333') {
                 window.location.href = '@Url.Action("StaffIndex", "Staff")';
                 clearPin();
             }
