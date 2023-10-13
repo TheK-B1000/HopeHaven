@@ -1,37 +1,23 @@
 ﻿<html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check-out Screen</title>
-    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Select Catalog</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Check-out</h1>
-    <p>Hello {user}, what would you like to check out?</p>
-    <div id="editor-buttons">
-        <table>
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Item ID</th>
-                    <th>Price</th>
-                    <th>Is Available</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="path_to_image1.jpg" alt="Item Image" width="100"></td>
-                    <td>12345</td>
-                    <td>$100</td>
-                    <td>Yes</td>
-                </tr>
-            </tbody>
-        </table>
-        <input type="text" placeholder="Item ID" class="button">
-        <input type="text" placeholder="Quantity" class="button">
-        <button class="button">Submit</button>
-        <a href="@Url.Action("Confirmation", "Inventory")" class="button">Confirm</a>
+
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <h1>Select Catalog</h1>
+            <div class="mt-4">
+                <a href="ConsumableItems" class="btn btn-primary btn-lg mb-3">Consumables</a><br>
+
+                <a href="NonConsumableItems" class="btn btn-secondary btn-lg">Non-Consumables</a>
+            </div>
+        </div>
     </div>
-    <a href="@Url.Action("Index", "Home")" class="button">Back</a>
+
 </body>
 </html>
-

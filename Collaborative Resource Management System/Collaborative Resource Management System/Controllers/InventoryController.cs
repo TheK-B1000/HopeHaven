@@ -128,9 +128,23 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
+
         public IActionResult Cart()
         {
             return View();
         }
+
+        public IActionResult ConsumableItems()
+        {
+            var consumables = context.Consumables.ToList();
+            return View(consumables);
+        }
+
+        public IActionResult NonConsumableItems()
+        {
+            var nonConsumables = context.NonConsumables.ToList();
+            return View(nonConsumables);
+        }
+
     }
 }
