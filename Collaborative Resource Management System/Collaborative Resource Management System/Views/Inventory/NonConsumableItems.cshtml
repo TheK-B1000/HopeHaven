@@ -58,7 +58,7 @@
                         <td>@item.Comments</td>
                         <td>@item.AssetTag</td>
                         <td>
-                            <a href="@Url.Action("ItemDetails", "Inventory", new { id = item.InventoryItemID })">View Details</a>
+                            <a href="@Url.Action("NonConsumableDetails", "Inventory", new { id = item.InventoryItemID })">View Details</a>
                         </td>
                     </tr>
                 }

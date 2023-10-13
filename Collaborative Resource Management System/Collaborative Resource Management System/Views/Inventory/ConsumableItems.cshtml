@@ -67,6 +67,9 @@
                         <td>@item.Comments</td>
                         <td>@item.PricePerUnit.ToString("C")</td>
                         <td>@item.QuantityAvailable</td>
+                        <td>
+                            <a href="@Url.Action("ConsumableDetails", "Inventory", new { id = item.InventoryItemID })">View Details</a>
+                        </td>
                     </tr>
                 }
             </tbody>
