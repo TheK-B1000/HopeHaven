@@ -1,6 +1,14 @@
 ﻿@{
     <title>Manage Users</title>
-}
+
+    <html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+</head>
 
 <body>
     <form action="@Url.Action("Add", "User")" method="POST">
@@ -9,4 +17,11 @@
     <form action="@Url.Action("Edit", "User")" method="POST">
         <input type="submit" value="Edit User" />
     </form>
+        <a href="@Url.Action("Add", "User")" class="button-link">Add User</a>
+        <a href="@Url.Action("Edit", "User")" class="button-link">Edit User</a>
+        <a href="@Url.Action("adminIndex", "Admin")" class="button-link">Admin Home</a>
+        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
+        <div> New add and edit are not working</div> 
 </body>
+</html>
+}

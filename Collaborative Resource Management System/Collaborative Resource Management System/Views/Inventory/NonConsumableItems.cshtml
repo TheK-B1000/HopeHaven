@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Collaborative_Resource_Management_System.Models.NonConsumableInventoryItems>
+@model IEnumerable<Collaborative_Resource_Management_System.Models.NonConsumableInventoryItems>
 
 <html>
 <head>
@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Non-Consumables Catalog</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/StyleSheet.css" />
 </head>
 
 <body>
     <div class="container mt-4">
         <h1>Non-Consumables</h1>
+        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-3">
