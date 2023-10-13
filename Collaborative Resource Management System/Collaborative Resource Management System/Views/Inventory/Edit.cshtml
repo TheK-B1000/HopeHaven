@@ -1,0 +1,78 @@
+﻿@using Collaborative_Resource_Management_System.Models
+@model Collaborative_Resource_Management_System.Models.InventoryEditType
+
+@{
+    ViewData["Title"] = "Edit Inventory Item";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Inventory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4">Edit Inventory Item</h1>
+        <form action="/Inventory/Edit" method="POST" id="editForm">
+            <input type="hidden" asp-for="InventoryItem.InventoryItemID" />
+    <div class="form-group">
+        <label asp-for="InventoryItem.Name"></label>
+        <input class="form-control" asp-for="InventoryItem.Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="InventoryItem.Description"></label>
+        <input class="form-control" asp-for="InventoryItem.Description" />
+    </div>
+    <div class="form-group">
+        <label asp-for="InventoryItem.RoomNumber"></label>
+        <input type="number" class="form-control" asp-for="InventoryItem.RoomNumber" />
+    </div>
+    <div class="form-group">
+        <label asp-for="InventoryItem.CategoryID"></label>
+        <input type="number" class="form-control" asp-for="InventoryItem.CategoryID" />
+    </div>
+    <div class="form-group">
+        <label asp-for="InventoryItem.GeneralLedger"></label>
+        <input class="form-control" asp-for="InventoryItem.GeneralLedger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="InventoryItem.Comments"></label>
+        <textarea class="form-control" asp-for="InventoryItem.Comments"></textarea>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" asp-for="InventoryItem.Active" />
+        <label class="form-check-label" asp-for="InventoryItem.Active">Active</label>
+    </div>
+
+    @if (Model.InventoryItem.ItemType == ItemType.Consumable)
+    {
+        <div class="form-group">
+            <label asp-for="Consumable.PricePerUnit">Price per Unit</label>
+            <input type="number" step="0.01" class="form-control" asp-for="Consumable.PricePerUnit" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Consumable.QuantityAvailable">Quantity Available</label>
+            <input type="number" class="form-control" asp-for="Consumable.QuantityAvailable" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Consumable.MinimumQuantity">Minimum Quantity</label>
+            <input type="number" class="form-control" asp-for="Consumable.MinimumQuantity" />
+        </div>
+    }
+    else if (Model.InventoryItem.ItemType == ItemType.NonConsumable)
+    {
+        <div class="form-group">
+            <label asp-for="NonConsumable.AssetTag">Asset Tag</label>
+            <input class="form-control" asp-for="NonConsumable.AssetTag" />
+        </div>
+    }
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
