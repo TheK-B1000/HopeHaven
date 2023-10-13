@@ -1,12 +1,9 @@
 ﻿@{
-    <title>Manage Inventory</title>
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Manage Inventory";
 }
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
+
 
 <body>
     <form action="@Url.Action("Add", "Inventory")" method="POST">
@@ -20,6 +17,6 @@
     <form action="@Url.Action("Report", "Report")" method="GET">
         <input type="submit" value="Inventory Report" />
     </form>
-    <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
+    
 </body>
 </html>

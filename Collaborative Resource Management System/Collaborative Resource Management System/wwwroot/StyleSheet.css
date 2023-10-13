@@ -96,3 +96,16 @@ th {
     border-radius: 5px;
     cursor: pointer;
 }
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: lightblue;
+    color: white;
+}
+
+.navbar {
+    margin-right: auto; /* Push the text to the left */
+}
