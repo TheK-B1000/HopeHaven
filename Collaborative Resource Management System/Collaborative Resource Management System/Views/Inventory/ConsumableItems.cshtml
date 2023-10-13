@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<Collaborative_Resource_Management_System.Models.Consumable>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumables Catalog</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Consumables</h1>
+        <div class="container">
+            <div class="row mb-4">
+
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Search consumables...">
+                </div>
+
+                <div class="col-md-3">
+                    <select class="form-control" id="priceFilter">
+                        <option value="">Select Price Range</option>
+                        <option value="0-10">$0 - $10</option>
+                        <option value="10-50">$10 - $50</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <select class="form-control" id="createdByFilter">
+                        <option value="">Select Created By</option>
+                        <option value="User1">User1</option>
+                        <option value="User2">User2</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <select class="form-control" id="categoryFilter">
+                        <option value="">Select Category</option>
+                        <option value="Category1">Category1</option>
+                        <option value="Category2">Category2</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Add additional scripts for filtering and searching functionality -->
+</body>
+</html>
