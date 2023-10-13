@@ -186,6 +186,15 @@ namespace Collaborative_Resource_Management_System.Controllers
             return combinedData.ToList();
         }
 
+        public IActionResult ItemDetails(int id)
+        {
+            var item = NonConsumableInventoryGrid().FirstOrDefault(x => x.InventoryItemID == id);
+
+            if (item == null)
+                return NotFound();
+
+            return View(item);
+        }
 
     }
 }

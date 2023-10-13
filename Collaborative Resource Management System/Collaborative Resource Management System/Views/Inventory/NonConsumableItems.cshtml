@@ -42,6 +42,7 @@
                     <th>Created Date</th>
                     <th>Comments</th>
                     <th>Asset Tag</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,6 +55,9 @@
                         <td>@item.CreatedDate.ToShortDateString()</td>
                         <td>@item.Comments</td>
                         <td>@item.AssetTag</td>
+                        <td>
+                            <a href="@Url.Action("ItemDetails", "Inventory", new { id = item.InventoryItemID })">View Details</a>
+                        </td>
                     </tr>
                 }
             </tbody>
