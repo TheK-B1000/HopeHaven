@@ -2,24 +2,27 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@Model.Name Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 
-    <div class="item-details">
-        <div class="item-pic">
-            <img src="" alt="@Model.Name" />
-        </div>
-
-        <div class="item-info">
-            <h2>@Model.Name</h2>
-            <p>Description: @Model.Description</p>
-
-            <button id="addToCart">Add to Cart</button>
-            <button id="checkout">Checkout</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+              <img />
+            </div>
+            <div class="col-md-6">
+                <h2>@Model.Name</h2>
+                <p>Description: @Model.Description</p>
+                <button id="addToCart" class="btn btn-primary mr-2">Add to Cart</button>
+                <button id="checkout" class="btn btn-secondary">Checkout</button>
+            </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.getElementById("addToCart").addEventListener("click", function () {
         });
