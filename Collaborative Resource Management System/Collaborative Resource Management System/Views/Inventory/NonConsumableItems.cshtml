@@ -12,7 +12,6 @@
 <body>
     <div class="container mt-4">
         <h1>Non-Consumables</h1>
-        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-3">
@@ -34,39 +33,31 @@
                 </div>
             </div>
         </div>
+        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
 
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Created By</th>
-                    <th>Created Date</th>
-                    <th>Comments</th>
-                    <th>Asset Tag</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="container">
+            <div class="row">
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.Description</td>
-                        <td>@item.CreatedBy</td>
-                        <td>@item.CreatedDate.ToShortDateString()</td>
-                        <td>@item.Comments</td>
-                        <td>@item.AssetTag</td>
-                        <td>
-                            <a href="@Url.Action("NonConsumableDetails", "Inventory", new { id = item.InventoryItemID })">View Details</a>
-                        </td>
-                    </tr>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="~/img/AssetImage.jpg" class="card-img-top" alt="@item.Name" /> <!-- Assuming all images are AssetImage.jpg for now -->
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                <p class="card-text">
+                                    Description: @item.Description <br />
+                                    Created By: @item.CreatedBy <br />
+                                    Asset Tag: @item.AssetTag
+                                </p>
+                                <a href="@Url.Action("NonConsumableDetails", "Inventory", new { id = item.InventoryItemID })" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
                 }
-            </tbody>
-        </table>
-
+            </div>
+        </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
