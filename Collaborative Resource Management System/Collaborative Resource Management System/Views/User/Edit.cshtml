@@ -1,71 +1,49 @@
-﻿<html>
+﻿@model Collaborative_Resource_Management_System.Models.User
+<html>
 <head>
     <title>Edit User</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-
     <div class="container">
         <h1 class="mt-4 mb-4">Edit User</h1>
 
-        <form action="/User/Edit" method="POST">
+        <form asp-action="Edit" asp-controller="User" method="POST">
+            <input type="hidden" asp-for="UserID">
+
             <div class="form-group">
-                <label for="UserID">ID:</label>
-                <input type="text" class="form-control" id="UserID" name="UserID" readonly>
+                <label asp-for="Name">Name:</label>
+                <input type="text" class="form-control" asp-for="Name" value="@Model.Name">
             </div>
 
             <div class="form-group">
-                <label for="Name">Name:</label>
-                <input type="text" class="form-control" id="Name" name="Name" >
-            </div>
+                <label asp-for="Type">Type:</label>
+                <select class="form-control" asp-for="Type" value="@Model.Type">
+                    <option value="0" @((int)Model.Type == 0 ? "selected" : "")>Admin</option>
+                    <option value="1" @((int)Model.Type == 1 ? "selected" : "")>Editor</option>
+                    <option value="2" @((int)Model.Type == 2 ? "selected" : "")>Staff</option>
 
-            <div class="form-group">
-                <label for="Type">Type:</label>
-                <select class="form-control" id="Type" name="Type">
-                    <option value="Admin" selected>Admin</option>
-                    <option value="Editor">Editor</option>
-                    <option value="Staff">Staff</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="PIN">PIN:</label>
-                <input type="password" class="form-control" id="PIN" name="PIN">
+                <label asp-for="PIN">PIN:</label>
+                <input type="password" class="form-control" asp-for="PIN" value="@Model.PIN">
             </div>
 
             <div class="form-group">
-                <label for="Password">Password:</label>
-                <input type="password" class="form-control" id="Password" name="Password">
+                <label asp-for="Password">Password:</label>
+                <input type="password" class="form-control" asp-for="Password" value="@Model.Password">
             </div>
 
             <div class="form-group">
-                <label for="DeptID">Department ID:</label>
-                <input type="text" class="form-control" id="DeptID" name="DeptID">
-            </div>
-
-            <div class="form-group">
-                <label for="CreatedBy">Created By:</label>
-                <input type="text" class="form-control" id="CreatedBy" name="CreatedBy">
-            </div>
-
-            <div class="form-group">
-                <label for="EditedBy">Edited By:</label>
-                <input type="text" class="form-control" id="EditedBy" name="EditedBy">
-            </div>
-
-            <div class="form-group">
-                <label for="CreatedDate">Created Date:</label>
-                <input type="date" class="form-control" id="CreatedDate" name="CreatedDate">
-            </div>
-
-            <div class="form-group">
-                <label for="EditedDate">Edited Date:</label>
-                <input type="date" class="form-control" id="EditedDate" name="EditedDate">
+                <label asp-for="DeptID">Department ID:</label>
+                <input type="text" class="form-control" asp-for="DeptID" value="@Model.DeptID">
             </div>
 
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="Active" name="Active">
-                <label class="form-check-label" for="Active">Active</label>
+                <input type="checkbox" class="form-check-input" asp-for="Active" @(Model.Active ? "checked" : "")>
+                <label class="form-check-label" asp-for="Active">Active</label>
             </div>
 
             <button type="submit" class="btn btn-primary mt-4">Save</button>
