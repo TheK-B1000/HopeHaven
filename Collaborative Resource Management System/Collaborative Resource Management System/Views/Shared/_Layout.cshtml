@@ -25,15 +25,20 @@
 </head>
 
 <body>
+    
     <div>
         <nav class="navbar">
             <h1>CRMS <a href="@Url.Action("Index", "Home")">Login</a> </h1>
         </nav>
     </div>
+
     <div>
+
         <div>
-            <div>
+            <div class="text-center">
+                <h1>@ViewBag.Title</h1>
                 @RenderBody()
+                </div>
         </div>
 
     </div>

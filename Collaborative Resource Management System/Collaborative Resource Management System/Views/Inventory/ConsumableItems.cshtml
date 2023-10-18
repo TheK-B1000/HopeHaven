@@ -1,17 +1,13 @@
 ﻿@model IEnumerable<Collaborative_Resource_Management_System.Models.ConsumableInventoryItems>
 
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consumables Catalog</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Consumables";
+}
 
 <body>
     <div class="container mt-4">
-        <h1>Consumables</h1>
+
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-3">

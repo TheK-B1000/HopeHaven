@@ -3,15 +3,11 @@
     ViewBag.Title = "Manage Users";
 }
 
-<html>
-<body>
-    <form action="@Url.Action("Add", "User")" method="POST">
-        <input type="submit" value="Add User" />
-    </form>
-        <a href="@Url.Action("Add", "User")" class="button-link">Add User</a>
-        <a href="@Url.Action("Edit", "User")" class="button-link">Edit User</a>
-        <a href="@Url.Action("adminIndex", "Admin")" class="button-link">Admin Home</a>
-        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
-        <div> New add and edit are not working</div> 
-</body>
-</html>
+    
+    <a class="button btn-info btn-lg" href="@Url.Action("Add", "User")">Add User</a>
+    <a class="button btn-info btn-lg" href="@Url.Action("Edit", "User")">Edit User</a>
+    <a class="button btn-info btn-lg" href="@Url.Action("adminIndex", "Admin")">Admin Home</a>
+    <a class="button btn-info btn-lg" href="@Url.Action("Index", "Home")">Logout</a>
+    
+       
+

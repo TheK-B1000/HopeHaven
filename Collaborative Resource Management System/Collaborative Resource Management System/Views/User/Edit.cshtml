@@ -1,12 +1,10 @@
 ﻿@model Collaborative_Resource_Management_System.Models.User
-<html>
-<head>
-    <title>Edit User</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Edit User";
+}
 <body>
     <div class="container">
-        <h1 class="mt-4 mb-4">Edit User</h1>
 
         <form asp-action="Edit" asp-controller="User" method="POST">
             <input type="hidden" asp-for="UserID">
@@ -52,4 +50,3 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>

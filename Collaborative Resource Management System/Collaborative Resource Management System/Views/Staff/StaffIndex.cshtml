@@ -2,11 +2,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Staff Home";
 }
-    <html>
     
-    <body>
-        <h1>Staff Page</h1>
-        <a href="@Url.Action("CheckIn", "Inventory")" class="button-link">Check-In</a>
-        <a href="@Url.Action("CheckOut", "Inventory")" class="button-link">Check-Out</a>
-    </body>
-    </html>
+    <div class="container mt-5">
+    <a class="button btn-info btn-lg" href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
+
+    <a class="button btn-info btn-lg" href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
+    </div>

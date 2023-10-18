@@ -3,19 +3,13 @@
     ViewBag.Title = "Editor Home";
 }
 
-    <html>
     
-    <body>
-        <h1>Editor Page</h1>
+    <div class="container mt-5">
+        <a class="button btn-info btn-lg w-25" href="@Url.Action("Manage", "Inventory")">Manage Inventory</a>
         
-        <a class="button btn btn-info btn-lg w-25" href="@Url.Action("Manage", "Inventory")">Manage Inventory</a>
-        
-        <a class="button btn btn-info btn-lg w-25" href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
+        <a class="button btn-info btn-lg w-25" href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
        
-        <a class="button btn btn-info btn-lg w-25" href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
+        <a class="button btn-info btn-lg w-25" href="@Url.Action("CheckOut", "Inventory")">Check-Out</a>
        
-       
-
-    </body>
-    </html>
+     </div>
 

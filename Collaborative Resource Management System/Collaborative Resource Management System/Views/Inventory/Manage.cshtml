@@ -2,10 +2,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Manage Inventory";
 }
-<html>
 
-
-<body>
     <form action="@Url.Action("Add", "Inventory")" method="POST">
         <input type="submit" value="Add Inventory Item" />
     </form>
@@ -17,6 +14,4 @@
     <form action="@Url.Action("Report", "Report")" method="GET">
         <input type="submit" value="Inventory Report" />
     </form>
-    
-</body>
-</html>
+
