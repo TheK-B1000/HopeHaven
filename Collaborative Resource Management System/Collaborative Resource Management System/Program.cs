@@ -29,6 +29,6 @@ app.MapGet("/hi", () => "Hello!");
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
 
-//DbInitializer.SeedData(app.Services);
+DbInitializer.SeedData(app.Services);
 
 app.Run();
