@@ -19,32 +19,32 @@
 
             <div class="form-group">
                 <label asp-for="Name">Name</label>
-                <input class="form-control" asp-for="Name" />
+                <input class="form-control" asp-for="Name" value="@Model.Name" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description">Description</label>
-                <input class="form-control" asp-for="Description" />
+                <input class="form-control" asp-for="Description" value="@Model.Description" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="RoomNumber">Room Number</label>
-                <input type="number" class="form-control" asp-for="RoomNumber" />
+                <input type="number" class="form-control" asp-for="RoomNumber" value="@Model.RoomNumber"  />
                 <span asp-validation-for="RoomNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryID">Category ID</label>
-                <input type="number" class="form-control" asp-for="CategoryID" />
+                <input type="number" class="form-control" asp-for="CategoryID" value="@Model.CategoryID"  />
                 <span asp-validation-for="CategoryID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="GeneralLedger">General Ledger</label>
-                <input class="form-control" asp-for="GeneralLedger" />
+                <input class="form-control" asp-for="GeneralLedger" value="@Model.GeneralLedger" />
                 <span asp-validation-for="GeneralLedger" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Comments">Comments</label>
-                <textarea class="form-control" asp-for="Comments"></textarea>
+                <input class="form-control" asp-for="Comments" value="@Model.Comments" />
                 <span asp-validation-for="Comments" class="text-danger"></span>
             </div>
 
@@ -52,17 +52,17 @@
             {
                 <div class="form-group">
                     <label asp-for="@consumable.PricePerUnit">Price per Unit</label>
-                    <input type="number" step="0.01" class="form-control" asp-for="@consumable.PricePerUnit" />
+                    <input type="number" step="0.01" class="form-control" asp-for="@consumable.PricePerUnit" value="@consumable.PricePerUnit" />
                     <span asp-validation-for="@consumable.PricePerUnit" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@consumable.QuantityAvailable">Quantity Available</label>
-                    <input type="number" class="form-control" asp-for="@consumable.QuantityAvailable" />
+                    <input type="number" class="form-control" asp-for="@consumable.QuantityAvailable" value="@consumable.QuantityAvailable" />
                     <span asp-validation-for="@consumable.QuantityAvailable" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="@consumable.MinimumQuantity">Minimum Quantity</label>
-                    <input type="number" class="form-control" asp-for="@consumable.MinimumQuantity" />
+                    <input type="number" class="form-control" asp-for="@consumable.MinimumQuantity" value="@consumable.MinimumQuantity" />
                     <span asp-validation-for="@consumable.MinimumQuantity" class="text-danger"></span>
                 </div>
             }
@@ -71,7 +71,7 @@
             {
                 <div class="form-group">
                     <label asp-for="@nonConsumable.AssetTag">Asset Tag</label>
-                    <input class="form-control" asp-for="@nonConsumable.AssetTag" />
+                    <input class="form-control" asp-for="@nonConsumable.AssetTag" value="@nonConsumable.AssetTag" />
                     <span asp-validation-for="@nonConsumable.AssetTag" class="text-danger"></span>
                 </div>
             }
