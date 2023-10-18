@@ -45,10 +45,9 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EditedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EditedDate")
+                    b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("CategoryID");
@@ -114,31 +113,6 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.ToTable("CheckOuts");
                 });
 
-            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Consumable", b =>
-                {
-                    b.Property<int>("ConsumableID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConsumableID"));
-
-                    b.Property<int>("ItemID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MinimumQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<float>("PricePerUnit")
-                        .HasColumnType("real");
-
-                    b.Property<int>("QuantityAvailable")
-                        .HasColumnType("int");
-
-                    b.HasKey("ConsumableID");
-
-                    b.ToTable("Consumables");
-                });
-
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Department", b =>
                 {
                     b.Property<int>("DepartmentID")
@@ -162,10 +136,9 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EditedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EditedDate")
+                    b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("DepartmentID");
@@ -184,7 +157,7 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.Property<DateTime>("IntakeDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ItemID")
+                    b.Property<int>("InventoryItemID")
                         .HasColumnType("int");
 
                     b.Property<float>("PurchasePrice")
@@ -228,10 +201,9 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EditedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EditedDate")
+                    b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("GeneralLedger")
@@ -251,26 +223,6 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.HasKey("InventoryItemID");
 
                     b.ToTable("InventoryItems");
-                });
-
-            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.NonConsumable", b =>
-                {
-                    b.Property<int>("NonConsumableID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NonConsumableID"));
-
-                    b.Property<string>("AssetTag")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ItemID")
-                        .HasColumnType("int");
-
-                    b.HasKey("NonConsumableID");
-
-                    b.ToTable("NonConsumables");
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.User", b =>
@@ -295,10 +247,9 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("EditedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EditedDate")
+                    b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")

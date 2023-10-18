@@ -87,30 +87,6 @@ namespace Collaborative_Resource_Management_System.Models
                     );
                 }
 
-                if (!context.Consumables.Any())
-                {
-                    context.Consumables.AddRange(
-                        new Consumable
-                        {
-                            ItemID = 1,
-                            PricePerUnit = 1000,
-                            QuantityAvailable = 50,
-                            MinimumQuantity = 5
-                        }
-                    );
-                }
-
-                if (!context.NonConsumables.Any())
-                {
-                    context.NonConsumables.AddRange(
-                        new NonConsumable
-                        {
-                            AssetTag = "A001",
-                            ItemID = 1
-                        }
-                    );
-                }
-
                 if (!context.CheckOuts.Any())
                 {
                     context.CheckOuts.AddRange(
