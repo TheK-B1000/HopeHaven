@@ -1,10 +1,7 @@
 @model Collaborative_Resource_Management_System.Models.Consumable
 
 <form action="/Inventory/AddConsumable" method="POST">
-    @{
-        Layout = "~/Views/Shared/_Layout.cshtml";
-        ViewBag.Title = "Consumables";
-    }
+    
     <div class="form-group">
         <label for="Name">Name:</label>
         <input type="text" id="Name" name="Name" class="form-control" required />
