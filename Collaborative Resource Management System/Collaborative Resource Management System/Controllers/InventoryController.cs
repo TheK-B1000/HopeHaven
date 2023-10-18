@@ -22,11 +22,16 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-        public IActionResult Manage()
+        public async Task<IActionResult> Manage()
         {
-            return View();
+            var consumables = await context.Consumables.ToListAsync();
+            var nonConsumables = await context.NonConsumables.ToListAsync();
+            var allItems = consumables.Cast<InventoryItem>().Concat(nonConsumables.Cast<InventoryItem>()).ToList();
+
+            return View(allItems);
         }
-        
+
+
         public IActionResult Add()
         {
             return View();
@@ -35,47 +40,74 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddConsumable(Consumable consumable)
         {
-            if (ModelState.IsValid)
+            try
             {
-                consumable.CreatedDate = DateTime.Now;
-                consumable.EditedDate = DateTime.Now;
-                consumable.CreatedBy = "Stella";
-                consumable.EditedBy = "K-B";
+                if (ModelState.ContainsKey("CreatedBy"))
+                {
+                    ModelState["CreatedBy"].Errors.Clear();
+                }
+                if (ModelState.IsValid)
+                {
+                    consumable.CreatedDate = DateTime.Now;
+                    consumable.EditedDate = DateTime.Now;
+                    consumable.CreatedBy = "Stella";
+                    consumable.EditedBy = "K-B";
 
-                context.Consumables.Add(consumable);
-                await context.SaveChangesAsync();
-                return RedirectToAction("Confirmation"); 
+                    context.Consumables.Add(consumable);
+                    await context.SaveChangesAsync();
+                    return RedirectToAction("Manage");
+                }
+                return View("Error", ModelState);
+
             }
-            return View(consumable); 
+            catch
+            {
+                return View("Error", ModelState);
+
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
         {
-            if (ModelState.IsValid)
+            try
             {
-                nonConsumable.CreatedDate = DateTime.Now;
-                nonConsumable.EditedDate = DateTime.Now;
-                nonConsumable.CreatedBy = "Stella";
-                nonConsumable.EditedBy = "K-B";
+                if (ModelState.ContainsKey("CreatedBy"))
+                { 
+                    ModelState["CreatedBy"].Errors.Clear(); 
+                }                  
+                if (ModelState.IsValid)
+                {
+                    nonConsumable.CreatedDate = DateTime.Now;
+                    nonConsumable.EditedDate = DateTime.Now;
+                    nonConsumable.CreatedBy = "Stella";
+                    nonConsumable.EditedBy = "K-B";
 
-                context.NonConsumables.Add(nonConsumable);
-                await context.SaveChangesAsync();
-                return RedirectToAction("Confirmation"); 
+                    context.NonConsumables.Add(nonConsumable);
+                    await context.SaveChangesAsync();
+                    return RedirectToAction("Manage");
+                }
+                return View("Error", ModelState);
+
             }
-            return View(nonConsumable); 
+            catch
+            {
+                return View("Error", ModelState);
+
+            }
         }
+
 
         [HttpGet]
         public IActionResult LoadItemType(string itemType)
         {
             if (itemType == "Consumable")
             {
-                return PartialView("_ConsumableForm");  
+                return PartialView("Consumable");  
             }
             else if (itemType == "NonConsumable")
             {
-                return PartialView("_NonConsumableForm");  
+                return PartialView("NonConsumable");  
             }
             return NotFound();
         }

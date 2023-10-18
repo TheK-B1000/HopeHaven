@@ -68,7 +68,6 @@ namespace Collaborative_Resource_Management_System.Models
                             GeneralLedger = "GL001",
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
-                            Active = true,
                             PricePerUnit = 1.50F,
                             QuantityAvailable = 100,
                             MinimumQuantity = 10
@@ -92,7 +91,6 @@ namespace Collaborative_Resource_Management_System.Models
                             GeneralLedger = "GL002",
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
-                            Active = true,
                             AssetTag = "A001"
                         }
                     );
@@ -132,7 +130,6 @@ namespace Collaborative_Resource_Management_System.Models
                             GeneralLedger = "GL001",
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
-                            Active = true
                         }
                     );
                 }

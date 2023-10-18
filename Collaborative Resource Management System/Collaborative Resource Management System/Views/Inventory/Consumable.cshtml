@@ -1,4 +1,4 @@
-﻿<form action="/Inventory/AddConsumable" method="POST">
+﻿<form action="/Inventory/AddConsumable" method="post">
     <div class="form-group">
         <label for="Name">Name:</label>
         <input type="text" id="Name" name="Name" class="form-control" required />
@@ -24,10 +24,6 @@
         <label for="Comments">Comments:</label>
         <input type="text" id="Comments" name="Comments" class="form-control" />
     </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="Active" name="Active">
-        <label class="form-check-label" for="Active">Active</label>
-    </div>
     <div class="form-group">
         <label for="pricePerUnit">Price per Unit:</label>
         <input type="number" id="pricePerUnit" name="PricePerUnit" class="form-control" required />
@@ -40,5 +36,5 @@
         <label for="minimumQuantity">Minimum Quantity:</label>
         <input type="number" id="minimumQuantity" name="MinimumQuantity" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Add Consumable</button>
 </form>
