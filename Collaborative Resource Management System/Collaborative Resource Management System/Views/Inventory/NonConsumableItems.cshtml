@@ -32,26 +32,7 @@
         <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
 
         <div class="container">
-            <div class="row">
-                @foreach (var item in Model)
-                {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="~/img/AssetImage.jpg" class="card-img-top" alt="@item.Name" /> <!-- Assuming all images are AssetImage.jpg for now -->
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Name</h5>
-                                <p class="card-text">
-                                    Description: @item.Description <br />
-                                    Created By: @item.CreatedBy <br />
-                                    Asset Tag: @item.AssetTag
-                                </p>
-                                <a href="@Url.Action("NonConsumableDetails", "Inventory", new { id = item.InventoryItemID })" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
+            
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

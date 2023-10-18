@@ -25,52 +25,15 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult LoadItemType(string itemType)
-        {
-            if (itemType == "Consumable")
-            {
-                return PartialView("Consumable", new Consumable());
-            }
-            else if (itemType == "NonConsumable")
-            {
-                return PartialView("NonConsumable", new NonConsumable());
-            }
-            return BadRequest("Invalid item type.");
-        }
+        
 
-        [HttpPost]
-        public IActionResult AddConsumable(Consumable consumable)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Consumables.Add(consumable);
-
-                context.SaveChanges();
-
-                return RedirectToAction("Manage");
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult AddNonConsumable(NonConsumable nonConsumable)
-        {
-            if (ModelState.IsValid)
-            {
-                context.NonConsumables.Add(nonConsumable);
-
-                context.SaveChanges();
-
-                return RedirectToAction("Manage");
-            }
-            return View();
-        }
+        
+        
         public IActionResult Add()
         {
             return View();
         }
-        [HttpGet]
+       
         public async Task<IActionResult> Edit(int id)
         {
             
@@ -78,23 +41,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Edit(InventoryEditType viewModel)
-        {
-            if (!ModelState.IsValid)
-                return View(viewModel);
-
-            context.Update(viewModel.InventoryItem);
-            if (viewModel.InventoryItem.ItemType == ItemType.Consumable)
-                context.Update(viewModel.Consumable);
-            else if (viewModel.InventoryItem.ItemType == ItemType.NonConsumable)
-                context.Update(viewModel.NonConsumable);
-
-            await context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Manage));
-        }
-
+        
         public IActionResult Confirmation()
         {
             return View();
