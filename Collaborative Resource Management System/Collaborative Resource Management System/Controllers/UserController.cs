@@ -15,57 +15,67 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public IActionResult Manage()
         {
-            return View();
+            var users = context.Users.ToList();
+            return View(users);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int? id)
         {
-            var user = context.Users.Find(2); 
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = context.Users.Find(id.Value);
             if (user == null)
             {
                 return NotFound();
             }
-            return View(user); 
+
+            return View(user);
         }
 
-
         [HttpPost]
-        public IActionResult Edit(User updatedUser, int userId = 2)
+        public IActionResult Edit(User user)
         {
             if (ModelState.IsValid)
             {
-                var user = context.Users.Find(userId);
-                if (user == null)
-                {
-                    return NotFound();
-                }
-
-                user.Name = updatedUser.Name;
-                user.Type = updatedUser.Type;
-                user.PIN = updatedUser.PIN;
-                user.Password = updatedUser.Password;
-                user.DeptID = updatedUser.DeptID;
-                user.Active = updatedUser.Active;
-                user.EditedBy = "K-B"; 
-                user.EditedDate = DateTime.Now;
-
                 context.Entry(user).State = EntityState.Modified;
-
                 context.SaveChanges();
 
                 return RedirectToAction("Manage");
             }
 
-            return View(updatedUser);
+            return View(user);
         }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View(new User());
+        }
+
 
         [HttpPost]
         public IActionResult Add(User user)
         {
             if (ModelState.IsValid)
             {
-                context.Users.Add(user);
-                context.SaveChanges();
+                user.CreatedDate = DateTime.UtcNow;
+                user.EditedDate = DateTime.UtcNow;
+                string loggedInUserName = "Stella";
+                user.CreatedBy = loggedInUserName;
+                user.EditedBy = loggedInUserName;
+
+                try
+                {
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
                 return RedirectToAction("Manage");
             }

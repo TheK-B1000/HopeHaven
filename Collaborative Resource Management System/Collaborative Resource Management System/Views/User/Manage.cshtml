@@ -1,17 +1,47 @@
-﻿@{
+﻿@model IEnumerable<Collaborative_Resource_Management_System.Models.User>
+@using Collaborative_Resource_Management_System.Models
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Manage Users";
 }
 
-<html>
-<body>
-    <form action="@Url.Action("Add", "User")" method="POST">
-        <input type="submit" value="Add User" />
-    </form>
-        <a href="@Url.Action("Add", "User")" class="button-link">Add User</a>
-        <a href="@Url.Action("Edit", "User")" class="button-link">Edit User</a>
-        <a href="@Url.Action("adminIndex", "Admin")" class="button-link">Admin Home</a>
-        <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
-        <div> New add and edit are not working</div> 
-</body>
-</html>
+<h1>Manage Users</h1>
+
+<div class="mb-3">
+    <input type="text" id="searchBox" placeholder="Search users..." class="form-control" style="width:auto; display:inline-block;">
+    <a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>User Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserID</td>
+                <td>@user.Name</td>
+                <td>@user.Type</td>
+                <td>
+                    <a href="@Url.Action("Edit", "User", new { id = user.UserID })" class="btn btn-secondary btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a href="@Url.Action("adminIndex", "Admin")" class="button-link">Admin Home</a>
+    <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
+</div>
+
+<div class="alert alert-warning mt-3">
+    New add is not working
+</div>
