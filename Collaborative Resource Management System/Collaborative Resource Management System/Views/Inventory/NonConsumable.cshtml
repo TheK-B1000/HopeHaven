@@ -1,5 +1,8 @@
 ﻿@model Collaborative_Resource_Management_System.Models.NonConsumable
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Non-Consumables";
+}
 <form action="/Inventory/AddNonConsumable" method="POST">
     <div class="form-group">
         <label for="Name">Name:</label>

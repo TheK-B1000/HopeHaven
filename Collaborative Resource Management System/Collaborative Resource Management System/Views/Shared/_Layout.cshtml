@@ -4,25 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
-    <!-- Additional common styles, meta tags, scripts, etc. can go here -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/BootStyle.css" />
+   
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .footer {
+            background-color: cyan;
+            padding: 10px 0;
+          
+        }
+
+        .navbar{
+            background-color: cyan;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="header">
-        <!-- Common header content goes here -->
-        <nav>
-            <h1 class="navbar">CRMS <a href="@Url.Action("Index", "Home")">Home</a> <a href="#">About</a> <a href="#">Contact</a></h1>
+    
+    <div>
+        <nav class="navbar">
+            <h1>CRMS <a href="@Url.Action("Index", "Home")">Login</a> </h1>
         </nav>
     </div>
 
-    <div id="content">
-        @RenderBody() <!-- This is where the content of individual views will be rendered -->
-    </div>
+    <div>
 
-    <div id="footer">
-        <!-- Common footer content goes here -->
-        <p>&copy; 2023 HOPE HAVEN CRMS. All rights reserved.</p>
+        <div>
+            <div class="text-center">
+                <h1>@ViewBag.Title</h1>
+                @RenderBody()
+                </div>
+        </div>
+
     </div>
+        <div class="footer fixed-bottom text-center">
+            <p>&copy; 2023 HOPE HAVEN CRMS. All rights reserved.</p>
+        </div>
 </body>
 </html>

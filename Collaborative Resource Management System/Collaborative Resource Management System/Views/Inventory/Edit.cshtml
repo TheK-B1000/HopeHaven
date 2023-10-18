@@ -2,19 +2,12 @@
 @model Collaborative_Resource_Management_System.Models.InventoryEditType
 
 @{
-    ViewData["Title"] = "Edit Inventory Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Edit Inventory Item";
 }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Inventory</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-
     <div class="container">
-        <h1 class="mt-4 mb-4">Edit Inventory Item</h1>
+        
         <form action="/Inventory/Edit" method="POST" id="editForm">
             <input type="hidden" asp-for="InventoryItem.InventoryItemID" />
     <div class="form-group">
