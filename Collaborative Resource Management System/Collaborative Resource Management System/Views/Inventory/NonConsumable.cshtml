@@ -19,13 +19,10 @@
         <label for="GeneralLedger">General Ledger:</label>
         <input type="text" id="GeneralLedger" name="GeneralLedger" class="form-control" required />
     </div>
-    <div class="form-group">
-        <label for="ItemType">Item Type:</label>
-        <input type="text" id="ItemType" name="ItemType" class="form-control" required />
-    </div>
+    <input type="hidden" id="ItemType" name="ItemType" value="NonConsumable">
     <div class="form-group">
         <label for="Comments">Comments:</label>
-        <input type="text" id="Comments" name="Comments" class="form-control" required />
+        <input type="text" id="Comments" name="Comments" class="form-control" />
     </div>
     <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="Active" name="Active">
@@ -34,10 +31,6 @@
     <div class="form-group">
         <label for="assetTag">Asset Tag:</label>
         <input type="text" id="assetTag" name="AssetTag" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="itemID">Item ID:</label>
-        <input type="number" id="itemID" name="ItemID" class="form-control" required />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

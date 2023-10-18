@@ -1,5 +1,7 @@
 ﻿using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -24,50 +26,44 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-
-        [HttpGet]
-        public IActionResult LoadItemType(string itemType)
-        {
-            if (itemType == "Consumable")
-            {
-                return PartialView("Consumable", new Consumable());
-            }
-            else if (itemType == "NonConsumable")
-            {
-                return PartialView("NonConsumable", new NonConsumable());
-            }
-            return BadRequest("Invalid item type.");
-        }
-
         
         public IActionResult Add()
         {
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        [HttpPost]
+        public async Task<IActionResult> AddConsumable(Consumable consumable)
         {
+            if (ModelState.IsValid)
+            {
+                consumable.CreatedDate = DateTime.Now;
+                consumable.EditedDate = DateTime.Now;
+                consumable.CreatedBy = "Stella";
+                consumable.EditedBy = "K-B";
 
-            return View();
+                context.Consumables.Add(consumable);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Confirmation"); 
+            }
+            return View(consumable); 
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> Edit(InventoryEditType viewModel)
+        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
         {
-            if (!ModelState.IsValid)
-                return View(viewModel);
+            if (ModelState.IsValid)
+            {
+                nonConsumable.CreatedDate = DateTime.Now;
+                nonConsumable.EditedDate = DateTime.Now;
+                nonConsumable.CreatedBy = "Stella";
+                nonConsumable.EditedBy = "K-B";
 
-            context.Update(viewModel.InventoryItem);
-            if (viewModel.InventoryItem.ItemType == ItemType.Consumable)
-                context.Update(viewModel.Consumable);
-            else if (viewModel.InventoryItem.ItemType == ItemType.NonConsumable)
-                context.Update(viewModel.NonConsumable);
-
-            await context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Manage));
+                context.NonConsumables.Add(nonConsumable);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Confirmation"); 
+            }
+            return View(nonConsumable); 
         }
 
         public IActionResult Confirmation()
