@@ -43,12 +43,62 @@ namespace Collaborative_Resource_Management_System.Models
                             CategoryName = "Electronics",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
-                            CreatedDate = DateTime.Now,
-                            EditedDate = DateTime.Now,
+                            CreatedDate = DateTime.UtcNow,
+                            EditedDate = DateTime.UtcNow,
                             Active = true
                         }
                     );
                 }
+
+                context.SaveChanges(); 
+
+                if (!context.InventoryItems.OfType<Consumable>().Any())
+                {
+                    context.InventoryItems.AddRange(
+                        new Consumable
+                        {
+                            Name = "Glue Sticks",
+                            Description = "We love glue sticks",
+                            CreatedBy = "Stella",
+                            EditedBy = "Kim",
+                            CreatedDate = DateTime.UtcNow,
+                            EditedDate = DateTime.UtcNow,
+                            RoomNumber = 1,
+                            CategoryID = context.Categories.First().CategoryID, 
+                            GeneralLedger = "GL001",
+                            ItemType = ItemType.Consumable,
+                            Comments = "Glue sticks for everyone",
+                            Active = true,
+                            PricePerUnit = 1.50F,
+                            QuantityAvailable = 100,
+                            MinimumQuantity = 10
+                        }
+                    );
+                }
+
+                if (!context.InventoryItems.OfType<NonConsumable>().Any())
+                {
+                    context.InventoryItems.AddRange(
+                        new NonConsumable
+                        {
+                            Name = "Laptop",
+                            Description = "Dell Laptop",
+                            CreatedBy = "Stella",
+                            EditedBy = "Kim",
+                            CreatedDate = DateTime.UtcNow,
+                            EditedDate = DateTime.UtcNow,
+                            RoomNumber = 1,
+                            CategoryID = context.Categories.First().CategoryID, 
+                            GeneralLedger = "GL002",
+                            ItemType = ItemType.NonConsumable,
+                            Comments = "Dell Laptop for staff",
+                            Active = true,
+                            AssetTag = "A001"
+                        }
+                    );
+                }
+
+                context.SaveChanges();
 
                 if (!context.Departments.Any())
                 {
@@ -58,8 +108,8 @@ namespace Collaborative_Resource_Management_System.Models
                             DeptName = "Learning Center",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
-                            CreatedDate = DateTime.Now,
-                            EditedDate = DateTime.Now,
+                            CreatedDate = DateTime.UtcNow,
+                            EditedDate = DateTime.UtcNow,
                             Active = true
                             
                         }
@@ -109,7 +159,7 @@ namespace Collaborative_Resource_Management_System.Models
                         new CheckIn
                         {
                             AssetTag = "A001",
-                            CheckInDate = DateTime.Now,
+                            CheckInDate = DateTime.UtcNow,
                             UserID = 1
                         }
                     );
@@ -121,7 +171,7 @@ namespace Collaborative_Resource_Management_System.Models
                         new InventoryIntake
                         {
                             Quantity = 10,
-                            IntakeDate = DateTime.Now
+                            IntakeDate = DateTime.UtcNow
                         }
                     );
                 }
