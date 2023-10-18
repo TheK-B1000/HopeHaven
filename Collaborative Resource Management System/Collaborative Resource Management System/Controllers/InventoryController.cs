@@ -112,7 +112,82 @@ namespace Collaborative_Resource_Management_System.Controllers
             return NotFound();
         }
 
-        public async Task<IActionResult> EditConsumable(int? id)
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id, ItemType type)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            InventoryItem item;
+
+            if (type == ItemType.Consumable)
+            {
+                item = await context.Consumables.FindAsync(id);
+            }
+            else
+            {
+                item = await context.NonConsumables.FindAsync(id);
+            }
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View("Edit", item);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, InventoryItem item)
+        {
+            if (id != item.InventoryItemID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    context.Update(item);
+                    await context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ItemExists(item.InventoryItemID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Manage));
+            }
+            return View(item);
+        }
+
+        private bool ItemExists(int id)
+        {
+            return context.InventoryItems.Any(e => e.InventoryItemID == id);
+        }
+        public async Task<IActionResult> ConsumableItems()
+        {
+            var consumables = await context.Consumables.ToListAsync();
+            return View(consumables);
+        }
+
+        public async Task<IActionResult> NonConsumableItems()
+        {
+            var nonConsumables = await context.NonConsumables.ToListAsync();
+            return View(nonConsumables);
+        }
+
+        public async Task<IActionResult> ConsumableDetails(int? id)
         {
             if (id == null)
             {
@@ -120,6 +195,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
 
             var consumable = await context.Consumables.FindAsync(id);
+
             if (consumable == null)
             {
                 return NotFound();
@@ -127,7 +203,9 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             return View(consumable);
         }
-        public async Task<IActionResult> EditNonConsumable(int? id)
+
+
+        public async Task<IActionResult> NonConsumableDetails(int? id)
         {
             if (id == null)
             {
@@ -135,6 +213,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
 
             var nonConsumable = await context.NonConsumables.FindAsync(id);
+
             if (nonConsumable == null)
             {
                 return NotFound();
@@ -143,76 +222,6 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View(nonConsumable);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> EditConsumable(int id, Consumable consumable)
-        {
-            if (id != consumable.InventoryItemID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    context.Update(consumable);
-                    await context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ConsumableExists(consumable.InventoryItemID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Manage));
-            }
-            return View(consumable);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> EditNonConsumable(int id, NonConsumable nonConsumable)
-        {
-            if (id != nonConsumable.InventoryItemID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    context.Update(nonConsumable);
-                    await context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!NonConsumableExists(nonConsumable.InventoryItemID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Manage));
-            }
-            return View(nonConsumable);
-        }
-        private bool ConsumableExists(int id)
-        {
-            return context.Consumables.Any(e => e.InventoryItemID == id);
-        }
-
-        private bool NonConsumableExists(int id)
-        {
-            return context.NonConsumables.Any(e => e.InventoryItemID == id);
-        }
 
         public IActionResult Confirmation()
         {

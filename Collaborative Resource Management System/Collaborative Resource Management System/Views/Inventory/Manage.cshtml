@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Collaborative_Resource_Management_System.Models.InventoryItem> 
+@using Collaborative_Resource_Management_System.Models
+
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -32,7 +34,10 @@
                 <td>@item.Name</td>
                 <td>@item.ItemType</td>
                 <td>
-                    <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemID })" class="btn btn-secondary btn-sm">Edit</a>                  
+                    @if (item.ItemType == ItemType.Consumable || item.ItemType == ItemType.NonConsumable)
+                    {
+                        <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemID })" class="btn btn-secondary btn-sm">Edit</a>
+                    }
                 </td>
             </tr>
         }

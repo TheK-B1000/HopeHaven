@@ -6,22 +6,22 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/StyleSheet.css" />
     <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
-    <!-- Additional common styles, meta tags, scripts, etc. can go here -->
+
 </head>
 <body>
     <div id="header">
-        <!-- Common header content goes here -->
+
         <nav>
             <h1 class="navbar">CRMS <a href="@Url.Action("Index", "Home")">Home</a> <a href="#">About</a> <a href="#">Contact</a></h1>
         </nav>
     </div>
 
     <div id="content">
-        @RenderBody() <!-- This is where the content of individual views will be rendered -->
+        @RenderBody() 
     </div>
 
     <div id="footer">
-        <!-- Common footer content goes here -->
+
         <p>&copy; 2023 HOPE HAVEN CRMS. All rights reserved.</p>
     </div>
 </body>

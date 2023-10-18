@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Collaborative_Resource_Management_System.Models.ConsumableInventoryItems>
+﻿@using Collaborative_Resource_Management_System.Models
 
 <html>
 <head>
@@ -47,21 +47,29 @@
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="~/img/GlueSticks.jpg" class="card-img-top" alt="@item.Name" />  <!-- Assuming all images are GlueSticks.jpg for now -->
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            <p class="card-text">
-                                Description: @item.Description <br />
-                                Price Per Unit: @item.PricePerUnit.ToString("C") <br />
-                                Quantity Available: @item.QuantityAvailable
-                            </p>
-                            <a href="@Url.Action("ConsumableDetails", "Inventory", new { id = item.InventoryItemID })" class="btn btn-primary">View Details</a>
+                if (item.ItemType == ItemType.Consumable)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="~/img/GlueSticks.jpg" class="card-img-top" alt="@item.Name" />
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+
+                                <p class="card-text">
+                                    <strong>Description:</strong> @item.Description <br />
+                                    <strong>Price Per Unit:</strong> @item.PricePerUnit.ToString("C") <br />
+                                    <strong>Quantity Available:</strong> @item.QuantityAvailable <br />
+                                    <strong>Created By:</strong> @item.CreatedBy
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="@Url.Action("ConsumableDetails", "Inventory", new { id = item.InventoryItemID })">View Details</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
+
         </div>
     </div>
 

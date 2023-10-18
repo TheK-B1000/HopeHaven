@@ -1,4 +1,4 @@
-@model IEnumerable<Collaborative_Resource_Management_System.Models.NonConsumableInventoryItems>
+@using Collaborative_Resource_Management_System.Models
 
 <html>
 <head>
@@ -16,6 +16,13 @@
             <div class="row mb-4">
                 <div class="col-md-3">
                     <input type="text" class="form-control" placeholder="Search non-consumables...">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="priceFilter">
+                        <option value="">Select Price Range</option>
+                        <option value="0-10">$0 - $10</option>
+                        <option value="10-50">$10 - $50</option>
+                    </select>
                 </div>
                 <div class="col-md-3">
                     <select class="form-control" id="createdByFilter">
@@ -39,21 +46,25 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="~/img/AssetImage.jpg" class="card-img-top" alt="@item.Name" /> <!-- Assuming all images are AssetImage.jpg for now -->
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Name</h5>
-                                <p class="card-text">
-                                    Description: @item.Description <br />
-                                    Created By: @item.CreatedBy <br />
-                                    Asset Tag: @item.AssetTag
-                                </p>
-                                <a href="@Url.Action("NonConsumableDetails", "Inventory", new { id = item.InventoryItemID })" class="btn btn-primary">View Details</a>
+                    if (item.ItemType == ItemType.NonConsumable)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="~/img/Dell.jpg" class="card-img-top" alt="@item.Name" />
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Name</h5>
+                                    <p class="card-text">
+                                        Description: @item.Description <br />
+                                        Created By: @item.CreatedBy <br />
+                                        Asset Tag: @item.AssetTag 
+                                    </p>
+                                    <a href="@Url.Action("NonConsumableDetails", "Inventory", new { id = item.InventoryItemID })">View Details</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
+
             </div>
         </div>
     </div>
