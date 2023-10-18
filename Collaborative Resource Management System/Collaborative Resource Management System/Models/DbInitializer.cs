@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -49,9 +49,9 @@ namespace Collaborative_Resource_Management_System.Models
                         }
                     );
                 }
-
+              
                 context.SaveChanges(); 
-
+              
                 if (!context.InventoryItems.OfType<Consumable>().Any())
                 {
                     context.InventoryItems.AddRange(
@@ -109,7 +109,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             Active = true
-                            
+
                         }
                     );
                 }

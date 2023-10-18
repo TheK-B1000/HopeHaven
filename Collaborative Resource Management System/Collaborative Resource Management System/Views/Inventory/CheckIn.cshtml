@@ -3,14 +3,11 @@
     ViewBag.Title = "Check-in";
 }
 
-
-<html>
-<body>
-    <h1>Check-in</h1>
+   
     <p>Hello {user}, you have ___ items checked out, what would you like to check in?</p>
     <div id="admin-buttons">
         <div class="available-items">
-            <h2>Available Items</h2>
+            <h2>Items currently checked out to you</h2>
             <div class="item">
                 <span>Smart Board</span>
                 <button class="button-link" onclick="addItem('Smart Board')">Add to Cart</button>
@@ -23,12 +20,11 @@
         </div>
         <hr>
         <div class="cart">
-            <h2>Cart</h2>
+            <h2>Return Items:</h2>
         </div>
-        <button class="button-link">Submit</button>
     </div>
-    <a href="@Url.Action("Confirmation", "Inventory")" class="button-link">Confirm</a>
-    <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
+    
+<a class="button btn-info btn-lg" href="@Url.Action("Confirmation", "Inventory")">Confirm</a>
     <script>
         function addItem(itemName) {
             let items = document.querySelectorAll('.available-items .item');
@@ -44,6 +40,5 @@
             cart.appendChild(newItem);
         }
     </script>
-</body>
-</html>
+
 

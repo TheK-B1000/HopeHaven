@@ -1,17 +1,13 @@
-﻿<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Catalog</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/StyleSheet.css" />
-</head>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Check-out";
+}
 
-<body>
+
 
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="text-center">
-            <h1>Select Catalog</h1>
+           
             <div class="mt-4">
                 <a href="@Url.Action("ConsumableItems", "Inventory")" class="btn btn-primary btn-lg mb-3">Consumables</a><br>
                 <a href="@Url.Action("NonConsumableItems", "Inventory")" class="btn btn-secondary btn-lg">Non-Consumables</a>
@@ -22,5 +18,3 @@
     <a href="@Url.Action("Index", "Home")" class="button-link">Back</a>
     <a href="@Url.Action("Cart", "Inventory")" class="button-link">Cart</a>
     </div>
-</body>
-</html>

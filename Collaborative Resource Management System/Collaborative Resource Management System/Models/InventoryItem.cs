@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Collaborative_Resource_Management_System.Models
@@ -46,9 +46,9 @@ namespace Collaborative_Resource_Management_System.Models
         public ItemType ItemType { get; set; }
 
         [StringLength(500)]
-        public string Comments { get; set; }
-    }
+        public string Comments { get; set; }       
 
+    }
     public class Consumable : InventoryItem
     {
         [Range(0.01, 10000.00)] 

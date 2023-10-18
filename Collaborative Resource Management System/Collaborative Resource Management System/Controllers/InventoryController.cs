@@ -1,4 +1,4 @@
-﻿using Collaborative_Resource_Management_System.Models;
+using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -30,7 +30,6 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             return View(allItems);
         }
-
 
         public IActionResult Add()
         {

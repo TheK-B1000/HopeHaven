@@ -1,4 +1,4 @@
-﻿using Collaborative_Resource_Management_System.Models;
+using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

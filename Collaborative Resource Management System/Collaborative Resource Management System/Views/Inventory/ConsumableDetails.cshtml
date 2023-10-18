@@ -1,12 +1,9 @@
 ﻿@model Collaborative_Resource_Management_System.Models.Consumable
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@Model.Name Details</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Consumables";
+}
 
     <div class="container">
         <div class="row">
@@ -33,5 +30,3 @@
         });
     </script>
 
-</body>
-</html>
