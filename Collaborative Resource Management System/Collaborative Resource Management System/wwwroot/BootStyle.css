@@ -1,0 +1,27 @@
+﻿
+
+.pin-pad-container{
+    display: grid;
+    grid-template: repeat(3, 3);
+    gap: 10px;
+    justify-content: center;
+    
+
+}
+
+.button.btn-info.btn-lg {
+    width: 100px; 
+    height: 75px; 
+    font-size: 24px; 
+}
+
+
+@media (max-width: 767px) {
+    .button.btn-info.btn-lg {
+        width: 100px;
+        height: 75px;
+        font-size: 20px;
+    }
+}
+
+
