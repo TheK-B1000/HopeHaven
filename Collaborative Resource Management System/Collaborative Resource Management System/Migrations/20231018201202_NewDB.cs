@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Collaborative_Resource_Management_System.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class NewDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,9 +19,9 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -64,22 +64,6 @@ namespace Collaborative_Resource_Management_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Consumables",
-                columns: table => new
-                {
-                    ConsumableID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemID = table.Column<int>(type: "int", nullable: false),
-                    PricePerUnit = table.Column<float>(type: "real", nullable: false),
-                    QuantityAvailable = table.Column<int>(type: "int", nullable: false),
-                    MinimumQuantity = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Consumables", x => x.ConsumableID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
                 {
@@ -87,9 +71,9 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DeptName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -122,33 +106,23 @@ namespace Collaborative_Resource_Management_System.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     RoomNumber = table.Column<int>(type: "int", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
                     GeneralLedger = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ItemType = table.Column<int>(type: "int", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PricePerUnit = table.Column<float>(type: "real", nullable: true),
+                    QuantityAvailable = table.Column<int>(type: "int", nullable: true),
+                    MinimumQuantity = table.Column<int>(type: "int", nullable: true),
+                    AssetTag = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InventoryItems", x => x.InventoryItemID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "NonConsumables",
-                columns: table => new
-                {
-                    NonConsumableID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AssetTag = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ItemID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_NonConsumables", x => x.NonConsumableID);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,9 +137,9 @@ namespace Collaborative_Resource_Management_System.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DeptID = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -187,9 +161,6 @@ namespace Collaborative_Resource_Management_System.Migrations
                 name: "CheckOuts");
 
             migrationBuilder.DropTable(
-                name: "Consumables");
-
-            migrationBuilder.DropTable(
                 name: "Departments");
 
             migrationBuilder.DropTable(
@@ -197,9 +168,6 @@ namespace Collaborative_Resource_Management_System.Migrations
 
             migrationBuilder.DropTable(
                 name: "InventoryItems");
-
-            migrationBuilder.DropTable(
-                name: "NonConsumables");
 
             migrationBuilder.DropTable(
                 name: "Users");
