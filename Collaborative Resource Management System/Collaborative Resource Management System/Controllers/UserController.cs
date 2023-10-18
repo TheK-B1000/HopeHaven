@@ -1,4 +1,4 @@
-﻿using Collaborative_Resource_Management_System.Models;
+using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,21 +15,72 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public IActionResult Manage()
         {
-            return View();
+            var users = context.Users.ToList();
+            return View(users);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            return View(); 
+            var user = context.Users.Find(id.Value);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
         }
 
+        [HttpPost]
+        public IActionResult Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
 
-    
+                return RedirectToAction("Manage");
+            }
+
+            return View(user);
+        }
+
+        [HttpGet]
         public IActionResult Add()
         {
+            return View(new User());
+        }
 
-            return View();
+
+        [HttpPost]
+        public IActionResult Add(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.CreatedDate = DateTime.UtcNow;
+                user.EditedDate = DateTime.UtcNow;
+                string loggedInUserName = "Stella";
+                user.CreatedBy = loggedInUserName;
+                user.EditedBy = loggedInUserName;
+
+                try
+                {
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                return RedirectToAction("Manage");
+            }
+
+            return View(user);
         }
     }
 }

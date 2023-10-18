@@ -12,14 +12,11 @@
                 <input type="text" class="form-control" id="Name" name="Name">
             </div>
 
-            <div class="form-group">
-                <label for="Type">Type:</label>
-                <select class="form-control" id="Type" name="Type">
-                    <option value="Admin">Admin</option>
-                    <option value="Editor">Editor</option>
-                    <option value="Staff">Staff</option>
-                </select>
-            </div>
+            <select class="form-control" id="Type" name="Type">
+                <option value="0">Admin</option>
+                <option value="1">Editor</option>
+                <option value="2">Staff</option>
+            </select>
 
             <div class="form-group">
                 <label for="PIN">PIN:</label>
@@ -35,27 +32,6 @@
                 <label for="DeptID">Department ID:</label>
                 <input type="text" class="form-control" id="DeptID" name="DeptID">
             </div>
-
-            <div class="form-group">
-                <label for="CreatedBy">Created By:</label>
-                <input type="text" class="form-control" id="CreatedBy" name="CreatedBy">
-            </div>
-
-            <div class="form-group">
-                <label for="EditedBy">Edited By:</label>
-                <input type="text" class="form-control" id="EditedBy" name="EditedBy">
-            </div>
-
-            <div class="form-group">
-                <label for="CreatedDate">Created Date:</label>
-                <input type="date" class="form-control" id="CreatedDate" name="CreatedDate">
-            </div>
-
-            <div class="form-group">
-                <label for="EditedDate">Edited Date:</label>
-                <input type="date" class="form-control" id="EditedDate" name="EditedDate">
-            </div>
-
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="Active" name="Active">
                 <label class="form-check-label" for="Active">Active</label>

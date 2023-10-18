@@ -1,5 +1,7 @@
-﻿using Collaborative_Resource_Management_System.Models;
+using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -20,28 +22,206 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-        public IActionResult Manage()
+        public async Task<IActionResult> Manage()
         {
-            return View();
+            var consumables = await context.Consumables.ToListAsync();
+            var nonConsumables = await context.NonConsumables.ToListAsync();
+            var allItems = consumables.Cast<InventoryItem>().Concat(nonConsumables.Cast<InventoryItem>()).ToList();
+
+            return View(allItems);
         }
 
-        
-
-        
-        
         public IActionResult Add()
         {
             return View();
         }
-       
-        public async Task<IActionResult> Edit(int id)
+
+        [HttpPost]
+        public async Task<IActionResult> AddConsumable(Consumable consumable)
         {
-            
-            return View();
+            try
+            {
+                if (ModelState.ContainsKey("CreatedBy"))
+                {
+                    ModelState["CreatedBy"].Errors.Clear();
+                }
+                if (ModelState.IsValid)
+                {
+                    consumable.CreatedDate = DateTime.Now;
+                    consumable.EditedDate = DateTime.Now;
+                    consumable.CreatedBy = "Stella";
+                    consumable.EditedBy = "K-B";
+
+                    context.Consumables.Add(consumable);
+                    await context.SaveChangesAsync();
+                    return RedirectToAction("Manage");
+                }
+                return View("Error", ModelState);
+
+            }
+            catch
+            {
+                return View("Error", ModelState);
+
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
+        {
+            try
+            {
+                if (ModelState.ContainsKey("CreatedBy"))
+                { 
+                    ModelState["CreatedBy"].Errors.Clear(); 
+                }                  
+                if (ModelState.IsValid)
+                {
+                    nonConsumable.CreatedDate = DateTime.Now;
+                    nonConsumable.EditedDate = DateTime.Now;
+                    nonConsumable.CreatedBy = "Stella";
+                    nonConsumable.EditedBy = "K-B";
+
+                    context.NonConsumables.Add(nonConsumable);
+                    await context.SaveChangesAsync();
+                    return RedirectToAction("Manage");
+                }
+                return View("Error", ModelState);
+
+            }
+            catch
+            {
+                return View("Error", ModelState);
+
+            }
         }
 
 
-        
+        [HttpGet]
+        public IActionResult LoadItemType(string itemType)
+        {
+            if (itemType == "Consumable")
+            {
+                return PartialView("Consumable");  
+            }
+            else if (itemType == "NonConsumable")
+            {
+                return PartialView("NonConsumable");  
+            }
+            return NotFound();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id, ItemType type)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            InventoryItem item;
+
+            if (type == ItemType.Consumable)
+            {
+                item = await context.Consumables.FindAsync(id);
+            }
+            else
+            {
+                item = await context.NonConsumables.FindAsync(id);
+            }
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View("Edit", item);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, InventoryItem item)
+        {
+            if (id != item.InventoryItemID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    context.Update(item);
+                    await context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ItemExists(item.InventoryItemID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Manage));
+            }
+            return View(item);
+        }
+
+        private bool ItemExists(int id)
+        {
+            return context.InventoryItems.Any(e => e.InventoryItemID == id);
+        }
+        public async Task<IActionResult> ConsumableItems()
+        {
+            var consumables = await context.Consumables.ToListAsync();
+            return View(consumables);
+        }
+
+        public async Task<IActionResult> NonConsumableItems()
+        {
+            var nonConsumables = await context.NonConsumables.ToListAsync();
+            return View(nonConsumables);
+        }
+
+        public async Task<IActionResult> ConsumableDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var consumable = await context.Consumables.FindAsync(id);
+
+            if (consumable == null)
+            {
+                return NotFound();
+            }
+
+            return View(consumable);
+        }
+
+
+        public async Task<IActionResult> NonConsumableDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var nonConsumable = await context.NonConsumables.FindAsync(id);
+
+            if (nonConsumable == null)
+            {
+                return NotFound();
+            }
+
+            return View(nonConsumable);
+        }
+
+
         public IActionResult Confirmation()
         {
             return View();
@@ -51,36 +231,6 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-
-        public IActionResult ConsumableItems()
-        {
-           
-            return View();
-        }
-
-        public IActionResult NonConsumableItems()
-        {
-            
-            return View();
-        }
-
-       
-        
-           
-        public IActionResult NonConsumableDetails(int id)
-        {
-           
-
-            return View();
-        }
-
-        public IActionResult ConsumableDetails(int id)
-        {
-            
-
-            return View();
-        }
-
 
     }
 }

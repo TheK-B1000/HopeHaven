@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model ModelStateDictionary
+
+<html>
+<head>
+    <title>Error</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-danger">Oops! Something went wrong.</h2>
+        <p>Please check the errors and try again:</p>
+
+        <ul>
+            @foreach (var error in Model.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+
+        <a href="@Url.Action("Manage", "Inventory")" class="btn btn-primary">Back to Manage</a>
+    </div>
+
+</body>
+</html>

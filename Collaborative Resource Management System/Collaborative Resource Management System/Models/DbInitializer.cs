@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -49,9 +49,9 @@ namespace Collaborative_Resource_Management_System.Models
                         }
                     );
                 }
-
-                context.SaveChanges();
-
+              
+                context.SaveChanges(); 
+              
                 if (!context.InventoryItems.OfType<Consumable>().Any())
                 {
                     context.InventoryItems.AddRange(
@@ -64,7 +64,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID,
+                            CategoryID = context.Categories.First().CategoryID, 
                             GeneralLedger = "GL001",
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
@@ -87,7 +87,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID,
+                            CategoryID = context.Categories.First().CategoryID, 
                             GeneralLedger = "GL002",
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
