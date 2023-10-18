@@ -1,9 +1,4 @@
 ﻿@using Collaborative_Resource_Management_System.Models
-@model Collaborative_Resource_Management_System.Models.InventoryEditType
-
-@{
-    ViewData["Title"] = "Edit Inventory Item";
-}
 
 <html>
 <head>
@@ -17,57 +12,67 @@
         <h1 class="mt-4 mb-4">Edit Inventory Item</h1>
         <form action="/Inventory/Edit" method="POST" id="editForm">
             <input type="hidden" asp-for="InventoryItem.InventoryItemID" />
-    <div class="form-group">
-        <label asp-for="InventoryItem.Name"></label>
-        <input class="form-control" asp-for="InventoryItem.Name" />
-    </div>
-    <div class="form-group">
-        <label asp-for="InventoryItem.Description"></label>
-        <input class="form-control" asp-for="InventoryItem.Description" />
-    </div>
-    <div class="form-group">
-        <label asp-for="InventoryItem.RoomNumber"></label>
-        <input type="number" class="form-control" asp-for="InventoryItem.RoomNumber" />
-    </div>
-    <div class="form-group">
-        <label asp-for="InventoryItem.CategoryID"></label>
-        <input type="number" class="form-control" asp-for="InventoryItem.CategoryID" />
-    </div>
-    <div class="form-group">
-        <label asp-for="InventoryItem.GeneralLedger"></label>
-        <input class="form-control" asp-for="InventoryItem.GeneralLedger" />
-    </div>
-    <div class="form-group">
-        <label asp-for="InventoryItem.Comments"></label>
-        <textarea class="form-control" asp-for="InventoryItem.Comments"></textarea>
-    </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" asp-for="InventoryItem.Active" />
-        <label class="form-check-label" asp-for="InventoryItem.Active">Active</label>
-    </div>
+            <div class="form-group">
+                <label asp-for="InventoryItem.Name"></label>
+                <input class="form-control" asp-for="InventoryItem.Name" />
+                <span asp-validation-for="InventoryItem.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InventoryItem.Description"></label>
+                <input class="form-control" asp-for="InventoryItem.Description" />
+                <span asp-validation-for="InventoryItem.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InventoryItem.RoomNumber"></label>
+                <input type="number" class="form-control" asp-for="InventoryItem.RoomNumber" />
+                <span asp-validation-for="InventoryItem.RoomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InventoryItem.CategoryID"></label>
+                <input type="number" class="form-control" asp-for="InventoryItem.CategoryID" />
+                <span asp-validation-for="InventoryItem.CategoryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InventoryItem.GeneralLedger"></label>
+                <input class="form-control" asp-for="InventoryItem.GeneralLedger" />
+                <span asp-validation-for="InventoryItem.GeneralLedger" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InventoryItem.Comments"></label>
+                <textarea class="form-control" asp-for="InventoryItem.Comments"></textarea>
+                <span asp-validation-for="InventoryItem.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" asp-for="InventoryItem.Active" />
+                <label class="form-check-label" asp-for="InventoryItem.Active">Active</label>
+            </div>
 
-    @if (Model.InventoryItem.ItemType == ItemType.Consumable)
-    {
-        <div class="form-group">
-            <label asp-for="Consumable.PricePerUnit">Price per Unit</label>
-            <input type="number" step="0.01" class="form-control" asp-for="Consumable.PricePerUnit" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Consumable.QuantityAvailable">Quantity Available</label>
-            <input type="number" class="form-control" asp-for="Consumable.QuantityAvailable" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Consumable.MinimumQuantity">Minimum Quantity</label>
-            <input type="number" class="form-control" asp-for="Consumable.MinimumQuantity" />
-        </div>
-    }
-    else if (Model.InventoryItem.ItemType == ItemType.NonConsumable)
-    {
-        <div class="form-group">
-            <label asp-for="NonConsumable.AssetTag">Asset Tag</label>
-            <input class="form-control" asp-for="NonConsumable.AssetTag" />
-        </div>
-    }
+            @if (Model.InventoryItem.ItemType == ItemType.Consumable)
+            {
+                <div class="form-group">
+                    <label asp-for="Consumable.PricePerUnit">Price per Unit</label>
+                    <input type="number" step="0.01" class="form-control" asp-for="Consumable.PricePerUnit" />
+                    <span asp-validation-for="Consumable.PricePerUnit" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Consumable.QuantityAvailable">Quantity Available</label>
+                    <input type="number" class="form-control" asp-for="Consumable.QuantityAvailable" />
+                    <span asp-validation-for="Consumable.QuantityAvailable" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Consumable.MinimumQuantity">Minimum Quantity</label>
+                    <input type="number" class="form-control" asp-for="Consumable.MinimumQuantity" />
+                    <span asp-validation-for="Consumable.MinimumQuantity" class="text-danger"></span>
+                </div>
+            }
+            else if (Model.InventoryItem.ItemType == ItemType.NonConsumable)
+            {
+                <div class="form-group">
+                    <label asp-for="NonConsumable.AssetTag">Asset Tag</label>
+                    <input class="form-control" asp-for="NonConsumable.AssetTag" />
+                    <span asp-validation-for="NonConsumable.AssetTag" class="text-danger"></span>
+                </div>
+            }
 
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
