@@ -30,7 +30,6 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
-                            Active = true
                         }
                     );
                 }
@@ -45,7 +44,6 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
-                            Active = true
                         }
                     );
                 }
@@ -108,8 +106,6 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
-                            Active = true
-
                         }
                     );
                 }
