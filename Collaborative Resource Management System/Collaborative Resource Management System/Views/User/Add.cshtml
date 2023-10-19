@@ -29,12 +29,16 @@
             </div>
 
             <div class="form-group">
-                <label for="DeptID">Department ID:</label>
-                <input type="text" class="form-control" id="DeptID" name="DeptID">
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="Active" name="Active">
-                <label class="form-check-label" for="Active">Active</label>
+                <label for="DeptID">Department:</label>
+                <select class="form-control" id="DeptID" name="DeptID">
+                    @if (ViewBag.Departments != null)
+                    {
+                        foreach (var department in ViewBag.Departments)
+                        {
+                            <option value="@department.Value">@department.Text</option>
+                        }
+                    }
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary mt-4">Add</button>

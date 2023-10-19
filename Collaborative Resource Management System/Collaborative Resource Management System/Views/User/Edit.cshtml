@@ -39,11 +39,6 @@
                 <input type="text" class="form-control" asp-for="DeptID" value="@Model.DeptID">
             </div>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" asp-for="Active" @(Model.Active ? "checked" : "")>
-                <label class="form-check-label" asp-for="Active">Active</label>
-            </div>
-
             <button type="submit" class="btn btn-primary mt-4">Save</button>
         </form>
     </div>

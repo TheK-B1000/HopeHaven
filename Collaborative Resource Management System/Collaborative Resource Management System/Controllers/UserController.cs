@@ -1,5 +1,6 @@
 using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -52,6 +53,11 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Departments = context.Departments.Select(d => new SelectListItem
+            {
+                Value = d.DepartmentID.ToString(),
+                Text = d.DeptName
+            }).ToList();
             return View(new User());
         }
 
@@ -59,8 +65,6 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public IActionResult Add(User user)
         {
-            if (ModelState.IsValid)
-            {
                 user.CreatedDate = DateTime.UtcNow;
                 user.EditedDate = DateTime.UtcNow;
                 string loggedInUserName = "Stella";
@@ -78,9 +82,9 @@ namespace Collaborative_Resource_Management_System.Controllers
                 }
 
                 return RedirectToAction("Manage");
-            }
 
             return View(user);
         }
+
     }
 }
