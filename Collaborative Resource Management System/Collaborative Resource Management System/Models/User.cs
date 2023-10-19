@@ -19,7 +19,7 @@ namespace Collaborative_Resource_Management_System.Models
         public UserType Type { get; set; }
 
         [Required]
-        [StringLength(10)] 
+        [StringLength(6)] 
         public string PIN { get; set; }
 
         [Required]

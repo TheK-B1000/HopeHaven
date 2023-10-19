@@ -41,28 +41,19 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             try
             {
-                if (ModelState.ContainsKey("CreatedBy"))
-                {
-                    ModelState["CreatedBy"].Errors.Clear();
-                }
-                if (ModelState.IsValid)
-                {
-                    consumable.CreatedDate = DateTime.Now;
-                    consumable.EditedDate = DateTime.Now;
-                    consumable.CreatedBy = "Stella";
-                    consumable.EditedBy = "K-B";
+                consumable.CreatedDate = DateTime.UtcNow;
+                consumable.EditedDate = DateTime.UtcNow;
+                string loggedInUserName = "Stella Johnson";
+                consumable.CreatedBy = loggedInUserName;
+                consumable.EditedBy = loggedInUserName;
 
-                    context.Consumables.Add(consumable);
-                    await context.SaveChangesAsync();
-                    return RedirectToAction("Manage");
-                }
-                return View("Error", ModelState);
-
+                context.Consumables.Add(consumable);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Manage");
             }
             catch
             {
                 return View("Error", ModelState);
-
             }
         }
 
@@ -71,28 +62,19 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             try
             {
-                if (ModelState.ContainsKey("CreatedBy"))
-                { 
-                    ModelState["CreatedBy"].Errors.Clear(); 
-                }                  
-                if (ModelState.IsValid)
-                {
-                    nonConsumable.CreatedDate = DateTime.Now;
-                    nonConsumable.EditedDate = DateTime.Now;
-                    nonConsumable.CreatedBy = "Stella";
-                    nonConsumable.EditedBy = "K-B";
+                nonConsumable.CreatedDate = DateTime.UtcNow;
+                nonConsumable.EditedDate = DateTime.UtcNow;
+                string loggedInUserName = "Stella Johnson";
+                nonConsumable.CreatedBy = loggedInUserName;
+                nonConsumable.EditedBy = loggedInUserName;
 
-                    context.NonConsumables.Add(nonConsumable);
-                    await context.SaveChangesAsync();
-                    return RedirectToAction("Manage");
-                }
-                return View("Error", ModelState);
-
+                context.NonConsumables.Add(nonConsumable);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Manage");
             }
             catch
             {
                 return View("Error", ModelState);
-
             }
         }
 

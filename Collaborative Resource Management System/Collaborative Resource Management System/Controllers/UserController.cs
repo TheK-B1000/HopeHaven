@@ -33,22 +33,44 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
+            ViewBag.Departments = context.Departments.Select(d => new SelectListItem
+            {
+                Value = d.DepartmentID.ToString(),
+                Text = d.DeptName
+            }).ToList();
+
             return View(user);
         }
 
         [HttpPost]
         public IActionResult Edit(User user)
         {
-            if (ModelState.IsValid)
-            {
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
+           try
+           {
+               var existingUser = context.Users.Find(user.UserID);
+               if (existingUser == null)
+               {
+                   return NotFound(); 
+               }
 
-                return RedirectToAction("Manage");
-            }
+               existingUser.Name = user.Name;
+               existingUser.Type = user.Type;
+               existingUser.PIN = user.PIN;
+               existingUser.Password = user.Password;
+               existingUser.DeptID = user.DeptID;
+               existingUser.EditedDate = DateTime.UtcNow;
+               existingUser.EditedBy = "Stella Johnson"; 
 
-            return View(user);
+               context.SaveChanges();
+               return RedirectToAction("Manage");
+           }
+           catch (Exception ex)
+           {
+               Console.WriteLine(ex.Message);
+               return View("Error");
+           }
         }
+
 
         [HttpGet]
         public IActionResult Add()
@@ -65,26 +87,24 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public IActionResult Add(User user)
         {
+            try
+            {
                 user.CreatedDate = DateTime.UtcNow;
                 user.EditedDate = DateTime.UtcNow;
-                string loggedInUserName = "Stella";
+                string loggedInUserName = "Stella Johnson";
                 user.CreatedBy = loggedInUserName;
                 user.EditedBy = loggedInUserName;
 
-                try
-                {
-                    context.Users.Add(user);
-                    context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
 
-                return RedirectToAction("Manage");
-
-            return View(user);
+                context.Users.Add(user);
+                context.SaveChanges();
+                return RedirectToAction("Manage"); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View("Error");
+            }
         }
-
     }
 }
