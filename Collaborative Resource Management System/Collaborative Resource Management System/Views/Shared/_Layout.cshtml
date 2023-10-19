@@ -12,14 +12,22 @@
             height: 100%;
         }
 
+        .headerC{
+            color: rgb(23,75,124)
+        }
+
+        .head{
+            color: white;
+        }
+
         .footer {
-            background-color: cyan;
+            background-color: rgb(23,75,124);
             padding: 10px 0;
           
         }
 
         .navbar{
-            background-color: cyan;
+            background-color: rgb(23,75,124);
         }
     </style>
 </head>
@@ -27,7 +35,7 @@
 <body>    
     <div>
         <nav class="navbar">
-            <h1>CRMS <a href="@Url.Action("Index", "Home")">Login</a> </h1>
+            <img src="@Url.Content("~/img/HopeHaven_CMYK Logo.jpg")" height="65" width="125"><h1 class="head">Community Resource Management System</h1><h1> <a class="button btn-info btn-lg" href="@Url.Action("Index", "Home")">Logout</a> </h1>
         </nav>
     </div>
 
@@ -35,14 +43,14 @@
 
         <div>
             <div class="text-center">
-                <h1>@ViewBag.Title</h1>
+                <h1 class="headerC">@ViewBag.Title</h1>
                 @RenderBody()
                 </div>
         </div>
 
     </div>
         <div class="footer fixed-bottom text-center">
-            <p>&copy; 2023 HOPE HAVEN CRMS. All rights reserved.</p>
+            <p class="head">&copy; 2023 HOPE HAVEN CRMS. All rights reserved.</p>
         </div>
 </body>
 </html>
