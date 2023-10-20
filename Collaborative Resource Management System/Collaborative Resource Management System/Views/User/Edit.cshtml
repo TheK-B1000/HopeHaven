@@ -6,7 +6,7 @@
 <body>
     <div class="container">
 
-        <form asp-action="Edit" asp-controller="User" method="POST">
+        <form asp-action="Edit" asp-controller="User" asp-route-id="@Model.UserID" method="POST">
             <input type="hidden" asp-for="UserID">
 
             <div class="form-group">
@@ -35,8 +35,17 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="DeptID">Department ID:</label>
-                <input type="text" class="form-control" asp-for="DeptID" value="@Model.DeptID">
+                <label for="DeptID">Department:</label>
+                <select class="form-control" id="DeptID" name="DeptID">
+                    @if (ViewBag.Departments != null)
+                    {
+                        foreach (var department in ViewBag.Departments)
+                        {
+                            <option value="@department.Value">@department.Text</option>
+                        }
+                    }
+                </select>
+                <span class="text-danger">@Html.ValidationMessageFor(model => model.DeptID)</span>
             </div>
 
             <button type="submit" class="btn btn-primary mt-4">Save</button>
