@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Collaborative_Resource_Management_System.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateInventoryItem : Migration
+    public partial class addmigrationNewDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,8 +21,7 @@ namespace Collaborative_Resource_Management_System.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,8 +72,7 @@ namespace Collaborative_Resource_Management_System.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -103,18 +101,22 @@ namespace Collaborative_Resource_Management_System.Migrations
                 {
                     InventoryItemID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    EditedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     RoomNumber = table.Column<int>(type: "int", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
-                    GeneralLedger = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GeneralLedger = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ItemType = table.Column<int>(type: "int", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
+                    Comments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PricePerUnit = table.Column<float>(type: "real", nullable: true),
+                    QuantityAvailable = table.Column<int>(type: "int", nullable: true),
+                    MinimumQuantity = table.Column<int>(type: "int", nullable: true),
+                    AssetTag = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -127,16 +129,15 @@ namespace Collaborative_Resource_Management_System.Migrations
                 {
                     UserID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
-                    PIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PIN = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DeptID = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Active = table.Column<bool>(type: "bit", nullable: false)
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
