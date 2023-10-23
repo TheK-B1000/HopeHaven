@@ -26,9 +26,17 @@
                 <span asp-validation-for="RoomNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryID">Category ID</label>
-                <input type="number" class="form-control" asp-for="CategoryID" value="@Model.CategoryID"  />
-                <span asp-validation-for="CategoryID" class="text-danger"></span>
+                <label for="CategoryID">Category:</label>
+                <select class="form-control" id="CategoryID" name="CategoryID">
+                    @if (ViewBag.Categories != null)
+                    {
+                        foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.Value" @(Model.CategoryID.ToString() == category.Value ? "selected" : "")>@category.Text</option>
+                        }
+                    }
+                </select>
+                <span class="text-danger">@Html.ValidationMessageFor(model => model.CategoryID)</span>
             </div>
             <div class="form-group">
                 <label asp-for="GeneralLedger">General Ledger</label>

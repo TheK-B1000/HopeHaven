@@ -10,6 +10,13 @@
 
 <div class="mb-3">
     <input type="text" id="searchBox" placeholder="Search users..." class="form-control" style="width:auto; display:inline-block;">
+    <select id="filterDropdown" onchange="applyFilter()">
+        <option value="all">All Users</option>
+        <option value="email">Email</option>
+        <option value="department">Department</option>
+        <option value="category">Category</option>
+    </select>
+
     <a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
 </div>
 

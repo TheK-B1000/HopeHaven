@@ -45,32 +45,31 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public IActionResult Edit(User user)
         {
-           try
-           {
-               var existingUser = context.Users.Find(user.UserID);
-               if (existingUser == null)
-               {
-                   return NotFound(); 
-               }
+            try
+            {
+                var existingUser = context.Users.Find(user.UserID);
+                if (existingUser == null)
+                {
+                    return NotFound();
+                }
 
-               existingUser.Name = user.Name;
-               existingUser.Type = user.Type;
-               existingUser.PIN = user.PIN;
-               existingUser.Password = user.Password;
-               existingUser.DeptID = user.DeptID;
-               existingUser.EditedDate = DateTime.UtcNow;
-               existingUser.EditedBy = "Stella Johnson"; 
+                existingUser.Name = user.Name;
+                existingUser.Type = user.Type;
+                existingUser.PIN = user.PIN;
+                existingUser.Password = user.Password;
+                existingUser.DeptID = user.DeptID;
+                existingUser.EditedDate = DateTime.UtcNow;
+                existingUser.EditedBy = "Stella Johnson";
 
-               context.SaveChanges();
-               return RedirectToAction("Manage");
-           }
-           catch (Exception ex)
-           {
-               Console.WriteLine(ex.Message);
-               return View("Error");
-           }
+                context.SaveChanges();
+                return RedirectToAction("Manage");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View("Error");
+            }
         }
-
 
         [HttpGet]
         public IActionResult Add()

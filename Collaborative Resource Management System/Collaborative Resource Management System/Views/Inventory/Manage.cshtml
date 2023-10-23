@@ -9,9 +9,13 @@
 
 <div class="mb-3">
     <input type="text" id="searchBox" placeholder="Search items..." class="form-control" style="width:auto; display:inline-block;">
-    <select id="filterDropdown">
+    <select id="filterDropdown" onchange="applyFilter()">
         <option value="all">All Items</option>
+        <option value="name">Name</option>
+        <option value="itemType">Item Type</option>
+        <option value="category">Category</option>
     </select>
+
     <a href="@Url.Action("Add", "Inventory")" class="btn btn-primary">Add Inventory Item</a>
 </div>
 
