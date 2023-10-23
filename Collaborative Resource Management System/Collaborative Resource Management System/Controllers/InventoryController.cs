@@ -143,30 +143,66 @@ namespace Collaborative_Resource_Management_System.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, InventoryItem item)
+        public async Task<IActionResult> Edit(int id, ItemType type)
         {
-            if (id != item.InventoryItemID)
+            if (id == null)
             {
                 return NotFound();
             }
 
+            InventoryItem item;
+
+            if (type == ItemType.Consumable)
+            {
+                item = await context.Consumables.FindAsync(id);
+            }
+            else
+            {
+                item = await context.NonConsumables.FindAsync(id);
+            }
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            item.Name = Request.Form["Name"];
+            item.Description = Request.Form["Description"];
+            item.RoomNumber = int.Parse(Request.Form["RoomNumber"]);
+            item.CategoryID = int.Parse(Request.Form["CategoryID"]);
+            item.GeneralLedger = Request.Form["GeneralLedger"];
+            item.Comments = Request.Form["Comments"];
+
             try
             {
-                context.Update(item);
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ItemExists(item.InventoryItemID))
+                if (type == ItemType.Consumable)
                 {
-                    return NotFound();
+                    var consumable = item as Consumable;
+                    if (consumable != null)
+                    {
+                        consumable.PricePerUnit = float.Parse(Request.Form["PricePerUnit"]);
+                        consumable.QuantityAvailable = int.Parse(Request.Form["QuantityAvailable"]);
+                        consumable.MinimumQuantity = int.Parse(Request.Form["MinimumQuantity"]);
+                    }
                 }
                 else
                 {
-                    throw;
+                    var nonConsumable = item as NonConsumable;
+                    if (nonConsumable != null)
+                    {
+                        nonConsumable.AssetTag = Request.Form["AssetTag"];
+                    }
                 }
+
+                context.Update(item);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Manage");
             }
-            return RedirectToAction(nameof(Manage));
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View("Error");
+            }
         }
 
         private bool ItemExists(int id)

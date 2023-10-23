@@ -5,80 +5,77 @@
     ViewBag.Title = "Edit Inventory Item";
 }
 
-    <div class="container">
+<div class="container">
 
     <form asp-action="Edit" asp-controller="Inventory" method="post">
-            <input type="hidden" asp-for="InventoryItemID" />
+        <input type="hidden" name="InventoryItemID" value="@Model.InventoryItemID" />
 
-            <div class="form-group">
-                <label asp-for="Name">Name</label>
-                <input class="form-control" asp-for="Name" value="@Model.Name" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description">Description</label>
-                <input class="form-control" asp-for="Description" value="@Model.Description" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RoomNumber">Room Number</label>
-                <input type="number" class="form-control" asp-for="RoomNumber" value="@Model.RoomNumber"  />
-                <span asp-validation-for="RoomNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="CategoryID">Category:</label>
-                <select class="form-control" id="CategoryID" name="CategoryID">
-                    @if (ViewBag.Categories != null)
+        <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" name="Name" value="@Model.Name" />
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <input class="form-control" name="Description" value="@Model.Description" />
+        </div>
+
+        <div class="form-group">
+            <label>Room Number:</label>
+            <input type="number" class="form-control" name="RoomNumber" value="@Model.RoomNumber" />
+        </div>
+
+        <div class="form-group">
+            <label>Category:</label>
+            <select class="form-control" name="CategoryID">
+                @if (ViewBag.Categories != null)
+                {
+                    foreach (var category in ViewBag.Categories)
                     {
-                        foreach (var category in ViewBag.Categories)
-                        {
-                            <option value="@category.Value" @(Model.CategoryID.ToString() == category.Value ? "selected" : "")>@category.Text</option>
-                        }
+                        <option value="@category.Value" @(Model.CategoryID.ToString() == category.Value ? "selected" : "")>@category.Text</option>
                     }
-                </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.CategoryID)</span>
-            </div>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>General Ledger:</label>
+            <input class="form-control" name="GeneralLedger" value="@Model.GeneralLedger" />
+        </div>
+
+        <div class="form-group">
+            <label>Comments:</label>
+            <input class="form-control" name="Comments" value="@Model.Comments" />
+        </div>
+
+        @if (Model is Collaborative_Resource_Management_System.Models.Consumable consumable)
+        {
             <div class="form-group">
-                <label asp-for="GeneralLedger">General Ledger</label>
-                <input class="form-control" asp-for="GeneralLedger" value="@Model.GeneralLedger" />
-                <span asp-validation-for="GeneralLedger" class="text-danger"></span>
+                <label>Price per Unit:</label>
+                <input type="number" step="0.01" class="form-control" name="PricePerUnit" value="@consumable.PricePerUnit" />
             </div>
+
             <div class="form-group">
-                <label asp-for="Comments">Comments</label>
-                <input class="form-control" asp-for="Comments" value="@Model.Comments" />
-                <span asp-validation-for="Comments" class="text-danger"></span>
+                <label>Quantity Available:</label>
+                <input type="number" class="form-control" name="QuantityAvailable" value="@consumable.QuantityAvailable" />
             </div>
 
-            @if (Model is Collaborative_Resource_Management_System.Models.Consumable consumable)
-            {
-                <div class="form-group">
-                    <label asp-for="@consumable.PricePerUnit">Price per Unit</label>
-                    <input type="number" step="0.01" class="form-control" asp-for="@consumable.PricePerUnit" value="@consumable.PricePerUnit" />
-                    <span asp-validation-for="@consumable.PricePerUnit" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="@consumable.QuantityAvailable">Quantity Available</label>
-                    <input type="number" class="form-control" asp-for="@consumable.QuantityAvailable" value="@consumable.QuantityAvailable" />
-                    <span asp-validation-for="@consumable.QuantityAvailable" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="@consumable.MinimumQuantity">Minimum Quantity</label>
-                    <input type="number" class="form-control" asp-for="@consumable.MinimumQuantity" value="@consumable.MinimumQuantity" />
-                    <span asp-validation-for="@consumable.MinimumQuantity" class="text-danger"></span>
-                </div>
-            }
+            <div class="form-group">
+                <label>Minimum Quantity:</label>
+                <input type="number" class="form-control" name="MinimumQuantity" value="@consumable.MinimumQuantity" />
+            </div>
+        }
 
-            @if (Model is Collaborative_Resource_Management_System.Models.NonConsumable nonConsumable)
-            {
-                <div class="form-group">
-                    <label asp-for="@nonConsumable.AssetTag">Asset Tag</label>
-                    <input class="form-control" asp-for="@nonConsumable.AssetTag" value="@nonConsumable.AssetTag" />
-                    <span asp-validation-for="@nonConsumable.AssetTag" class="text-danger"></span>
-                </div>
-            }
+        @if (Model is Collaborative_Resource_Management_System.Models.NonConsumable nonConsumable)
+        {
+            <div class="form-group">
+                <label>Asset Tag:</label>
+                <input class="form-control" name="AssetTag" value="@nonConsumable.AssetTag" />
+            </div>
+        }
 
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
