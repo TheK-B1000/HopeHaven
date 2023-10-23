@@ -43,24 +43,23 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(User user)
+        public IActionResult Edit(int id)
         {
+            var user = context.Users.Find(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Name = Request.Form["Name"];
+            user.Type = (UserType)Enum.Parse(typeof(UserType), Request.Form["Type"]);
+            user.PIN = Request.Form["PIN"];
+            user.Password = Request.Form["Password"];
+            user.DeptID = int.Parse(Request.Form["DeptID"]);
+
             try
             {
-                var existingUser = context.Users.Find(user.UserID);
-                if (existingUser == null)
-                {
-                    return NotFound();
-                }
-
-                existingUser.Name = user.Name;
-                existingUser.Type = user.Type;
-                existingUser.PIN = user.PIN;
-                existingUser.Password = user.Password;
-                existingUser.DeptID = user.DeptID;
-                existingUser.EditedDate = DateTime.UtcNow;
-                existingUser.EditedBy = "Stella Johnson";
-
+                context.Update(user);
                 context.SaveChanges();
                 return RedirectToAction("Manage");
             }
@@ -70,6 +69,8 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
+
+
 
         [HttpGet]
         public IActionResult Add()

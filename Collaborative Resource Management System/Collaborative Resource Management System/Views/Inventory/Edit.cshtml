@@ -6,8 +6,8 @@
 }
 
     <div class="container">
-        
-        <form action="/Inventory/Edit" method="POST" id="editForm">
+
+    <form asp-action="Edit" asp-controller="Inventory" method="post">
             <input type="hidden" asp-for="InventoryItemID" />
 
             <div class="form-group">
