@@ -15,9 +15,15 @@
         <input type="number" id="RoomNumber" name="RoomNumber" class="form-control" required />
     </div>
     <div class="form-group">
-        <label for="CategoryID">Category ID:</label>
-        <input type="number" id="CategoryID" name="CategoryID" class="form-control" required />
+        <label for="CategoryID">Category:</label>
+        <select class="form-control" id="CategoryID" name="CategoryID">
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.Value">@category.Text</option>
+            }
+        </select>
     </div>
+
     <div class="form-group">
         <label for="GeneralLedger">General Ledger:</label>
         <input type="text" id="GeneralLedger" name="GeneralLedger" class="form-control" required />

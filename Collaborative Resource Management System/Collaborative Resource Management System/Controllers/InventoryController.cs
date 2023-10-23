@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Collaborative_Resource_Management_System.Controllers
 {
@@ -33,6 +34,12 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public IActionResult Add()
         {
+            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
+            {
+                Value = c.CategoryID.ToString(),
+                Text = c.CategoryName
+            }).ToList();
+
             return View();
         }
 
@@ -82,16 +89,23 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpGet]
         public IActionResult LoadItemType(string itemType)
         {
+            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
+            {
+                Value = c.CategoryID.ToString(),
+                Text = c.CategoryName
+            }).ToList();
+
             if (itemType == "Consumable")
             {
-                return PartialView("Consumable");  
+                return PartialView("Consumable");
             }
             else if (itemType == "NonConsumable")
             {
-                return PartialView("NonConsumable");  
+                return PartialView("NonConsumable");
             }
             return NotFound();
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Edit(int? id, ItemType type)
@@ -116,6 +130,13 @@ namespace Collaborative_Resource_Management_System.Controllers
             {
                 return NotFound();
             }
+
+
+            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
+            {
+                Value = c.CategoryID.ToString(),
+                Text = c.CategoryName
+            }).ToList();
 
             return View("Edit", item);
         }
@@ -149,6 +170,14 @@ namespace Collaborative_Resource_Management_System.Controllers
                 }
                 return RedirectToAction(nameof(Manage));
             }
+
+
+            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
+            {
+                Value = c.CategoryID.ToString(),
+                Text = c.CategoryName
+            }).ToList();
+
             return View(item);
         }
 
