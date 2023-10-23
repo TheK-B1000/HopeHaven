@@ -6,42 +6,41 @@
 <body>
     <div class="container">
 
-        <form asp-action="Edit" asp-controller="User" asp-route-id="@Model.UserID" method="POST">
-            <input type="hidden" asp-for="UserID">
+        <form asp-action="Edit" asp-controller="User" method="POST">
+            <input type="hidden" name="UserID" value="@Model.UserID" />
 
             <div class="form-group">
-                <label asp-for="Name">Name:</label>
-                <input type="text" class="form-control" asp-for="Name" value="@Model.Name">
+                <label>Name:</label>
+                <input type="text" class="form-control" name="Name" value="@Model.Name" />
             </div>
 
             <div class="form-group">
-                <label asp-for="Type">Type:</label>
-                <select class="form-control" asp-for="Type" value="@Model.Type">
+                <label>Type:</label>
+                <select class="form-control" name="Type">
                     <option value="0" @((int)Model.Type == 0 ? "selected" : "")>Admin</option>
                     <option value="1" @((int)Model.Type == 1 ? "selected" : "")>Editor</option>
                     <option value="2" @((int)Model.Type == 2 ? "selected" : "")>Staff</option>
-
                 </select>
             </div>
 
             <div class="form-group">
-                <label asp-for="PIN">PIN:</label>
-                <input type="password" class="form-control" asp-for="PIN" value="@Model.PIN">
+                <label>PIN:</label>
+                <input type="password" class="form-control" name="PIN" value="@Model.PIN" />
             </div>
 
             <div class="form-group">
-                <label asp-for="Password">Password:</label>
-                <input type="password" class="form-control" asp-for="Password" value="@Model.Password">
+                <label>Password:</label>
+                <input type="password" class="form-control" name="Password" value="@Model.Password" />
             </div>
 
             <div class="form-group">
-                <label for="DeptID">Department:</label>
-                <select class="form-control" id="DeptID" name="DeptID">
+                <label>Department:</label>
+                <select class="form-control" name="DeptID">
                     @if (ViewBag.Departments != null)
                     {
                         foreach (var department in ViewBag.Departments)
                         {
-                            <option value="@department.Value">@department.Text</option>
+                            <option value="@department.Value" @(Model.DeptID == int.Parse(department.Value) ? "selected" : "")>@department.Text</option>
                         }
                     }
                 </select>

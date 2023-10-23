@@ -150,35 +150,23 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    context.Update(item);
-                    await context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ItemExists(item.InventoryItemID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Manage));
+                context.Update(item);
+                await context.SaveChangesAsync();
             }
-
-
-            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
+            catch (DbUpdateConcurrencyException)
             {
-                Value = c.CategoryID.ToString(),
-                Text = c.CategoryName
-            }).ToList();
-
-            return View(item);
+                if (!ItemExists(item.InventoryItemID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Manage));
         }
 
         private bool ItemExists(int id)
