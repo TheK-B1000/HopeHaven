@@ -50,21 +50,16 @@ namespace Collaborative_Resource_Management_System.Models
 
     }
     public class Consumable : InventoryItem
-    {
-        [Range(0.01, 10000.00)] 
+    { 
         public float PricePerUnit { get; set; }
 
-        [Range(0, int.MaxValue)]
         public int QuantityAvailable { get; set; }
 
-        [Range(0, int.MaxValue)]
         public int MinimumQuantity { get; set; }
     }
 
     public class NonConsumable : InventoryItem
     {
-        [Required]
-        [StringLength(100)]
         public string AssetTag { get; set; }
     }
 }
