@@ -10,6 +10,8 @@ namespace Collaborative_Resource_Management_System.Controllers
     public class InventoryController : Controller
     {
         private readonly AppDbContext context;
+        //TODO - Put a default user in the config file
+        string loggedInUserName = "Stella Johnson";
 
         public InventoryController(AppDbContext dbContext)
         {
@@ -50,7 +52,6 @@ namespace Collaborative_Resource_Management_System.Controllers
             {
                 consumable.CreatedDate = DateTime.UtcNow;
                 consumable.EditedDate = DateTime.UtcNow;
-                string loggedInUserName = "Stella Johnson";
                 consumable.CreatedBy = loggedInUserName;
                 consumable.EditedBy = loggedInUserName;
 
@@ -70,8 +71,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             try
             {
                 nonConsumable.CreatedDate = DateTime.UtcNow;
-                nonConsumable.EditedDate = DateTime.UtcNow;
-                string loggedInUserName = "Stella Johnson";
+                nonConsumable.EditedDate = DateTime.UtcNow;                
                 nonConsumable.CreatedBy = loggedInUserName;
                 nonConsumable.EditedBy = loggedInUserName;
 
