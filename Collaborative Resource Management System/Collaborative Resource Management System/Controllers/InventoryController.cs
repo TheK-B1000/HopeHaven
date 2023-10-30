@@ -199,7 +199,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             item.Description = Request.Form["Description"];
             item.RoomNumber = int.Parse(Request.Form["RoomNumber"]);
             item.CategoryID = int.Parse(Request.Form["CategoryID"]);
-            item.GeneralLedger = Request.Form["GeneralLedger"];
+            item.GeneralLedger = generalLedger;
             item.Comments = Request.Form["Comments"];
 
             try
