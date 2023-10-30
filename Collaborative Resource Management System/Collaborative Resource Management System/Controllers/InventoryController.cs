@@ -46,6 +46,33 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCategory(Category category)
+        {
+            try
+            {
+                category.CreatedDate = DateTime.UtcNow;
+                category.EditedDate = DateTime.UtcNow;
+                category.CreatedBy = loggedInUserName;
+                category.EditedBy = loggedInUserName;
+
+                context.Categories.Add(category);
+                await context.SaveChangesAsync();
+
+                return RedirectToAction("Manage");
+            }            
+            catch
+            {
+                return View("Error", ModelState);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddConsumable(Consumable consumable)
         {
@@ -56,6 +83,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 consumable.CreatedBy = loggedInUserName;
                 consumable.EditedBy = loggedInUserName;
                 consumable.GeneralLedger = generalLedger;
+
                 context.Consumables.Add(consumable);
                 await context.SaveChangesAsync();
                 return RedirectToAction("Manage");
@@ -76,6 +104,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 nonConsumable.CreatedBy = loggedInUserName;
                 nonConsumable.EditedBy = loggedInUserName;
                 nonConsumable.GeneralLedger = generalLedger;
+
                 context.NonConsumables.Add(nonConsumable);
                 await context.SaveChangesAsync();
                 return RedirectToAction("Manage");
@@ -85,7 +114,6 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error", ModelState);
             }
         }
-
 
         [HttpGet]
         public IActionResult LoadItemType(string itemType)
@@ -239,7 +267,6 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View(consumable);
         }
 
-
         public async Task<IActionResult> NonConsumableDetails(int? id)
         {
             if (id == null)
@@ -256,7 +283,6 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             return View(nonConsumable);
         }
-
 
         public IActionResult Confirmation()
         {

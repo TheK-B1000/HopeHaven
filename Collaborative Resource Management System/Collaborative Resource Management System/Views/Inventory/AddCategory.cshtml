@@ -1,0 +1,17 @@
+﻿@model Collaborative_Resource_Management_System.Models.Category
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add Category";
+}
+
+<div class="container">
+    <form asp-action="/Inventory/AddCategory" method="POST">
+        <div class="form-group">
+            <label asp-for="CategoryName">Category Name</label>
+            <input type="text" class="form-control" id="CategoryName" name="CategoryName">
+            <span asp-validation-for="CategoryName" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>

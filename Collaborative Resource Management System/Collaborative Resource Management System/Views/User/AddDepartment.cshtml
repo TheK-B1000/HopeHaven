@@ -1,0 +1,17 @@
+﻿@model Collaborative_Resource_Management_System.Models.Department
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add Department";
+}
+
+<div class="container">
+    <form asp-action="/User/AddDepartment" method="POST">
+        <div class="form-group">
+            <label asp-for="DeptName">Department Name</label>
+            <input type="text" class="form-control" id="DeptName" name="DeptName">
+            <span asp-validation-for="DeptName" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
