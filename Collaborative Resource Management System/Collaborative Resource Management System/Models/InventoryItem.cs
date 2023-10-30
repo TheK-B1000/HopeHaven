@@ -38,8 +38,6 @@ namespace Collaborative_Resource_Management_System.Models
         [Required]
         public int CategoryID { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string GeneralLedger { get; set; }
 
         [Required]
@@ -47,6 +45,7 @@ namespace Collaborative_Resource_Management_System.Models
 
         [StringLength(500)]
         public string Comments { get; set; }       
+
 
     }
     public class Consumable : InventoryItem
