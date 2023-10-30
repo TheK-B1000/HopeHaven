@@ -12,6 +12,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         private readonly AppDbContext context;
         //TODO - Put a default user in the config file
         string loggedInUserName = "Stella Johnson";
+        string generalLedger = "6010";
 
         public InventoryController(AppDbContext dbContext)
         {
@@ -54,7 +55,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 consumable.EditedDate = DateTime.UtcNow;
                 consumable.CreatedBy = loggedInUserName;
                 consumable.EditedBy = loggedInUserName;
-
+                consumable.GeneralLedger = generalLedger;
                 context.Consumables.Add(consumable);
                 await context.SaveChangesAsync();
                 return RedirectToAction("Manage");
@@ -74,7 +75,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 nonConsumable.EditedDate = DateTime.UtcNow;                
                 nonConsumable.CreatedBy = loggedInUserName;
                 nonConsumable.EditedBy = loggedInUserName;
-
+                nonConsumable.GeneralLedger = generalLedger;
                 context.NonConsumables.Add(nonConsumable);
                 await context.SaveChangesAsync();
                 return RedirectToAction("Manage");
