@@ -8,6 +8,8 @@ namespace Collaborative_Resource_Management_System.Controllers
     public class UserController : Controller
     {
         private readonly AppDbContext context;
+        //TODO - Put a default user in the config file
+        string loggedInUserName = "Stella Johnson";
 
         public UserController(AppDbContext dbContext)
         {
@@ -70,7 +72,32 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult AddDepartment()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> AddDepartment(Department department)
+        {
+            try
+            {
+                department.CreatedDate = DateTime.UtcNow;
+                department.EditedDate = DateTime.UtcNow;
+                department.CreatedBy = loggedInUserName;
+                department.EditedBy = loggedInUserName;
+
+                context.Departments.Add(department);
+                await context.SaveChangesAsync();
+
+                return RedirectToAction("Manage");
+            }
+            catch
+            {
+                return View("Error", ModelState);
+            }
+        }
 
         [HttpGet]
         public IActionResult Add()
@@ -91,10 +118,8 @@ namespace Collaborative_Resource_Management_System.Controllers
             {
                 user.CreatedDate = DateTime.UtcNow;
                 user.EditedDate = DateTime.UtcNow;
-                string loggedInUserName = "Stella Johnson";
                 user.CreatedBy = loggedInUserName;
                 user.EditedBy = loggedInUserName;
-
 
                 context.Users.Add(user);
                 context.SaveChanges();
