@@ -1,10 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Editor Home";
+   
 }
 
-    
+<h1 class="headerC">Welcome, @ViewBag.UserName!</h1>
     <div class="container mt-5">
+
         <a class="button btn-info btn-lg w-25" href="@Url.Action("Manage", "Inventory")">Manage Inventory</a>
         
         <a class="button btn-info btn-lg w-25" href="@Url.Action("CheckIn", "Inventory")">Check-In</a>
