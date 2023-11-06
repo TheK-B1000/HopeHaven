@@ -6,23 +6,21 @@
     ViewBag.Title = "Manage Users";
 }
 
-
-
 <div class="mb-3">
-    <input type="text" id="searchBox" placeholder="Search users..." class="form-control" style="width:auto; display:inline-block;">
-    <select id="filterDropdown" onchange="applyFilter()">
-        <option value="all">All Users</option>
-        <option value="email">Email</option>
-        <option value="department">Department</option>
-        <option value="category">Category</option>
-    </select>
+    @using (Html.BeginForm("Manage", "User", FormMethod.Get))
+    {
+        <input type="text" name="searchString" placeholder="Search users..." class="form-control" style="width:auto; display:inline-block;" value="@ViewBag.SearchString" />
+        <input type="submit" value="Search" class="btn btn-default" />
+        //<a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
+        //<a href="@Url.Action("AddDepartment", "User")" class="btn btn-secondary">Add Department</a>
+    }
 
     <a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
     <a href="@Url.Action("AddDepartment", "User")" class="btn btn-secondary">Add Department</a>
 
 </div>
 
-<table class="table">
+<table id="usersTable" class="table">
     <thead>
         <tr>
             <th>User ID</th>

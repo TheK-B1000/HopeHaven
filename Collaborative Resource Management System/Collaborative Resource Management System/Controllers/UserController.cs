@@ -16,10 +16,35 @@ namespace Collaborative_Resource_Management_System.Controllers
             context = dbContext;
         }
 
-        public IActionResult Manage()
+        public IActionResult Manage(string searchString)
         {
-            var users = context.Users.ToList();
-            return View(users);
+            var users = from u in context.Users
+                        select u;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                bool isNumeric = int.TryParse(searchString, out int searchNumber);
+
+                if (isNumeric)
+                {
+                    users = users.Where(u => u.UserID == searchNumber);
+                }
+                else
+                {
+                    if (Enum.TryParse<UserType>(searchString, true, out var userType))
+                    {
+                        users = users.Where(u => u.Type == userType);
+                    }
+                    else
+                    {
+                        users = users.Where(u => EF.Functions.Like(u.Name, $"%{searchString}%"));
+                    }
+                }
+            }
+
+            ViewBag.SearchString = searchString;
+
+            return View(users.ToList());
         }
 
         public IActionResult Edit(int? id)
