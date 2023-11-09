@@ -1,98 +1,52 @@
 using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Collaborative_Resource_Management_System.Controllers
 {
     public class UserController : Controller
     {
-        private readonly AppDbContext context;
-        //TODO - Put a default user in the config file
-        string loggedInUserName = "Stella Johnson";
+        private readonly IUserService _userService;
 
-        public UserController(AppDbContext dbContext)
+        public UserController(IUserService userService)
         {
-            context = dbContext;
+            _userService = userService;
         }
 
-        public IActionResult Manage(string searchString)
+        public async Task<IActionResult> Manage(string searchString)
         {
-            var users = from u in context.Users
-                        select u;
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                bool isNumeric = int.TryParse(searchString, out int searchNumber);
-
-                if (isNumeric)
-                {
-                    users = users.Where(u => u.UserID == searchNumber);
-                }
-                else
-                {
-                    if (Enum.TryParse<UserType>(searchString, true, out var userType))
-                    {
-                        users = users.Where(u => u.Type == userType);
-                    }
-                    else
-                    {
-                        users = users.Where(u => EF.Functions.Like(u.Name, $"%{searchString}%"));
-                    }
-                }
-            }
-
+            var users = await _userService.SearchUsersAsync(searchString);
             ViewBag.SearchString = searchString;
-
-            return View(users.ToList());
+            return View(users);
         }
 
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = context.Users.Find(id.Value);
+            var user = await _userService.GetUserByIdAsync(id.Value);
             if (user == null)
             {
                 return NotFound();
             }
 
-            ViewBag.Departments = context.Departments.Select(d => new SelectListItem
-            {
-                Value = d.DepartmentID.ToString(),
-                Text = d.DeptName
-            }).ToList();
-
+            ViewBag.Departments = await _userService.GetDepartmentsAsync();
             return View(user);
         }
 
         [HttpPost]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(User user)
         {
-            var user = context.Users.Find(id);
-            if (user == null)
+            var success = await _userService.EditUserAsync(user);
+            if (success)
             {
-                return NotFound();
-            }
-
-            user.Name = Request.Form["Name"];
-            user.Type = (UserType)Enum.Parse(typeof(UserType), Request.Form["Type"]);
-            user.PIN = Request.Form["PIN"];
-            user.Password = Request.Form["Password"];
-            user.DeptID = int.Parse(Request.Form["DeptID"]);
-
-            try
-            {
-                context.Update(user);
-                context.SaveChanges();
                 return RedirectToAction("Manage");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.Message);
                 return View("Error");
             }
         }
@@ -106,53 +60,34 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDepartment(Department department)
         {
-            try
+            var success = await _userService.AddDepartmentAsync(department);
+            if (success)
             {
-                department.CreatedDate = DateTime.UtcNow;
-                department.EditedDate = DateTime.UtcNow;
-                department.CreatedBy = loggedInUserName;
-                department.EditedBy = loggedInUserName;
-
-                context.Departments.Add(department);
-                await context.SaveChangesAsync();
-
                 return RedirectToAction("Manage");
             }
-            catch
+            else
             {
-                return View("Error", ModelState);
+                return View("Error");
             }
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            ViewBag.Departments = context.Departments.Select(d => new SelectListItem
-            {
-                Value = d.DepartmentID.ToString(),
-                Text = d.DeptName
-            }).ToList();
+            ViewBag.Departments = await _userService.GetDepartmentsAsync();
             return View(new User());
         }
 
-
         [HttpPost]
-        public IActionResult Add(User user)
+        public async Task<IActionResult> Add(User user)
         {
-            try
+            var success = await _userService.AddUserAsync(user);
+            if (success)
             {
-                user.CreatedDate = DateTime.UtcNow;
-                user.EditedDate = DateTime.UtcNow;
-                user.CreatedBy = loggedInUserName;
-                user.EditedBy = loggedInUserName;
-
-                context.Users.Add(user);
-                context.SaveChanges();
-                return RedirectToAction("Manage"); 
+                return RedirectToAction("Manage");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.Message);
                 return View("Error");
             }
         }
