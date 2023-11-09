@@ -33,8 +33,8 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                consumablesQuery = consumablesQuery.Where(c => EF.Functions.Like(c.Name, $"%{searchString}%") || EF.Functions.Like(c.Description, $"%{searchString}%"));
-                nonConsumablesQuery = nonConsumablesQuery.Where(nc => EF.Functions.Like(nc.Name, $"%{searchString}%") || EF.Functions.Like(nc.Description, $"%{searchString}%"));
+                consumablesQuery = consumablesQuery.Where(c => EF.Functions.Like(c.Name, $"%{searchString}%"));
+                nonConsumablesQuery = nonConsumablesQuery.Where(nc => EF.Functions.Like(nc.Name, $"%{searchString}%"));
             }
 
             var consumables = await consumablesQuery.ToListAsync();
