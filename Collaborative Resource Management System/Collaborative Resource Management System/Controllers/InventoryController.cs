@@ -26,11 +26,22 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Manage()
+        public async Task<IActionResult> Manage(string searchString)
         {
-            var consumables = await context.Consumables.ToListAsync();
-            var nonConsumables = await context.NonConsumables.ToListAsync();
+            IQueryable<Consumable> consumablesQuery = context.Consumables;
+            IQueryable<NonConsumable> nonConsumablesQuery = context.NonConsumables;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                consumablesQuery = consumablesQuery.Where(c => EF.Functions.Like(c.Name, $"%{searchString}%") || EF.Functions.Like(c.Description, $"%{searchString}%"));
+                nonConsumablesQuery = nonConsumablesQuery.Where(nc => EF.Functions.Like(nc.Name, $"%{searchString}%") || EF.Functions.Like(nc.Description, $"%{searchString}%"));
+            }
+
+            var consumables = await consumablesQuery.ToListAsync();
+            var nonConsumables = await nonConsumablesQuery.ToListAsync();
             var allItems = consumables.Cast<InventoryItem>().Concat(nonConsumables.Cast<InventoryItem>()).ToList();
+
+            ViewBag.SearchString = searchString;
 
             return View(allItems);
         }
