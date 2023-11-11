@@ -1,0 +1,113 @@
+﻿@page
+@model IndexModel
+@{
+    ViewBag.title = "Login";
+}
+<div>
+    <div class="pin-container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 pin-pad-container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(1)">1</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(2)">2</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(3)">3</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(4)">4</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(5)">5</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(6)">6</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(7)">7</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(8)">8</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(9)">9</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="deleteDigit()">Delete</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="appendPin(0)">0</div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="button btn-info btn-lg log" onclick="submitPin()">Submit</div>
+                    </div>
+                </div>
+                <input type="text" id="pin-input" class="form-control mt-3" placeholder="Enter 6-digit PIN" readonly>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+    let pin = '';
+    const pinInput = document.getElementById('pin-input');
+
+    function appendPin(number) {
+        if (pin.length < 6) {
+            pin += number;
+            pinInput.value = pin;
+        }
+
+        if (pin.length === 6) {
+
+            submitPin();
+        }
+    }
+
+    function deleteDigit() {
+        if (pin.length > 0) {
+            pin = pin.slice(0, -1);
+            pinInput.value = pin;
+        }
+    }
+
+    function clearPin() {
+        pin = '';
+        pinInput.value = '';
+    }
+
+    //Still working on pulling ID from DB. - Corey
+
+    function submitPin() {
+        if (pin === '111111') {
+            window.location.href = '@Url.Action("AdminIndex", "Admin")?userName=Beny';
+            clearPin();
+        }
+        else if (pin === '222222') {
+            window.location.href = '@Url.Action("EditorIndex", "Editor")?userName=Corey';
+            clearPin();
+        }
+        else if (pin === '333333') {
+            window.location.href = '@Url.Action("StaffIndex", "Staff")?userName=Ben';
+            clearPin();
+        }
+        else {
+            alert('Incorrect PIN Number. Please try again.');
+            clearPin();
+        }
+    }
+
+
+</script>

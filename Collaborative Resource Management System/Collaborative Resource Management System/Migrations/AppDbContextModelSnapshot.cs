@@ -226,7 +226,7 @@ namespace Collaborative_Resource_Management_System.Migrations
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("InventoryItem");
 
-                    b.UseTphMappingStrategy();
+                   // b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Transaction", b =>

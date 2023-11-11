@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Collaborative Resource Management System.props" />
+</Project>
