@@ -1,6 +1,7 @@
 using Collaborative_Resource_Management_System.Data;
 using Collaborative_Resource_Management_System.Models;
-using Microsoft.AspNetCore.Identity;
+
+using Collaborative_Resource_Management_System.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -20,7 +21,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 
 var app = builder.Build();
 

@@ -15,10 +15,6 @@
         <input type="text" id="Name" name="Name" class="form-control" required />
     </div>
     <div class="form-group">
-        <label for="Name">Name:</label>
-        <input type="text" id="Name" name="Name" class="form-control" required />
-    </div>
-    <div class="form-group">
         <label for="Description">Description:</label>
         <input type="text" id="Description" name="Description" class="form-control" required />
     </div>
@@ -54,63 +50,3 @@
     </div>
     <button type="submit" class="btn btn-primary">Add Consumable</button>
 </form>
-
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const dropArea = document.getElementById('drop-area');
-        const fileInput = document.getElementById('Image');
-        const visibleInput = document.getElementById('visible-input');
-        const previewContainer = document.getElementById('preview-container');
-
-        function handleFiles(files) {
-            const file = files[0];
-            if (file && file.type.startsWith('image/')) {
-                fileInput.files = files; // Update the hidden file input
-                showPreview(file);
-            } else {
-                alert('Please select a valid image file.');
-            }
-        }
-
-        dropArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropArea.style.borderColor = '#000';
-        });
-
-        dropArea.addEventListener('dragleave', () => {
-            dropArea.style.borderColor = '#ccc';
-        });
-
-        dropArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropArea.style.borderColor = '#ccc';
-            handleFiles(e.dataTransfer.files);
-        });
-
-        dropArea.addEventListener('click', () => {
-            fileInput.click();
-        });
-
-        fileInput.addEventListener('change', (e) => {
-            handleFiles(e.target.files);
-        });
-
-        visibleInput.addEventListener('change', (e) => {
-            handleFiles(e.target.files);
-        });
-
-        function showPreview(file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.style.maxWidth = '100%';
-                img.style.height = 'auto';
-                previewContainer.innerHTML = '';
-                previewContainer.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-</script>

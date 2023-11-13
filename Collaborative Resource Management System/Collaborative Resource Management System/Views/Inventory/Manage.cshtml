@@ -8,7 +8,12 @@
 }
 
 <div class="mb-3">
-    <input type="text" id="searchBox" placeholder="Search items..." class="form-control" style="width:auto; display:inline-block;">
+    @using (Html.BeginForm("Manage", "Inventory", FormMethod.Get))
+    {
+        <input type="text" name="searchString" placeholder="Search items..." class="form-control" style="width:auto; display:inline-block;" value="@ViewBag.SearchString" />
+        <input type="submit" value="Search" class="btn btn-secondary btn-sm" />
+    }
+
     <select id="filterDropdown" onchange="applyFilter()">
         <option value="all">All Items</option>
         <option value="name">Name</option>
@@ -41,6 +46,7 @@
                     @if (item.ItemType == ItemType.Consumable || item.ItemType == ItemType.NonConsumable)
                     {
                         <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemID, type = item.ItemType })" class="btn btn-secondary btn-sm">Edit</a>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="alert('This delete action is not enabled.');">Delete</button>
                     }
                 </td>
             </tr>
