@@ -12,4 +12,8 @@ public interface IInventoryService
     Task<InventoryItem> GetItemByIdAsync(int id, ItemType type);
     Task<IEnumerable<SelectListItem>> GetCategoriesAsync();
     Task<bool> EditItemAsync(InventoryItem item, ItemType type);
+    Task<List<Consumable>> ConsumableItems();
+    Task<List<NonConsumable>> NonConsumableItems();
+    Task<Consumable> ConsumableDetails(int? id);
+    Task<NonConsumable> NonConsumableDetails(int? id);
 }

@@ -1,4 +1,5 @@
 ﻿using Collaborative_Resource_Management_System.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,6 +18,26 @@ namespace Collaborative_Resource_Management_System.Services
         public InventoryService(AppDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<List<Consumable>> ConsumableItems()
+        {
+            return await _context.Consumables.ToListAsync();
+        }
+
+        public async Task<List<NonConsumable>> NonConsumableItems()
+        {
+            return await _context.NonConsumables.ToListAsync();
+        }
+
+        public async Task<Consumable> ConsumableDetails(int? id)
+        {
+            return id == null ? null : await _context.Consumables.FindAsync(id);
+        }
+
+        public async Task<NonConsumable> NonConsumableDetails(int? id)
+        {
+            return id == null ? null : await _context.NonConsumables.FindAsync(id);
         }
 
         public async Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString)

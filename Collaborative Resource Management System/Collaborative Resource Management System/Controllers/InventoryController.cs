@@ -20,6 +20,15 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View(allItems);
         }
 
+        public IActionResult CheckIn()
+        {
+            return View();
+        }
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> LoadItemType(string itemType)
         {
@@ -34,6 +43,52 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return PartialView("NonConsumable");
             }
             return NotFound();
+        }
+
+        public async Task<IActionResult> ConsumableItems()
+        {
+            var consumables = await _inventoryService.ConsumableItems();
+            return View(consumables);
+        }
+
+        public async Task<IActionResult> NonConsumableItems()
+        {
+            var nonConsumables = await _inventoryService.NonConsumableItems();
+            return View(nonConsumables);
+        }
+
+        public async Task<IActionResult> ConsumableDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var consumable = await _inventoryService.ConsumableDetails(id);
+
+            if (consumable == null)
+            {
+                return NotFound();
+            }
+
+            return View(consumable);
+        }
+
+        public async Task<IActionResult> NonConsumableDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var nonConsumable = await _inventoryService.NonConsumableDetails(id);
+
+            if (nonConsumable == null)
+            {
+                return NotFound();
+            }
+
+            return View(nonConsumable);
         }
 
         public async Task<IActionResult> Add()
@@ -119,6 +174,16 @@ namespace Collaborative_Resource_Management_System.Controllers
             {
                 return View("Error");
             }
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+
+        public IActionResult Cart()
+        {
+            return View();
         }
     }
 }
