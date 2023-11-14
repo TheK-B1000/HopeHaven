@@ -27,9 +27,9 @@
             <div class="form-group">
                 <label>Type:</label>
                 <select class="form-control" name="Type">
-                    <option value="0" @((int)Model.Type == 0 ? "selected" : "")>Admin</option>
-                    <option value="1" @((int)Model.Type == 1 ? "selected" : "")>Editor</option>
-                    <option value="2" @((int)Model.Type == 2 ? "selected" : "")>Staff</option>
+                    <option value="0">Admin</option>
+                    <option value="1">Editor</option>
+                    <option value="2">Staff</option>
                 </select>
             </div>
 
@@ -50,7 +50,7 @@
                     {
                         foreach (var department in ViewBag.Departments)
                         {
-                            <option value="@department.Value" @(Model.DeptID == int.Parse(department.Value) ? "selected" : "")>@department.Text</option>
+                            //<option value="@department.Value" @(Model.DeptID == int.Parse(department.Value) ? "selected" : "")>@department.Text</option>
                         }
                     }
                 </select>

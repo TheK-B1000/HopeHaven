@@ -12,8 +12,8 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Collaborative_Resource_Management_System-aa9d1a21-d8b5-4fa0-bd74-d43d3e0c7" +
-    "980")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Collaborative_Resource_Management_System-a3ce28d9-7179-48f7-9f64-36706c9f0" +
+    "822")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Collaborative Resource Management System")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

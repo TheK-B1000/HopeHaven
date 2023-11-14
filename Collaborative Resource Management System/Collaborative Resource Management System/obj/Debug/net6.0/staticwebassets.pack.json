@@ -5,12 +5,60 @@
       "PackagePath": "staticwebassets\\Collaborative Resource Management System.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\BootStyle.css",
+      "PackagePath": "staticwebassets\\BootStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\StyleSheet.css",
+      "PackagePath": "staticwebassets\\StyleSheet.css"
+    },
+    {
       "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\1667-4758-2-PB.pdf",
+      "PackagePath": "staticwebassets\\img\\1667-4758-2-PB.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Dell.jpg",
+      "PackagePath": "staticwebassets\\img\\Dell.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Evolving_JavaScript_Code_to_Reduce_Load_Time.pdf",
+      "PackagePath": "staticwebassets\\img\\Evolving_JavaScript_Code_to_Reduce_Load_Time.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\GlueSticks.jpg",
+      "PackagePath": "staticwebassets\\img\\GlueSticks.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\HH_LogoStacked_CMYK.jpg",
+      "PackagePath": "staticwebassets\\img\\HH_LogoStacked_CMYK.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\HopeHaven_CMYK Logo.jpg",
+      "PackagePath": "staticwebassets\\img\\HopeHaven_CMYK Logo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Pencils.jpg",
+      "PackagePath": "staticwebassets\\img\\Pencils.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\RainbowErasers.jpg",
+      "PackagePath": "staticwebassets\\img\\RainbowErasers.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Rulers.jpg",
+      "PackagePath": "staticwebassets\\img\\Rulers.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\beatap,+jcsi25(2022)345-349.pdf",
+      "PackagePath": "staticwebassets\\img\\beatap,+jcsi25(2022)345-349.pdf"
     },
     {
       "Id": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\js\\site.js",

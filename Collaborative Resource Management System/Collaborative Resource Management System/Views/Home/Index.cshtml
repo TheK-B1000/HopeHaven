@@ -1,43 +1,45 @@
-﻿@page
-@model IndexModel
-@{
-    ViewBag.title = "Login";
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login";
 }
+
+
+
 <div>
     <div class="pin-container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6 pin-pad-container">
                 <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <div class="button btn-info btn-lg log" onclick="appendPin(1)">1</div>
+                        </div>
                     <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(1)">1</div>
+                            <div class="button btn-info btn-lg log" onclick="appendPin(2)">2</div>
+                     </div>
+                    <div class="col-md-4 col-sm-4">
+                            <div class="button btn-info btn-lg log" onclick="appendPin(3)">3</div>
+                        </div>
                     </div>
+                    <div class="row">
                     <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(2)">2</div>
+                            <div class="button btn-info btn-lg log" onclick="appendPin(4)">4</div>
+                        </div>
+                    <div class="col-md-4 col-sm-4">
+                            <div class="button btn-info btn-lg log" onclick="appendPin(5)">5</div>
+                        </div>
+                    <div class="col-md-4 col-sm-4">
+                            <div class="button btn-info btn-lg log" onclick="appendPin(6)">6</div>
+                        </div>
                     </div>
+                    <div class="row">
                     <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(3)">3</div>
-                    </div>
-                </div>
-                <div class="row">
+                            <div class="button btn-info btn-lg log" onclick="appendPin(7)">7</div>
+                        </div>
                     <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(4)">4</div>
-                    </div>
+                            <div class="button btn-info btn-lg log" onclick="appendPin(8)">8</div>
+                        </div>
                     <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(5)">5</div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(6)">6</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(7)">7</div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(8)">8</div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="button btn-info btn-lg log" onclick="appendPin(9)">9</div>
+                            <div class="button btn-info btn-lg log" onclick="appendPin(9)">9</div>
                     </div>
                 </div>
                 <div class="row">
@@ -55,7 +57,7 @@
             </div>
         </div>
     </div>
-
+    
 </div>
 
 
@@ -71,7 +73,7 @@
         }
 
         if (pin.length === 6) {
-
+           
             submitPin();
         }
     }
@@ -79,7 +81,7 @@
     function deleteDigit() {
         if (pin.length > 0) {
             pin = pin.slice(0, -1);
-            pinInput.value = pin;
+            pinInput.value = pin; 
         }
     }
 

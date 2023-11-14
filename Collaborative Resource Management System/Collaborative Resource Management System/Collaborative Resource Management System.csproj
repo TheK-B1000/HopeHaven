@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Collaborative_Resource_Management_System-aa9d1a21-d8b5-4fa0-bd74-d43d3e0c7980</UserSecretsId>
+    <UserSecretsId>aspnet-Collaborative_Resource_Management_System-a3ce28d9-7179-48f7-9f64-36706c9f0822</UserSecretsId>
     <RootNamespace>Collaborative_Resource_Management_System</RootNamespace>
   </PropertyGroup>
 

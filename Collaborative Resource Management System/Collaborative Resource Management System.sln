@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Collaborative Resource Management System", "Collaborative Resource Management System\Collaborative Resource Management System.csproj", "{CE9E99D6-5D91-4D6C-9141-06F7EF466BC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborative Resource Management System", "Collaborative Resource Management System\Collaborative Resource Management System.csproj", "{B294415D-B2B3-4B5A-BE83-D7207B8CEE9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CE9E99D6-5D91-4D6C-9141-06F7EF466BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE9E99D6-5D91-4D6C-9141-06F7EF466BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE9E99D6-5D91-4D6C-9141-06F7EF466BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE9E99D6-5D91-4D6C-9141-06F7EF466BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B294415D-B2B3-4B5A-BE83-D7207B8CEE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B294415D-B2B3-4B5A-BE83-D7207B8CEE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B294415D-B2B3-4B5A-BE83-D7207B8CEE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B294415D-B2B3-4B5A-BE83-D7207B8CEE9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0B8CEDCD-3BC0-48B4-ABCA-A4DCF51CFD16}
+		SolutionGuid = {21746134-5587-4CB9-A532-B749DAAF5325}
 	EndGlobalSection
 EndGlobal

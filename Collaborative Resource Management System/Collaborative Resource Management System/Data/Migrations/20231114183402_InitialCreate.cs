@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Collaborative_Resource_Management_System.Migrations
+namespace Collaborative_Resource_Management_System.Data.Migrations
 {
-    /// <inheritdoc />
-    public partial class NewDBNoActive : Migration
+    public partial class InitialCreate : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -109,18 +107,32 @@ namespace Collaborative_Resource_Management_System.Migrations
                     EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     RoomNumber = table.Column<int>(type: "int", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
-                    GeneralLedger = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    GeneralLedger = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ItemType = table.Column<int>(type: "int", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PricePerUnit = table.Column<float>(type: "real", nullable: true),
                     QuantityAvailable = table.Column<int>(type: "int", nullable: true),
                     MinimumQuantity = table.Column<int>(type: "int", nullable: true),
-                    AssetTag = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    AssetTag = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InventoryItems", x => x.InventoryItemID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Transactions",
+                columns: table => new
+                {
+                    TransactionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DepartmentID = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transactions", x => x.TransactionID);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,7 +143,7 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
-                    PIN = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    PIN = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DeptID = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -145,7 +157,6 @@ namespace Collaborative_Resource_Management_System.Migrations
                 });
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -165,6 +176,9 @@ namespace Collaborative_Resource_Management_System.Migrations
 
             migrationBuilder.DropTable(
                 name: "InventoryItems");
+
+            migrationBuilder.DropTable(
+                name: "Transactions");
 
             migrationBuilder.DropTable(
                 name: "Users");

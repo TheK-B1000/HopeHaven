@@ -66,7 +66,7 @@ C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management 
 C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\scopedcss\bundle\Collaborative Resource Management System.styles.css
 C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\scopedcss\projectbundle\Collaborative Resource Management System.bundle.scp.css
 C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\obj\Debug\net6.0\Collaborative Resource Management System.csproj.CopyComplete
