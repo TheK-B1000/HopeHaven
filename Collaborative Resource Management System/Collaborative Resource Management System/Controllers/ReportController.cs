@@ -1,14 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Collaborative_Resource_Management_System.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Collaborative_Resource_Management_System.Controllers
 {
     public class ReportController : Controller
     {
-        public IActionResult Confirmation()
+        private readonly AppDbContext _dbContext;
+
+        public ReportController(AppDbContext dbContext)
         {
-            return View();
+            _dbContext = dbContext;
         }
+
         public IActionResult Report()
+        {
+            var checkouts = _dbContext.CheckOuts.ToList();
+            return View(checkouts);
+        }
+        public IActionResult Confirmation()
         {
             return View();
         }
