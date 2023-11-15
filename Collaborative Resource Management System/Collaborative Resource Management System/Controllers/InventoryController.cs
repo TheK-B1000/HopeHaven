@@ -26,6 +26,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
+
         public async Task<IActionResult> Manage()
         {
             var consumables = await context.Consumables.ToListAsync();
@@ -34,6 +35,34 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             return View(allItems);
         }
+
+
+
+        /*public async Task<IActionResult> Manage(string searchTerm, ItemType? itemType)
+        {
+            bool isNumeric = int.TryParse(searchTerm, out int searchNumber);
+
+            var allItemsQuery = context.Consumables.Cast<InventoryItem>()
+                                                   .Concat(context.NonConsumables.Cast<InventoryItem>());
+
+            if (itemType.HasValue)
+            {
+                allItemsQuery = allItemsQuery.Where(item => item.ItemType == itemType.Value);
+            }
+
+           // if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                allItemsQuery = allItemsQuery.Where(item => item.Name.Contains(searchTerm) ||
+                                                            (isNumeric && (
+                                                                item.RoomNumber == searchNumber ||
+                                                                item.InventoryItemID == searchNumber
+                                                            )));
+            }
+
+            var allItems = await allItemsQuery.ToListAsync();
+
+            return View(allItems);
+        }*/
 
         public IActionResult Add()
         {
