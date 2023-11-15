@@ -1,23 +1,40 @@
-﻿@{
+﻿@model IEnumerable<Collaborative_Resource_Management_System.Models.CheckOut>
+@using Collaborative_Resource_Management_System.Models
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Inventory Report";
+    ViewBag.Title = "Check-Out Report";
 }
 
 
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>Staff Name</th>
-                <th>Department</th>
-                <th>Item Name</th>
-                <th>Quantity</th>
-                <th>Check-in Date and Time</th>
+                <th>Staff ID</th>
+                <th>Department ID</th>
+                <th>Item ID</th>
+            <!--<th>Quantity</th> need to add quatity attribute to checkout model-->
                 <th>Check-out Date and Time</th>
+                <!--<th>Check-in Date and Time</th> checkin date and time attribute not needed in checked out report-->
                 <th>Price</th>
             </tr>
         </thead>
+
         <tbody>
+        @foreach (var checkOut in Model)
+        {
+            <tr>
+                <td>@checkOut.UserID</td>
+                <td>@checkOut.DepartmentID</td>
+                <td>@checkOut.ItemID</td>
+                <td>@checkOut.CheckOutDate</td>
+                <td>@checkOut.Price</td>
+            </tr>
+        }
+    </tbody>
+
+        <!--<tbody>
             <tr>
                 <td>John Doe</td>
                 <td>A</td>
@@ -108,7 +125,7 @@
                 <td>2023-10-03 4:00 PM</td>
                 <td>$100.00</td>
             </tr>
-        </tbody>
+    </tbody>-->
     </table>
 
     <button onclick="exportToCSV()">Export to CSV</button>
@@ -129,7 +146,7 @@
             const blobUrl = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = blobUrl;
-            a.download = 'inventory_report.csv';
+            a.download = 'checkout_report.csv';
             a.click();
             URL.revokeObjectURL(blobUrl);
         }

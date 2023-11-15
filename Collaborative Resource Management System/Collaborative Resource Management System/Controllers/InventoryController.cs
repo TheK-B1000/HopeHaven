@@ -13,6 +13,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             _inventoryService = inventoryService;
         }
+        
         public async Task<IActionResult> Manage(string searchString)
         {
             var allItems = await _inventoryService.SearchInventoryAsync(searchString);
