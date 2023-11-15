@@ -10,6 +10,16 @@
             <input type="hidden" name="UserID" value="@Model.UserID" />
 
             <div class="form-group">
+                <label for="Image">Image:</label>
+                <input type="file" id="Image" name="Image" class="form-control-file" accept="image/*" style="display: none;">
+                <div id="drop-area" role="button" aria-label="Drag and drop area for image upload" tabindex="0" style="border: 2px dashed #ccc; padding: 20px; text-align: center;">
+                    <p>Drag and drop an image here.</p>
+                    <div id="preview-container" style="margin-top: 20px;"></div>
+                </div>
+                <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept="image/*" style="margin-top: 10px;">
+            </div>
+
+            <div class="form-group">
                 <label>Name:</label>
                 <input type="text" class="form-control" name="Name" value="@Model.Name" />
             </div>
@@ -50,6 +60,74 @@
             <button type="submit" class="btn btn-primary mt-4">Save</button>
         </form>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var dropArea = document.getElementById('drop-area');
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight(e) {
+                dropArea.classList.add('highlight');
+            }
+
+            function unhighlight(e) {
+                dropArea.classList.remove('highlight');
+            }
+
+            dropArea.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                var dt = e.dataTransfer;
+                var files = dt.files;
+
+                handleFiles(files);
+            }
+
+            function handleFiles(files) {
+                ([...files]).forEach(uploadFile);
+                ([...files]).forEach(previewFile);
+            }
+
+            function uploadFile(file) {
+                var url = '/User/Add';
+                var formData = new FormData();
+
+                formData.append('Image', file);
+
+                fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(() => { })
+                    .catch(() => { });
+            }
+
+            function previewFile(file) {
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onloadend = function () {
+                    let img = document.createElement('img');
+                    img.src = reader.result;
+                    document.getElementById('preview-container').appendChild(img);
+                };
+            }
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

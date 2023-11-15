@@ -1,23 +1,26 @@
 using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
 
 namespace Collaborative_Resource_Management_System.Controllers
 {
     public class InventoryController : Controller
     {
-        private readonly AppDbContext context;
-        //TODO - Put a default user in the config file
-        string loggedInUserName = "Stella Johnson";
-        string generalLedger = "6010";
+        private readonly IInventoryService _inventoryService;
 
-        public InventoryController(AppDbContext dbContext)
+        public InventoryController(IInventoryService inventoryService)
         {
-            context = dbContext;
+            _inventoryService = inventoryService;
         }
+        
+        public async Task<IActionResult> Manage(string searchString)
+        {
+            var allItems = await _inventoryService.SearchInventoryAsync(searchString);
+            ViewBag.SearchString = searchString;
+            return View(allItems);
+        }
+
         public IActionResult CheckIn()
         {
             return View();
@@ -27,131 +30,10 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Manage()
-        {
-            var consumables = await context.Consumables.ToListAsync();
-            var nonConsumables = await context.NonConsumables.ToListAsync();
-            var allItems = consumables.Cast<InventoryItem>().Concat(nonConsumables.Cast<InventoryItem>()).ToList();
-
-            return View(allItems);
-        }
-
-
-
-        /*public async Task<IActionResult> Manage(string searchTerm, ItemType? itemType)
-        {
-            bool isNumeric = int.TryParse(searchTerm, out int searchNumber);
-
-            var allItemsQuery = context.Consumables.Cast<InventoryItem>()
-                                                   .Concat(context.NonConsumables.Cast<InventoryItem>());
-
-            if (itemType.HasValue)
-            {
-                allItemsQuery = allItemsQuery.Where(item => item.ItemType == itemType.Value);
-            }
-
-           // if (!string.IsNullOrWhiteSpace(searchTerm))
-            {
-                allItemsQuery = allItemsQuery.Where(item => item.Name.Contains(searchTerm) ||
-                                                            (isNumeric && (
-                                                                item.RoomNumber == searchNumber ||
-                                                                item.InventoryItemID == searchNumber
-                                                            )));
-            }
-
-            var allItems = await allItemsQuery.ToListAsync();
-
-            return View(allItems);
-        }*/
-
-        public IActionResult Add()
-        {
-            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
-            {
-                Value = c.CategoryID.ToString(),
-                Text = c.CategoryName
-            }).ToList();
-
-            return View();
-        }
-
         [HttpGet]
-        public IActionResult AddCategory()
+        public async Task<IActionResult> LoadItemType(string itemType)
         {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddCategory(Category category)
-        {
-            try
-            {
-                category.CreatedDate = DateTime.UtcNow;
-                category.EditedDate = DateTime.UtcNow;
-                category.CreatedBy = loggedInUserName;
-                category.EditedBy = loggedInUserName;
-
-                context.Categories.Add(category);
-                await context.SaveChangesAsync();
-
-                return RedirectToAction("Manage");
-            }            
-            catch
-            {
-                return View("Error", ModelState);
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddConsumable(Consumable consumable)
-        {
-            try
-            {
-                consumable.CreatedDate = DateTime.UtcNow;
-                consumable.EditedDate = DateTime.UtcNow;
-                consumable.CreatedBy = loggedInUserName;
-                consumable.EditedBy = loggedInUserName;
-                consumable.GeneralLedger = generalLedger;
-
-                context.Consumables.Add(consumable);
-                await context.SaveChangesAsync();
-                return RedirectToAction("Manage");
-            }
-            catch
-            {
-                return View("Error", ModelState);
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
-        {
-            try
-            {
-                nonConsumable.CreatedDate = DateTime.UtcNow;
-                nonConsumable.EditedDate = DateTime.UtcNow;                
-                nonConsumable.CreatedBy = loggedInUserName;
-                nonConsumable.EditedBy = loggedInUserName;
-                nonConsumable.GeneralLedger = generalLedger;
-
-                context.NonConsumables.Add(nonConsumable);
-                await context.SaveChangesAsync();
-                return RedirectToAction("Manage");
-            }
-            catch
-            {
-                return View("Error", ModelState);
-            }
-        }
-
-        [HttpGet]
-        public IActionResult LoadItemType(string itemType)
-        {
-            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
-            {
-                Value = c.CategoryID.ToString(),
-                Text = c.CategoryName
-            }).ToList();
+            ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
 
             if (itemType == "Consumable")
             {
@@ -164,118 +46,15 @@ namespace Collaborative_Resource_Management_System.Controllers
             return NotFound();
         }
 
-
-        [HttpGet]
-        public async Task<IActionResult> Edit(int? id, ItemType type)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            InventoryItem item;
-
-            if (type == ItemType.Consumable)
-            {
-                item = await context.Consumables.FindAsync(id);
-            }
-            else
-            {
-                item = await context.NonConsumables.FindAsync(id);
-            }
-
-            if (item == null)
-            {
-                return NotFound();
-            }
-
-
-            ViewBag.Categories = context.Categories.Select(c => new SelectListItem
-            {
-                Value = c.CategoryID.ToString(),
-                Text = c.CategoryName
-            }).ToList();
-
-            return View("Edit", item);
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(int id, ItemType type)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            InventoryItem item;
-
-            if (type == ItemType.Consumable)
-            {
-                item = await context.Consumables.FindAsync(id);
-            }
-            else
-            {
-                item = await context.NonConsumables.FindAsync(id);
-            }
-
-            if (item == null)
-            {
-                return NotFound();
-            }
-
-            item.Name = Request.Form["Name"];
-            item.Description = Request.Form["Description"];
-            item.RoomNumber = int.Parse(Request.Form["RoomNumber"]);
-            item.CategoryID = int.Parse(Request.Form["CategoryID"]);
-            item.GeneralLedger = generalLedger;
-            item.Comments = Request.Form["Comments"];
-
-            try
-            {
-                if (type == ItemType.Consumable)
-                {
-                    var consumable = item as Consumable;
-                    if (consumable != null)
-                    {
-                        consumable.PricePerUnit = float.Parse(Request.Form["PricePerUnit"]);
-                        consumable.QuantityAvailable = int.Parse(Request.Form["QuantityAvailable"]);
-                        consumable.MinimumQuantity = int.Parse(Request.Form["MinimumQuantity"]);
-                    }
-                }
-                else
-                {
-                    var nonConsumable = item as NonConsumable;
-                    if (nonConsumable != null)
-                    {
-                        nonConsumable.AssetTag = Request.Form["AssetTag"];
-                    }
-                }
-
-                context.Update(item);
-                await context.SaveChangesAsync();
-                return RedirectToAction("Manage");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return View("Error");
-            }
-        }
-
-        private bool ItemExists(int id)
-        {
-            return context.InventoryItems.Any(e => e.InventoryItemID == id);
-        }
         public async Task<IActionResult> ConsumableItems()
         {
-            var consumables = await context.Consumables.ToListAsync();
+            var consumables = await _inventoryService.ConsumableItems();
             return View(consumables);
         }
 
         public async Task<IActionResult> NonConsumableItems()
         {
-            var nonConsumables = await context.NonConsumables.ToListAsync();
+            var nonConsumables = await _inventoryService.NonConsumableItems();
             return View(nonConsumables);
         }
 
@@ -286,7 +65,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
-            var consumable = await context.Consumables.FindAsync(id);
+            var consumable = await _inventoryService.ConsumableDetails(id);
 
             if (consumable == null)
             {
@@ -303,7 +82,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
-            var nonConsumable = await context.NonConsumables.FindAsync(id);
+            var nonConsumable = await _inventoryService.NonConsumableDetails(id);
 
             if (nonConsumable == null)
             {
@@ -311,6 +90,91 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
 
             return View(nonConsumable);
+        }
+
+        public async Task<IActionResult> Add()
+        {
+            ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCategory(Category category)
+        {
+            bool success = await _inventoryService.AddCategoryAsync(category);
+            if (success)
+            {
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddConsumable(Consumable consumable)
+        {
+            bool success = await _inventoryService.AddConsumableAsync(consumable);
+            if (success)
+            {
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
+        {
+            bool success = await _inventoryService.AddNonConsumableAsync(nonConsumable);
+            if (success)
+            {
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public async Task<IActionResult> Edit(int? id, ItemType type)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var item = await _inventoryService.GetItemByIdAsync(id.Value, type);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
+            return View(item);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(InventoryItem item, ItemType type)
+        {
+            bool success = await _inventoryService.EditItemAsync(item, type);
+            if (success)
+            {
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         public IActionResult Confirmation()
@@ -322,6 +186,6 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             return View();
         }
-
     }
 }
+

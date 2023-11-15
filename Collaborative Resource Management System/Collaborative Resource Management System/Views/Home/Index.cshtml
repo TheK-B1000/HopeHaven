@@ -57,8 +57,9 @@
             </div>
         </div>
     </div>
-    <div class="mt-3">Admin: 111111 Editor: 222222 Staff: 333333</div>
+    
 </div>
+
 
 
 <script>
@@ -89,17 +90,19 @@
         pinInput.value = '';
     }
 
+    //Still working on pulling ID from DB. - Corey
+
     function submitPin() {
         if (pin === '111111') {
-            window.location.href = '@Url.Action("AdminIndex", "Admin")';
+            window.location.href = '@Url.Action("AdminIndex", "Admin")?userName=Beny';
             clearPin();
         }
         else if (pin === '222222') {
-            window.location.href = '@Url.Action("EditorIndex", "Editor")';
+            window.location.href = '@Url.Action("EditorIndex", "Editor")?userName=Corey';
             clearPin();
         }
         else if (pin === '333333') {
-            window.location.href = '@Url.Action("StaffIndex", "Staff")';
+            window.location.href = '@Url.Action("StaffIndex", "Staff")?userName=Ben';
             clearPin();
         }
         else {
@@ -107,5 +110,6 @@
             clearPin();
         }
     }
+
 
 </script>
