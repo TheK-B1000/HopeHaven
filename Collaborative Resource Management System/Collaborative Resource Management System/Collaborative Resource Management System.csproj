@@ -19,7 +19,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Migrations\" />
-	  <Folder Include="Views\Report\" />
 	</ItemGroup>
 	
 </Project>
