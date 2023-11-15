@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Collaborative_Resource_Management_System</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Inventory\Cart.cshtml~RF400f1b.TMP" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.11">

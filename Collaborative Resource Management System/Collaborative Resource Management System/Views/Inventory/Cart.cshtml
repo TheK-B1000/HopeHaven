@@ -3,37 +3,73 @@
     ViewBag.Title = "Cart";
 }
 
-
-
-    <table>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Glue Sticks</td>
-                <td>2</td>
-                <td>$4</td>
-            </tr>
-            <tr>
-                <td>Markers</td>
-                <td>1</td>
-                <td>$5</td>
-            </tr>
-            <tr>
-                <td>Pencils</td>
-                <td>3</td>
-                <td>$3</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="total">
-        Total Price: $12
+<div class="container">
+    <h2>Your Cart</h2>
+    <label for="departmentSelect">Department for this transaction:</label>
+    <select id="departmentSelect" class="form-control">
+        <option value="discoveryCenter">Discovery Center</option>
+        <option value="glueStickDepartment">Glue Stick Department</option>
+    </select>
+    <div id="cartItems">
     </div>
+    <button id="checkoutButton" class="btn btn-primary">Checkout</button>
+</div>
 
-    <button class="button" onclick="alert('Order completed!')">Complete Your Order</button>
+<script>
+    
+    window.onload = function () {
+        displayCartItems();
+    };
+
+    function displayCartItems() {
+        try {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsContainer = document.getElementById('cartItems');
+
+            cart.forEach(item => {
+                let itemElement = document.createElement('div');
+                itemElement.innerHTML = `<h3>${item.name}</h3>
+                                             <p>Price: ${item.price}</p>
+                                             <p>Quantity: ${item.quantity}</p>
+                                             <button class="remove-item" data-item-id="${item.id}">Remove</button>`;
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            // Add click event listeners for the Remove buttons
+            let removeButtons = document.querySelectorAll('.remove-item');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    let itemId = button.getAttribute('data-item-id');
+                    removeItemFromCart(itemId);
+                });
+            });
+        } catch (error) {
+            console.error('Error displaying cart items:', error);
+        }
+    }
+
+    function removeItemFromCart(itemId) {
+        try {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let updatedCart = cart.filter(item => item.id !== itemId);
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+            // Find the button element that was clicked
+            let clickedButton = document.querySelector(`[data-item-id="${itemId}"]`);
+
+            // Find the parent element of the button and remove it
+            if (clickedButton) {
+                let itemElementToRemove = clickedButton.parentElement;
+                if (itemElementToRemove) {
+                    itemElementToRemove.remove();
+                }
+            }
+        } catch (error) {
+            console.error('Error removing item from cart:', error);
+        }
+    }
+    document.getElementById("checkoutButton").addEventListener("click", function () {
+        window.location.href = '@Url.Action("Confirmation", "Inventory")';
+    });
+
+</script>
