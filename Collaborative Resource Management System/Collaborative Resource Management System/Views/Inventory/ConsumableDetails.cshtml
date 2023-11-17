@@ -15,7 +15,8 @@
                 <p>Description: @Model.Description</p>
                 <p>Price Per Unit: @Model.PricePerUnit</p>
                 <p>Quantity Available: @Model.QuantityAvailable</p>
-                <button id="addToCart" class="btn btn-primary mr-2">Add to Cart</button>
+            <button id="addToCart" class="btn btn-primary mr-2">Add to Cart</button>
+            <span id="cartQuantity" class="badge badge-pill badge-secondary">0</span>
                 <button id="checkout" class="btn btn-secondary">Checkout</button>
             </div>
         </div>
@@ -40,7 +41,18 @@
             cart.push({ id: itemID, name: itemName, price: price, quantity: 1 });
         }
 
+        updateCartQuantityDisplay();
+
         localStorage.setItem('cart', JSON.stringify(cart));
     }
+
+    function updateCartQuantityDisplay() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+        document.getElementById('cartQuantity').textContent = totalQuantity;
+    }
+
+    document.addEventListener('DOMContentLoaded', updateCartQuantityDisplay);
 </script>
 
