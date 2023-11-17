@@ -10,42 +10,41 @@
         <option value="discoveryCenter">Discovery Center</option>
         <option value="glueStickDepartment">Glue Stick Department</option>
     </select>
-    <div id="cartItems">
-    </div>
+    <table class="table" id="cartTable">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Items will be added here dynamically -->
+        </tbody>
+    </table>
     <button id="checkoutButton" class="btn btn-primary">Checkout</button>
 </div>
 
+
 <script>
-    
     window.onload = function () {
         displayCartItems();
     };
 
     function displayCartItems() {
-        try {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let cartItemsContainer = document.getElementById('cartItems');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartTableBody = document.getElementById('cartTable').querySelector('tbody');
 
-            cart.forEach(item => {
-                let itemElement = document.createElement('div');
-                itemElement.innerHTML = `<h3>${item.name}</h3>
-                                             <p>Price: ${item.price}</p>
-                                             <p>Quantity: ${item.quantity}</p>
-                                             <button class="remove-item" data-item-id="${item.id}">Remove</button>`;
-                cartItemsContainer.appendChild(itemElement);
-            });
-
-            // Add click event listeners for the Remove buttons
-            let removeButtons = document.querySelectorAll('.remove-item');
-            removeButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    let itemId = button.getAttribute('data-item-id');
-                    removeItemFromCart(itemId);
-                });
-            });
-        } catch (error) {
-            console.error('Error displaying cart items:', error);
-        }
+        cart.forEach(item => {
+            let row = cartTableBody.insertRow();
+            row.innerHTML = `<td>${item.name}</td>
+                                 <td>${item.quantity}</td>
+                                 <td>$${item.price}</td>
+                                 <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                                 <td><button class="remove-item btn btn-danger btn-sm" data-item-id="${item.id}">Remove</button></td>`;
+        });
     }
 
     function removeItemFromCart(itemId) {
@@ -54,10 +53,8 @@
             let updatedCart = cart.filter(item => item.id !== itemId);
             localStorage.setItem('cart', JSON.stringify(updatedCart));
 
-            // Find the button element that was clicked
             let clickedButton = document.querySelector(`[data-item-id="${itemId}"]`);
 
-            // Find the parent element of the button and remove it
             if (clickedButton) {
                 let itemElementToRemove = clickedButton.parentElement;
                 if (itemElementToRemove) {
