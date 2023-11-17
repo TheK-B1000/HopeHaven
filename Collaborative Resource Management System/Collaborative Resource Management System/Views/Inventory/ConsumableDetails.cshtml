@@ -16,7 +16,10 @@
                 <p>Price Per Unit: @Model.PricePerUnit</p>
                 <p>Quantity Available: @Model.QuantityAvailable</p>
             <button id="addToCart" class="btn btn-primary mr-2">Add to Cart</button>
-            <span id="cartQuantity" class="badge badge-pill badge-secondary">0</span>
+            <div>
+                <span>Total Items in Cart: </span>
+                <span id="cartQuantity" class="badge badge-pill badge-secondary">0</span>
+            </div>
                 <button id="checkout" class="btn btn-secondary">Checkout</button>
             </div>
         </div>

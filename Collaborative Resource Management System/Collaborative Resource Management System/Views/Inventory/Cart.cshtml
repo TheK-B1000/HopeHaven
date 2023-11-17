@@ -37,6 +37,8 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartTableBody = document.getElementById('cartTable').querySelector('tbody');
 
+        cartTableBody.innerHTML = '';
+
         cart.forEach(item => {
             let row = cartTableBody.insertRow();
             row.innerHTML = `<td>${item.name}</td>
@@ -45,28 +47,28 @@
                                  <td>$${(item.price * item.quantity).toFixed(2)}</td>
                                  <td><button class="remove-item btn btn-danger btn-sm" data-item-id="${item.id}">Remove</button></td>`;
         });
+
+        attachRemoveButtonEventListeners();
+    }
+
+
+    function attachRemoveButtonEventListeners() {
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function () {
+                removeItemFromCart(this.getAttribute('data-item-id'));
+            });
+        });
     }
 
     function removeItemFromCart(itemId) {
-        try {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let updatedCart = cart.filter(item => item.id !== itemId);
-            localStorage.setItem('cart', JSON.stringify(updatedCart));
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let updatedCart = cart.filter(item => item.id !== itemId);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
 
-            let clickedButton = document.querySelector(`[data-item-id="${itemId}"]`);
-
-            if (clickedButton) {
-                let itemElementToRemove = clickedButton.parentElement;
-                if (itemElementToRemove) {
-                    itemElementToRemove.remove();
-                }
-            }
-        } catch (error) {
-            console.error('Error removing item from cart:', error);
-        }
+        displayCartItems(); 
     }
+
     document.getElementById("checkoutButton").addEventListener("click", function () {
         window.location.href = '@Url.Action("Confirmation", "Inventory")';
     });
-
 </script>
