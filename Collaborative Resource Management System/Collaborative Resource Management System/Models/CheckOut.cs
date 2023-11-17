@@ -12,5 +12,10 @@ namespace Collaborative_Resource_Management_System.Models
         public float Price { get; set; }
         public int DepartmentID { get; set; }
         public string Notes { get; set; }
+
+        // Navigation properties
+        public virtual User User { get; set; }
+        public virtual InventoryItem Item { get; set; }
+        public virtual Department Department { get; set; }
     }
 }
