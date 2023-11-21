@@ -24,8 +24,8 @@ namespace Collaborative_Resource_Management_System.Controllers
                                 User = co.User.Name, 
                                 Item = co.Item.Name, 
                                 CheckOutDate = co.CheckOutDate,
-                                Price = co.Price,
-                                Department = co.Department.DeptName 
+                                Price = co.TotalPrice,
+                                Department = co.Department.Name 
                             })
                             .ToList();
             return View(checkouts);
