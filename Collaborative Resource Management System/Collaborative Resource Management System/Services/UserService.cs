@@ -10,6 +10,7 @@ public class UserService : IUserService
 {
     private readonly AppDbContext _context;
     private readonly string _loggedInUserName = "Stella Johnson";
+    private readonly bool _isActive = true;
 
     public UserService(AppDbContext context)
     {
@@ -67,6 +68,7 @@ public class UserService : IUserService
             user.EditedDate = DateTime.UtcNow;
             user.CreatedBy = _loggedInUserName;
             user.EditedBy = _loggedInUserName;
+            user.IsActive = _isActive;
 
             _context.Update(user);
             await _context.SaveChangesAsync();
@@ -86,6 +88,7 @@ public class UserService : IUserService
             department.EditedDate = DateTime.UtcNow;
             department.CreatedBy = _loggedInUserName;
             department.EditedBy = _loggedInUserName;
+            department.IsActive = _isActive;
 
             _context.Departments.Add(department);
             await _context.SaveChangesAsync();
@@ -105,6 +108,7 @@ public class UserService : IUserService
             user.EditedDate = DateTime.UtcNow;
             user.CreatedBy = _loggedInUserName;
             user.EditedBy = _loggedInUserName;
+            user.IsActive = _isActive;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
