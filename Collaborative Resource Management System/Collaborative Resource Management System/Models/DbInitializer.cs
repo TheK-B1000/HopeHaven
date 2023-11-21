@@ -30,6 +30,7 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
+                            IsActive = true
                         }
                     );
                 }
@@ -39,11 +40,12 @@ namespace Collaborative_Resource_Management_System.Models
                     context.Categories.AddRange(
                         new Category
                         {
-                            CategoryName = "Electronics",
+                            Name = "Electronics",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
+                            IsActive = true
                         }
                     );
                 }
@@ -63,7 +65,6 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
                             CategoryID = context.Categories.First().CategoryID, 
-                            GeneralLedger = "GL001",
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
                             PricePerUnit = 1.50F,
@@ -86,7 +87,6 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
                             CategoryID = context.Categories.First().CategoryID, 
-                            GeneralLedger = "GL002",
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
                             AssetTag = "A001"
@@ -101,11 +101,12 @@ namespace Collaborative_Resource_Management_System.Models
                     context.Departments.AddRange(
                         new Department
                         {
-                            DeptName = "Learning Center",
+                            Name = "Learning Center",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
+                            IsActive = true
                         }
                     );
                 }
@@ -123,9 +124,9 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
                             CategoryID = 1,
-                            GeneralLedger = "GL001",
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
+                            IsActive = true
                         }
                     );
                 }
@@ -136,10 +137,10 @@ namespace Collaborative_Resource_Management_System.Models
                         new CheckOut
                         {
                             UserID = 1,
-                            ItemID = 1,
+                            InventoryItemID = 1,
                             CheckOutDate = DateTime.UtcNow,
                             ReturnDate = DateTime.UtcNow.AddDays(10),
-                            Price = 1000,
+                            TotalPrice = 1000,
                             DepartmentID = 1,
                             Notes = "Handle with care, return on time."
                         }
@@ -157,18 +158,6 @@ namespace Collaborative_Resource_Management_System.Models
                         }
                     );
                 }
-
-                if (!context.InventoryIntakes.Any())
-                {
-                    context.InventoryIntakes.AddRange(
-                        new InventoryIntake
-                        {
-                            Quantity = 10,
-                            IntakeDate = DateTime.UtcNow
-                        }
-                    );
-                }
-
                 context.SaveChanges();
             }
         }

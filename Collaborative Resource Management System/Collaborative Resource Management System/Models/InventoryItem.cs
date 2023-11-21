@@ -38,13 +38,12 @@ namespace Collaborative_Resource_Management_System.Models
         [Required]
         public int CategoryID { get; set; }
 
-        public string GeneralLedger { get; set; }
-
         [Required]
         public ItemType ItemType { get; set; }
 
         [StringLength(500)]
-        public string Comments { get; set; }       
+        public string? Comments { get; set; }
+        public bool IsActive { get; set; } = true;
 
 
     }

@@ -13,7 +13,7 @@ namespace Collaborative_Resource_Management_System.Services
     {
         private readonly AppDbContext _context;
         private readonly string _loggedInUserName = "Stella Johnson"; 
-        private readonly string _generalLedger = "6010"; 
+        private readonly bool _isActive = true; 
 
         public InventoryService(AppDbContext context)
         {
@@ -65,6 +65,7 @@ namespace Collaborative_Resource_Management_System.Services
                 category.EditedDate = DateTime.UtcNow;
                 category.CreatedBy = _loggedInUserName;
                 category.EditedBy = _loggedInUserName;
+                category.IsActive = _isActive;
 
                 _context.Categories.Add(category);
                 await _context.SaveChangesAsync();
@@ -84,7 +85,7 @@ namespace Collaborative_Resource_Management_System.Services
                 consumable.EditedDate = DateTime.UtcNow;
                 consumable.CreatedBy = _loggedInUserName;
                 consumable.EditedBy = _loggedInUserName;
-                consumable.GeneralLedger = _generalLedger;
+                consumable.IsActive = _isActive;
 
                 _context.Consumables.Add(consumable);
                 await _context.SaveChangesAsync();
@@ -104,7 +105,7 @@ namespace Collaborative_Resource_Management_System.Services
                 nonConsumable.EditedDate = DateTime.UtcNow;
                 nonConsumable.CreatedBy = _loggedInUserName;
                 nonConsumable.EditedBy = _loggedInUserName;
-                nonConsumable.GeneralLedger = _generalLedger;
+                nonConsumable.IsActive = _isActive;
 
                 _context.NonConsumables.Add(nonConsumable);
                 await _context.SaveChangesAsync();
@@ -151,7 +152,7 @@ namespace Collaborative_Resource_Management_System.Services
                 updatedItem.EditedDate = DateTime.UtcNow;
                 updatedItem.CreatedBy = _loggedInUserName;
                 updatedItem.EditedBy = _loggedInUserName;
-                updatedItem.GeneralLedger = _generalLedger;
+                updatedItem.IsActive = _isActive;
 
                 if (type == ItemType.Consumable)
                 {
