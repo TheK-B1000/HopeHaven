@@ -24,7 +24,7 @@ namespace Collaborative_Resource_Management_System.Models
 
         [Required]
         [DataType(DataType.Password)]
-[StringLength(100)]
+        [StringLength(100)]
         public string Password { get; set; }
         public int DeptID { get; set; }
 
@@ -34,7 +34,6 @@ namespace Collaborative_Resource_Management_System.Models
         public DateTime CreatedDate { get; set; }
         public DateTime? EditedDate { get; set; }
         public bool IsActive { get; set; } = true;
-
 
     }
 }

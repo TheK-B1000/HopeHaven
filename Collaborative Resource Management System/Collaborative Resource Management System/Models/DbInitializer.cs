@@ -49,7 +49,22 @@ namespace Collaborative_Resource_Management_System.Models
                         }
                     );
                 }
-              
+
+                if (!context.Departments.Any())
+                {
+                    context.Departments.AddRange(
+                        new Department
+                        {
+                            Name = "Learning Center",
+                            CreatedBy = "Stella",
+                            EditedBy = "Kim",
+                            CreatedDate = DateTime.UtcNow,
+                            EditedDate = DateTime.UtcNow,
+                            IsActive = true
+                        }
+                    );
+                }
+
                 context.SaveChanges(); 
               
                 if (!context.InventoryItems.OfType<Consumable>().Any())
@@ -96,21 +111,6 @@ namespace Collaborative_Resource_Management_System.Models
 
                 context.SaveChanges();
 
-                if (!context.Departments.Any())
-                {
-                    context.Departments.AddRange(
-                        new Department
-                        {
-                            Name = "Learning Center",
-                            CreatedBy = "Stella",
-                            EditedBy = "Kim",
-                            CreatedDate = DateTime.UtcNow,
-                            EditedDate = DateTime.UtcNow,
-                            IsActive = true
-                        }
-                    );
-                }
-
                 if (!context.InventoryItems.Any())
                 {
                     context.InventoryItems.AddRange(
@@ -141,7 +141,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CheckOutDate = DateTime.UtcNow,
                             ReturnDate = DateTime.UtcNow.AddDays(10),
                             TotalPrice = 1000,
-                            DepartmentID = 1,
+                            DepartmentID = context.Departments.First().DepartmentID,
                             Notes = "Handle with care, return on time."
                         }
                     );

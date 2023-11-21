@@ -56,7 +56,7 @@ public class UserService : IUserService
             .Select(d => new SelectListItem
             {
                 Value = d.DepartmentID.ToString(),
-                Text = d.DeptName
+                Text = d.Name
             }).ToListAsync();
     }
 

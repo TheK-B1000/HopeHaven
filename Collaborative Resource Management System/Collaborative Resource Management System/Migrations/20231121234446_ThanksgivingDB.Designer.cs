@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Collaborative_Resource_Management_System.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231105154450_lastUpdate")]
-    partial class lastUpdate
+    [Migration("20231121234446_ThanksgivingDB")]
+    partial class ThanksgivingDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,10 +33,6 @@ namespace Collaborative_Resource_Management_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
 
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -49,6 +45,13 @@ namespace Collaborative_Resource_Management_System.Migrations
 
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryID");
 
@@ -92,23 +95,28 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.Property<int>("DepartmentID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ItemID")
+                    b.Property<int>("InventoryItemID")
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("ReturnDate")
+                    b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<float>("TotalPrice")
+                        .HasColumnType("real");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("CheckoutID");
+
+                    b.HasIndex("DepartmentID");
+
+                    b.HasIndex("InventoryItemID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("CheckOuts");
                 });
@@ -128,44 +136,22 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DeptName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EditedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("DepartmentID");
 
                     b.ToTable("Departments");
-                });
-
-            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.InventoryIntake", b =>
-                {
-                    b.Property<int>("InventoryIntakeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InventoryIntakeID"));
-
-                    b.Property<DateTime>("IntakeDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("InventoryItemID")
-                        .HasColumnType("int");
-
-                    b.Property<float>("PurchasePrice")
-                        .HasColumnType("real");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("InventoryIntakeID");
-
-                    b.ToTable("InventoryIntakes");
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.InventoryItem", b =>
@@ -180,7 +166,6 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Comments")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -208,9 +193,8 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("GeneralLedger")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ItemType")
                         .HasColumnType("int");
@@ -230,6 +214,33 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("InventoryItem");
 
                     b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Report", b =>
+                {
+                    b.Property<int>("ReportID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReportID"));
+
+                    b.Property<DateTime>("ReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReportDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReportName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReportID");
+
+                    b.ToTable("Reports");
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Transaction", b =>
@@ -274,6 +285,9 @@ namespace Collaborative_Resource_Management_System.Migrations
 
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -323,6 +337,33 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("NonConsumable");
+                });
+
+            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.CheckOut", b =>
+                {
+                    b.HasOne("Collaborative_Resource_Management_System.Models.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Collaborative_Resource_Management_System.Models.InventoryItem", "Item")
+                        .WithMany()
+                        .HasForeignKey("InventoryItemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Collaborative_Resource_Management_System.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Item");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
