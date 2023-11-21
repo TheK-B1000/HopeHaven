@@ -135,7 +135,7 @@ namespace Collaborative_Resource_Management_System.Services
                 .Select(c => new SelectListItem
                 {
                     Value = c.CategoryID.ToString(),
-                    Text = c.CategoryName
+                    Text = c.Name
                 }).ToListAsync();
         }
 

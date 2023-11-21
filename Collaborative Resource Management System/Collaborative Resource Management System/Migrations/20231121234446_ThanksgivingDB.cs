@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Collaborative_Resource_Management_System.Migrations
 {
     /// <inheritdoc />
-    public partial class NewDBNoActive : Migration
+    public partial class ThanksgivingDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,11 +17,12 @@ namespace Collaborative_Resource_Management_System.Migrations
                 {
                     CategoryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,55 +45,21 @@ namespace Collaborative_Resource_Management_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CheckOuts",
-                columns: table => new
-                {
-                    CheckoutID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    ItemID = table.Column<int>(type: "int", nullable: false),
-                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Price = table.Column<float>(type: "real", nullable: false),
-                    DepartmentID = table.Column<int>(type: "int", nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CheckOuts", x => x.CheckoutID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
                 {
                     DepartmentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DeptName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Departments", x => x.DepartmentID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "InventoryIntakes",
-                columns: table => new
-                {
-                    InventoryIntakeID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    InventoryItemID = table.Column<int>(type: "int", nullable: false),
-                    IntakeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    PurchasePrice = table.Column<float>(type: "real", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_InventoryIntakes", x => x.InventoryIntakeID);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,18 +76,48 @@ namespace Collaborative_Resource_Management_System.Migrations
                     EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     RoomNumber = table.Column<int>(type: "int", nullable: false),
                     CategoryID = table.Column<int>(type: "int", nullable: false),
-                    GeneralLedger = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ItemType = table.Column<int>(type: "int", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Comments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PricePerUnit = table.Column<float>(type: "real", nullable: true),
                     QuantityAvailable = table.Column<int>(type: "int", nullable: true),
                     MinimumQuantity = table.Column<int>(type: "int", nullable: true),
-                    AssetTag = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    AssetTag = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InventoryItems", x => x.InventoryItemID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reports",
+                columns: table => new
+                {
+                    ReportID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReportName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reports", x => x.ReportID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Transactions",
+                columns: table => new
+                {
+                    TransactionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DepartmentID = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transactions", x => x.TransactionID);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,18 +128,71 @@ namespace Collaborative_Resource_Management_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
-                    PIN = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    PIN = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DeptID = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EditedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    EditedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "CheckOuts",
+                columns: table => new
+                {
+                    CheckoutID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    InventoryItemID = table.Column<int>(type: "int", nullable: false),
+                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TotalPrice = table.Column<float>(type: "real", nullable: false),
+                    DepartmentID = table.Column<int>(type: "int", nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CheckOuts", x => x.CheckoutID);
+                    table.ForeignKey(
+                        name: "FK_CheckOuts_Departments_DepartmentID",
+                        column: x => x.DepartmentID,
+                        principalTable: "Departments",
+                        principalColumn: "DepartmentID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CheckOuts_InventoryItems_InventoryItemID",
+                        column: x => x.InventoryItemID,
+                        principalTable: "InventoryItems",
+                        principalColumn: "InventoryItemID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CheckOuts_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CheckOuts_DepartmentID",
+                table: "CheckOuts",
+                column: "DepartmentID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CheckOuts_InventoryItemID",
+                table: "CheckOuts",
+                column: "InventoryItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CheckOuts_UserID",
+                table: "CheckOuts",
+                column: "UserID");
         }
 
         /// <inheritdoc />
@@ -158,10 +208,13 @@ namespace Collaborative_Resource_Management_System.Migrations
                 name: "CheckOuts");
 
             migrationBuilder.DropTable(
-                name: "Departments");
+                name: "Reports");
 
             migrationBuilder.DropTable(
-                name: "InventoryIntakes");
+                name: "Transactions");
+
+            migrationBuilder.DropTable(
+                name: "Departments");
 
             migrationBuilder.DropTable(
                 name: "InventoryItems");
