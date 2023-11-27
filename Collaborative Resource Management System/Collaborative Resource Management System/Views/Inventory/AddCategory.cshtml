@@ -8,9 +8,9 @@
 <div class="container">
     <form asp-action="/Inventory/AddCategory" method="POST">
         <div class="form-group">
-            <label asp-for="CategoryName">Category Name</label>
-            <input type="text" class="form-control" id="CategoryName" name="CategoryName">
-            <span asp-validation-for="CategoryName" class="text-danger"></span>
+            <label asp-for="Name">Category Name</label>
+            <input type="text" class="form-control" id="Name" name="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
