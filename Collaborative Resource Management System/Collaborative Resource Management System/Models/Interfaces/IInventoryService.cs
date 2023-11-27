@@ -16,4 +16,5 @@ public interface IInventoryService
     Task<List<NonConsumable>> NonConsumableItems();
     Task<Consumable> ConsumableDetails(int? id);
     Task<NonConsumable> NonConsumableDetails(int? id);
+    Task<bool> SoftDeleteItemAsync(int id, ItemType type);
 }

@@ -11,4 +11,5 @@ public interface IUserService
     Task<bool> EditUserAsync(User user);
     Task<bool> AddDepartmentAsync(Department department);
     Task<bool> AddUserAsync(User user);
+    Task<bool> SoftDeleteUserAsync(int id);
 }

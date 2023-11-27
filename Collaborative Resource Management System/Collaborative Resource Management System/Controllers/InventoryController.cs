@@ -177,6 +177,19 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
         }
 
+        public async Task<IActionResult> SoftDelete(int id, ItemType type)
+        {
+            var success = await _inventoryService.SoftDeleteItemAsync(id, type);
+            if (success)
+            {
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
         public IActionResult Confirmation()
         {
             return View();
