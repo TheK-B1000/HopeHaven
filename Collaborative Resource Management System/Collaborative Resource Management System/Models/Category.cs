@@ -8,6 +8,6 @@
         public string? EditedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? EditedDate { get; set; }
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
     }
 }
