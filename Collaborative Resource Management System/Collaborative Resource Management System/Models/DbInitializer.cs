@@ -84,7 +84,8 @@ namespace Collaborative_Resource_Management_System.Models
                             Comments = "Glue sticks for everyone",
                             PricePerUnit = 1.50F,
                             QuantityAvailable = 100,
-                            MinimumQuantity = 10
+                            MinimumQuantity = 10,
+                            IsActive = true
                         }
                     );
                 }
@@ -104,7 +105,8 @@ namespace Collaborative_Resource_Management_System.Models
                             CategoryID = context.Categories.First().CategoryID, 
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
-                            AssetTag = "A001"
+                            AssetTag = "A001",
+                            IsActive = true
                         }
                     );
                 }
