@@ -12,4 +12,5 @@ public interface IUserService
     Task<bool> AddDepartmentAsync(Department department);
     Task<bool> AddUserAsync(User user);
     Task<bool> SoftDeleteUserAsync(int id);
+    Task<bool> UpdateUserActiveStatusAsync(int userId, bool isActive);
 }
