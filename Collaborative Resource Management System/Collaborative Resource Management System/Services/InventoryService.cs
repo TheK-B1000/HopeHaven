@@ -85,7 +85,6 @@ namespace Collaborative_Resource_Management_System.Services
                 consumable.EditedDate = DateTime.UtcNow;
                 consumable.CreatedBy = _loggedInUserName;
                 consumable.EditedBy = _loggedInUserName;
-                consumable.GeneralLedger = _generalLedger;
 
                 _context.Consumables.Add(consumable);
                 await _context.SaveChangesAsync();
@@ -105,7 +104,6 @@ namespace Collaborative_Resource_Management_System.Services
                 nonConsumable.EditedDate = DateTime.UtcNow;
                 nonConsumable.CreatedBy = _loggedInUserName;
                 nonConsumable.EditedBy = _loggedInUserName;
-                nonConsumable.GeneralLedger = _generalLedger;
 
                 _context.NonConsumables.Add(nonConsumable);
                 await _context.SaveChangesAsync();
@@ -152,7 +150,6 @@ namespace Collaborative_Resource_Management_System.Services
                 updatedItem.EditedDate = DateTime.UtcNow;
                 updatedItem.CreatedBy = _loggedInUserName;
                 updatedItem.EditedBy = _loggedInUserName;
-                updatedItem.GeneralLedger = _generalLedger;
 
                 if (type == ItemType.Consumable)
                 {

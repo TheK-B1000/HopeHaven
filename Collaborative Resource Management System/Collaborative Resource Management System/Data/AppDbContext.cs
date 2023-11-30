@@ -18,7 +18,6 @@ namespace Collaborative_Resource_Management_System.Data
         public DbSet<Department> Departments { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CheckIn> CheckIns { get; set; }
-        public DbSet<InventoryIntake> InventoryIntakes { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

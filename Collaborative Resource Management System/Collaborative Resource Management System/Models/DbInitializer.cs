@@ -63,8 +63,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID, 
-                            GeneralLedger = "GL001",
+                            CategoryID = context.Categories.First().CategoryID,
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
                             PricePerUnit = 1.50F,
@@ -87,7 +86,7 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
                             CategoryID = context.Categories.First().CategoryID, 
-                            GeneralLedger = "GL002",
+                           
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
                             AssetTag = "A001"
@@ -124,7 +123,7 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
                             CategoryID = 1,
-                            GeneralLedger = "GL001",
+                            
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
                         }
@@ -159,16 +158,7 @@ namespace Collaborative_Resource_Management_System.Models
                     );
                 }
 
-                if (!context.InventoryIntakes.Any())
-                {
-                    context.InventoryIntakes.AddRange(
-                        new InventoryIntake
-                        {
-                            Quantity = 10,
-                            IntakeDate = DateTime.UtcNow
-                        }
-                    );
-                }
+               
 
                 context.SaveChanges();
             }
