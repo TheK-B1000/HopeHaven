@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Collaborative_Resource_Management_System.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231121234446_ThanksgivingDB")]
-    partial class ThanksgivingDB
+    [Migration("20231130165049_DecemberDB")]
+    partial class DecemberDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -192,6 +192,11 @@ namespace Collaborative_Resource_Management_System.Migrations
 
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");

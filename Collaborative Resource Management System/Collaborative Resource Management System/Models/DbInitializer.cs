@@ -72,6 +72,7 @@ namespace Collaborative_Resource_Management_System.Models
                     context.InventoryItems.AddRange(
                         new Consumable
                         {
+                            Image = "GlueSticks.jpg",
                             Name = "Glue Sticks",
                             Description = "We love glue sticks",
                             CreatedBy = "Stella",
@@ -95,6 +96,7 @@ namespace Collaborative_Resource_Management_System.Models
                     context.InventoryItems.AddRange(
                         new NonConsumable
                         {
+                            Image = "Dell.jpg",
                             Name = "Laptop",
                             Description = "Dell Laptop",
                             CreatedBy = "Stella",
@@ -112,26 +114,6 @@ namespace Collaborative_Resource_Management_System.Models
                 }
 
                 context.SaveChanges();
-
-                if (!context.InventoryItems.Any())
-                {
-                    context.InventoryItems.AddRange(
-                        new InventoryItem
-                        {
-                            Name = "Glue Sticks",
-                            Description = "We love glue sticks at Hope Haven",
-                            CreatedBy = "Stella",
-                            EditedBy = "Kim",
-                            CreatedDate = DateTime.UtcNow,
-                            EditedDate = DateTime.UtcNow,
-                            RoomNumber = 1,
-                            CategoryID = 1,
-                            ItemType = ItemType.Consumable,
-                            Comments = "Glue sticks for everyone",
-                            IsActive = true
-                        }
-                    );
-                }
 
                 if (!context.CheckOuts.Any())
                 {

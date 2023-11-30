@@ -190,6 +190,11 @@ namespace Collaborative_Resource_Management_System.Migrations
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
