@@ -14,7 +14,7 @@ namespace Collaborative_Resource_Management_System.Models
         public int InventoryItemID { get; set; }
 
         [StringLength(500)]
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         public string DisplayImageUrl
         {
