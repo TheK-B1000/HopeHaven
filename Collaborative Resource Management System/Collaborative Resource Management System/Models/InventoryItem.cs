@@ -13,6 +13,20 @@ namespace Collaborative_Resource_Management_System.Models
     {
         public int InventoryItemID { get; set; }
 
+        [StringLength(500)]
+        public string Image { get; set; }
+
+        public string DisplayImageUrl
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Image))
+                    return "/img/NotFound.jpg"; 
+                else
+                    return Image;
+            }
+        }
+
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
