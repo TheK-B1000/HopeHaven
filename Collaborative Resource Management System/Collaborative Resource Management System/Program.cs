@@ -3,6 +3,7 @@ using Collaborative_Resource_Management_System.Services;
 using Collaborative_Resource_Management_System.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
