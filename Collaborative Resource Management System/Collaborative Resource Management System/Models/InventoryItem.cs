@@ -13,6 +13,20 @@ namespace Collaborative_Resource_Management_System.Models
     {
         public int InventoryItemID { get; set; }
 
+        [StringLength(500)]
+        public string? Image { get; set; }
+
+        public string DisplayImageUrl
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Image))
+                    return "/img/NotFound.jpg";
+                else
+                    return Image;
+            }
+        }
+
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
@@ -32,24 +46,23 @@ namespace Collaborative_Resource_Management_System.Models
 
         public DateTime? EditedDate { get; set; }
 
-        [Range(1, 500)] 
+        [Range(1, 500)]
         public int RoomNumber { get; set; }
 
         [Required]
         public int CategoryID { get; set; }
 
-        public string GeneralLedger { get; set; }
-
         [Required]
         public ItemType ItemType { get; set; }
 
         [StringLength(500)]
-        public string Comments { get; set; }       
+        public string? Comments { get; set; }
+        public bool IsActive { get; set; }
 
 
     }
     public class Consumable : InventoryItem
-    { 
+    {
         public float PricePerUnit { get; set; }
 
         public int QuantityAvailable { get; set; }

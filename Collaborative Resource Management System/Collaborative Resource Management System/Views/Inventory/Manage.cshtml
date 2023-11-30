@@ -46,7 +46,7 @@
                     @if (item.ItemType == ItemType.Consumable || item.ItemType == ItemType.NonConsumable)
                     {
                         <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemID, type = item.ItemType })" class="btn btn-secondary btn-sm">Edit</a>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="alert('This delete action is not enabled.');">Delete</button>
+                        <a href="@Url.Action("SoftDelete", "Inventory", new { id = item.InventoryItemID, type = item.ItemType })" class="btn btn-danger btn-sm">Delete</a>
                     }
                 </td>
             </tr>

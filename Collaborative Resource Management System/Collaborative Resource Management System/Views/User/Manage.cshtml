@@ -36,7 +36,7 @@
                 <td>@user.Type</td>
                 <td>
                     <a href="@Url.Action("Edit", "User", new { id = user.UserID })" class="btn btn-secondary btn-sm">Edit</a>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="alert('This delete action is not enabled.');">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = user.UserID })'">Delete</button>
                 </td>
             </tr>
         }
@@ -47,4 +47,3 @@
     <a href="@Url.Action("adminIndex", "Admin")" class="button-link">Admin Home</a>
     <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
 </div>
-

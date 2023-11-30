@@ -27,9 +27,9 @@
             <div class="form-group">
                 <label>Type:</label>
                 <select class="form-control" name="Type">
-                    <option value="0">Admin</option>
-                    <option value="1">Editor</option>
-                    <option value="2">Staff</option>
+                    <option value="0" @((int)Model.Type == 0 ? "selected" : "")>Admin</option>
+                    <option value="1" @((int)Model.Type == 1 ? "selected" : "")>Editor</option>
+                    <option value="2" @((int)Model.Type == 2 ? "selected" : "")>Staff</option>
                 </select>
             </div>
 
@@ -50,14 +50,15 @@
                     {
                         foreach (var department in ViewBag.Departments)
                         {
-                            //<option value="@department.Value" @(Model.DeptID == int.Parse(department.Value) ? "selected" : "")>@department.Text</option>
+                           <!-- <option value="@department.Value" @(Model.DeptID == int.Parse(department.Value) ? "selected" : "")>@department.Text</option> -->
                         }
                     }
                 </select>
                 <span class="text-danger">@Html.ValidationMessageFor(model => model.DeptID)</span>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-4">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
         </form>
     </div>
     <script>
@@ -123,6 +124,7 @@
                 reader.onloadend = function () {
                     let img = document.createElement('img');
                     img.src = reader.result;
+                    img.style.maxWidth = '200px'; 
                     document.getElementById('preview-container').appendChild(img);
                 };
             }
