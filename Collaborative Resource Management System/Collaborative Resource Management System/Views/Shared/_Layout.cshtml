@@ -1,58 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/BootStyle.css" />
-   
+
     <style>
         html, body {
             height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
-        .headerC{
-            color: rgb(23,75,124)
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .head{
+        .headerC {
+            color: rgb(23, 75, 124)
+        }
+
+        .head {
             color: white;
         }
 
         .footer {
-            background-color: rgb(23,75,124);
+            background-color: rgb(23, 75, 124);
             padding: 10px 0;
-          
+            margin-top: auto; 
         }
 
-        .navbar{
-            background-color: rgb(23,75,124);
+        .navbar {
+            background-color: rgb(23, 75, 124);
         }
     </style>
 </head>
+<body>
+    <div class="wrapper">
 
-<body>    
-    <div>
-        <nav class="navbar">
-            <img src="@Url.Content("~/img/HopeHaven_CMYK Logo.jpg")" height="65" width="125"><h1 class="head">Collaborative Resource Management System</h1><h1> <a class="button btn-info btn-lg" href="@Url.Action("Index", "Home")">Logout</a> </h1>
-        </nav>
-    </div>
+        <header>
+            <div>
+                <nav class="navbar">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="@Url.Content("~/img/HopeHaven_CMYK Logo.jpg")" height="65" width="125">
+                    </a>
+                    <h1 class="head">Collaborative Resource Management System</h1>
+                    <h1>
+                        <a class="button btn-info btn-lg" href="@Url.Action("Index", "Home")">Logout</a>
+                    </h1>
+                </nav>
+            </div>
+        </header>
 
-    <div>
-
-        <div>
-            <div class="text-center">
-                <h1 class="headerC">@ViewBag.Title</h1>
-                
-                @RenderBody()
-                </div>
+        <div class="text-center">
+            <h1 class="headerC">@ViewBag.Title</h1>
+            @RenderBody()
         </div>
 
-    </div>
-        <div class="footer fixed-bottom text-center">
+        <div class="footer text-center">
             <p class="head">&copy; 2023 HOPE HAVEN CRMS. All rights reserved.</p>
         </div>
-    
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

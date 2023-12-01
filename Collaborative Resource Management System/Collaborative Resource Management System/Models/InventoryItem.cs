@@ -46,7 +46,7 @@ namespace Collaborative_Resource_Management_System.Models
 
         public DateTime? EditedDate { get; set; }
 
-        [Range(1, 500)] 
+        [Range(1, 500)]
         public int RoomNumber { get; set; }
 
         [Required]
@@ -62,7 +62,7 @@ namespace Collaborative_Resource_Management_System.Models
 
     }
     public class Consumable : InventoryItem
-    { 
+    {
         public float PricePerUnit { get; set; }
 
         public int QuantityAvailable { get; set; }

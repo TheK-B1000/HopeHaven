@@ -1,3 +1,4 @@
+using Collaborative_Resource_Management_System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -65,8 +66,8 @@ namespace Collaborative_Resource_Management_System.Models
                     );
                 }
 
-                context.SaveChanges(); 
-              
+                context.SaveChanges();
+
                 if (!context.InventoryItems.OfType<Consumable>().Any())
                 {
                     context.InventoryItems.AddRange(
@@ -80,7 +81,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID, 
+                            CategoryID = context.Categories.First().CategoryID,
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
                             PricePerUnit = 1.50F,
@@ -104,7 +105,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID, 
+                            CategoryID = context.Categories.First().CategoryID,
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
                             AssetTag = "A001",
