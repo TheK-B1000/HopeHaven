@@ -21,7 +21,7 @@ namespace Collaborative_Resource_Management_System.Models
             get
             {
                 if (string.IsNullOrWhiteSpace(Image))
-                    return "/img/NotFound.jpg";
+                    return "/img/NotFound.jpg"; 
                 else
                     return Image;
             }

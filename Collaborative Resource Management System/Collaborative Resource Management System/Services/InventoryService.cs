@@ -14,7 +14,8 @@ namespace Collaborative_Resource_Management_System.Services
     {
         private readonly AppDbContext _context;
         private readonly string _loggedInUserName = "Stella Johnson"; 
-        private readonly string _generalLedger = "6010"; 
+        private readonly bool _isActive = true;
+        private readonly bool _isDeleted = false;
 
         public InventoryService(AppDbContext context)
         {
@@ -44,11 +45,11 @@ namespace Collaborative_Resource_Management_System.Services
         public async Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString)
         {
             var consumablesList = await _context.Consumables
-                .Where(c => string.IsNullOrEmpty(searchString) || EF.Functions.Like(c.Name, $"%{searchString}%"))
+                .Where(c => c.IsActive && (string.IsNullOrEmpty(searchString) || EF.Functions.Like(c.Name, $"%{searchString}%")))
                 .ToListAsync();
 
             var nonConsumablesList = await _context.NonConsumables
-                .Where(nc => string.IsNullOrEmpty(searchString) || EF.Functions.Like(nc.Name, $"%{searchString}%"))
+                .Where(nc => nc.IsActive && (string.IsNullOrEmpty(searchString) || EF.Functions.Like(nc.Name, $"%{searchString}%")))
                 .ToListAsync();
 
             var allItems = consumablesList.Cast<InventoryItem>()
@@ -56,7 +57,6 @@ namespace Collaborative_Resource_Management_System.Services
 
             return allItems;
         }
-
 
         public async Task<bool> AddCategoryAsync(Category category)
         {
@@ -66,6 +66,7 @@ namespace Collaborative_Resource_Management_System.Services
                 category.EditedDate = DateTime.UtcNow;
                 category.CreatedBy = _loggedInUserName;
                 category.EditedBy = _loggedInUserName;
+                category.IsActive = _isActive;
 
                 _context.Categories.Add(category);
                 await _context.SaveChangesAsync();
@@ -85,6 +86,7 @@ namespace Collaborative_Resource_Management_System.Services
                 consumable.EditedDate = DateTime.UtcNow;
                 consumable.CreatedBy = _loggedInUserName;
                 consumable.EditedBy = _loggedInUserName;
+                consumable.IsActive = _isActive;
 
                 _context.Consumables.Add(consumable);
                 await _context.SaveChangesAsync();
@@ -104,6 +106,7 @@ namespace Collaborative_Resource_Management_System.Services
                 nonConsumable.EditedDate = DateTime.UtcNow;
                 nonConsumable.CreatedBy = _loggedInUserName;
                 nonConsumable.EditedBy = _loggedInUserName;
+                nonConsumable.IsActive = _isActive;
 
                 _context.NonConsumables.Add(nonConsumable);
                 await _context.SaveChangesAsync();
@@ -133,7 +136,7 @@ namespace Collaborative_Resource_Management_System.Services
                 .Select(c => new SelectListItem
                 {
                     Value = c.CategoryID.ToString(),
-                    Text = c.CategoryName
+                    Text = c.Name
                 }).ToListAsync();
         }
 
@@ -150,6 +153,7 @@ namespace Collaborative_Resource_Management_System.Services
                 updatedItem.EditedDate = DateTime.UtcNow;
                 updatedItem.CreatedBy = _loggedInUserName;
                 updatedItem.EditedBy = _loggedInUserName;
+                updatedItem.IsActive = _isActive;
 
                 if (type == ItemType.Consumable)
                 {
@@ -178,6 +182,41 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
         }
+        public async Task<bool> SoftDeleteItemAsync(int id, ItemType type)
+        {
+            try
+            {
+                InventoryItem item;
+                if (type == ItemType.Consumable)
+                {
+                    item = await _context.Consumables.FindAsync(id);
+                }
+                else if (type == ItemType.NonConsumable)
+                {
+                    item = await _context.NonConsumables.FindAsync(id);
+                }
+                else
+                {
+                    return false; 
+                }
 
+                if (item == null)
+                {
+                    return false;
+                }
+
+                item.IsActive = _isDeleted;
+                item.EditedDate = DateTime.UtcNow;
+                item.EditedBy = _loggedInUserName;
+
+                _context.Update(item);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

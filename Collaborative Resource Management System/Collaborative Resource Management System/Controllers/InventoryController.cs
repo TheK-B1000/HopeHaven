@@ -13,6 +13,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         {
             _inventoryService = inventoryService;
         }
+        
         public async Task<IActionResult> Manage(string searchString)
         {
             var allItems = await _inventoryService.SearchInventoryAsync(searchString);
@@ -166,6 +167,19 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Edit(InventoryItem item, ItemType type)
         {
             bool success = await _inventoryService.EditItemAsync(item, type);
+            if (success)
+            {
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public async Task<IActionResult> SoftDelete(int id, ItemType type)
+        {
+            var success = await _inventoryService.SoftDeleteItemAsync(id, type);
             if (success)
             {
                 return RedirectToAction("Manage");

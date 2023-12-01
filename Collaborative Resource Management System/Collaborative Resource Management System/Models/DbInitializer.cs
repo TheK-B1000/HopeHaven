@@ -31,6 +31,7 @@ namespace Collaborative_Resource_Management_System.Models
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
+                            IsActive = true
                         }
                     );
                 }
@@ -40,15 +41,31 @@ namespace Collaborative_Resource_Management_System.Models
                     context.Categories.AddRange(
                         new Category
                         {
-                            CategoryName = "Electronics",
+                            Name = "Electronics",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
+                            IsActive = true
                         }
                     );
                 }
-              
+
+                if (!context.Departments.Any())
+                {
+                    context.Departments.AddRange(
+                        new Department
+                        {
+                            Name = "Learning Center",
+                            CreatedBy = "Stella",
+                            EditedBy = "Kim",
+                            CreatedDate = DateTime.UtcNow,
+                            EditedDate = DateTime.UtcNow,
+                            IsActive = true
+                        }
+                    );
+                }
+
                 context.SaveChanges(); 
               
                 if (!context.InventoryItems.OfType<Consumable>().Any())
@@ -56,6 +73,7 @@ namespace Collaborative_Resource_Management_System.Models
                     context.InventoryItems.AddRange(
                         new Consumable
                         {
+                            Image = "GlueSticks.jpg",
                             Name = "Glue Sticks",
                             Description = "We love glue sticks",
                             CreatedBy = "Stella",
@@ -63,12 +81,16 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID,
+                            CategoryID = context.Categories.First().CategoryID, 
+                            GeneralLedger = "GL001",
+                            GeneralLedger = "GL001",
+                            GeneralLedger = "GL001",
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
                             PricePerUnit = 1.50F,
                             QuantityAvailable = 100,
-                            MinimumQuantity = 10
+                            MinimumQuantity = 10,
+                            IsActive = true
                         }
                     );
                 }
@@ -78,57 +100,24 @@ namespace Collaborative_Resource_Management_System.Models
                     context.InventoryItems.AddRange(
                         new NonConsumable
                         {
+                            Image = "Dell.jpg",
                             Name = "Laptop",
                             Description = "Dell Laptop",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
-                            EditedDate = DateTime.UtcNow,
-                            RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID, 
-                           
+                            GeneralLedger = "GL002",
+                            GeneralLedger = "GL002",
+                            GeneralLedger = "GL002",
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
-                            AssetTag = "A001"
+                            AssetTag = "A001",
+                            IsActive = true
                         }
                     );
                 }
 
-                context.SaveChanges();
 
-                if (!context.Departments.Any())
-                {
-                    context.Departments.AddRange(
-                        new Department
-                        {
-                            DeptName = "Learning Center",
-                            CreatedBy = "Stella",
-                            EditedBy = "Kim",
-                            CreatedDate = DateTime.UtcNow,
-                            EditedDate = DateTime.UtcNow,
-                        }
-                    );
-                }
-
-                if (!context.InventoryItems.Any())
-                {
-                    context.InventoryItems.AddRange(
-                        new InventoryItem
-                        {
-                            Name = "Glue Sticks",
-                            Description = "We love glue sticks at Hope Haven",
-                            CreatedBy = "Stella",
-                            EditedBy = "Kim",
-                            CreatedDate = DateTime.UtcNow,
-                            EditedDate = DateTime.UtcNow,
-                            RoomNumber = 1,
-                            CategoryID = 1,
-                            
-                            ItemType = ItemType.Consumable,
-                            Comments = "Glue sticks for everyone",
-                        }
-                    );
-                }
 
                 if (!context.CheckOuts.Any())
                 {
@@ -136,11 +125,11 @@ namespace Collaborative_Resource_Management_System.Models
                         new CheckOut
                         {
                             UserID = 1,
-                            ItemID = 1,
+                            InventoryItemID = 1,
                             CheckOutDate = DateTime.UtcNow,
                             ReturnDate = DateTime.UtcNow.AddDays(10),
-                            Price = 1000,
-                            DepartmentID = 1,
+                            TotalPrice = 1000,
+                            DepartmentID = context.Departments.First().DepartmentID,
                             Notes = "Handle with care, return on time."
                         }
                     );
@@ -154,11 +143,35 @@ namespace Collaborative_Resource_Management_System.Models
                             AssetTag = "A001",
                             CheckInDate = DateTime.UtcNow,
                             UserID = 1
+                {
+                    context.InventoryIntakes.AddRange(
+                        new InventoryIntake
+                        {
+                            Quantity = 10,
+                            IntakeDate = DateTime.UtcNow
                         }
                     );
                 }
 
-               
+                {
+                    context.InventoryIntakes.AddRange(
+                        new InventoryIntake
+                        {
+                            Quantity = 10,
+                            IntakeDate = DateTime.UtcNow
+                        }
+                    );
+                }
+
+                {
+                    context.InventoryIntakes.AddRange(
+                        new InventoryIntake
+                        {
+                            Quantity = 10,
+                            IntakeDate = DateTime.UtcNow
+                        }
+                    );
+                }
 
                 context.SaveChanges();
             }

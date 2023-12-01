@@ -4,46 +4,75 @@
 }
 
    
+<div class="container">
     <p>Please select items to return:</p>
-    <div id="admin-buttons">
-        <div class="available-items">
-            <h2>Items currently in your possession</h2>
-            <div class="item">
-                <span>Smart Board</span>
-            <button class="button-link" onclick="addItem('Smart Board')">Return to Inventory</button>
-            </div>
-            <br>
-            <div class="item">
-                <span>Laptop</span>
-            <button class="button-link" onclick="addItem('Laptop')">Return to Inventory</button>
-            </div>
-            <br>
-        <div class="item">
-            <span>Glue Stick Championship trophy</span>
-            <button class="button-link" onclick="addItem('Glue Stick Championship trophy')">Return to Inventory</button>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Items currently in your possession</h3>
+            <ul id="availableItems" class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Smart Board
+                    <button class="btn btn-primary" onclick="addItem('Smart Board')">Return</button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Laptop
+                    <button class="btn btn-primary" onclick="addItem('Laptop')">Return</button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Glue Stick Championship Trophy
+                    <button class="btn btn-primary" onclick="addItem('Glue Stick Championship Trophy')">Return</button>
+                </li>
+            </ul>
         </div>
-        </div>
-        <hr>
-        <div class="cart">
-            <h2>Return Items:</h2>
+        <div class="col-md-6">
+            <h3>Return Items:</h3>
+            <ul id="returnCart" class="list-group">
+                <!-- Items will be added here -->
+            </ul>
         </div>
     </div>
-    
-<a class="button btn-info btn-lg" href="@Url.Action("Confirmation", "Inventory")">Confirm</a>
-    <script>
-        function addItem(itemName) {
-            let items = document.querySelectorAll('.available-items .item');
-            items.forEach(item => {
-                if (item.querySelector('span').textContent === itemName) {
-                    item.remove();
-                }
-            });
+    <a class="btn btn-info btn-lg mt-3" href="@Url.Action("Confirmation", "Inventory")">Confirm</a>
+</div>
 
-            let cart = document.querySelector('.cart');
-            let newItem = document.createElement('div');
-            newItem.textContent = itemName;
-            cart.appendChild(newItem);
-        }
-    </script>
+<script>
+    function addItem(itemName) {
+        let availableItems = document.getElementById('availableItems');
+        let returnCart = document.getElementById('returnCart');
+
+        let itemElements = availableItems.querySelectorAll('li');
+        itemElements.forEach(item => {
+            if (item.textContent.trim().includes(itemName)) {
+                availableItems.removeChild(item);
+
+                let newItem = document.createElement('li');
+                newItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+                newItem.textContent = itemName;
+                let undoButton = document.createElement('button');
+                undoButton.classList.add('btn', 'btn-warning');
+                undoButton.textContent = 'Undo';
+                undoButton.onclick = function () { undoReturn(itemName, newItem) };
+                newItem.appendChild(undoButton);
+                returnCart.appendChild(newItem);
+            }
+        });
+    }
+
+    function undoReturn(itemName, itemElement) {
+        let availableItems = document.getElementById('availableItems');
+        let returnCart = document.getElementById('returnCart');
+
+        returnCart.removeChild(itemElement);
+
+        let newItem = document.createElement('li');
+        newItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        newItem.textContent = itemName;
+        let returnButton = document.createElement('button');
+        returnButton.classList.add('btn', 'btn-primary');
+        returnButton.textContent = 'Return';
+        returnButton.onclick = function () { addItem(itemName) };
+        newItem.appendChild(returnButton);
+        availableItems.appendChild(newItem);
+    }
+</script>
 
 

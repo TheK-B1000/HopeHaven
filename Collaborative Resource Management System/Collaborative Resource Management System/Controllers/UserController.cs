@@ -91,5 +91,20 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
+        public async Task<IActionResult> SoftDelete(int id)
+        {
+            var success = await _userService.SoftDeleteUserAsync(id);
+            if (success)
+            {
+                TempData["Message"] = "User successfully deleted.";
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                TempData["Error"] = "Error occurred while deleting the user.";
+                return RedirectToAction("Manage");
+            }
+        }
+
     }
 }

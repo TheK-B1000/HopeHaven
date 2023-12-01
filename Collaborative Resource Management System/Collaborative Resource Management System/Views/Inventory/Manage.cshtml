@@ -7,6 +7,7 @@
     ViewBag.Title = "Manage Inventory";
 }
 
+
 <div class="mb-3">
     @using (Html.BeginForm("Manage", "Inventory", FormMethod.Get))
     {
@@ -20,11 +21,15 @@
         <option value="itemType">Item Type</option>
         <option value="category">Category</option>
     </select>
-
     <a href="@Url.Action("Add", "Inventory")" class="btn btn-primary">Add Inventory Item</a>
     <a href="@Url.Action("AddCategory", "Inventory")" class="btn btn-secondary">Add Category</a>
+    <a href="@Url.Action("Report", "Report")" class="btn btn-secondary">Check-Out Report</a>
 
 </div>
+
+
+
+
 
 <table class="table">
     <thead>

@@ -30,10 +30,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"), 1L, 1);
 
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -46,6 +42,13 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryID");
 
@@ -89,23 +92,28 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.Property<int>("DepartmentID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ItemID")
+                    b.Property<int>("InventoryItemID")
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("ReturnDate")
+                    b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<float>("TotalPrice")
+                        .HasColumnType("real");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("CheckoutID");
+
+                    b.HasIndex("DepartmentID");
+
+                    b.HasIndex("InventoryItemID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("CheckOuts");
                 });
@@ -125,15 +133,18 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DeptName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EditedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DepartmentID");
 
@@ -177,7 +188,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Comments")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -205,9 +215,13 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("GeneralLedger")
+                    b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ItemType")
                         .HasColumnType("int");
@@ -225,6 +239,33 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.ToTable("InventoryItems");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("InventoryItem");
+                });
+
+            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Report", b =>
+                {
+                    b.Property<int>("ReportID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReportID"));
+
+                    b.Property<DateTime>("ReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReportDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReportName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReportID");
+
+                    b.ToTable("Reports");
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Transaction", b =>
@@ -269,6 +310,9 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.Property<DateTime?>("EditedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -80,6 +80,7 @@
         }
 
         <button type="submit" class="btn btn-primary">Save</button>
+        <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
     </form>
 </div>
 
@@ -146,6 +147,7 @@
             reader.onloadend = function () {
                 let img = document.createElement('img');
                 img.src = reader.result;
+                img.style.maxWidth = '200px'; 
                 document.getElementById('preview-container').appendChild(img);
             };
         }

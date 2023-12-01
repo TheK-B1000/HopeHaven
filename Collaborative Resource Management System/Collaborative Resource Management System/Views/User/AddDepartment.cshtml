@@ -8,9 +8,9 @@
 <div class="container">
     <form asp-action="/User/AddDepartment" method="POST">
         <div class="form-group">
-            <label asp-for="DeptName">Department Name</label>
-            <input type="text" class="form-control" id="DeptName" name="DeptName">
-            <span asp-validation-for="DeptName" class="text-danger"></span>
+            <label asp-for="Name">Department Name</label>
+            <input type="text" class="form-control" id="Name" name="Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
         <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
