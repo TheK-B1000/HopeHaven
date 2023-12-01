@@ -5,141 +5,140 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Collaborative_Resource_Management_System
 build_property.RootNamespace = Collaborative_Resource_Management_System
-build_property.ProjectDir = C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\
+build_property.ProjectDir = C:\Users\K-B05\OneDrive\Desktop\K-B Folder\UNF\Senior Project\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Corey\source\SeniorProject\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System
+build_property.MSBuildProjectDirectory = C:\Users\K-B05\OneDrive\Desktop\K-B Folder\UNF\Senior Project\HopeHaven\Collaborative Resource Management System\Collaborative Resource Management System
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Admin/AdminIndex.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Admin/AdminIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Editor/EditorIndex.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Editor/EditorIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRpdG9yXEVkaXRvckluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Home/Index.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Home/Privacy.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Add.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/AddCategory.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/AddCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEFkZENhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Cart.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/CheckIn.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/CheckIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENoZWNrSW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/CheckOut.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/CheckOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENoZWNrT3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Confirmation.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Confirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Consumable.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Consumable.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENvbnN1bWFibGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/ConsumableDetails.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/ConsumableDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENvbnN1bWFibGVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/ConsumableItems.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/ConsumableItems.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENvbnN1bWFibGVJdGVtcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Edit.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Manage.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/Manage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XE1hbmFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/NonConsumable.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/NonConsumable.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XE5vbkNvbnN1bWFibGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/NonConsumableDetails.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/NonConsumableDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XE5vbkNvbnN1bWFibGVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/NonConsumableItems.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Inventory/NonConsumableItems.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XE5vbkNvbnN1bWFibGVJdGVtcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Report/Report.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Report/Report.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XFJlcG9ydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/Error.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_LayoutMobile.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_LayoutMobile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRNb2JpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Staff/StaffIndex.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Staff/StaffIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcU3RhZmZJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/Add.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/AddDepartment.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/AddDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBZGREZXBhcnRtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/Edit.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/Manage.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/User/Manage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNYW5hZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/_ViewImports.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/_ViewStart.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Corey/source/SeniorProject/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_Layout.cshtml]
+[C:/Users/K-B05/OneDrive/Desktop/K-B Folder/UNF/Senior Project/HopeHaven/Collaborative Resource Management System/Collaborative Resource Management System/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-t3hb77megf

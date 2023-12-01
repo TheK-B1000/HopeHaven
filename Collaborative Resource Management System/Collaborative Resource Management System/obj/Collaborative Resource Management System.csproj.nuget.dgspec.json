@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj": {}
+    "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj": {
+    "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
+        "projectUniqueName": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
         "projectName": "Collaborative Resource Management System",
-        "projectPath": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
-        "packagesPath": "C:\\Users\\Corey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\",
+        "projectPath": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
+        "packagesPath": "C:\\Users\\K-B05\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Corey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\K-B05\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -92,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.414\\RuntimeIdentifierGraph.json"
         }
       }
     }
