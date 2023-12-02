@@ -6,17 +6,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 public class UserService : IUserService
 {
     private readonly AppDbContext _context;
+    private readonly UserManager<User> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly string _loggedInUserName = "Stella Johnson";
     private readonly bool _isActive = true;
     private readonly bool _isDeleted = false;
 
-    public UserService(AppDbContext context)
+    public UserService(AppDbContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
+        _userManager = userManager;
+        _roleManager = roleManager;
+    }
+
+    public async Task<IEnumerable<SelectListItem>> GetRolesAsync()
+    {
+        var roles = await _context.Roles.ToListAsync();
+        var roleSelectList = roles.Select(r => new SelectListItem
+        {
+            Value = r.Id,
+            Text = r.Name
+        });
+        return roleSelectList;
     }
 
     public async Task<IEnumerable<User>> SearchUsersAsync(string searchString)
@@ -25,24 +41,16 @@ public class UserService : IUserService
 
         users = users.Where(u => u.IsActive);
 
+
         if (!string.IsNullOrEmpty(searchString))
         {
-            bool isNumeric = int.TryParse(searchString, out int searchNumber);
-
-            if (isNumeric)
+            if (Guid.TryParse(searchString, out Guid searchId))
             {
-                users = users.Where(u => u.UserID == searchNumber);
+                users = users.Where(u => u.Id == searchId.ToString());
             }
             else
             {
-                if (Enum.TryParse<UserType>(searchString, true, out var userType))
-                {
-                    users = users.Where(u => u.Type == userType);
-                }
-                else
-                {
-                    users = users.Where(u => EF.Functions.Like(u.Name, $"%{searchString}%"));
-                }
+                users = users.Where(u => EF.Functions.Like(u.UserName, $"%{searchString}%"));
             }
         }
 
@@ -105,24 +113,27 @@ public class UserService : IUserService
         }
     }
 
-    public async Task<bool> AddUserAsync(User user)
+    public async Task<bool> AddUserAsync(User user, string roleName)
     {
-        try
-        {
-            user.CreatedDate = DateTime.UtcNow;
-            user.EditedDate = DateTime.UtcNow;
-            user.CreatedBy = _loggedInUserName;
-            user.EditedBy = _loggedInUserName;
-            user.IsActive = _isActive;
+        user.CreatedDate = DateTime.UtcNow;
+        user.EditedDate = DateTime.UtcNow;
+        user.CreatedBy = _loggedInUserName;
+        user.EditedBy = _loggedInUserName;
+        user.IsActive = _isActive;
 
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+        var result = await _userManager.CreateAsync(user, user.PasswordHash);
+        if (result.Succeeded)
+        {
+            // Check if the role exists and add the user to the role
+            var roleExists = await _roleManager.RoleExistsAsync(roleName);
+            if (roleExists)
+            {
+                await _userManager.AddToRoleAsync(user, roleName);
+            }
             return true;
         }
-        catch
-        {
-            return false;
-        }
+
+        return false;
     }
 
     public async Task<bool> SoftDeleteUserAsync(int id)

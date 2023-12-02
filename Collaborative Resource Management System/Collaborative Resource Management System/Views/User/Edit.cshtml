@@ -1,4 +1,5 @@
-﻿@model Collaborative_Resource_Management_System.Models.User
+﻿@using Microsoft.AspNetCore.Identity
+@model Collaborative_Resource_Management_System.Models.User
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Edit User";
@@ -6,8 +7,8 @@
 <body>
     <div class="container">
 
-        <form asp-action="Edit" asp-controller="User" method="POST">
-            <input type="hidden" name="UserID" value="@Model.UserID" />
+        <form asp-action="Edit" asp-controller="User" method="POST" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
 
             <div class="form-group">
                 <label for="Image">Image:</label>
@@ -20,14 +21,24 @@
             </div>
 
             <div class="form-group">
-                <label>Name:</label>
-                <input type="text" class="form-control" name="Name" value="@Model.Name" />
+                <label for="UserName">Username:</label>
+                <input type="text" class="form-control" asp-for="UserName" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label>Type:</label>
-                <select class="form-control" name="Type">
-                    
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Role">Role:</label>
+                <select class="form-control" id="Role" name="selectedRole">
+                    @foreach (var role in ViewBag.Roles as List<IdentityRole>)
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
                 </select>
             </div>
 
@@ -37,8 +48,8 @@
             </div>
 
             <div class="form-group">
-                <label>Password:</label>
-                <input type="password" class="form-control" name="Password" value="@Model.Password" />
+                <label for="Password">Password:</label>
+                <input type="password" class="form-control" name="Password" />
             </div>
 
             <div class="form-group">

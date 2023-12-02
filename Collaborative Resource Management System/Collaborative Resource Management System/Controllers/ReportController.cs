@@ -22,7 +22,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                             .Include(co => co.Department)
                             .Select(co => new CheckOutViewModel
                             {
-                                User = co.User.Name,
+                                User = co.User.UserName,
                                 Item = co.Item.Name,
                                 CheckOutDate = co.CheckOutDate,
                                 Price = co.TotalPrice,

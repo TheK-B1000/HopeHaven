@@ -1,4 +1,5 @@
 using Collaborative_Resource_Management_System.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,27 +11,27 @@ namespace Collaborative_Resource_Management_System.Models
 {
     public static class DbInitializer
     {
-        public static void SeedData(IServiceProvider serviceProvider)
+        public static async Task SeedData(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.CreateScope())
             {
                 var scopedServiceProvider = scope.ServiceProvider;
                 var context = scopedServiceProvider.GetRequiredService<AppDbContext>();
+                var userManager = scopedServiceProvider.GetRequiredService<UserManager<User>>();
+                var roleManager = scopedServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                await SeedRoles(roleManager);
 
                 if (!context.Users.Any())
                 {
                     context.Users.AddRange(
                         new User
                         {
-                            Name = "Beny Farfan",
-                            Type = UserType.Admin,
-                            PIN = "5678",
-                            Password = "securePassword123",
+                            UserName = "BenyFarfan", 
+                            Email = "beny@example.com",
                             DeptID = 2,
-                            CreatedBy = "Stella",
-                            EditedBy = "Kim",
+                            CreatedBy = "System",
                             CreatedDate = DateTime.UtcNow,
-                            EditedDate = DateTime.UtcNow,
                             IsActive = true
                         }
                     );
@@ -144,6 +145,18 @@ namespace Collaborative_Resource_Management_System.Models
                     );
                 }
                 context.SaveChanges();
+            }
+        }
+        private static async Task SeedRoles(RoleManager<IdentityRole> roleManager)
+        {
+            string[] roleNames = { "Admin", "Editor", "Staff" };
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await roleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
             }
         }
     }

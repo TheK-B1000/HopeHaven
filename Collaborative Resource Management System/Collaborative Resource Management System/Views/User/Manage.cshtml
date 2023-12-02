@@ -1,5 +1,6 @@
-@model IEnumerable<Collaborative_Resource_Management_System.Models.User>
+@model IEnumerable<UserRoleViewModel>
 @using Collaborative_Resource_Management_System.Models
+@using Microsoft.AspNetCore.Identity
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,15 +16,14 @@
 
     <a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
     <a href="@Url.Action("AddDepartment", "User")" class="btn btn-secondary">Add Department</a>
-
 </div>
 
 <table id="usersTable" class="table">
     <thead>
         <tr>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>User Type</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Roles</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -31,12 +31,17 @@
         @foreach (var user in Model)
         {
             <tr>
-                <td>@user.UserID</td>
-                <td>@user.Name</td>
-                <td>@user.Type</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
                 <td>
-                    <a href="@Url.Action("Edit", "User", new { id = user.UserID })" class="btn btn-secondary btn-sm">Edit</a>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = user.UserID })'">Delete</button>
+                    @foreach (var role in user.Roles)
+                    {
+                        @role <br />
+                    }
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "User", new { id = user.Id })" class="btn btn-secondary btn-sm">Edit</a>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = user.Id })'">Delete</button>
                 </td>
             </tr>
         }

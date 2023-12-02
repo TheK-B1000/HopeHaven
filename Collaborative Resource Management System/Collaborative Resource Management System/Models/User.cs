@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace Collaborative_Resource_Management_System.Models
 {
@@ -9,23 +10,12 @@ namespace Collaborative_Resource_Management_System.Models
         Staff
     }
 
-    public class User
+    public class User : IdentityUser
     {
-        public int UserID { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string Name { get; set; }
-        public UserType Type { get; set; }
-
         [Required]
         [StringLength(6)] 
         public string PIN { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
-        [StringLength(100)]
-        public string Password { get; set; }
         public int DeptID { get; set; }
 
         [Required]

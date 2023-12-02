@@ -1,5 +1,6 @@
 using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -75,13 +76,14 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Add()
         {
             ViewBag.Departments = await _userService.GetDepartmentsAsync();
+            ViewBag.Roles = await _userService.GetRolesAsync();
             return View(new User());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(User user)
+        public async Task<IActionResult> Add(User user, string selectedRole)
         {
-            var success = await _userService.AddUserAsync(user);
+            var success = await _userService.AddUserAsync(user, selectedRole);
             if (success)
             {
                 return RedirectToAction("Manage");
@@ -91,6 +93,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
+
         public async Task<IActionResult> SoftDelete(int id)
         {
             var success = await _userService.SoftDeleteUserAsync(id);
