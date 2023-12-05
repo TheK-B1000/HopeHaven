@@ -1,10 +1,10 @@
-﻿using Collaborative_Resource_Management_System.Models;
+﻿using Microsoft.AspNetCore.Identity;
 
-public class UserRoleViewModel
+namespace Collaborative_Resource_Management_System.Models
 {
-    public string Id { get; set; }
-    public string UserName { get; set; }
-    public string Email { get; set; }
-    public List<string> Roles { get; set; }
+    public class UserRoleViewModel
+    {
+        public IdentityUser User { get; set; }
+        public string Role { get; set; }
+    }
 }
-

@@ -52,20 +52,6 @@
                 <input type="password" class="form-control" name="Password" />
             </div>
 
-            <div class="form-group">
-                <label>Department:</label>
-                <select class="form-control" name="DeptID">
-                    @if (ViewBag.Departments != null)
-                    {
-                        foreach (var department in ViewBag.Departments)
-                        {
-                           <!-- <option value="@department.Value" @(Model.DeptID == int.Parse(department.Value) ? "selected" : "")>@department.Text</option> -->
-                        }
-                    }
-                </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.DeptID)</span>
-            </div>
-
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
         </form>

@@ -22,7 +22,7 @@
             </div>
 
             <div class="form-group">
-                <label for="UserName">Username:</label>
+                <label for="UserName">Name:</label>
                 <input type="text" class="form-control" id="UserName" name="UserName" required>
             </div>
 
@@ -49,24 +49,6 @@
             <div class="form-group">
                 <label for="Password">Password:</label>
                 <input type="password" class="form-control" id="Password" name="Password" required>
-            </div>
-
-            <div class="form-group">
-                <label for="DeptID">Department:</label>
-                <select class="form-control" id="DeptID" name="DeptID">
-                    @if (ViewBag.Departments != null && ViewBag.Departments.Any())
-                    {
-                        foreach (var department in ViewBag.Departments)
-                        {
-                            <option value="@department.Value">@department.Text</option>
-                        }
-                    }
-                    else
-                    {
-                        <option value="">No departments available</option>
-                    }
-                </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.DeptID)</span>
             </div>
 
             <button type="submit" class="btn btn-primary">Add</button>

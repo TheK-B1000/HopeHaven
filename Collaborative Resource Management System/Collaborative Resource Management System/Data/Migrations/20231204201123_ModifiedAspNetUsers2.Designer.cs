@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Collaborative_Resource_Management_System.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231202160829_ModifiedAspNetUsers")]
-    partial class ModifiedAspNetUsers
+    [Migration("20231204201123_ModifiedAspNetUsers2")]
+    partial class ModifiedAspNetUsers2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

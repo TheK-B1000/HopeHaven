@@ -11,13 +11,11 @@ using Microsoft.AspNetCore.Identity;
 public class UserService : IUserService
 {
     private readonly AppDbContext _context;
-    private readonly UserManager<User> _userManager;
+    private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly string _loggedInUserName = "Stella Johnson";
-    private readonly bool _isActive = true;
-    private readonly bool _isDeleted = false;
 
-    public UserService(AppDbContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+    public UserService(AppDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
         _userManager = userManager;
@@ -35,12 +33,11 @@ public class UserService : IUserService
         return roleSelectList;
     }
 
-    public async Task<IEnumerable<User>> SearchUsersAsync(string searchString)
+    public async Task<IEnumerable<IdentityUser>> SearchUsersAsync(string searchString)
     {
         var users = _context.Users.AsQueryable();
 
-        users = users.Where(u => u.IsActive);
-
+        users = users.Where(u => !u.LockoutEnabled || u.LockoutEnd <= DateTimeOffset.Now);
 
         if (!string.IsNullOrEmpty(searchString))
         {
@@ -56,11 +53,14 @@ public class UserService : IUserService
 
         return await users.ToListAsync();
     }
-
-
-    public async Task<User> GetUserByIdAsync(int id)
+    public async Task<IdentityUser> GetUserByIdAsync(string userId)
     {
-        return await _context.Users.FindAsync(id);
+        return await _context.Users.FindAsync(userId);
+    }
+    public async Task<string> GetRoleForUserAsync(IdentityUser user)
+    {
+        var roles = await _userManager.GetRolesAsync(user);
+        return roles.FirstOrDefault();
     }
 
     public async Task<IEnumerable<SelectListItem>> GetDepartmentsAsync()
@@ -73,36 +73,15 @@ public class UserService : IUserService
             }).ToListAsync();
     }
 
-    public async Task<bool> EditUserAsync(User user)
+    public async Task<bool> EditUserAsync(IdentityUser user) 
     {
-        try
-        {
-            user.CreatedDate = DateTime.UtcNow;
-            user.EditedDate = DateTime.UtcNow;
-            user.CreatedBy = _loggedInUserName;
-            user.EditedBy = _loggedInUserName;
-            user.IsActive = _isActive;
-
-            _context.Update(user);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+        var result = await _userManager.UpdateAsync(user);
+        return result.Succeeded;
     }
-
     public async Task<bool> AddDepartmentAsync(Department department)
     {
         try
         {
-            department.CreatedDate = DateTime.UtcNow;
-            department.EditedDate = DateTime.UtcNow;
-            department.CreatedBy = _loggedInUserName;
-            department.EditedBy = _loggedInUserName;
-            department.IsActive = _isActive;
-
             _context.Departments.Add(department);
             await _context.SaveChangesAsync();
             return true;
@@ -113,18 +92,11 @@ public class UserService : IUserService
         }
     }
 
-    public async Task<bool> AddUserAsync(User user, string roleName)
+    public async Task<bool> AddUserAsync(IdentityUser user, string password, string roleName) 
     {
-        user.CreatedDate = DateTime.UtcNow;
-        user.EditedDate = DateTime.UtcNow;
-        user.CreatedBy = _loggedInUserName;
-        user.EditedBy = _loggedInUserName;
-        user.IsActive = _isActive;
-
-        var result = await _userManager.CreateAsync(user, user.PasswordHash);
+        var result = await _userManager.CreateAsync(user, password);
         if (result.Succeeded)
         {
-            // Check if the role exists and add the user to the role
             var roleExists = await _roleManager.RoleExistsAsync(roleName);
             if (roleExists)
             {
@@ -136,40 +108,32 @@ public class UserService : IUserService
         return false;
     }
 
-    public async Task<bool> SoftDeleteUserAsync(int id)
+    public async Task<bool> MarkUserAsInactiveAsync(string userId)
     {
-        try
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return false;
-            }
-
-            user.IsActive = _isDeleted;
-            user.EditedDate = DateTime.UtcNow;
-            user.EditedBy = _loggedInUserName;
-
-            _context.Update(user);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
-    public async Task<bool> UpdateUserActiveStatusAsync(int userId, bool isActive)
-    {
-        var user = await _context.Users.FindAsync(userId);
+        var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {
             return false;
         }
 
-        user.IsActive = isActive;
-        _context.Users.Update(user);
-        await _context.SaveChangesAsync();
-        return true;
+        user.LockoutEnabled = true;
+        user.LockoutEnd = DateTimeOffset.MaxValue; 
+
+        var result = await _userManager.UpdateAsync(user);
+        return result.Succeeded;
     }
+    public async Task<bool> ReactivateUserAsync(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return false;
+        }
+
+        user.LockoutEnd = null; 
+
+        var result = await _userManager.UpdateAsync(user);
+        return result.Succeeded;
+    }
+
 }

@@ -9,8 +9,6 @@ namespace Collaborative_Resource_Management_System.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         { }
-
-        public DbSet<User> Users { get; set; }
         public DbSet<InventoryItem> InventoryItems { get; set; }
         public DbSet<Consumable> Consumables { get; set; }
         public DbSet<NonConsumable> NonConsumables { get; set; }
