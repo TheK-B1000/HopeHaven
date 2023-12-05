@@ -1,5 +1,7 @@
 using Collaborative_Resource_Management_System.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -16,18 +18,33 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Manage(string searchString)
         {
             var users = await _userService.SearchUsersAsync(searchString);
+            var userRoleViewModels = new List<UserRoleViewModel>();
+
+            foreach (var user in users)
+            {
+                var role = await _userService.GetRoleForUserAsync(user);
+                userRoleViewModels.Add(new UserRoleViewModel
+                {
+                    User = user,
+                    Role = role
+                });
+            }
+
             ViewBag.SearchString = searchString;
-            return View(users);
+            return View(userRoleViewModels);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+
+
+
+        public async Task<IActionResult> Edit(string id)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(id))
             {
                 return NotFound();
             }
 
-            var user = await _userService.GetUserByIdAsync(id.Value);
+            var user = await _userService.GetUserByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -38,7 +55,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(User user)
+        public async Task<IActionResult> Edit(IdentityUser user)
         {
             var success = await _userService.EditUserAsync(user);
             if (success)
@@ -75,13 +92,14 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Add()
         {
             ViewBag.Departments = await _userService.GetDepartmentsAsync();
-            return View(new User());
+            ViewBag.Roles = await _userService.GetRolesAsync();
+            return View(new IdentityUser());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(User user)
+        public async Task<IActionResult> Add(IdentityUser user, string password, string selectedRole) 
         {
-            var success = await _userService.AddUserAsync(user);
+            var success = await _userService.AddUserAsync(user, password, selectedRole); 
             if (success)
             {
                 return RedirectToAction("Manage");
@@ -91,20 +109,20 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
-        public async Task<IActionResult> SoftDelete(int id)
+
+        public async Task<IActionResult> SoftDelete(string id)
         {
-            var success = await _userService.SoftDeleteUserAsync(id);
+            var success = await _userService.MarkUserAsInactiveAsync(id);
             if (success)
             {
-                TempData["Message"] = "User successfully deleted.";
+                TempData["Message"] = "User successfully marked as inactive.";
                 return RedirectToAction("Manage");
             }
             else
             {
-                TempData["Error"] = "Error occurred while deleting the user.";
+                TempData["Error"] = "Error occurred while marking the user as inactive.";
                 return RedirectToAction("Manage");
             }
         }
-
     }
 }

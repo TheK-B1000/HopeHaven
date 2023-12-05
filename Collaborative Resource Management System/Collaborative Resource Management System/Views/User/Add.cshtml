@@ -1,4 +1,5 @@
-﻿@model Collaborative_Resource_Management_System.Models.User
+﻿@using Microsoft.AspNetCore.Identity
+@model Collaborative_Resource_Management_System.Models.User
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,19 +22,22 @@
             </div>
 
             <div class="form-group">
-                <label for="Name">Name:</label>
-                <input type="text" class="form-control" id="Name" name="Name">
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.Name)</span>
+                <label for="UserName">Name:</label>
+                <input type="text" class="form-control" id="UserName" name="UserName" required>
             </div>
 
             <div class="form-group">
-                <label for="Type">Type:</label>
-                <select class="form-control" id="Type" name="Type">
-                    <option value="0">Admin</option>
-                    <option value="1">Editor</option>
-                    <option value="2">Staff</option>
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" id="Email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <select class="form-control" id="Role" name="selectedRole">
+                    @foreach (var role in ViewBag.Roles as List<IdentityRole>)
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
                 </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.Type)</span>
             </div>
 
             <div class="form-group">
@@ -44,22 +48,7 @@
 
             <div class="form-group">
                 <label for="Password">Password:</label>
-                <input type="password" class="form-control" id="Password" name="Password">
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.Password)</span>
-            </div>
-
-            <div class="form-group">
-                <label for="DeptID">Department:</label>
-                <select class="form-control" id="DeptID" name="DeptID">
-                    @if (ViewBag.Departments != null)
-                    {
-                        foreach (var department in ViewBag.Departments)
-                        {
-                            <option value="@department.Value">@department.Text</option>
-                        }
-                    }
-                </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.DeptID)</span>
+                <input type="password" class="form-control" id="Password" name="Password" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Add</button>
