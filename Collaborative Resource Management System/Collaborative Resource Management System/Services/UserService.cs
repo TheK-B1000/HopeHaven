@@ -27,11 +27,12 @@ public class UserService : IUserService
         var roles = await _context.Roles.ToListAsync();
         var roleSelectList = roles.Select(r => new SelectListItem
         {
-            Value = r.Id,
+            Value = r.Name, 
             Text = r.Name
         });
         return roleSelectList;
     }
+
 
     public async Task<IEnumerable<IdentityUser>> SearchUsersAsync(string searchString)
     {

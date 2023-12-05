@@ -15,7 +15,6 @@
 
     <a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
     <a href="@Url.Action("AddDepartment", "User")" class="btn btn-secondary">Add Department</a>
-
 </div>
 
 <table id="usersTable" class="table">
@@ -24,21 +23,21 @@
             <th>User ID</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Roles</th>
+            <th>Role</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var model in Model)
+        @foreach (var viewModel in Model)
         {
             <tr>
-                <td>model.User.Id</td>
-                <td>model.User.UserName</td>
-                <td>model.User.Email</td>
-                <td>model.Role</td>
+                <td>@viewModel.User.Id</td>
+                <td>@viewModel.User.UserName</td>
+                <td>@viewModel.User.Email</td>
+                <td>@viewModel.Role</td>
                 <td>
-                    <a href="@Url.Action("Edit", "User", new { id = model.User.Id })" class="btn btn-secondary btn-sm">Edit</a>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = model.User.Id })'">Delete</button>
+                    <a href="@Url.Action("Edit", "User", new { id = viewModel.User.Id })" class="btn btn-secondary btn-sm">Edit</a>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = viewModel.User.Id })'">Delete</button>
                 </td>
             </tr>
         }
@@ -46,6 +45,6 @@
 </table>
 
 <div>
-    <a href="@Url.Action("adminIndex", "Admin")" class="button-link">Admin Home</a>
+    <a href="@Url.Action("AdminIndex", "Admin")" class="button-link">Admin Home</a>
     <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
 </div>

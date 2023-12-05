@@ -40,9 +40,9 @@
             <select class="form-control" name="CategoryID">
                 @if (ViewBag.Categories != null)
                 {
-                    foreach (var category in ViewBag.Categories)
+                    @foreach (var category in ViewBag.Categories)
                     {
-                        //<option value="@category.Value" @(Model.CategoryID.ToString() == category.Value ? "selected" : "")>@category.Text</option>
+                        <option value="@category.Value">@category.Text</option>
                     }
                 }
             </select>

@@ -6,10 +6,10 @@
 }
 
 <div class="container">
-    <form asp-action="/Inventory/AddCategory" method="POST">
+    <form asp-controller="Inventory" asp-action="AddCategory" method="POST">
         <div class="form-group">
             <label asp-for="Name">Category Name</label>
-            <input type="text" class="form-control" id="Name" name="Name">
+            <input type="text" class="form-control" asp-for="Name">
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
