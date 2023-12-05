@@ -163,8 +163,8 @@ namespace Collaborative_Resource_Management_System.Models
                     context.Reports.Add(
                         new Report
                         {
-                            ReportName = "Initial Report",
-                            ReportDescription = "This is a seeded report.",
+                            ReportName = "GlueSticks Report",
+                            ReportDescription = "Gluesticks for everyone",
                             ReportDate = DateTime.UtcNow,
                             UserID = 1 
                         }

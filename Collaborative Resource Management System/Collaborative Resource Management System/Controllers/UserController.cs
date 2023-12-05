@@ -59,14 +59,8 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Edit(IdentityUser user)
         {
             var success = await _userService.EditUserAsync(user);
-            if (success)
-            {
-                return RedirectToAction("Manage");
-            }
-            else
-            {
-                return View("Error");
-            }
+            return RedirectToAction("Manage");
+            
         }
 
         [HttpGet]
@@ -79,14 +73,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> AddDepartment(Department department)
         {
             var success = await _userService.AddDepartmentAsync(department);
-            if (success)
-            {
-                return RedirectToAction("Manage");
-            }
-            else
-            {
-                return View("Error");
-            }
+            return RedirectToAction("Manage");
         }
 
         [HttpGet]
@@ -102,15 +89,8 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Add(IdentityUser user, string password, string selectedRole)
         {
             var createUserResult = await _userManager.CreateAsync(user, password);
-            if (createUserResult.Succeeded)
-            {
-                var addToRoleResult = await _userManager.AddToRoleAsync(user, selectedRole);
-                if (addToRoleResult.Succeeded)
-                {
-                    return RedirectToAction("Manage");
-                }
-            }
-            return View("Error");
+            var addToRoleResult = await _userManager.AddToRoleAsync(user, selectedRole);
+            return RedirectToAction("Manage");
         }
 
         public async Task<IActionResult> SoftDelete(string id)
