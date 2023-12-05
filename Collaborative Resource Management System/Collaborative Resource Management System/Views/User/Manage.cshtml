@@ -32,10 +32,10 @@
         @foreach (var model in Model)
         {
             <tr>
-                <!-- <td>model.User.Id</td>
+                <td>model.User.Id</td>
                 <td>model.User.UserName</td>
                 <td>model.User.Email</td>
-                <td>model.Role</td> -->
+                <td>model.Role</td>
                 <td>
                     <a href="@Url.Action("Edit", "User", new { id = model.User.Id })" class="btn btn-secondary btn-sm">Edit</a>
                     <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = model.User.Id })'">Delete</button>

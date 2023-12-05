@@ -86,6 +86,9 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CheckoutID"), 1L, 1);
 
+                    b.Property<string>("AspNetUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("CheckOutDate")
                         .HasColumnType("datetime2");
 
@@ -107,16 +110,13 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("CheckoutID");
+
+                    b.HasIndex("AspNetUserId");
 
                     b.HasIndex("DepartmentID");
 
                     b.HasIndex("InventoryItemID");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("CheckOuts");
                 });
@@ -328,10 +328,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -383,8 +379,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -495,39 +489,12 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.HasDiscriminator().HasValue("NonConsumable");
                 });
 
-            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.User", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DeptID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EditedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("EditedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PIN")
-                        .IsRequired()
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
-
-                    b.HasDiscriminator().HasValue("User");
-                });
-
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.CheckOut", b =>
                 {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "AspNetUser")
+                        .WithMany()
+                        .HasForeignKey("AspNetUserId");
+
                     b.HasOne("Collaborative_Resource_Management_System.Models.Department", "Department")
                         .WithMany()
                         .HasForeignKey("DepartmentID")
@@ -540,15 +507,11 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Collaborative_Resource_Management_System.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                    b.Navigation("AspNetUser");
 
                     b.Navigation("Department");
 
                     b.Navigation("Item");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

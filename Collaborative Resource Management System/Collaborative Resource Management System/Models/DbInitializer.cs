@@ -17,25 +17,27 @@ namespace Collaborative_Resource_Management_System.Models
             {
                 var scopedServiceProvider = scope.ServiceProvider;
                 var context = scopedServiceProvider.GetRequiredService<AppDbContext>();
-                var userManager = scopedServiceProvider.GetRequiredService<UserManager<User>>();
+                var userManager = scopedServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
                 var roleManager = scopedServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
                 await SeedRoles(roleManager);
 
                 if (!context.Users.Any())
                 {
-                    context.Users.AddRange(
-                        new User
-                        {
-                            UserName = "BenyFarfan", 
-                            Email = "beny@example.com",
-                            DeptID = 2,
-                            CreatedBy = "System",
-                            CreatedDate = DateTime.UtcNow,
-                            IsActive = true
-                        }
-                    );
+                    var user = new IdentityUser
+                    {
+                        UserName = "BenyFarfan",
+                        Email = "beny@example.com"
+
+                    };
+
+                    var createResult = await userManager.CreateAsync(user, "123456");
+                    if (createResult.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(user, "Admin"); 
+                    }
                 }
+
 
                 if (!context.Categories.Any())
                 {
