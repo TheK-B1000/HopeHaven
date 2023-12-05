@@ -23,12 +23,16 @@
             <div class="form-group">
                 <label for="selectedRole">Role:</label>
                 <select class="form-control" id="selectedRole" name="selectedRole">
-                    @foreach (var role in ViewBag.Roles as IEnumerable<SelectListItem>)
+                    @if (ViewBag.Roles != null)
                     {
-                        <option value="@role.Value">@role.Text</option>
+                        foreach (var role in ViewBag.Roles as IEnumerable<SelectListItem>)
+                        {
+                            <option value="@role.Value">@role.Text</option>
+                        }
                     }
                 </select>
             </div>
+
 
             <div class="form-group">
                 <label for="Email">Email:</label>

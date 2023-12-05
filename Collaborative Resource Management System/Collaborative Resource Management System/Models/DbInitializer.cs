@@ -29,7 +29,8 @@ namespace Collaborative_Resource_Management_System.Models
                         UserName = "BenyFarfan",
                         Email = "beny@example.com",
                         PhoneNumber = "9042303318",
-                        EmailConfirmed = true 
+                        EmailConfirmed = true,
+                        PhoneNumberConfirmed = true
                     };
 
                     var passwordHasher = new PasswordHasher<IdentityUser>();

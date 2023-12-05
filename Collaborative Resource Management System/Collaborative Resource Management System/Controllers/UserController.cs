@@ -80,18 +80,34 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Add()
         {
             ViewBag.Departments = await _userService.GetDepartmentsAsync();
-            ViewBag.Roles = await _userService.GetRolesAsync(); 
+            ViewBag.Roles = await _userService.GetRolesAsync();
             return View(new IdentityUser());
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Add(IdentityUser user, string password, string selectedRole)
         {
-            var createUserResult = await _userManager.CreateAsync(user, password);
-            var addToRoleResult = await _userManager.AddToRoleAsync(user, selectedRole);
-            return RedirectToAction("Manage");
+            user.EmailConfirmed = true;
+            user.PhoneNumberConfirmed = true;
+
+            var passwordHasher = new PasswordHasher<IdentityUser>();
+            user.PasswordHash = passwordHasher.HashPassword(user, password);
+
+            var createUserResult = await _userManager.CreateAsync(user);
+            if (createUserResult.Succeeded)
+            {
+                var addToRoleResult = await _userManager.AddToRoleAsync(user, selectedRole);
+                if (addToRoleResult.Succeeded)
+                {
+                    return RedirectToAction("Manage");
+                }
+            }
+
+            ViewBag.Departments = await _userService.GetDepartmentsAsync();
+            ViewBag.Roles = await _userService.GetRolesAsync();
+            return View(user);
         }
+
 
         public async Task<IActionResult> SoftDelete(string id)
         {
