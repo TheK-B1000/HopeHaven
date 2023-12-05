@@ -20,24 +20,34 @@ namespace Collaborative_Resource_Management_System.Models
                 var userManager = scopedServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
                 var roleManager = scopedServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                await SeedRoles(roleManager);
+                SeedRoles(roleManager);
 
                 if (!context.Users.Any())
                 {
                     var user = new IdentityUser
                     {
                         UserName = "BenyFarfan",
-                        Email = "beny@example.com"
-
+                        Email = "beny@example.com",
+                        PhoneNumber = "9042303318",
+                        EmailConfirmed = true 
                     };
 
-                    var createResult = await userManager.CreateAsync(user, "123456");
+                    var passwordHasher = new PasswordHasher<IdentityUser>();
+                    user.PasswordHash = passwordHasher.HashPassword(user, "123456");
+
+                    var createResult = await userManager.CreateAsync(user);
                     if (createResult.Succeeded)
                     {
-                        await userManager.AddToRoleAsync(user, "Admin"); 
+                        await userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    else
+                    {
+                        foreach (var error in createResult.Errors)
+                        {
+                            Console.WriteLine($"Error: {error.Description}");
+                        }
                     }
                 }
-
 
                 if (!context.Categories.Any())
                 {
@@ -147,17 +157,31 @@ namespace Collaborative_Resource_Management_System.Models
                     );
                 }
                 context.SaveChanges();
+         
+                if (!context.Reports.Any())
+                {
+                    context.Reports.Add(
+                        new Report
+                        {
+                            ReportName = "Initial Report",
+                            ReportDescription = "This is a seeded report.",
+                            ReportDate = DateTime.UtcNow,
+                            UserID = 1 
+                        }
+                );
+                context.SaveChanges();
             }
         }
-        private static async Task SeedRoles(RoleManager<IdentityRole> roleManager)
+    }
+        private static void SeedRoles(RoleManager<IdentityRole> roleManager)
         {
             string[] roleNames = { "Admin", "Editor", "Staff" };
             foreach (var roleName in roleNames)
             {
-                var roleExist = await roleManager.RoleExistsAsync(roleName);
+                var roleExist = roleManager.RoleExistsAsync(roleName).Result;
                 if (!roleExist)
                 {
-                    await roleManager.CreateAsync(new IdentityRole(roleName));
+                    roleManager.CreateAsync(new IdentityRole(roleName)).Wait();
                 }
             }
         }

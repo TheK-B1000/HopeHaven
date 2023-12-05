@@ -9,10 +9,14 @@ namespace Collaborative_Resource_Management_System.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userService = userService;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public async Task<IActionResult> Manage(string searchString)
@@ -33,9 +37,6 @@ namespace Collaborative_Resource_Management_System.Controllers
             ViewBag.SearchString = searchString;
             return View(userRoleViewModels);
         }
-
-
-
 
         public async Task<IActionResult> Edit(string id)
         {
@@ -92,22 +93,24 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> Add()
         {
             ViewBag.Departments = await _userService.GetDepartmentsAsync();
-            ViewBag.Roles = await _userService.GetRolesAsync();
+            ViewBag.Roles = await _userService.GetRolesAsync(); 
             return View(new IdentityUser());
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> Add(IdentityUser user, string password, string selectedRole) 
+        public async Task<IActionResult> Add(IdentityUser user, string password, string selectedRole)
         {
-            var success = await _userService.AddUserAsync(user, password, selectedRole); 
-            if (success)
+            var createUserResult = await _userManager.CreateAsync(user, password);
+            if (createUserResult.Succeeded)
             {
-                return RedirectToAction("Manage");
+                var addToRoleResult = await _userManager.AddToRoleAsync(user, selectedRole);
+                if (addToRoleResult.Succeeded)
+                {
+                    return RedirectToAction("Manage");
+                }
             }
-            else
-            {
-                return View("Error");
-            }
+            return View("Error");
         }
 
         public async Task<IActionResult> SoftDelete(string id)
