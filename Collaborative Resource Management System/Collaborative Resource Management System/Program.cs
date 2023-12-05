@@ -39,6 +39,13 @@ else
     app.UseHsts();
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await DbInitializer.SeedData(services);
+   
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -52,4 +59,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages(); 
 
-app.Run();
+await app.RunAsync();
