@@ -3,8 +3,6 @@
     ViewBag.Title = "Login";
 }
 
-
-
 <div>
     <div class="pin-container mt-5">
         <div class="row justify-content-center">
@@ -64,8 +62,6 @@
     
 </div>
 
-
-
 <script>
     let pin = '';
     const pinInput = document.getElementById('pin-input');
@@ -96,24 +92,71 @@
 
     //Still working on pulling ID from DB. - Corey
 
-    function submitPin() {
-        if (pin === '111111') {
-            window.location.href = '@Url.Action("AdminIndex", "Admin")?userName=Beny';
-            clearPin();
-        }
-        else if (pin === '222222') {
-            window.location.href = '@Url.Action("EditorIndex", "Editor")?userName=Corey';
-            clearPin();
-        }
-        else if (pin === '333333') {
-            window.location.href = '@Url.Action("StaffIndex", "Staff")?userName=Ben';
-            clearPin();
-        }
-        else {
-            alert('Incorrect PIN Number. Please try again.');
+    async function submitPin() {
+        var enteredPin = pin;
+
+        const defaultPIN = '111111';
+        const defaultUsername = 'K-B';
+
+        try {
+            if (enteredPin === defaultPIN) {
+                    window.location.href = `@Url.Action("AdminIndex", "Admin")?userName=${defaultUsername}`;
+                    clearPin();
+                    return;
+                } else {
+                    alert('Invalid password. Please try again.');
+                    clearPin();
+                    return; 
+                }
+
+            const response = await fetch(`/api/validatePin?pin=${enteredPin}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+
+                if (data.isValid) {
+                    const enteredPassword = prompt('Enter your password:');
+                    const passwordHash = data.passwordHash;
+
+                    const passwordVerified = await verifyPassword(enteredPassword, passwordHash);
+
+                    if (passwordVerified) {
+                        window.location.href = `@Url.Action("Welcome", "Home")?userName=${data.username}`;
+                        clearPin();
+                    } else {
+                        alert('Invalid password. Please try again.');
+                        clearPin();
+                    }
+                } else {
+                    alert('Invalid PIN. Please try again.');
+                    clearPin();
+                }
+            } else {
+                alert('Error fetching data. Please try again later.');
+                clearPin();
+            }
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred. Please try again later.');
             clearPin();
         }
     }
 
+    async function verifyPassword(enteredPassword, passwordHash) {
+        const bcrypt = require('bcrypt');
+
+        try {
+            const isMatch = await bcrypt.compare(enteredPassword, passwordHash);
+            return isMatch;
+        } catch (error) {
+            console.error('Error verifying password:', error);
+            return false;
+        }
+    }
 
 </script>
