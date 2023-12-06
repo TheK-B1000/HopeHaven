@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Collaborative_Resource_Management_System.Services; 
 
 namespace Collaborative_Resource_Management_System.Controllers
 {
@@ -9,11 +10,13 @@ namespace Collaborative_Resource_Management_System.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly AccountService _accountService; 
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, AccountService accountService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _accountService = accountService; 
         }
 
         public IActionResult Index()
@@ -37,6 +40,21 @@ namespace Collaborative_Resource_Management_System.Controllers
             return Ok(new { isValid = false });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GetUserRole([FromBody] PinLoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userRole = await _accountService.GetUserRoleFromDatabaseAsync(model.Username);
+
+                if (!string.IsNullOrEmpty(userRole))
+                {
+                    return Json(new { Role = userRole });
+                }
+            }
+
+            return BadRequest("Error retrieving user role.");
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(PinLoginViewModel model)
@@ -50,9 +68,8 @@ namespace Collaborative_Resource_Management_System.Controllers
                     var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Pin);
                     if (result == PasswordVerificationResult.Success)
                     {
-                        // Log the user in
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("Index", "Home"); // Or wherever you want to redirect
+                        return RedirectToAction("AdminIndex", "Admin"); 
                     }
                 }
 
