@@ -59,17 +59,21 @@ public class UserService : IUserService
         return await _context.Users.FindAsync(userId);
     }
 
-    public async Task<IEnumerable<UserRoleViewModel>> GetUsersWithRolesAsync(string searchString = null)
+    public async Task<IEnumerable<UserRoleViewModel>> GetUsersWithRolesAsync(string searchString = null, bool includeInactive = false)
     {
         var usersWithRoles = new List<UserRoleViewModel>();
-
-        var users = _context.Users.AsQueryable();
-        if (!string.IsNullOrWhiteSpace(searchString))
+        var usersQuery = _context.Users.AsQueryable();
+        if (!includeInactive)
         {
-            users = users.Where(u => EF.Functions.Like(u.UserName, $"%{searchString}%"));
+            usersQuery = usersQuery.Where(u => !u.LockoutEnabled || u.LockoutEnd <= DateTimeOffset.Now);
         }
 
-        var userRoles = from user in users
+        if (!string.IsNullOrWhiteSpace(searchString))
+        {
+            usersQuery = usersQuery.Where(u => EF.Functions.Like(u.UserName, $"%{searchString}%"));
+        }
+
+        var userRoles = from user in usersQuery
                         join userRole in _context.UserRoles on user.Id equals userRole.UserId
                         join role in _context.Roles on userRole.RoleId equals role.Id
                         select new UserRoleViewModel { User = user, Role = role.Name };

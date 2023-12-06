@@ -16,5 +16,5 @@ public interface IUserService
     Task<bool> MarkUserAsInactiveAsync(string userId);
     Task<bool> ReactivateUserAsync(string userId);
     Task<string> GetRoleForUserAsync(IdentityUser user);
-    Task<IEnumerable<UserRoleViewModel>> GetUsersWithRolesAsync(string searchString);
+    Task<IEnumerable<UserRoleViewModel>> GetUsersWithRolesAsync(string searchString, bool includeInactive);
 }

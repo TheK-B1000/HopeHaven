@@ -21,10 +21,13 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public async Task<IActionResult> Manage(string searchString)
         {
-            var userRoleViewModels = await _userService.GetUsersWithRolesAsync(searchString);
+            bool includeInactive = false;
+
+            var userRoleViewModels = await _userService.GetUsersWithRolesAsync(searchString, includeInactive);
             ViewBag.SearchString = searchString;
             return View(userRoleViewModels);
         }
+
 
         public async Task<IActionResult> Edit(string id)
         {
@@ -113,6 +116,9 @@ namespace Collaborative_Resource_Management_System.Controllers
             var createUserResult = await _userManager.CreateAsync(user);
             if (createUserResult.Succeeded)
             {
+                user.LockoutEnabled = false;
+                await _userManager.UpdateAsync(user);
+
                 var addToRoleResult = await _userManager.AddToRoleAsync(user, selectedRole);
                 if (addToRoleResult.Succeeded)
                 {
@@ -125,20 +131,32 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View(user);
         }
 
-
         public async Task<IActionResult> SoftDelete(string id)
         {
-            var success = await _userService.MarkUserAsInactiveAsync(id);
-            if (success)
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
             {
-                TempData["Message"] = "User successfully marked as inactive.";
-                return RedirectToAction("Manage");
+                user.LockoutEnabled = true;
+                user.LockoutEnd = DateTimeOffset.MaxValue;  
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    TempData["Message"] = "User successfully marked as inactive.";
+                }
+                else
+                {
+                    TempData["Error"] = "Error occurred while marking the user as inactive.";
+                }
             }
             else
             {
-                TempData["Error"] = "Error occurred while marking the user as inactive.";
-                return RedirectToAction("Manage");
+                TempData["Error"] = "User not found.";
             }
+
+            return RedirectToAction("Manage");
         }
+
+
     }
 }

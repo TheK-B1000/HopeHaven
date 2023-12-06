@@ -30,7 +30,8 @@ namespace Collaborative_Resource_Management_System.Models
                         Email = "beny@example.com",
                         PhoneNumber = "9042303318",
                         EmailConfirmed = true,
-                        PhoneNumberConfirmed = true
+                        PhoneNumberConfirmed = true,
+                        LockoutEnabled = false
                     };
 
                     var passwordHasher = new PasswordHasher<IdentityUser>();
