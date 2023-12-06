@@ -95,19 +95,32 @@
     async function submitPin() {
         var enteredPin = pin;
 
-        const defaultPIN = '111111';
-        const defaultUsername = 'K-B';
+        const adminPIN = '111111';
+        const editorPIN = '222222';
+        const staffPIN = '333333';
+
+        const adminUsername = 'K-B';
+        const editorUsername = 'Beny';
+        const staffUsername = 'Corey';
 
         try {
-            if (enteredPin === defaultPIN) {
-                    window.location.href = `@Url.Action("AdminIndex", "Admin")?userName=${defaultUsername}`;
-                    clearPin();
-                    return;
-                } else {
-                    alert('Invalid password. Please try again.');
-                    clearPin();
-                    return; 
-                }
+            if (enteredPin === adminPIN) {
+                window.location.href = `@Url.Action("AdminIndex", "Admin")?userName=${adminUsername}`;
+                clearPin();
+                return;
+            } else if (enteredPin === editorPIN) {
+                window.location.href = `@Url.Action("EditorIndex", "Editor")?userName=${editorUsername}`;
+                clearPin();
+                return;
+            } else if (enteredPin === staffPIN) {
+                window.location.href = `@Url.Action("StaffIndex", "Staff")?userName=${staffUsername}`;
+                clearPin();
+                return;
+            } else {
+                alert('Invalid password. Please try again.');
+                clearPin();
+                return;
+            }
 
             const response = await fetch(`/api/validatePin?pin=${enteredPin}`, {
                 method: 'GET',
@@ -158,5 +171,58 @@
             return false;
         }
     }
+
+    function getUserRoleFromDatabase(username, pin) {
+        var url;
+        switch (userRole) {
+            case 'Admin':
+                url = '/Admin/AdminIndex?userName=' + username;
+                break;
+            case 'Editor':
+                url = '/Editor/EditorIndex?userName=' + username;
+                break;
+            case 'Staff':
+                url = '/Staff/StaffIndex?userName=' + username;
+                break;
+            default:
+                alert('Invalid role. Please try again.');
+                clearPin();
+                return; 
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: url, 
+            data: JSON.stringify({ Username: username, Pin: pin }),
+            contentType: 'application/json',
+            success: function (data) {
+                redirectToUserRole(data.Role, username);
+            },
+            error: function () {
+                alert('Error retrieving user role. Please try again.');
+                clearPin();
+            }
+        });
+    }
+
+
+    function redirectToUserRole(userRole, username) {
+        switch (userRole) {
+            case 'Admin':
+                window.location.href = `@Url.Action("AdminIndex", "Admin")?userName=${username}`;
+                break;
+            case 'Editor':
+                window.location.href = `@Url.Action("EditorIndex", "Editor")?userName=${username}`;
+                break;
+            case 'Staff':
+                window.location.href = `@Url.Action("StaffIndex", "Staff")?userName=${username}`;
+                break;
+            default:
+                alert('Invalid role. Please try again.');
+                clearPin();
+        }
+        clearPin();
+    }
+
 
 </script>
