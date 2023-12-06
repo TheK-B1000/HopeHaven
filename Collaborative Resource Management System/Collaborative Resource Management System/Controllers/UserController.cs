@@ -21,19 +21,7 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public async Task<IActionResult> Manage(string searchString)
         {
-            var users = await _userService.SearchUsersAsync(searchString);
-            var userRoleViewModels = new List<UserRoleViewModel>();
-
-            foreach (var user in users)
-            {
-                var role = await _userService.GetRoleForUserAsync(user);
-                userRoleViewModels.Add(new UserRoleViewModel
-                {
-                    User = user,
-                    Role = role
-                });
-            }
-
+            var userRoleViewModels = await _userService.GetUsersWithRolesAsync(searchString);
             ViewBag.SearchString = searchString;
             return View(userRoleViewModels);
         }
@@ -51,17 +39,46 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
-            ViewBag.Departments = await _userService.GetDepartmentsAsync();
+            var currentRoles = await _userManager.GetRolesAsync(user);
+            var userRole = currentRoles.FirstOrDefault(); 
+
+            ViewBag.UserRole = userRole; 
+            ViewBag.AllRoles = await _roleManager.Roles.ToListAsync(); 
             return View(user);
         }
 
+
+
         [HttpPost]
-        public async Task<IActionResult> Edit(IdentityUser user)
+        public async Task<IActionResult> Edit(IdentityUser user, string selectedRole, string password)
         {
-            var success = await _userService.EditUserAsync(user);
+            var existingUser = await _userManager.FindByIdAsync(user.Id);
+            if (existingUser == null)
+            {
+                return NotFound();
+            }
+
+            existingUser.UserName = user.UserName;
+            existingUser.Email = user.Email;
+
+            var updateResult = await _userManager.UpdateAsync(existingUser);
+            var currentRoles = await _userManager.GetRolesAsync(existingUser);
+            if (!currentRoles.Contains(selectedRole))
+            {
+                await _userManager.RemoveFromRolesAsync(existingUser, currentRoles);
+                await _userManager.AddToRoleAsync(existingUser, selectedRole);
+            }
+
+            if (!string.IsNullOrEmpty(password))
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(existingUser);
+                var resetResult = await _userManager.ResetPasswordAsync(existingUser, token, password);
+            }
+
             return RedirectToAction("Manage");
-            
         }
+
+
 
         [HttpGet]
         public IActionResult AddDepartment()
