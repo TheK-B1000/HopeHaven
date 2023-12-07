@@ -1,8 +1,9 @@
-﻿namespace Collaborative_Resource_Management_System.Models.Interfaces
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Collaborative_Resource_Management_System.Models.Interfaces
 {
     public interface IAccountService
     {
-        Task<bool> AuthenticateUserAsync(string username, string pin);
-        Task<string> GetUserRoleFromDatabaseAsync(string username);
+        Task<IdentityUser> FindByPinAsync(string pin);
     }
 }

@@ -131,80 +131,21 @@
 
             if (response.ok) {
                 const data = await response.json();
-
                 if (data.isValid) {
-                    const enteredPassword = prompt('Enter your password:');
-                    const passwordHash = data.passwordHash;
-
-                    const passwordVerified = await verifyPassword(enteredPassword, passwordHash);
-
-                    if (passwordVerified) {
-                        window.location.href = `@Url.Action("Welcome", "Home")?userName=${data.username}`;
-                        clearPin();
-                    } else {
-                        alert('Invalid password. Please try again.');
-                        clearPin();
-                    }
+                    redirectToUserRole(data.role, data.username);
                 } else {
                     alert('Invalid PIN. Please try again.');
-                    clearPin();
                 }
             } else {
                 alert('Error fetching data. Please try again later.');
-                clearPin();
             }
         } catch (error) {
             console.error(error);
             alert('An error occurred. Please try again later.');
+        } finally {
             clearPin();
         }
     }
-
-    async function verifyPassword(enteredPassword, passwordHash) {
-        const bcrypt = require('bcrypt');
-
-        try {
-            const isMatch = await bcrypt.compare(enteredPassword, passwordHash);
-            return isMatch;
-        } catch (error) {
-            console.error('Error verifying password:', error);
-            return false;
-        }
-    }
-
-    function getUserRoleFromDatabase(username, pin) {
-        var url;
-        switch (userRole) {
-            case 'Admin':
-                url = '/Admin/AdminIndex?userName=' + username;
-                break;
-            case 'Editor':
-                url = '/Editor/EditorIndex?userName=' + username;
-                break;
-            case 'Staff':
-                url = '/Staff/StaffIndex?userName=' + username;
-                break;
-            default:
-                alert('Invalid role. Please try again.');
-                clearPin();
-                return; 
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: url, 
-            data: JSON.stringify({ Username: username, Pin: pin }),
-            contentType: 'application/json',
-            success: function (data) {
-                redirectToUserRole(data.Role, username);
-            },
-            error: function () {
-                alert('Error retrieving user role. Please try again.');
-                clearPin();
-            }
-        });
-    }
-
 
     function redirectToUserRole(userRole, username) {
         switch (userRole) {
@@ -223,6 +164,5 @@
         }
         clearPin();
     }
-
 
 </script>

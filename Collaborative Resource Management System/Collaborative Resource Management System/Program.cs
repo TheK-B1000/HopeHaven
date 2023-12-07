@@ -27,6 +27,8 @@ builder.Services.AddScoped<IInventoryService, InventoryService>();
 
 var app = builder.Build();
 
+await InitializeRoles(app.Services);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -63,3 +65,17 @@ app.UseEndpoints(endpoints =>
 
 
 await app.RunAsync();
+
+// Method to initialize roles only
+static async Task InitializeRoles(IServiceProvider services)
+{
+    using var scope = services.CreateScope();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "Editor", "Staff" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+            await roleManager.CreateAsync(new IdentityRole(role));
+    }
+}
