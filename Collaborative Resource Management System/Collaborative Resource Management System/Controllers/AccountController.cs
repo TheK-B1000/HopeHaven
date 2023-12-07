@@ -6,6 +6,8 @@ using Collaborative_Resource_Management_System.Services;
 
 namespace Collaborative_Resource_Management_System.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -24,45 +26,32 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
-        [HttpGet]
-        [Route("api/validatePin")]
+        [HttpGet("validatePin")]
         public async Task<IActionResult> ValidatePin(string pin)
         {
-            var users = _userManager.Users.ToList();
-
-            foreach (var user in users)
+            try
             {
-                var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, pin);
-                if (result == PasswordVerificationResult.Success)
-                {
-                    var roles = await _userManager.GetRolesAsync(user);
-                    var userRole = roles.FirstOrDefault(); 
-                    return Ok(new { isValid = true, username = user.UserName, role = userRole });
-                }
-            }
-            return Ok(new { isValid = false });
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Login(PinLoginViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByNameAsync(model.Username);
+                var user = await _accountService.FindByPinAsync(pin);
                 if (user != null)
                 {
-                    var passwordHasher = new PasswordHasher<IdentityUser>();
-                    var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Pin);
-                    if (result == PasswordVerificationResult.Success)
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("AdminIndex", "Admin"); 
-                    }
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var userRole = roles.FirstOrDefault();
+                    return Ok(new { isValid = true, username = user.UserName, role = userRole });
                 }
-
-                ModelState.AddModelError(string.Empty, "Invalid PIN or username.");
+                return Ok(new { isValid = false });
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error");
+            }
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Login(string pin)
+        {
+            return View();
+        }
+
     }
 }

@@ -108,21 +108,19 @@
                 window.location.href = `@Url.Action("AdminIndex", "Admin")?userName=${adminUsername}`;
                 clearPin();
                 return;
-            } else if (enteredPin === editorPIN) {
+            }
+            if (enteredPin === editorPIN) {
                 window.location.href = `@Url.Action("EditorIndex", "Editor")?userName=${editorUsername}`;
                 clearPin();
                 return;
-            } else if (enteredPin === staffPIN) {
+            }
+            if (enteredPin === staffPIN) {
                 window.location.href = `@Url.Action("StaffIndex", "Staff")?userName=${staffUsername}`;
-                clearPin();
-                return;
-            } else {
-                alert('Invalid password. Please try again.');
                 clearPin();
                 return;
             }
 
-            const response = await fetch(`/api/validatePin?pin=${enteredPin}`, {
+            const response = await fetch(`/api/account/validatePin?pin=${enteredPin}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

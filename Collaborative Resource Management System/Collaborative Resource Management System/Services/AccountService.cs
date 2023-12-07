@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Collaborative_Resource_Management_System.Data;
 using Collaborative_Resource_Management_System.Models.Interfaces; 
@@ -23,18 +24,10 @@ namespace Collaborative_Resource_Management_System.Services
 
         public async Task<IdentityUser> FindByPinAsync(string pin)
         {
-            var users = _userManager.Users.ToList(); 
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.PasswordHash == pin);
 
-            foreach (var user in users)
-            {
-                var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, pin);
-                if (result == PasswordVerificationResult.Success)
-                {
-                    return user; 
-                }
-            }
-
-            return null;
+            return user;
         }
+
     }
 }
