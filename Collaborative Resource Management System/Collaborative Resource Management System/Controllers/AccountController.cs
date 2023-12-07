@@ -28,32 +28,19 @@ namespace Collaborative_Resource_Management_System.Controllers
         [Route("api/validatePin")]
         public async Task<IActionResult> ValidatePin(string pin)
         {
-            var userManager = _userManager; 
-            var user = await userManager.FindByNameAsync(pin);
+            var users = _userManager.Users.ToList();
 
-            if (user != null)
+            foreach (var user in users)
             {
-                var passwordHash = user.PasswordHash;
-                return Ok(new { isValid = true, passwordHash });
-            }
-
-            return Ok(new { isValid = false });
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> GetUserRole([FromBody] PinLoginViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var userRole = await _accountService.GetUserRoleFromDatabaseAsync(model.Username);
-
-                if (!string.IsNullOrEmpty(userRole))
+                var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, pin);
+                if (result == PasswordVerificationResult.Success)
                 {
-                    return Json(new { Role = userRole });
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var userRole = roles.FirstOrDefault(); 
+                    return Ok(new { isValid = true, username = user.UserName, role = userRole });
                 }
             }
-
-            return BadRequest("Error retrieving user role.");
+            return Ok(new { isValid = false });
         }
 
         [HttpPost]

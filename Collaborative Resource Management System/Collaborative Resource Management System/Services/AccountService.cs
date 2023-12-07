@@ -21,36 +21,20 @@ namespace Collaborative_Resource_Management_System.Services
             _context = context;
         }
 
-        public async Task<bool> AuthenticateUserAsync(string username, string pin)
+        public async Task<IdentityUser> FindByPinAsync(string pin)
         {
-            var user = await _userManager.FindByNameAsync(username);
-            if (user != null)
+            var users = _userManager.Users.ToList(); 
+
+            foreach (var user in users)
             {
-                // Use Identity PasswordHasher to verify the PIN
-                var passwordVerificationResult = await _userManager.CheckPasswordAsync(user, pin);
-                if (passwordVerificationResult)
+                var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, pin);
+                if (result == PasswordVerificationResult.Success)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return true;
+                    return user; 
                 }
             }
-            return false;
-        }
 
-        public async Task<string> GetUserRoleFromDatabaseAsync(string username)
-        {
-            var user = await _userManager.FindByNameAsync(username);
-            if (user != null)
-            {
-                var userRole = (from ur in _context.UserRoles
-                                join r in _context.Roles on ur.RoleId equals r.Id
-                                where ur.UserId == user.Id
-                                select r.Name).FirstOrDefault();
-
-                return userRole;
-            }
             return null;
         }
-
     }
 }
