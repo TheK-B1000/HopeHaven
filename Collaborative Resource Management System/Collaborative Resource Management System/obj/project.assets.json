@@ -3795,23 +3795,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\K-B05\\.nuget\\packages\\": {},
+    "C:\\Users\\K-B\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
+      "projectUniqueName": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
       "projectName": "Collaborative Resource Management System",
-      "projectPath": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
-      "packagesPath": "C:\\Users\\K-B05\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\",
+      "projectPath": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
+      "packagesPath": "C:\\Users\\K-B\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\K-B05\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\K-B\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3887,7 +3887,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.414\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
