@@ -6,7 +6,6 @@ namespace Collaborative_Resource_Management_System.Models
     public class CheckOut
     {
         public int CheckoutID { get; set; }
-        public int UserID { get; set; }
         public int InventoryItemID { get; set; }
         public DateTime CheckOutDate { get; set; }
         public DateTime? ReturnDate { get; set; }

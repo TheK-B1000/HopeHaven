@@ -136,7 +136,6 @@ namespace Collaborative_Resource_Management_System.Models
                     context.CheckOuts.AddRange(
                         new CheckOut
                         {
-                            UserID = 1,
                             InventoryItemID = 1,
                             CheckOutDate = DateTime.UtcNow,
                             ReturnDate = DateTime.UtcNow.AddDays(10),
@@ -154,7 +153,7 @@ namespace Collaborative_Resource_Management_System.Models
                         {
                             AssetTag = "A001",
                             CheckInDate = DateTime.UtcNow,
-                            UserID = 1
+                            UserID = "e93f1b7a-73df-4419-bae4-5e45c063e24f"
                         }
                     );
                 }
@@ -168,7 +167,7 @@ namespace Collaborative_Resource_Management_System.Models
                             ReportName = "GlueSticks Report",
                             ReportDescription = "Gluesticks for everyone",
                             ReportDate = DateTime.UtcNow,
-                            UserID = 1 
+                            UserID = "e93f1b7a-73df-4419-bae4-5e45c063e24f"
                         }
                 );
                 context.SaveChanges();

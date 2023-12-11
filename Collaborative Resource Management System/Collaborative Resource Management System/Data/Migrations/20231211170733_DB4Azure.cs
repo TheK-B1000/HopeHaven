@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Collaborative_Resource_Management_System.Data.Migrations
 {
-    public partial class NewDecemberDB : Migration
+    public partial class DB4Azure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,7 +71,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AssetTag = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false)
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,7 +134,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     ReportName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReportDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReportDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false)
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -161,7 +161,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                 {
                     CheckoutID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<int>(type: "int", nullable: false),
                     InventoryItemID = table.Column<int>(type: "int", nullable: false),
                     CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: true),
