@@ -70,8 +70,9 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CheckInID");
 
@@ -106,9 +107,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.Property<float>("TotalPrice")
                         .HasColumnType("real");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
 
                     b.HasKey("CheckoutID");
 
@@ -237,8 +235,9 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReportID");
 

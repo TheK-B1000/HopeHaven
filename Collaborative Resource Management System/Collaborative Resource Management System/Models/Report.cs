@@ -12,7 +12,7 @@ namespace Collaborative_Resource_Management_System.Models
 
         public DateTime ReportDate { get; set; }
 
-        public int UserID { get; set; }
+        public string UserID { get; set; }
 
     }
 }
