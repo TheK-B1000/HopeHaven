@@ -1,4 +1,5 @@
-﻿using Collaborative_Resource_Management_System.Models;
+﻿using Collaborative_Resource_Management_System.Data;
+using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ namespace Collaborative_Resource_Management_System.Services
     public class InventoryService : IInventoryService
     {
         private readonly AppDbContext _context;
-        private readonly string _loggedInUserName = "Stella Johnson"; 
+        private readonly string _loggedInUserName = "Stella Johnson";
         private readonly bool _isActive = true;
         private readonly bool _isDeleted = false;
 
@@ -156,7 +157,7 @@ namespace Collaborative_Resource_Management_System.Services
             {
                 return await _context.Consumables.FindAsync(id);
             }
-            else 
+            else
             {
                 return await _context.NonConsumables.FindAsync(id);
             }
@@ -203,7 +204,7 @@ namespace Collaborative_Resource_Management_System.Services
                 }
                 else
                 {
-                    return false; 
+                    return false;
                 }
 
                 await _context.SaveChangesAsync();
@@ -229,7 +230,7 @@ namespace Collaborative_Resource_Management_System.Services
                 }
                 else
                 {
-                    return false; 
+                    return false;
                 }
 
                 if (item == null)

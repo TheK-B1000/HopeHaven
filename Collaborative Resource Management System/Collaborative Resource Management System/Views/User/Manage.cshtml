@@ -1,5 +1,5 @@
-@model IEnumerable<Collaborative_Resource_Management_System.Models.User>
-@using Collaborative_Resource_Management_System.Models
+@model IEnumerable<Collaborative_Resource_Management_System.Models.UserRoleViewModel>
+@using Microsoft.AspNetCore.Identity
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,28 +15,30 @@
 
     <a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
     <a href="@Url.Action("AddDepartment", "User")" class="btn btn-secondary">Add Department</a>
-
+    <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
 </div>
 
 <table id="usersTable" class="table">
     <thead>
         <tr>
             <th>User ID</th>
-            <th>Name</th>
-            <th>User Type</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in Model)
+        @foreach (var viewModel in Model)
         {
             <tr>
-                <td>@user.UserID</td>
-                <td>@user.Name</td>
-                <td>@user.Type</td>
+                <td>@viewModel.User.Id</td>
+                <td>@viewModel.User.UserName</td>
+                <td>@viewModel.User.Email</td>
+                <td>@viewModel.Role</td>
                 <td>
-                    <a href="@Url.Action("Edit", "User", new { id = user.UserID })" class="btn btn-secondary btn-sm">Edit</a>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = user.UserID })'">Delete</button>
+                    <a href="@Url.Action("Edit", "User", new { id = viewModel.User.Id })" class="btn btn-secondary btn-sm">Edit</a>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("SoftDelete", "User", new { id = viewModel.User.Id })'">Delete</button>
                 </td>
             </tr>
         }
@@ -44,7 +46,6 @@
 </table>
 
 <div>
-    <a href="@Url.Action("adminIndex", "Admin")" class="button-link">Admin Home</a>
+    <a href="@Url.Action("AdminIndex", "Admin")" class="button-link">Admin Home</a>
     <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>
 </div>
-

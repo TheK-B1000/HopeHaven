@@ -1,4 +1,4 @@
-﻿@model Collaborative_Resource_Management_System.Models.User
+﻿@using Microsoft.AspNetCore.Identity
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,55 +11,37 @@
 
         <form action="/User/Add" method="POST">
             <div class="form-group">
-                <label for="Image">Image:</label>
-                <input type="file" id="Image" name="Image" class="form-control-file" accept="image/*" style="display: none;">
-                <div id="drop-area" role="button" aria-label="Drag and drop area for image upload" tabindex="0" style="border: 2px dashed #ccc; padding: 20px; text-align: center;">
-                    <p>Drag and drop an image here.</p>
-                    <div id="preview-container" style="margin-top: 20px;"></div>
-                </div>
-                <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept="image/*" style="margin-top: 10px;">
-            </div>
-
-            <div class="form-group">
-                <label for="Name">Name:</label>
-                <input type="text" class="form-control" id="Name" name="Name">
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.Name)</span>
-            </div>
-
-            <div class="form-group">
-                <label for="Type">Type:</label>
-                <select class="form-control" id="Type" name="Type">
-                    <option value="0">Admin</option>
-                    <option value="1">Editor</option>
-                    <option value="2">Staff</option>
-                </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.Type)</span>
-            </div>
-
-            <div class="form-group">
-                <label for="PIN">PIN:</label>
-                <input type="password" class="form-control" id="PIN" name="PIN">
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.PIN)</span>
+                <label for="UserName">Name:</label>
+                <input type="text" class="form-control" id="UserName" name="UserName" required>
             </div>
 
             <div class="form-group">
                 <label for="Password">Password:</label>
-                <input type="password" class="form-control" id="Password" name="Password">
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.Password)</span>
+                <input type="password" class="form-control" id="Password" name="Password" required>
             </div>
 
             <div class="form-group">
-                <label for="DeptID">Department:</label>
-                <select class="form-control" id="DeptID" name="DeptID">
-                    @if (ViewBag.Departments != null)
+                <label for="selectedRole">Role:</label>
+                <select class="form-control" id="selectedRole" name="selectedRole">
+                    @if (ViewBag.Roles != null)
                     {
-                        foreach (var department in ViewBag.Departments)
+                        foreach (var role in ViewBag.Roles as IEnumerable<SelectListItem>)
                         {
-                            <option value="@department.Value">@department.Text</option>
+                            <option value="@role.Value">@role.Text</option>
                         }
                     }
                 </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.DeptID)</span>
+            </div>
+
+
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" id="Email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="PhoneNumber">Phone Number:</label>
+                <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber">
             </div>
 
             <button type="submit" class="btn btn-primary">Add</button>

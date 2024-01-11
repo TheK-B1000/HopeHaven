@@ -3,8 +3,6 @@
     ViewBag.Title = "Login";
 }
 
-
-
 <div>
     <div class="pin-container mt-5">
         <div class="row justify-content-center">
@@ -57,10 +55,12 @@
             </div>
         </div>
     </div>
+
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage">Manage</a>
     
 </div>
-
-
 
 <script>
     let pin = '';
@@ -92,24 +92,75 @@
 
     //Still working on pulling ID from DB. - Corey
 
-    function submitPin() {
-        if (pin === '111111') {
-            window.location.href = '@Url.Action("AdminIndex", "Admin")?userName=Beny';
-            clearPin();
-        }
-        else if (pin === '222222') {
-            window.location.href = '@Url.Action("EditorIndex", "Editor")?userName=Corey';
-            clearPin();
-        }
-        else if (pin === '333333') {
-            window.location.href = '@Url.Action("StaffIndex", "Staff")?userName=Ben';
-            clearPin();
-        }
-        else {
-            alert('Incorrect PIN Number. Please try again.');
+    async function submitPin() {
+        var enteredPin = pin;
+
+        const adminPIN = '111111';
+        const editorPIN = '222222';
+        const staffPIN = '333333';
+
+        const adminUsername = 'K-B';
+        const editorUsername = 'Beny';
+        const staffUsername = 'Corey';
+
+        try {
+            if (enteredPin === adminPIN) {
+                window.location.href = `@Url.Action("AdminIndex", "Admin")?userName=${adminUsername}`;
+                clearPin();
+                return;
+            }
+            if (enteredPin === editorPIN) {
+                window.location.href = `@Url.Action("EditorIndex", "Editor")?userName=${editorUsername}`;
+                clearPin();
+                return;
+            }
+            if (enteredPin === staffPIN) {
+                window.location.href = `@Url.Action("StaffIndex", "Staff")?userName=${staffUsername}`;
+                clearPin();
+                return;
+            }
+
+            const response = await fetch(`/api/account/validatePin?pin=${enteredPin}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.isValid) {
+                    redirectToUserRole(data.role, data.username);
+                } else {
+                    alert('Invalid PIN. Please try again.');
+                }
+            } else {
+                alert('Error fetching data. Please try again later.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred. Please try again later.');
+        } finally {
             clearPin();
         }
     }
 
+    function redirectToUserRole(userRole, username) {
+        switch (userRole) {
+            case 'Admin':
+                window.location.href = `@Url.Action("AdminIndex", "Admin")?userName=${username}`;
+                break;
+            case 'Editor':
+                window.location.href = `@Url.Action("EditorIndex", "Editor")?userName=${username}`;
+                break;
+            case 'Staff':
+                window.location.href = `@Url.Action("StaffIndex", "Staff")?userName=${username}`;
+                break;
+            default:
+                alert('Invalid role. Please try again.');
+                clearPin();
+        }
+        clearPin();
+    }
 
 </script>

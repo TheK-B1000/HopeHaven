@@ -1,3 +1,5 @@
+using Collaborative_Resource_Management_System.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -9,30 +11,44 @@ namespace Collaborative_Resource_Management_System.Models
 {
     public static class DbInitializer
     {
-        public static void SeedData(IServiceProvider serviceProvider)
+        public static async Task SeedData(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.CreateScope())
             {
                 var scopedServiceProvider = scope.ServiceProvider;
                 var context = scopedServiceProvider.GetRequiredService<AppDbContext>();
+                var userManager = scopedServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var roleManager = scopedServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                SeedRoles(roleManager);
 
                 if (!context.Users.Any())
                 {
-                    context.Users.AddRange(
-                        new User
+                    var user = new IdentityUser
+                    {
+                        UserName = "BenyFarfan",
+                        Email = "beny@example.com",
+                        PhoneNumber = "9042303318",
+                        EmailConfirmed = true,
+                        PhoneNumberConfirmed = true,
+                        LockoutEnabled = false
+                    };
+
+                    var passwordHasher = new PasswordHasher<IdentityUser>();
+                    user.PasswordHash = passwordHasher.HashPassword(user, "123456");
+
+                    var createResult = await userManager.CreateAsync(user);
+                    if (createResult.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    else
+                    {
+                        foreach (var error in createResult.Errors)
                         {
-                            Name = "Beny Farfan",
-                            Type = UserType.Admin,
-                            PIN = "5678",
-                            Password = "securePassword123",
-                            DeptID = 2,
-                            CreatedBy = "Stella",
-                            EditedBy = "Kim",
-                            CreatedDate = DateTime.UtcNow,
-                            EditedDate = DateTime.UtcNow,
-                            IsActive = true
+                            Console.WriteLine($"Error: {error.Description}");
                         }
-                    );
+                    }
                 }
 
                 if (!context.Categories.Any())
@@ -65,8 +81,8 @@ namespace Collaborative_Resource_Management_System.Models
                     );
                 }
 
-                context.SaveChanges(); 
-              
+                context.SaveChanges();
+
                 if (!context.InventoryItems.OfType<Consumable>().Any())
                 {
                     context.InventoryItems.AddRange(
@@ -80,7 +96,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID, 
+                            CategoryID = context.Categories.First().CategoryID,
                             ItemType = ItemType.Consumable,
                             Comments = "Glue sticks for everyone",
                             PricePerUnit = 1.50F,
@@ -104,7 +120,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID, 
+                            CategoryID = context.Categories.First().CategoryID,
                             ItemType = ItemType.NonConsumable,
                             Comments = "Dell Laptop for staff",
                             AssetTag = "A001",
@@ -120,7 +136,6 @@ namespace Collaborative_Resource_Management_System.Models
                     context.CheckOuts.AddRange(
                         new CheckOut
                         {
-                            UserID = 1,
                             InventoryItemID = 1,
                             CheckOutDate = DateTime.UtcNow,
                             ReturnDate = DateTime.UtcNow.AddDays(10),
@@ -138,11 +153,37 @@ namespace Collaborative_Resource_Management_System.Models
                         {
                             AssetTag = "A001",
                             CheckInDate = DateTime.UtcNow,
-                            UserID = 1
+                            UserID = "e93f1b7a-73df-4419-bae4-5e45c063e24f"
                         }
                     );
                 }
                 context.SaveChanges();
+         
+                if (!context.Reports.Any())
+                {
+                    context.Reports.Add(
+                        new Report
+                        {
+                            ReportName = "GlueSticks Report",
+                            ReportDescription = "Gluesticks for everyone",
+                            ReportDate = DateTime.UtcNow,
+                            UserID = "e93f1b7a-73df-4419-bae4-5e45c063e24f"
+                        }
+                );
+                context.SaveChanges();
+            }
+        }
+    }
+        private static void SeedRoles(RoleManager<IdentityRole> roleManager)
+        {
+            string[] roleNames = { "Admin", "Editor", "Staff" };
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = roleManager.RoleExistsAsync(roleName).Result;
+                if (!roleExist)
+                {
+                    roleManager.CreateAsync(new IdentityRole(roleName)).Wait();
+                }
             }
         }
     }

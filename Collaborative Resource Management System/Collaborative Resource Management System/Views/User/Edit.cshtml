@@ -1,4 +1,5 @@
-﻿@model Collaborative_Resource_Management_System.Models.User
+﻿@using Microsoft.AspNetCore.Identity
+@model IdentityUser
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Edit User";
@@ -6,55 +7,41 @@
 <body>
     <div class="container">
 
-        <form asp-action="Edit" asp-controller="User" method="POST">
-            <input type="hidden" name="UserID" value="@Model.UserID" />
-
+        <form asp-action="Edit" asp-controller="User" method="POST" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label for="Image">Image:</label>
-                <input type="file" id="Image" name="Image" class="form-control-file" accept="image/*" style="display: none;">
-                <div id="drop-area" role="button" aria-label="Drag and drop area for image upload" tabindex="0" style="border: 2px dashed #ccc; padding: 20px; text-align: center;">
-                    <p>Drag and drop an image here.</p>
-                    <div id="preview-container" style="margin-top: 20px;"></div>
-                </div>
-                <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept="image/*" style="margin-top: 10px;">
+                <label for="UserName">Username:</label>
+                <input type="text" class="form-control" asp-for="UserName" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label>Name:</label>
-                <input type="text" class="form-control" name="Name" value="@Model.Name" />
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-
+    
             <div class="form-group">
-                <label>Type:</label>
-                <select class="form-control" name="Type">
-                    <option value="0" @((int)Model.Type == 0 ? "selected" : "")>Admin</option>
-                    <option value="1" @((int)Model.Type == 1 ? "selected" : "")>Editor</option>
-                    <option value="2" @((int)Model.Type == 2 ? "selected" : "")>Staff</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>PIN:</label>
-                <input type="password" class="form-control" name="PIN" value="@Model.PIN" />
-            </div>
-
-            <div class="form-group">
-                <label>Password:</label>
-                <input type="password" class="form-control" name="Password" value="@Model.Password" />
-            </div>
-
-            <div class="form-group">
-                <label>Department:</label>
-                <select class="form-control" name="DeptID">
-                    @if (ViewBag.Departments != null)
+                <label for="selectedRole">Role:</label>
+                <select class="form-control" id="selectedRole" name="selectedRole">
+                    @foreach (var role in ViewBag.AllRoles as IEnumerable<IdentityRole>)
                     {
-                        foreach (var department in ViewBag.Departments)
+                        if (ViewBag.UserRole == role.Name)
                         {
-                            <option value="@department.Value" @(Model.DeptID == int.Parse(department.Value) ? "selected" : "")>@department.Text</option>
+                            <option value="@role.Name" selected>@role.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@role.Name">@role.Name</option>
                         }
                     }
                 </select>
-                <span class="text-danger">@Html.ValidationMessageFor(model => model.DeptID)</span>
+            </div>
+
+
+            <div class="form-group">
+                <label for="Password">Password:</label>
+                <input type="password" class="form-control" name="Password" />
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>

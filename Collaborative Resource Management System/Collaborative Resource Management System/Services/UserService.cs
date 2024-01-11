@@ -1,57 +1,90 @@
 ﻿using Collaborative_Resource_Management_System.Models;
+using Collaborative_Resource_Management_System.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 public class UserService : IUserService
 {
     private readonly AppDbContext _context;
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly string _loggedInUserName = "Stella Johnson";
-    private readonly bool _isActive = true;
-    private readonly bool _isDeleted = false;
 
-    public UserService(AppDbContext context)
+    public UserService(AppDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
+        _userManager = userManager;
+        _roleManager = roleManager;
     }
 
-    public async Task<IEnumerable<User>> SearchUsersAsync(string searchString)
+    public async Task<IEnumerable<SelectListItem>> GetRolesAsync()
+    {
+        var roles = await _context.Roles.ToListAsync();
+        var roleSelectList = roles.Select(r => new SelectListItem
+        {
+            Value = r.Name, 
+            Text = r.Name
+        });
+        return roleSelectList;
+    }
+
+
+    public async Task<IEnumerable<IdentityUser>> SearchUsersAsync(string searchString)
     {
         var users = _context.Users.AsQueryable();
 
-        users = users.Where(u => u.IsActive);
+        users = users.Where(u => !u.LockoutEnabled || u.LockoutEnd <= DateTimeOffset.Now);
 
         if (!string.IsNullOrEmpty(searchString))
         {
-            bool isNumeric = int.TryParse(searchString, out int searchNumber);
-
-            if (isNumeric)
+            if (Guid.TryParse(searchString, out Guid searchId))
             {
-                users = users.Where(u => u.UserID == searchNumber);
+                users = users.Where(u => u.Id == searchId.ToString());
             }
             else
             {
-                if (Enum.TryParse<UserType>(searchString, true, out var userType))
-                {
-                    users = users.Where(u => u.Type == userType);
-                }
-                else
-                {
-                    users = users.Where(u => EF.Functions.Like(u.Name, $"%{searchString}%"));
-                }
+                users = users.Where(u => EF.Functions.Like(u.UserName, $"%{searchString}%"));
             }
         }
 
         return await users.ToListAsync();
     }
-
-
-    public async Task<User> GetUserByIdAsync(int id)
+    public async Task<IdentityUser> GetUserByIdAsync(string userId)
     {
-        return await _context.Users.FindAsync(id);
+        return await _context.Users.FindAsync(userId);
+    }
+
+    public async Task<IEnumerable<UserRoleViewModel>> GetUsersWithRolesAsync(string searchString = null, bool includeInactive = false)
+    {
+        var usersWithRoles = new List<UserRoleViewModel>();
+        var usersQuery = _context.Users.AsQueryable();
+        if (!includeInactive)
+        {
+            usersQuery = usersQuery.Where(u => !u.LockoutEnabled || u.LockoutEnd <= DateTimeOffset.Now);
+        }
+
+        if (!string.IsNullOrWhiteSpace(searchString))
+        {
+            usersQuery = usersQuery.Where(u => EF.Functions.Like(u.UserName, $"%{searchString}%"));
+        }
+
+        var userRoles = from user in usersQuery
+                        join userRole in _context.UserRoles on user.Id equals userRole.UserId
+                        join role in _context.Roles on userRole.RoleId equals role.Id
+                        select new UserRoleViewModel { User = user, Role = role.Name };
+
+        return await userRoles.ToListAsync();
+    }
+
+    public async Task<string> GetRoleForUserAsync(IdentityUser user)
+    {
+        var roles = await _userManager.GetRolesAsync(user);
+        return roles.FirstOrDefault();
     }
 
     public async Task<IEnumerable<SelectListItem>> GetDepartmentsAsync()
@@ -64,36 +97,15 @@ public class UserService : IUserService
             }).ToListAsync();
     }
 
-    public async Task<bool> EditUserAsync(User user)
+    public async Task<bool> EditUserAsync(IdentityUser user) 
     {
-        try
-        {
-            user.CreatedDate = DateTime.UtcNow;
-            user.EditedDate = DateTime.UtcNow;
-            user.CreatedBy = _loggedInUserName;
-            user.EditedBy = _loggedInUserName;
-            user.IsActive = _isActive;
-
-            _context.Update(user);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+        var result = await _userManager.UpdateAsync(user);
+        return result.Succeeded;
     }
-
     public async Task<bool> AddDepartmentAsync(Department department)
     {
         try
         {
-            department.CreatedDate = DateTime.UtcNow;
-            department.EditedDate = DateTime.UtcNow;
-            department.CreatedBy = _loggedInUserName;
-            department.EditedBy = _loggedInUserName;
-            department.IsActive = _isActive;
-
             _context.Departments.Add(department);
             await _context.SaveChangesAsync();
             return true;
@@ -104,60 +116,48 @@ public class UserService : IUserService
         }
     }
 
-    public async Task<bool> AddUserAsync(User user)
+    public async Task<bool> AddUserAsync(IdentityUser user, string password, string roleName) 
     {
-        try
+        var result = await _userManager.CreateAsync(user, password);
+        if (result.Succeeded)
         {
-            user.CreatedDate = DateTime.UtcNow;
-            user.EditedDate = DateTime.UtcNow;
-            user.CreatedBy = _loggedInUserName;
-            user.EditedBy = _loggedInUserName;
-            user.IsActive = _isActive;
-
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
-
-    public async Task<bool> SoftDeleteUserAsync(int id)
-    {
-        try
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var roleExists = await _roleManager.RoleExistsAsync(roleName);
+            if (roleExists)
             {
-                return false;
+                await _userManager.AddToRoleAsync(user, roleName);
             }
-
-            user.IsActive = _isDeleted;
-            user.EditedDate = DateTime.UtcNow;
-            user.EditedBy = _loggedInUserName;
-
-            _context.Update(user);
-            await _context.SaveChangesAsync();
             return true;
         }
-        catch
-        {
-            return false;
-        }
+
+        return false;
     }
-    public async Task<bool> UpdateUserActiveStatusAsync(int userId, bool isActive)
+
+    public async Task<bool> MarkUserAsInactiveAsync(string userId)
     {
-        var user = await _context.Users.FindAsync(userId);
+        var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {
             return false;
         }
 
-        user.IsActive = isActive;
-        _context.Users.Update(user);
-        await _context.SaveChangesAsync();
-        return true;
+        user.LockoutEnabled = true;
+        user.LockoutEnd = DateTimeOffset.MaxValue; 
+
+        var result = await _userManager.UpdateAsync(user);
+        return result.Succeeded;
     }
+    public async Task<bool> ReactivateUserAsync(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return false;
+        }
+
+        user.LockoutEnd = null; 
+
+        var result = await _userManager.UpdateAsync(user);
+        return result.Succeeded;
+    }
+
 }
