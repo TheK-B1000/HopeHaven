@@ -7,8 +7,8 @@ public interface IInventoryService
 {
     Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString);
     Task<bool> AddCategoryAsync(Category category);
-    Task<bool> AddConsumableAsync(Consumable consumable);
-    Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable);
+    Task<bool> AddConsumableAsync(Consumable consumable, IFormFile image);
+    Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable, IFormFile image);
     Task<InventoryItem> GetItemByIdAsync(int id, ItemType type);
     Task<IEnumerable<SelectListItem>> GetCategoriesAsync();
     Task<bool> EditItemAsync(InventoryItem item, ItemType type);

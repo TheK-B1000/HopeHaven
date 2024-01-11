@@ -119,9 +119,9 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddConsumable(Consumable consumable)
+        public async Task<IActionResult> AddConsumable(Consumable consumable, IFormFile image)
         {
-            bool success = await _inventoryService.AddConsumableAsync(consumable);
+            bool success = await _inventoryService.AddConsumableAsync(consumable, image);
             if (success)
             {
                 return RedirectToAction("Manage");
@@ -133,9 +133,9 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
+        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable, IFormFile image)
         {
-            bool success = await _inventoryService.AddNonConsumableAsync(nonConsumable);
+            bool success = await _inventoryService.AddNonConsumableAsync(nonConsumable, image);
             if (success)
             {
                 return RedirectToAction("Manage");

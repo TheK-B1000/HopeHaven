@@ -77,7 +77,7 @@ namespace Collaborative_Resource_Management_System.Services
             }
         }
 
-        public async Task<bool> AddConsumableAsync(Consumable consumable)
+        public async Task<bool> AddConsumableAsync(Consumable consumable, IFormFile image)
         {
             try
             {
@@ -86,6 +86,22 @@ namespace Collaborative_Resource_Management_System.Services
                 consumable.CreatedBy = _loggedInUserName;
                 consumable.EditedBy = _loggedInUserName;
                 consumable.IsActive = _isActive;
+
+                if (image != null && image.Length > 0)
+                {
+                    var fileExtension = Path.GetExtension(image.FileName);
+
+                    var fileName = Guid.NewGuid().ToString() + fileExtension;
+
+                    var filePath = Path.Combine("your_upload_directory_path", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    consumable.Image = fileName;
+                }
 
                 _context.Consumables.Add(consumable);
                 await _context.SaveChangesAsync();
@@ -97,7 +113,7 @@ namespace Collaborative_Resource_Management_System.Services
             }
         }
 
-        public async Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable)
+        public async Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable, IFormFile image)
         {
             try
             {
@@ -106,6 +122,22 @@ namespace Collaborative_Resource_Management_System.Services
                 nonConsumable.CreatedBy = _loggedInUserName;
                 nonConsumable.EditedBy = _loggedInUserName;
                 nonConsumable.IsActive = _isActive;
+
+                if (image != null && image.Length > 0)
+                {
+                    var fileExtension = Path.GetExtension(image.FileName);
+
+                    var fileName = Guid.NewGuid().ToString() + fileExtension;
+
+                    var filePath = Path.Combine("your_upload_directory_path", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    nonConsumable.Image = fileName;
+                }
 
                 _context.NonConsumables.Add(nonConsumable);
                 await _context.SaveChangesAsync();
@@ -116,6 +148,7 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
         }
+
 
         public async Task<InventoryItem> GetItemByIdAsync(int id, ItemType type)
         {
