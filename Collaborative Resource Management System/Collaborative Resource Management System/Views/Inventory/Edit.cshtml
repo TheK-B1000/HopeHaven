@@ -7,11 +7,12 @@
 
 <div class="container">
 
-    <form asp-action="Edit" asp-controller="Inventory" method="post">
+    <form asp-action="Edit" asp-controller="Inventory" method="post" enctype="multipart/form-data">
         <input type="hidden" name="InventoryItemID" value="@Model.InventoryItemID" />
 
         <div class="form-group">
             <label for="Image">Image:</label>
+            <img src="@Url.Content(!string.IsNullOrEmpty(Model.Image) ? "~/images/" + Model.Image : "~/img/NotFound.jpg")" alt="Current Image" style="max-width: 200px; margin-bottom: 10px;">
             @if (!string.IsNullOrEmpty(Model.Image))
             {
                 <img src="@Url.Content("~/images/" + Model.Image)" alt="Current Image" style="max-width: 200px; margin-bottom: 10px;">
@@ -122,6 +123,8 @@
             var dt = e.dataTransfer;
             var files = dt.files;
 
+            document.getElementById('Image').files = files;
+
             handleFiles(files);
         }
 
@@ -131,7 +134,7 @@
         }
 
         function uploadFile(file) {
-            var url = '/User/Add';
+            var url = '/Inventory/Edit';
             var formData = new FormData();
 
             formData.append('Image', file);
@@ -140,8 +143,6 @@
                 method: 'POST',
                 body: formData
             })
-                .then(() => { })
-                .catch(() => { });
         }
 
         function previewFile(file) {
