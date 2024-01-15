@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Collaborative_Resource_Management_System.Models
 {
@@ -15,6 +16,9 @@ namespace Collaborative_Resource_Management_System.Models
 
         [StringLength(500)]
         public string? Image { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
 
         public string DisplayImageUrl
         {

@@ -52,7 +52,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.CheckIn", b =>
@@ -76,7 +76,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.HasKey("CheckInID");
 
-                    b.ToTable("CheckIns");
+                    b.ToTable("CheckIns", (string)null);
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.CheckOut", b =>
@@ -116,7 +116,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.HasIndex("InventoryItemID");
 
-                    b.ToTable("CheckOuts");
+                    b.ToTable("CheckOuts", (string)null);
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Department", b =>
@@ -149,7 +149,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.HasKey("DepartmentID");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.InventoryItem", b =>
@@ -211,7 +211,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.HasKey("InventoryItemID");
 
-                    b.ToTable("InventoryItems");
+                    b.ToTable("InventoryItems", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("InventoryItem");
                 });
@@ -241,7 +241,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.HasKey("ReportID");
 
-                    b.ToTable("Reports");
+                    b.ToTable("Reports", (string)null);
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Transaction", b =>
@@ -260,7 +260,7 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
 
                     b.HasKey("TransactionID");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

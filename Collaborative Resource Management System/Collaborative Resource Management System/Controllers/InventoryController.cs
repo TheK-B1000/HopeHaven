@@ -1,7 +1,9 @@
 using Collaborative_Resource_Management_System.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Collaborative_Resource_Management_System.Controllers
 {
@@ -121,6 +123,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddConsumable(Consumable consumable)
         {
+
             bool success = await _inventoryService.AddConsumableAsync(consumable);
             if (success)
             {
@@ -135,6 +138,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
         {
+            nonConsumable.Image = nonConsumable.Image?.Trim();
             bool success = await _inventoryService.AddNonConsumableAsync(nonConsumable);
             if (success)
             {
