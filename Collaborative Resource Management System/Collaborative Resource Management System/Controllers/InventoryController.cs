@@ -1,6 +1,8 @@
 using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Hosting.Internal;
+using System;
 using System.Threading.Tasks;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -8,10 +10,12 @@ namespace Collaborative_Resource_Management_System.Controllers
     public class InventoryController : Controller
     {
         private readonly IInventoryService _inventoryService;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public InventoryController(IInventoryService inventoryService)
+        public InventoryController(IInventoryService inventoryService, IWebHostEnvironment hostingEnvironment)
         {
             _inventoryService = inventoryService;
+            _hostingEnvironment = hostingEnvironment;
         }
         
         public async Task<IActionResult> Manage(string searchString)
@@ -121,6 +125,19 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddConsumable(Consumable consumable)
         {
+            if (consumable.ImageFile != null && consumable.ImageFile.Length > 0)
+            {
+                var folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(consumable.ImageFile.FileName);
+                var filePath = Path.Combine(folderPath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await consumable.ImageFile.CopyToAsync(fileStream);
+                }
+
+                consumable.Image = fileName; 
+            }
             bool success = await _inventoryService.AddConsumableAsync(consumable);
             if (success)
             {
@@ -133,8 +150,21 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
+        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable, IFormFile Image)
         {
+            if (Image != null && Image.Length > 0)
+            {
+                var folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
+                var filePath = Path.Combine(folderPath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Image.CopyToAsync(fileStream);
+                }
+
+                nonConsumable.Image = fileName;
+            }
             bool success = await _inventoryService.AddNonConsumableAsync(nonConsumable);
             if (success)
             {
@@ -145,18 +175,30 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
-
-        public async Task<IActionResult> Edit(int? id, ItemType type)
+        public async Task<IActionResult> Edit(InventoryItem item, IFormFile? ImageFile)
         {
-            if (id == null)
+            if (ImageFile != null && ImageFile.Length > 0)
             {
-                return NotFound();
+                var folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageFile.FileName);
+                var filePath = Path.Combine(folderPath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ImageFile.CopyToAsync(fileStream);
+                }
+
+                item.Image = fileName; 
             }
 
-            var item = await _inventoryService.GetItemByIdAsync(id.Value, type);
-            if (item == null)
+            bool success = await _inventoryService.EditItemAsync(item);
+            if (success)
             {
-                return NotFound();
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
             }
 
             ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
