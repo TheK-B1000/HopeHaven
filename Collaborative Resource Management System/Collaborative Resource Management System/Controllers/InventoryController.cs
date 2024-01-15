@@ -175,7 +175,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
-        public async Task<IActionResult> Edit(InventoryItem item, IFormFile? ImageFile, ItemType type)
+        public async Task<IActionResult> Edit(InventoryItem item, IFormFile? ImageFile)
         {
             if (ImageFile != null && ImageFile.Length > 0)
             {
@@ -191,7 +191,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 item.Image = fileName; 
             }
 
-            bool success = await _inventoryService.EditItemAsync(item, type);
+            bool success = await _inventoryService.EditItemAsync(item);
             if (success)
             {
                 return RedirectToAction("Manage");
