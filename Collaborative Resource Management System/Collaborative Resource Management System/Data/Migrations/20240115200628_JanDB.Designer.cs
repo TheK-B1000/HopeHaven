@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Collaborative_Resource_Management_System.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231211170733_DB4Azure")]
-    partial class DB4Azure
+    [Migration("20240115200628_JanDB")]
+    partial class JanDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
