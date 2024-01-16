@@ -81,50 +81,13 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        var dropArea = document.getElementById('drop-area');
-
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, preventDefaults, false);
-        });
-
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropArea.addEventListener(eventName, highlight, false);
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, unhighlight, false);
-        });
-
-        function highlight(e) {
-            dropArea.classList.add('highlight');
-        }
-
-        function unhighlight(e) {
-            dropArea.classList.remove('highlight');
-        }
-
-        dropArea.addEventListener('drop', handleDrop, false);
-
-        function handleDrop(e) {
-            var dt = e.dataTransfer;
-            var files = dt.files;
-
-            handleFiles(files);
-        }
-
         function handleFiles(files) {
             ([...files]).forEach(uploadFile);
             ([...files]).forEach(previewFile);
         }
 
         function uploadFile(file) {
-            var url = '/User/Add';
+            var url = '/InventoryItem/Add';
             var formData = new FormData();
 
             formData.append('Image', file);
