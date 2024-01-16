@@ -82,15 +82,22 @@ namespace Collaborative_Resource_Management_System.Services
         {
             try
             {
-                consumable.CreatedDate = DateTime.UtcNow;
-                consumable.EditedDate = DateTime.UtcNow;
-                consumable.CreatedBy = _loggedInUserName;
-                consumable.EditedBy = _loggedInUserName;
-                consumable.IsActive = _isActive;
+                if (ModelState.IsValid) 
+                {
+                    consumable.CreatedDate = DateTime.UtcNow;
+                    consumable.EditedDate = DateTime.UtcNow;
+                    consumable.CreatedBy = _loggedInUserName;
+                    consumable.EditedBy = _loggedInUserName;
+                    consumable.IsActive = _isActive;
 
-                _context.Consumables.Add(consumable);
-                await _context.SaveChangesAsync();
-                return true;
+                    _context.Consumables.Add(consumable);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false; 
+                }
             }
             catch
             {
@@ -102,21 +109,29 @@ namespace Collaborative_Resource_Management_System.Services
         {
             try
             {
-                nonConsumable.CreatedDate = DateTime.UtcNow;
-                nonConsumable.EditedDate = DateTime.UtcNow;
-                nonConsumable.CreatedBy = _loggedInUserName;
-                nonConsumable.EditedBy = _loggedInUserName;
-                nonConsumable.IsActive = _isActive;
+                if (ModelState.IsValid) 
+                {
+                    nonConsumable.CreatedDate = DateTime.UtcNow;
+                    nonConsumable.EditedDate = DateTime.UtcNow;
+                    nonConsumable.CreatedBy = _loggedInUserName;
+                    nonConsumable.EditedBy = _loggedInUserName;
+                    nonConsumable.IsActive = _isActive;
 
-                _context.NonConsumables.Add(nonConsumable);
-                await _context.SaveChangesAsync();
-                return true;
+                    _context.NonConsumables.Add(nonConsumable);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false; 
+                }
             }
             catch
             {
                 return false;
             }
         }
+
 
         public async Task<InventoryItem> GetItemByIdAsync(int id, ItemType type)
         {

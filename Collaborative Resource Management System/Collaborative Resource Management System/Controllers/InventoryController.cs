@@ -1,4 +1,5 @@
 using Collaborative_Resource_Management_System.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ namespace Collaborative_Resource_Management_System.Controllers
     public class InventoryController : Controller
     {
         private readonly IInventoryService _inventoryService;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public InventoryController(IInventoryService inventoryService)
+        public InventoryController(IInventoryService inventoryService, IWebHostEnvironment hostingEnvironment)
         {
             _inventoryService = inventoryService;
+            _hostingEnvironment = hostingEnvironment;
         }
-        
+
+
         public async Task<IActionResult> Manage(string searchString)
         {
             var allItems = await _inventoryService.SearchInventoryAsync(searchString);
@@ -119,8 +123,27 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddConsumable(Consumable consumable)
+        public async Task<IActionResult> AddConsumable(Consumable consumable, IFormFile VisibleImage)
         {
+            if (VisibleImage != null || VisibleImage.Length > 0)
+            {
+                var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+                if (!Directory.Exists(imagesPath))
+                {
+                    Directory.CreateDirectory(imagesPath);
+                }
+
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(VisibleImage.FileName);
+                var filePath = Path.Combine(imagesPath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await VisibleImage.CopyToAsync(fileStream);
+                }
+
+                consumable.Image = fileName; 
+            }
+
             bool success = await _inventoryService.AddConsumableAsync(consumable);
             if (success)
             {
@@ -133,8 +156,27 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable)
+        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable, IFormFile VisibleImage)
         {
+            if (VisibleImage != null || VisibleImage.Length > 0)
+            {
+                var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+                if (!Directory.Exists(imagesPath))
+                {
+                    Directory.CreateDirectory(imagesPath);
+                }
+
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(VisibleImage.FileName);
+                var filePath = Path.Combine(imagesPath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await VisibleImage.CopyToAsync(fileStream);
+                }
+
+                nonConsumable.Image = fileName; 
+            }
+
             bool success = await _inventoryService.AddNonConsumableAsync(nonConsumable);
             if (success)
             {
@@ -145,6 +187,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
+
 
         public async Task<IActionResult> Edit(int? id, ItemType type)
         {
