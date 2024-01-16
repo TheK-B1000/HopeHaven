@@ -187,8 +187,6 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
-
-
         public async Task<IActionResult> Edit(int? id, ItemType type)
         {
             if (id == null)

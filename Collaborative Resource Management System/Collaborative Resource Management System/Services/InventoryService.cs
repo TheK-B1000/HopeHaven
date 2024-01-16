@@ -62,21 +62,29 @@ namespace Collaborative_Resource_Management_System.Services
         {
             try
             {
-                category.CreatedDate = DateTime.UtcNow;
-                category.EditedDate = DateTime.UtcNow;
-                category.CreatedBy = _loggedInUserName;
-                category.EditedBy = _loggedInUserName;
-                category.IsActive = _isActive;
+                if (ModelState.IsValid) 
+                {
+                    category.CreatedDate = DateTime.UtcNow;
+                    category.EditedDate = DateTime.UtcNow;
+                    category.CreatedBy = _loggedInUserName;
+                    category.EditedBy = _loggedInUserName;
+                    category.IsActive = _isActive;
 
-                _context.Categories.Add(category);
-                await _context.SaveChangesAsync();
-                return true;
+                    _context.Categories.Add(category);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {
                 return false;
             }
         }
+
 
         public async Task<bool> AddConsumableAsync(Consumable consumable)
         {
@@ -197,6 +205,8 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
         }
+
+
         public async Task<bool> SoftDeleteItemAsync(int id, ItemType type)
         {
             try
