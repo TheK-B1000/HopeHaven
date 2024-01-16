@@ -46,7 +46,7 @@
                 {
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="~/img/GlueSticks.jpg" class="card-img-top" alt="@item.Name" />
+                        <img src="@Url.Content(!string.IsNullOrEmpty(item.Image) ? "~/img/" + item.Image : "~/img/NotFound.jpg")" alt="Current Image" style="max-width: 200px; margin-bottom: 10px;">
                             <div class="card-body">
                                 <h5 class="card-title">@item.Name</h5>
 
