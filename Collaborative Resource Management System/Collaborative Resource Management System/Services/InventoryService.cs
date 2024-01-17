@@ -57,7 +57,7 @@ namespace Collaborative_Resource_Management_System.Services
             var allItems = consumablesList.Cast<InventoryItem>()
                 .Concat(nonConsumablesList.Cast<InventoryItem>());
 
-            return allItems;
+             return allItems;
         }
 
         public async Task<bool> AddCategoryAsync(Category category)
@@ -151,9 +151,6 @@ namespace Collaborative_Resource_Management_System.Services
             {
                 return false;
             }
-
- 
-
             try
             {
                 updatedItem.CreatedDate = DateTime.UtcNow;
@@ -229,6 +226,11 @@ namespace Collaborative_Resource_Management_System.Services
             {
                 return false;
             }
+        }
+
+        public async Task<IEnumerable<Department>> GetDepartmentsAsync()
+        {
+            return await _context.Departments.ToListAsync();
         }
     }
 }

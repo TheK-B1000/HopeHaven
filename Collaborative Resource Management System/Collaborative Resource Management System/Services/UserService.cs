@@ -14,6 +14,8 @@ public class UserService : IUserService
     private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly string _loggedInUserName = "Stella Johnson";
+    private readonly bool _isActive = true;
+    private readonly bool _isDeleted = false;
 
     public UserService(AppDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
@@ -104,18 +106,14 @@ public class UserService : IUserService
     }
     public async Task<bool> AddDepartmentAsync(Department department)
     {
-        if (department == null)
-        {
-            return false;
-        }
-
-        if (string.IsNullOrWhiteSpace(department.Name) || department.Name.Length > 100)
-        {
-            return false;
-        }
-
         try
         {
+            department.CreatedDate = DateTime.UtcNow;
+            department.EditedDate = DateTime.UtcNow;
+            department.CreatedBy = _loggedInUserName;
+            department.EditedBy = _loggedInUserName;
+            department.IsActive = _isActive;
+
             _context.Departments.Add(department);
             await _context.SaveChangesAsync();
             return true;

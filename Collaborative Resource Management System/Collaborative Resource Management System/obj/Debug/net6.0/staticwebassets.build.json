@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WvQCgIgZI6H933S9B9VqHkuO0BPFdNYWy48vixHtXN0=",
+  "Hash": "Zpa1tkO8qXV/zZNg5m9AAuOqUDU8ic3XhprtC7njlIs=",
   "Source": "Collaborative Resource Management System",
   "BasePath": "_content/Collaborative Resource Management System",
   "Mode": "Default",
@@ -1205,6 +1205,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\cd9bd12c-273a-4443-b55a-78c1389279b0.jpg",
+      "SourceId": "Collaborative Resource Management System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "BasePath": "_content/Collaborative Resource Management System",
+      "RelativePath": "img/cd9bd12c-273a-4443-b55a-78c1389279b0.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\cd9bd12c-273a-4443-b55a-78c1389279b0.jpg"
     },
     {
       "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Dell.jpg",
