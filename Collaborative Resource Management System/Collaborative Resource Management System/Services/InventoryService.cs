@@ -1,5 +1,6 @@
 ﻿using Collaborative_Resource_Management_System.Data;
 using Collaborative_Resource_Management_System.Models;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Humanizer.In;
 
 namespace Collaborative_Resource_Management_System.Services
 {
@@ -62,22 +64,15 @@ namespace Collaborative_Resource_Management_System.Services
         {
             try
             {
-                if (ModelState.IsValid) 
-                {
-                    category.CreatedDate = DateTime.UtcNow;
-                    category.EditedDate = DateTime.UtcNow;
-                    category.CreatedBy = _loggedInUserName;
-                    category.EditedBy = _loggedInUserName;
-                    category.IsActive = _isActive;
+                category.CreatedDate = DateTime.UtcNow;
+                category.EditedDate = DateTime.UtcNow;
+                category.CreatedBy = _loggedInUserName;
+                category.EditedBy = _loggedInUserName;
+                category.IsActive = _isActive;
 
-                    _context.Categories.Add(category);
-                    await _context.SaveChangesAsync();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                _context.Categories.Add(category);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch
             {
@@ -90,22 +85,15 @@ namespace Collaborative_Resource_Management_System.Services
         {
             try
             {
-                if (ModelState.IsValid) 
-                {
-                    consumable.CreatedDate = DateTime.UtcNow;
-                    consumable.EditedDate = DateTime.UtcNow;
-                    consumable.CreatedBy = _loggedInUserName;
-                    consumable.EditedBy = _loggedInUserName;
-                    consumable.IsActive = _isActive;
+                consumable.CreatedDate = DateTime.UtcNow;
+                consumable.EditedDate = DateTime.UtcNow;
+                consumable.CreatedBy = _loggedInUserName;
+                consumable.EditedBy = _loggedInUserName;
+                consumable.IsActive = _isActive;
 
-                    _context.Consumables.Add(consumable);
-                    await _context.SaveChangesAsync();
-                    return true;
-                }
-                else
-                {
-                    return false; 
-                }
+                _context.Consumables.Add(consumable);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch
             {
@@ -116,23 +104,16 @@ namespace Collaborative_Resource_Management_System.Services
         public async Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable)
         {
             try
-            {
-                if (ModelState.IsValid) 
-                {
-                    nonConsumable.CreatedDate = DateTime.UtcNow;
-                    nonConsumable.EditedDate = DateTime.UtcNow;
-                    nonConsumable.CreatedBy = _loggedInUserName;
-                    nonConsumable.EditedBy = _loggedInUserName;
-                    nonConsumable.IsActive = _isActive;
-
-                    _context.NonConsumables.Add(nonConsumable);
-                    await _context.SaveChangesAsync();
-                    return true;
-                }
-                else
-                {
-                    return false; 
-                }
+            {     
+                nonConsumable.CreatedDate = DateTime.UtcNow;
+                nonConsumable.EditedDate = DateTime.UtcNow;
+                nonConsumable.CreatedBy = _loggedInUserName;
+                nonConsumable.EditedBy = _loggedInUserName;
+                nonConsumable.IsActive = _isActive;
+                
+                _context.NonConsumables.Add(nonConsumable);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch
             {
@@ -141,17 +122,18 @@ namespace Collaborative_Resource_Management_System.Services
         }
 
 
-        public async Task<InventoryItem> GetItemByIdAsync(int id, ItemType type)
+        public async Task<InventoryItem> GetItemByIdAsync(int id)
         {
-            if (type == ItemType.Consumable)
+            InventoryItem item = await _context.Consumables.FindAsync(id);
+            if (item != null)
             {
-                return await _context.Consumables.FindAsync(id);
+                return item;
             }
-            else
-            {
-                return await _context.NonConsumables.FindAsync(id);
-            }
+
+            item = await _context.NonConsumables.FindAsync(id);
+            return item;
         }
+
 
         public async Task<IEnumerable<SelectListItem>> GetCategoriesAsync()
         {
@@ -170,6 +152,8 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
 
+ 
+
             try
             {
                 updatedItem.CreatedDate = DateTime.UtcNow;
@@ -183,13 +167,16 @@ namespace Collaborative_Resource_Management_System.Services
                     var item = await _context.Consumables.FindAsync(updatedItem.InventoryItemID);
                     if (item == null) return false;
 
+                    updatedItem.Image = item.Image;
                     _context.Entry(item).CurrentValues.SetValues(updatedItem);
                 }
                 else if (type == ItemType.NonConsumable)
                 {
+                    
                     var item = await _context.NonConsumables.FindAsync(updatedItem.InventoryItemID);
                     if (item == null) return false;
 
+                    updatedItem.Image = item.Image;
                     _context.Entry(item).CurrentValues.SetValues(updatedItem);
                 }
                 else
