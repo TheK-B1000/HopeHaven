@@ -1,5 +1,6 @@
 ﻿using Collaborative_Resource_Management_System.Data;
 using Collaborative_Resource_Management_System.Models;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Humanizer.In;
 
 namespace Collaborative_Resource_Management_System.Services
 {
@@ -78,7 +80,8 @@ namespace Collaborative_Resource_Management_System.Services
             }
         }
 
-        public async Task<bool> AddConsumableAsync(Consumable consumable, IFormFile image)
+
+        public async Task<bool> AddConsumableAsync(Consumable consumable)
         {
             try
             {
@@ -87,22 +90,6 @@ namespace Collaborative_Resource_Management_System.Services
                 consumable.CreatedBy = _loggedInUserName;
                 consumable.EditedBy = _loggedInUserName;
                 consumable.IsActive = _isActive;
-
-                if (image != null && image.Length > 0)
-                {
-                    var fileExtension = Path.GetExtension(image.FileName);
-
-                    var fileName = Guid.NewGuid().ToString() + fileExtension;
-
-                    var filePath = Path.Combine("your_upload_directory_path", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await image.CopyToAsync(stream);
-                    }
-
-                    consumable.Image = fileName;
-                }
 
                 _context.Consumables.Add(consumable);
                 await _context.SaveChangesAsync();
@@ -114,32 +101,16 @@ namespace Collaborative_Resource_Management_System.Services
             }
         }
 
-        public async Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable, IFormFile image)
+        public async Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable)
         {
             try
-            {
+            {     
                 nonConsumable.CreatedDate = DateTime.UtcNow;
                 nonConsumable.EditedDate = DateTime.UtcNow;
                 nonConsumable.CreatedBy = _loggedInUserName;
                 nonConsumable.EditedBy = _loggedInUserName;
                 nonConsumable.IsActive = _isActive;
-
-                if (image != null && image.Length > 0)
-                {
-                    var fileExtension = Path.GetExtension(image.FileName);
-
-                    var fileName = Guid.NewGuid().ToString() + fileExtension;
-
-                    var filePath = Path.Combine("your_upload_directory_path", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await image.CopyToAsync(stream);
-                    }
-
-                    nonConsumable.Image = fileName;
-                }
-
+                
                 _context.NonConsumables.Add(nonConsumable);
                 await _context.SaveChangesAsync();
                 return true;
@@ -151,17 +122,18 @@ namespace Collaborative_Resource_Management_System.Services
         }
 
 
-        public async Task<InventoryItem> GetItemByIdAsync(int id, ItemType type)
+        public async Task<InventoryItem> GetItemByIdAsync(int id)
         {
-            if (type == ItemType.Consumable)
+            InventoryItem item = await _context.Consumables.FindAsync(id);
+            if (item != null)
             {
-                return await _context.Consumables.FindAsync(id);
+                return item;
             }
-            else
-            {
-                return await _context.NonConsumables.FindAsync(id);
-            }
+
+            item = await _context.NonConsumables.FindAsync(id);
+            return item;
         }
+
 
         public async Task<IEnumerable<SelectListItem>> GetCategoriesAsync()
         {
@@ -180,6 +152,8 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
 
+ 
+
             try
             {
                 updatedItem.CreatedDate = DateTime.UtcNow;
@@ -193,13 +167,16 @@ namespace Collaborative_Resource_Management_System.Services
                     var item = await _context.Consumables.FindAsync(updatedItem.InventoryItemID);
                     if (item == null) return false;
 
+                    updatedItem.Image = item.Image;
                     _context.Entry(item).CurrentValues.SetValues(updatedItem);
                 }
                 else if (type == ItemType.NonConsumable)
                 {
+                    
                     var item = await _context.NonConsumables.FindAsync(updatedItem.InventoryItemID);
                     if (item == null) return false;
 
+                    updatedItem.Image = item.Image;
                     _context.Entry(item).CurrentValues.SetValues(updatedItem);
                 }
                 else
@@ -215,6 +192,8 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
         }
+
+
         public async Task<bool> SoftDeleteItemAsync(int id, ItemType type)
         {
             try
