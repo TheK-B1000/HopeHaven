@@ -111,6 +111,11 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCategory(Category category)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(category);
+            }
+
             bool success = await _inventoryService.AddCategoryAsync(category);
             if (success)
             {
@@ -187,14 +192,16 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
-        public async Task<IActionResult> Edit(int? id, ItemType type)
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var item = await _inventoryService.GetItemByIdAsync(id.Value, type);
+            var item = await _inventoryService.GetItemByIdAsync(id.Value);
             if (item == null)
             {
                 return NotFound();
@@ -205,8 +212,16 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(InventoryItem item, ItemType type)
+        public async Task<IActionResult> Edit(InventoryItem item)
         {
+            var originalItem = await _inventoryService.GetItemByIdAsync(item.InventoryItemID);
+            if (originalItem == null)
+            {
+                return NotFound();
+            }
+
+            ItemType type = originalItem is Consumable ? ItemType.Consumable : ItemType.NonConsumable;
+
             bool success = await _inventoryService.EditItemAsync(item, type);
             if (success)
             {
