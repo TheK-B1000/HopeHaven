@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZBwgZgD6DiXH9vXxF9jXpIihpkBDq5plx1aA3EEbQRY=",
+  "Hash": "WvQCgIgZI6H933S9B9VqHkuO0BPFdNYWy48vixHtXN0=",
   "Source": "Collaborative Resource Management System",
   "BasePath": "_content/Collaborative Resource Management System",
   "Mode": "Default",
@@ -1139,6 +1139,40 @@
       "OriginalItemSpec": "wwwroot\\img\\1667-4758-2-PB.pdf"
     },
     {
+      "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg",
+      "SourceId": "Collaborative Resource Management System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "BasePath": "_content/Collaborative Resource Management System",
+      "RelativePath": "img/3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\91b00c06-0e9f-4a07-934a-0cb9acd21f1c.png",
+      "SourceId": "Collaborative Resource Management System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "BasePath": "_content/Collaborative Resource Management System",
+      "RelativePath": "img/91b00c06-0e9f-4a07-934a-0cb9acd21f1c.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\91b00c06-0e9f-4a07-934a-0cb9acd21f1c.png"
+    },
+    {
       "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\beatap,+jcsi25(2022)345-349.pdf",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
@@ -1156,6 +1190,23 @@
       "OriginalItemSpec": "wwwroot\\img\\beatap,+jcsi25(2022)345-349.pdf"
     },
     {
+      "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg",
+      "SourceId": "Collaborative Resource Management System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "BasePath": "_content/Collaborative Resource Management System",
+      "RelativePath": "img/c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg"
+    },
+    {
       "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Dell.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
@@ -1171,6 +1222,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Dell.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\e8b3c247-cc00-4dbf-88f3-9e2ae70a51af.jpg",
+      "SourceId": "Collaborative Resource Management System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "BasePath": "_content/Collaborative Resource Management System",
+      "RelativePath": "img/e8b3c247-cc00-4dbf-88f3-9e2ae70a51af.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\e8b3c247-cc00-4dbf-88f3-9e2ae70a51af.jpg"
     },
     {
       "Identity": "C:\\Users\\K-B\\Desktop\\K-B Folder\\UNF\\IS Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Evolving_JavaScript_Code_to_Reduce_Load_Time.pdf",

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Collaborative_Resource_Management_System.Data.Migrations
 {
-    public partial class DB4Azure : Migration
+    public partial class JanDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

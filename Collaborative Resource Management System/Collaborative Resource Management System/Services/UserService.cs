@@ -104,6 +104,16 @@ public class UserService : IUserService
     }
     public async Task<bool> AddDepartmentAsync(Department department)
     {
+        if (department == null)
+        {
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(department.Name) || department.Name.Length > 100)
+        {
+            return false;
+        }
+
         try
         {
             _context.Departments.Add(department);
@@ -116,8 +126,18 @@ public class UserService : IUserService
         }
     }
 
-    public async Task<bool> AddUserAsync(IdentityUser user, string password, string roleName) 
+    public async Task<bool> AddUserAsync(IdentityUser user, string password, string roleName)
     {
+        if (user == null || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(roleName))
+        {
+            return false; 
+        }
+
+        if (!IsValidPassword(password))
+        {
+            return false;
+        }
+
         var result = await _userManager.CreateAsync(user, password);
         if (result.Succeeded)
         {
@@ -131,6 +151,12 @@ public class UserService : IUserService
 
         return false;
     }
+
+    private bool IsValidPassword(string password)
+    {
+        return password.Length >= 8; 
+    }
+
 
     public async Task<bool> MarkUserAsInactiveAsync(string userId)
     {
