@@ -6,8 +6,11 @@
 <div class="container">
     <label for="departmentSelect">Department for this transaction:</label>
     <select id="departmentSelect" class="form-control">
-        <option value="discoveryCenter">Discovery Center</option>
-        <option value="glueStickDepartment">Glue Stick Department</option>
+        @foreach (var department in ViewBag.Departments)
+        {
+            <option value="@department.DepartmentID">@department.Name</option>
+        }
+
     </select>
     <table class="table" id="cartTable">
         <thead>

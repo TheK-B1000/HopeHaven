@@ -1,12 +1,10 @@
-@model IEnumerable<Collaborative_Resource_Management_System.Models.InventoryItem> 
+@model IEnumerable<Collaborative_Resource_Management_System.Models.InventoryItem>
 @using Collaborative_Resource_Management_System.Models
-
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Manage Inventory";
 }
-
 
 <div class="mb-3">
     @using (Html.BeginForm("Manage", "Inventory", FormMethod.Get))
@@ -25,11 +23,43 @@
     <a href="@Url.Action("AddCategory", "Inventory")" class="btn btn-secondary">Add Category</a>
     <a href="@Url.Action("Report", "Report")" class="btn btn-secondary">Check-Out Report</a>
     <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
-
 </div>
 
+<div class="reorder-section mb-3">
+    <h3>Items that need to be Reordered</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Quantity Available</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OfType<Consumable>().Where(c => c.QuantityAvailable <= c.MinimumQuantity))
+            {
+                <tr>
+                    <td>@item.InventoryItemID</td>
+                    <td>@item.Name</td>
+                    <td>@item.QuantityAvailable</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemID })" class="btn btn-primary btn-sm">Restock</a>
+                    </td>
+                </tr>
+            }
 
-
+            <tr>
+                <td>999</td>
+                <td>Glue Sticks</td>
+                <td>5</td> 
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Order", "Inventory", new { id = 999 })'">Order</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 
 <table class="table">
@@ -49,11 +79,8 @@
                 <td>@item.Name</td>
                 <td>@item.ItemType</td>
                 <td>
-                    @if (item.ItemType == ItemType.Consumable || item.ItemType == ItemType.NonConsumable)
-                    {
-                        <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemID, type = item.ItemType })" class="btn btn-secondary btn-sm">Edit</a>
-                        <a href="@Url.Action("SoftDelete", "Inventory", new { id = item.InventoryItemID, type = item.ItemType })" class="btn btn-danger btn-sm">Delete</a>
-                    }
+                    @Html.ActionLink("Edit", "Edit", new { id = item.InventoryItemID }, new { @class = "btn btn-secondary btn-sm" })
+                    @Html.ActionLink("Delete", "SoftDelete", new { id = item.InventoryItemID }, new { @class = "btn btn-danger btn-sm" })
                 </td>
             </tr>
         }
