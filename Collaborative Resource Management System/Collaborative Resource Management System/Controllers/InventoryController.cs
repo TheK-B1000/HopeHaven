@@ -130,6 +130,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddConsumable(Consumable consumable, IFormFile VisibleImage)
         {
+
             if (VisibleImage != null || VisibleImage.Length > 0)
             {
                 var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
@@ -251,10 +252,13 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
-        public IActionResult Cart()
+        public async Task<IActionResult> Cart()
         {
+            var departments = await _inventoryService.GetDepartmentsAsync(); 
+            ViewBag.Departments = departments;
             return View();
         }
+
     }
 }
 
