@@ -131,7 +131,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         public async Task<IActionResult> AddConsumable(Consumable consumable, IFormFile VisibleImage)
         {
 
-            if (VisibleImage != null || VisibleImage.Length > 0)
+            if (VisibleImage != null && VisibleImage.Length > 0)
             {
                 var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
                 if (!Directory.Exists(imagesPath))
@@ -164,7 +164,7 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable, IFormFile VisibleImage)
         {
-            if (VisibleImage != null || VisibleImage.Length > 0)
+            if (VisibleImage != null && VisibleImage.Length > 0)
             {
                 var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
                 if (!Directory.Exists(imagesPath))
