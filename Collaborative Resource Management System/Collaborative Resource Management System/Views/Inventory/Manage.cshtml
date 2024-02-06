@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.OfType<Consumable>().Where(c => c.QuantityAvailable <= c.MinimumQuantity))
+           @foreach (var item in Model.OfType<Consumable>().Where(c => c.QuantityAvailable <= c.MinimumQuantity))
             {
                 <tr>
                     <td>@item.InventoryItemID</td>

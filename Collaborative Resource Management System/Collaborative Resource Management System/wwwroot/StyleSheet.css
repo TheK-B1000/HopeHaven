@@ -107,11 +107,5 @@ th {
 }
 
 .navbar {
-    margin-right: auto; 
+    margin-right: auto; /* Push the text to the left */
 }
-
-.reorder-section table tbody tr {
-    background-color: yellow;
-}
-
-
