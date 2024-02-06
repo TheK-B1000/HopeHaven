@@ -44,19 +44,10 @@
                     <td>@item.Name</td>
                     <td>@item.QuantityAvailable</td>
                     <td>
-                        <a href="@Url.Action("Edit", "Inventory", new { id = item.InventoryItemID })" class="btn btn-primary btn-sm">Restock</a>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.InventoryItemID }, new { @class = "btn btn-secondary btn-sm" })
                     </td>
                 </tr>
             }
-
-            <tr>
-                <td>999</td>
-                <td>Glue Sticks</td>
-                <td>5</td> 
-                <td>
-                    <button class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Order", "Inventory", new { id = 999 })'">Order</button>
-                </td>
-            </tr>
         </tbody>
     </table>
 </div>
