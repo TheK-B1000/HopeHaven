@@ -25,6 +25,16 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View(allItems);
         }
 
+        public IActionResult CheckIn()
+        {
+            return View();
+        }
+
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Add()
         {
             ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
@@ -98,6 +108,32 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
 
             bool success = await _inventoryService.EditItemAsync(item);
+            if (success)
+            {
+                return RedirectToAction("Manage");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+       
+
+        [HttpGet]
+        public IActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCategory(Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(category);
+            }
+
+            bool success = await _inventoryService.AddCategoryAsync(category);
             if (success)
             {
                 return RedirectToAction("Manage");
