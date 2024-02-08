@@ -1,4 +1,12 @@
-<form action="/Inventory/AddNonConsumable" method="POST" enctype="multipart/form-data">
+@model Collaborative_Resource_Management_System.Models.InventoryItem
+@using Collaborative_Resource_Management_System.Models
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add Inventory Item";
+}
+
+<form action="/Inventory/AddItem" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="Image">Image:</label>
         <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;" required>
@@ -6,17 +14,17 @@
     </div>
     <div class="form-group">
         <label for="Name">Name:</label>
-        <input type="text" id="Name" name="Name" class="form-control" required />
+        <input type="text" id="Name" name="Name" class="form-control" required>
         <div class="invalid-feedback">Name is required.</div>
     </div>
     <div class="form-group">
         <label for="Description">Description:</label>
-        <input type="text" id="Description" name="Description" class="form-control" required />
+        <input type="text" id="Description" name="Description" class="form-control" required>
         <div class="invalid-feedback">Description is required.</div>
     </div>
     <div class="form-group">
         <label for="RoomNumber">Room Number:</label>
-        <input type="number" id="RoomNumber" name="RoomNumber" class="form-control" required />
+        <input type="number" id="RoomNumber" name="RoomNumber" class="form-control" required>
         <div class="invalid-feedback">Room Number is required.</div>
     </div>
     <div class="form-group">
@@ -32,11 +40,11 @@
     <input type="hidden" id="ItemType" name="ItemType" value="NonConsumable">
     <div class="form-group">
         <label for="Comments">Comments:</label>
-        <input type="text" id="Comments" name="Comments" class="form-control" />
+        <input type="text" id="Comments" name="Comments" class="form-control">
     </div>
     <div class="form-group">
-        <label for="assetTag">Asset Tag:</label>
-        <input type="text" id="assetTag" name="AssetTag" class="form-control" required />
+        <label for="AssetTag">Asset Tag:</label>
+        <input type="text" id="AssetTag" name="AssetTag" class="form-control" required>
         <div class="invalid-feedback">Asset Tag is required.</div>
     </div>
     <button type="submit" class="btn btn-primary">Add Non-Consumable</button>

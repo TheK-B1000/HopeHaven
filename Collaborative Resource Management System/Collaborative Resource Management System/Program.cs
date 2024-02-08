@@ -44,7 +44,6 @@ else
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    await DbInitializer.SeedData(services);
 }
 
 app.UseHttpsRedirection();

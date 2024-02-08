@@ -49,32 +49,6 @@
             <input class="form-control" name="Comments" value="@Model.Comments" />
         </div>
 
-        @if (Model is Collaborative_Resource_Management_System.Models.Consumable consumable)
-        {
-            <div class="form-group">
-                <label>Price per Unit:</label>
-                <input type="number" step="0.01" class="form-control" name="PricePerUnit" value="@consumable.PricePerUnit" />
-            </div>
-
-            <div class="form-group">
-                <label>Quantity Available:</label>
-                <input type="number" class="form-control" name="QuantityAvailable" value="@consumable.QuantityAvailable" />
-            </div>
-
-            <div class="form-group">
-                <label>Minimum Quantity:</label>
-                <input type="number" class="form-control" name="MinimumQuantity" value="@consumable.MinimumQuantity" />
-            </div>
-        }
-
-        @if (Model is Collaborative_Resource_Management_System.Models.NonConsumable nonConsumable)
-        {
-            <div class="form-group">
-                <label>Asset Tag:</label>
-                <input class="form-control" name="AssetTag" value="@nonConsumable.AssetTag" />
-            </div>
-        }
-
         <button type="submit" class="btn btn-primary">Save</button>
         <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
     </form>

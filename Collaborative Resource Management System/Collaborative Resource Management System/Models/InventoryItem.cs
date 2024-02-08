@@ -24,10 +24,7 @@ namespace Collaborative_Resource_Management_System.Models
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(Image))
-                    return "/img/NotFound.jpg"; 
-                else
-                    return Image;
+                return string.IsNullOrWhiteSpace(Image) ? "/img/NotFound.jpg" : Image;
             }
         }
 
@@ -59,23 +56,16 @@ namespace Collaborative_Resource_Management_System.Models
         [Required]
         public ItemType ItemType { get; set; }
 
+        // Consumable items
+        public float? PricePerUnit { get; set; }
+        public int? QuantityAvailable { get; set; }
+        public int? MinimumQuantity { get; set; }
+
+        // NonConsumable items
+        public string? AssetTag { get; set; }
+
         [StringLength(500)]
         public string? Comments { get; set; }
         public bool IsActive { get; set; }
-
-
-    }
-    public class Consumable : InventoryItem
-    {
-        public float PricePerUnit { get; set; }
-
-        public int QuantityAvailable { get; set; }
-
-        public int MinimumQuantity { get; set; }
-    }
-
-    public class NonConsumable : InventoryItem
-    {
-        public string AssetTag { get; set; }
     }
 }

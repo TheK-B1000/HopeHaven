@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-           @foreach (var item in Model.OfType<Consumable>().Where(c => c.QuantityAvailable <= c.MinimumQuantity))
+            @foreach (var item in Model.Where(i => i.ItemType == ItemType.Consumable && i.QuantityAvailable.HasValue && i.MinimumQuantity.HasValue && i.QuantityAvailable <= i.MinimumQuantity))
             {
                 <tr>
                     <td>@item.InventoryItemID</td>
@@ -51,7 +51,6 @@
         </tbody>
     </table>
 </div>
-
 
 <table class="table">
     <thead>
@@ -68,7 +67,7 @@
             <tr>
                 <td>@item.InventoryItemID</td>
                 <td>@item.Name</td>
-                <td>@item.ItemType</td>
+                <td>@item.ItemType.ToString()</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.InventoryItemID }, new { @class = "btn btn-secondary btn-sm" })
                     @Html.ActionLink("Delete", "SoftDelete", new { id = item.InventoryItemID }, new { @class = "btn btn-danger btn-sm" })

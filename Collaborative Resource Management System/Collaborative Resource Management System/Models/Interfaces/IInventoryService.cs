@@ -5,18 +5,16 @@ using System.Threading.Tasks;
 
 public interface IInventoryService
 {
+    Task<List<InventoryItem>> GetActiveItemsByType(ItemType itemType); 
     Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString);
     Task<bool> AddCategoryAsync(Category category);
-    Task<bool> AddConsumableAsync(Consumable consumable);
-    Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable);
     Task<IEnumerable<Department>> GetDepartmentsAsync();
-    Task<InventoryItem> GetItemByIdAsync(int id);
+    Task<InventoryItem> GetItemDetails(int? id); 
     Task<IEnumerable<SelectListItem>> GetCategoriesAsync();
-    Task<bool> EditItemAsync(InventoryItem item, ItemType type);
-    Task<List<Consumable>> ConsumableItems();
-    Task<List<NonConsumable>> NonConsumableItems();
-    Task<Consumable> ConsumableDetails(int? id);
-    Task<NonConsumable> NonConsumableDetails(int? id);
-    Task<bool> SoftDeleteItemAsync(int id, ItemType type);
+    Task<bool> AddItemAsync(InventoryItem item); 
+    Task<bool> EditItemAsync(InventoryItem updatedItem);
+    Task<bool> SoftDeleteItemAsync(int id);
+    Task<InventoryItem> GetItemByIdAsync(int id);
+
 
 }
