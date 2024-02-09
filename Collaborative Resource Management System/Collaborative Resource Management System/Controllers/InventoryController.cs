@@ -35,6 +35,64 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Consumable()
+        {
+            ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
+            return View(new InventoryItem { ItemType = ItemType.Consumable });
+        }
+
+        public async Task<IActionResult> NonConsumable()
+        {
+            ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
+            return View(new InventoryItem { ItemType = ItemType.NonConsumable });
+        }
+
+        public async Task<IActionResult> ConsumableItems()
+        {
+            var consumables = await _inventoryService.ConsumableItems();
+            return View(consumables);
+        }
+
+        public async Task<IActionResult> NonConsumableItems()
+        {
+            var nonConsumables = await _inventoryService.NonConsumableItems();
+            return View(nonConsumables);
+        }
+
+        public async Task<IActionResult> ConsumableDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var consumable = await _inventoryService.ConsumableDetails(id);
+
+            if (consumable == null)
+            {
+                return NotFound();
+            }
+
+            return View(consumable);
+        }
+
+        public async Task<IActionResult> NonConsumableDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var nonConsumable = await _inventoryService.NonConsumableDetails(id);
+
+            if (nonConsumable == null)
+            {
+                return NotFound();
+            }
+
+            return View(nonConsumable);
+        }
+
         public async Task<IActionResult> Add()
         {
             ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
@@ -126,23 +184,21 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCategory(Category category)
+        public async Task<IActionResult> AddCategory(Category model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(category);
-            }
-
-            bool success = await _inventoryService.AddCategoryAsync(category);
+            bool success = await _inventoryService.AddCategoryAsync(model);
             if (success)
             {
                 return RedirectToAction("Manage");
             }
             else
             {
-                return View("Error");
+                ModelState.AddModelError("", "Failed to add the category.");
             }
+
+            return View(model);
         }
+
 
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -155,6 +211,18 @@ namespace Collaborative_Resource_Management_System.Controllers
             {
                 return View("Error");
             }
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Cart()
+        {
+            var departments = await _inventoryService.GetDepartmentsAsync();
+            ViewBag.Departments = departments;
+            return View();
         }
     }
 }

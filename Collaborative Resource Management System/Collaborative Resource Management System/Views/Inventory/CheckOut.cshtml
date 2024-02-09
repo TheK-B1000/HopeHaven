@@ -3,13 +3,12 @@
     ViewBag.Title = "Check-out";
 }
 
-
-
-    <div class="container vh-100 d-flex justify-content-center align-items-center">
-        <div class="text-center">
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="text-center">
 
         <div class="mt-4">
-            <a href="@Url.Action("Manage", "Inventory")" class="btn btn-primary btn-lg mb-3">View Inventory</a><br>
+            <a href="@Url.Action("ConsumableItems", "Inventory")" class="btn btn-primary btn-lg mb-3">Consumables</a><br>
+            <a href="@Url.Action("NonConsumableItems", "Inventory")" class="btn btn-secondary btn-lg">Non-Consumables</a>
         </div>
     </div>
 </div>

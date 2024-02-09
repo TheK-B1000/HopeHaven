@@ -27,10 +27,34 @@ namespace Collaborative_Resource_Management_System.Services
                 .ToListAsync();
         }
 
-        public async Task<InventoryItem> GetItemDetails(int? id)
+        public async Task<List<InventoryItem>> ConsumableItems()
         {
-            return id == null ? null : await _context.InventoryItems.FindAsync(id);
+            return await _context.InventoryItems
+                                 .Where(item => item.ItemType == ItemType.Consumable)
+                                 .ToListAsync();
         }
+
+        public async Task<List<InventoryItem>> NonConsumableItems()
+        {
+            return await _context.InventoryItems
+                                 .Where(item => item.ItemType == ItemType.NonConsumable)
+                                 .ToListAsync();
+        }
+
+        public async Task<InventoryItem> ConsumableDetails(int? id)
+        {
+            if (id == null) return null;
+            return await _context.InventoryItems
+                                 .FirstOrDefaultAsync(item => item.InventoryItemID == id && item.ItemType == ItemType.Consumable);
+        }
+
+        public async Task<InventoryItem> NonConsumableDetails(int? id)
+        {
+            if (id == null) return null;
+            return await _context.InventoryItems
+                                 .FirstOrDefaultAsync(item => item.InventoryItemID == id && item.ItemType == ItemType.NonConsumable);
+        }
+
 
         public async Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString)
         {

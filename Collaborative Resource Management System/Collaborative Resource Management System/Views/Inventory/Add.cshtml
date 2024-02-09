@@ -14,29 +14,12 @@
 
 <script>
     document.getElementById('loadConsumable').addEventListener('click', function () {
-        loadItemType('Consumable');
+        window.location.href = '@Url.Action("Consumable", "Inventory")';
     });
 
     document.getElementById('loadNonConsumable').addEventListener('click', function () {
-        loadItemType('NonConsumable');
+        window.location.href = '@Url.Action("NonConsumable", "Inventory")';
     });
-
-    function loadItemType(itemType) {
-        var url = '/Inventory/LoadItemTypeForm?itemType=' + itemType;
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok: ' + response.statusText);
-                }
-                return response.text();
-            })
-            .then(html => {
-                document.getElementById('formContainer').innerHTML = html;
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-    }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>

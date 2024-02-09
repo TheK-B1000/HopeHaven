@@ -3,10 +3,10 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Add Inventory Item";
+    ViewBag.Title = "NonConsumable";
 }
 
-<form action="/Inventory/AddItem" method="POST" enctype="multipart/form-data">
+<form action="/Inventory/NonConsumable" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="Image">Image:</label>
         <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;" required>
