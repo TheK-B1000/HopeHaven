@@ -6,53 +6,56 @@
     ViewBag.Title = "Consumable";
 }
 
-<form action="/Inventory/Consumable" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="Image">Image:</label>
-        <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;" required>
-        <div class="invalid-feedback">Image is required.</div>
-    </div>
-    <div class="form-group">
-        <label for="Name">Name:</label>
-        <input type="text" id="Name" name="Name" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="Description">Description:</label>
-        <input type="text" id="Description" name="Description" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="RoomNumber">Room Number:</label>
-        <input type="number" id="RoomNumber" name="RoomNumber" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="CategoryID">Category:</label>
-        <select class="form-control" id="CategoryID" name="CategoryID">
-            @foreach (var category in ViewBag.Categories)
-            {
-                <option value="@category.Value">@category.Text</option>
-            }
-        </select>
-    </div>
-    <input type="hidden" id="ItemType" name="ItemType" value="Consumable">
-    <div class="form-group">
-        <label for="Comments">Comments:</label>
-        <input type="text" id="Comments" name="Comments" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="pricePerUnit">Price per Unit:</label>
-        <input type="number" id="pricePerUnit" name="PricePerUnit" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="quantityAvailable">Quantity Available:</label>
-        <input type="number" id="quantityAvailable" name="QuantityAvailable" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="minimumQuantity">Minimum Quantity:</label>
-        <input type="number" id="minimumQuantity" name="MinimumQuantity" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Add Consumable</button>
-    <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
-</form>
+<div class="container">
+    <form action="/Inventory/Consumable" method="POST" enctype="multipart/form-data">
+        <input type="hidden" asp-for="ItemType" />
+        <div class="form-group">
+            <label for="Image">Image:</label>
+            <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;" required>
+            <div class="invalid-feedback">Image is required.</div>
+        </div>
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" name="Name" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="Description">Description:</label>
+            <input type="text" id="Description" name="Description" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="RoomNumber">Room Number:</label>
+            <input type="number" id="RoomNumber" name="RoomNumber" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="CategoryID">Category:</label>
+            <select class="form-control" id="CategoryID" name="CategoryID">
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <option value="@category.Value">@category.Text</option>
+                }
+            </select>
+        </div>
+        <input type="hidden" id="ItemType" name="ItemType" value="Consumable">
+        <div class="form-group">
+            <label for="Comments">Comments:</label>
+            <input type="text" id="Comments" name="Comments" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="pricePerUnit">Price per Unit:</label>
+            <input type="number" id="pricePerUnit" name="PricePerUnit" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="quantityAvailable">Quantity Available:</label>
+            <input type="number" id="quantityAvailable" name="QuantityAvailable" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="minimumQuantity">Minimum Quantity:</label>
+            <input type="number" id="minimumQuantity" name="MinimumQuantity" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Consumable</button>
+        <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+    </form>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -99,3 +102,5 @@
         });
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
