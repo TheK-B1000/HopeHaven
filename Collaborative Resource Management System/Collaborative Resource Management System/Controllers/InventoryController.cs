@@ -130,7 +130,8 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddConsumable(Consumable consumable, IFormFile VisibleImage)
         {
-            if (VisibleImage != null || VisibleImage.Length > 0)
+
+            if (VisibleImage != null && VisibleImage.Length > 0)
             {
                 var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
                 if (!Directory.Exists(imagesPath))
@@ -163,8 +164,21 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable, IFormFile VisibleImage)
         {
-            if (VisibleImage != null || VisibleImage.Length > 0)
+            if (VisibleImage != null && VisibleImage.Length > 0)
             {
+                // TODO - Swap out old way of storing images with Azure Blob Storage
+                /* Azure Storage account connection string
+                string connectionString = "";
+                string containerName = "";
+
+                var blobServiceClient = new BlobServiceClient(connectionString);
+                var blobContainerClient = blobServiceClient.GetBlobContainerClient(containerName);
+                var blobClient = blobContainerClient.GetBlobClient(fileName);
+
+                // Upload to Azure Blob Storage
+                await blobClient.UploadAsync(VisibleImage.OpenReadStream(), new BlobHttpHeaders { ContentType = VisibleImage.ContentType });
+                */
+
                 var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
                 if (!Directory.Exists(imagesPath))
                 {
@@ -251,10 +265,13 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
-        public IActionResult Cart()
+        public async Task<IActionResult> Cart()
         {
+            var departments = await _inventoryService.GetDepartmentsAsync(); 
+            ViewBag.Departments = departments;
             return View();
         }
+
     }
 }
 

@@ -1,28 +1,33 @@
 <form action="/Inventory/AddNonConsumable" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="Image">Image:</label>
-        <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;">
+        <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;" required>
+        <div class="invalid-feedback">Image is required.</div>
     </div>
     <div class="form-group">
         <label for="Name">Name:</label>
         <input type="text" id="Name" name="Name" class="form-control" required />
+        <div class="invalid-feedback">Name is required.</div>
     </div>
     <div class="form-group">
         <label for="Description">Description:</label>
         <input type="text" id="Description" name="Description" class="form-control" required />
+        <div class="invalid-feedback">Description is required.</div>
     </div>
     <div class="form-group">
         <label for="RoomNumber">Room Number:</label>
         <input type="number" id="RoomNumber" name="RoomNumber" class="form-control" required />
+        <div class="invalid-feedback">Room Number is required.</div>
     </div>
     <div class="form-group">
         <label for="CategoryID">Category:</label>
-        <select class="form-control" id="CategoryID" name="CategoryID">
+        <select class="form-control" id="CategoryID" name="CategoryID" required>
             @foreach (var category in ViewBag.Categories)
             {
                 <option value="@category.Value">@category.Text</option>
             }
         </select>
+        <div class="invalid-feedback">Category is required.</div>
     </div>
     <input type="hidden" id="ItemType" name="ItemType" value="NonConsumable">
     <div class="form-group">
@@ -32,7 +37,65 @@
     <div class="form-group">
         <label for="assetTag">Asset Tag:</label>
         <input type="text" id="assetTag" name="AssetTag" class="form-control" required />
+        <div class="invalid-feedback">Asset Tag is required.</div>
     </div>
     <button type="submit" class="btn btn-primary">Add Non-Consumable</button>
     <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
 </form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            let isValid = true;
+            const requiredFields = form.querySelectorAll("[required]");
+            requiredFields.forEach(function (field) {
+                if (field.type === "file") {
+                    if (field.files.length === 0) {
+                        isValid = false;
+                        field.classList.add("is-invalid");
+                        field.nextElementSibling.style.display = 'block'; 
+                    } else {
+                        field.classList.remove("is-invalid");
+                        field.nextElementSibling.style.display = 'none';
+                    }
+                } else {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add("is-invalid");
+                        field.nextElementSibling.classList.add("visible");
+                    } else {
+                        field.classList.remove("is-invalid");
+                        field.nextElementSibling.classList.remove("visible");
+                    }
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+                alert("Please fill in all required fields.");
+            }
+        });
+
+        document.querySelectorAll(".form-control, .form-control-file").forEach(function (input) {
+            input.addEventListener("input", function () {
+                this.classList.remove("is-invalid");
+                this.nextElementSibling.style.display = 'none'; 
+            });
+        });
+    });
+</script>
+<style>
+    .is-invalid {
+        border-color: #dc3545;
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+        display: none;
+    }
+
+    .invalid-feedback.visible, .invalid-feedback[style="display: block;"] {
+        display: block;
+    }
+</style>

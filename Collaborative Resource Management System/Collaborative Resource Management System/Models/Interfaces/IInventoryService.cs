@@ -9,6 +9,7 @@ public interface IInventoryService
     Task<bool> AddCategoryAsync(Category category);
     Task<bool> AddConsumableAsync(Consumable consumable);
     Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable);
+    Task<IEnumerable<Department>> GetDepartmentsAsync();
     Task<InventoryItem> GetItemByIdAsync(int id);
     Task<IEnumerable<SelectListItem>> GetCategoriesAsync();
     Task<bool> EditItemAsync(InventoryItem item, ItemType type);
