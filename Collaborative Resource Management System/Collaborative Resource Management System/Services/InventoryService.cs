@@ -117,6 +117,18 @@ namespace Collaborative_Resource_Management_System.Services
 
                 _context.Entry(item).CurrentValues.SetValues(updatedItem);
 
+                if (item.ItemType == ItemType.Consumable && item.Consumable != null && updatedItem.Consumable != null)
+                {
+                    item.Consumable.PricePerUnit = updatedItem.Consumable.PricePerUnit;
+                    item.Consumable.QuantityAvailable = updatedItem.Consumable.QuantityAvailable;
+                    item.Consumable.MinimumQuantity = updatedItem.Consumable.MinimumQuantity;
+                }
+
+                if (item.ItemType == ItemType.NonConsumable && item.NonConsumable != null && updatedItem.NonConsumable != null)
+                {
+                    item.NonConsumable.AssetTag = updatedItem.NonConsumable.AssetTag;
+                }
+
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -125,6 +137,7 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
         }
+
         public async Task<bool> SoftDeleteItemAsync(int id)
         {
             try

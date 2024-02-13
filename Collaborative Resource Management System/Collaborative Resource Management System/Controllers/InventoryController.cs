@@ -62,7 +62,7 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View("Items", nonConsumables); 
         }
 
-        public async Task<IActionResult> ConsumableDetails(int? id)
+        public async Task<IActionResult> ItemDetails(int? id)
         {
             if (id == null)
             {
@@ -70,28 +70,12 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
 
             var item = await _inventoryService.GetItemDetailsAsync(id.Value);
-            if (item == null || item.ItemType != ItemType.Consumable)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View("ItemDetails", item); 
-        }
-
-        public async Task<IActionResult> NonConsumableDetails(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var item = await _inventoryService.GetItemDetailsAsync(id.Value);
-            if (item == null || item.ItemType != ItemType.NonConsumable)
-            {
-                return NotFound();
-            }
-
-            return View("ItemDetails", item);
+            return View(item);
         }
 
 
@@ -110,11 +94,6 @@ namespace Collaborative_Resource_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCategory(Category category)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(category);
-            }
-
             bool success = await _inventoryService.AddCategoryAsync(category);
             if (success)
             {
@@ -145,7 +124,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                     await VisibleImage.CopyToAsync(fileStream);
                 }
 
-                item.Image = "/img/" + fileName;
+                item.Image = fileName;
             }
 
 

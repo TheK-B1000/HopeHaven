@@ -96,6 +96,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             IsActive = true,
+                            Comments = "Hello There",
                             Consumable = new Consumable
                             {
                                 PricePerUnit = 1.99f,
@@ -114,6 +115,7 @@ namespace Collaborative_Resource_Management_System.Models
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
                             IsActive = true,
+                            Comments = "Hello There",
                             NonConsumable = new NonConsumable
                             {
                                 AssetTag = "A001"
