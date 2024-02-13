@@ -3,7 +3,8 @@
 <form action="/Inventory/AddConsumable" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="Image">Image:</label>
-        <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;">
+        <input type="file" id="visible-input" name="VisibleImage" class="form-control-file" accept=".jpg, .jpeg, .png, .gif" style="margin-top: 10px;" required>
+        <div class="invalid-feedback">Image is required.</div>
     </div>
     <div class="form-group">
         <label for="Name">Name:</label>
@@ -46,3 +47,49 @@
     <button type="submit" class="btn btn-primary">Add Consumable</button>
     <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
 </form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            let isValid = true;
+            const requiredFields = form.querySelectorAll("[required]");
+            requiredFields.forEach(function (field) {
+                if (field.type === "file") {
+                    if (field.files.length === 0) {
+                        isValid = false;
+                        field.classList.add("is-invalid");
+                        field.nextElementSibling.style.display = 'block'; 
+                    } else {
+                        field.classList.remove("is-invalid");
+                        field.nextElementSibling.style.display = 'none'; 
+                    }
+                } else {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add("is-invalid");
+                        const feedback = field.closest('.form-group').querySelector('.invalid-feedback');
+                        if (feedback) feedback.style.display = 'block'; 
+                    } else {
+                        field.classList.remove("is-invalid");
+                        const feedback = field.closest('.form-group').querySelector('.invalid-feedback');
+                        if (feedback) feedback.style.display = 'none'; 
+                    }
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+                alert("Please fill in all required fields.");
+            }
+        });
+
+        document.querySelectorAll(".form-control, .form-control-file").forEach(function (input) {
+            input.addEventListener("input", function () {
+                this.classList.remove("is-invalid");
+                const feedback = this.closest('.form-group').querySelector('.invalid-feedback');
+                if (feedback) feedback.style.display = 'none'; 
+            });
+        });
+    });
+</script>
