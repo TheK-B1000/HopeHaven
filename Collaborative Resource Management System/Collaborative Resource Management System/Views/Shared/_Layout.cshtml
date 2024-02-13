@@ -1,76 +1,47 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/BootStyle.css" />
-
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .wrapper {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .headerC {
-            color: rgb(23, 75, 124)
-        }
-
-        .head {
-            color: white;
-        }
-
-        .footer {
-            background-color: rgb(23, 75, 124);
-            padding: 10px 0;
-            margin-top: auto; 
-        }
-
-        .navbar {
-            background-color: rgb(23, 75, 124);
-        }
-
-        .input-validation-error {
-            border: 2px solid red;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CRMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BootStyle.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="wrapper">
-
-        <header>
-            <div>
-                <nav class="navbar">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                        <img src="@Url.Content("~/img/HopeHaven_CMYK Logo.jpg")" height="65" width="125">
-                    </a>
-                    <h1 class="head">Collaborative Resource Management System</h1>
-                    <h1>
-                        <a class="button btn-info btn-lg" href="@Url.Action("Index", "Home")">Logout</a>
-                    </h1>
-                </nav>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CRMS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
             </div>
-        </header>
-
-        <div class="text-center">
-            <h1 class="headerC">@ViewBag.Title</h1>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
             @RenderBody()
-        </div>
-
-        <div class="footer text-center">
-            <p class="head">&copy; 2023 HOPE HAVEN CRMS. All rights reserved.</p>
-        </div>
-
+        </main>
     </div>
 
+    <footer class="footer fixed-bottom text-center" >
+        <div class="container">
+            &copy; 2024 - CRMS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

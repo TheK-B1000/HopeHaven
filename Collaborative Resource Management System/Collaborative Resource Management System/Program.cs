@@ -71,7 +71,7 @@ static async Task InitializeRoles(IServiceProvider services)
 {
     using var scope = services.CreateScope();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var roles = new[] { "Admin", "Editor", "Staff" };
+    var roles = new[] { "SuperAdmin","Admin", "Editor", "Staff" };
 
     foreach (var role in roles)
     {

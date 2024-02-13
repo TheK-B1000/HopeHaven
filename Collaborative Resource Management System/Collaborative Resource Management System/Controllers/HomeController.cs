@@ -1,8 +1,8 @@
-﻿using CRMS_MVC.Models;
+﻿using Collaborative_Resource_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CRMS_MVC.Controllers
+namespace Collaborative_Resource_Management_System.Controllers
 {
     public class HomeController : Controller
     {

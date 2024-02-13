@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Collaborative Resource Management System")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+757e10072b3599d8a07d4affefaee5d5d1067ce8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Collaborative Resource Management System")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Collaborative Resource Management System")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
