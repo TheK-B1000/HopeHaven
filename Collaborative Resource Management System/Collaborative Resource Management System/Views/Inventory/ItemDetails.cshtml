@@ -1,0 +1,67 @@
+﻿@model Collaborative_Resource_Management_System.Models.InventoryItem
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var title = Model.ItemType == Collaborative_Resource_Management_System.Models.ItemType.Consumable ? "Consumable Item Details" : "Non-Consumable Item Details";
+    ViewBag.Title = title;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Url.Content(!string.IsNullOrEmpty(Model.Image) ? "~/img/" + Model.Image : "~/img/NotFound.jpg")" alt="Item Image" style="max-width: 200px; margin-bottom: 10px;">
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Name</h2>
+            <p>Description: @Model.Description</p>
+            @if (Model.ItemType == Collaborative_Resource_Management_System.Models.ItemType.Consumable && Model.Consumable != null)
+            {
+                <p>Price Per Unit: @Model.Consumable.PricePerUnit.ToString("C")</p>
+                <p>Quantity Available: @Model.Consumable.QuantityAvailable</p>
+            }
+            else if (Model.ItemType == Collaborative_Resource_Management_System.Models.ItemType.NonConsumable && Model.NonConsumable != null)
+            {
+                <p>Asset Tag: @Model.NonConsumable.AssetTag</p>
+            }
+            <button id="addToCart" class="btn btn-primary mr-2">Add to Cart</button>
+            <div>
+                <span>Total Items in Cart: </span>
+                <span id="cartQuantity" class="badge badge-pill badge-secondary">0</span>
+            </div>
+            <button id="checkout" class="btn btn-secondary">Checkout</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script defer>
+    document.getElementById("addToCart").addEventListener("click", function () {
+        addToCart('@Model.InventoryItemID', '@Model.Name', Model.ItemType == Collaborative_Resource_Management_System.Models.ItemType.Consumable ? '@Model.Consumable?.PricePerUnit' : 'N/A');
+    });
+
+    document.getElementById("checkout").addEventListener("click", function () {
+        window.location.href = '@Url.Action("Cart", "Inventory")';
+    });
+
+    function addToCart(itemID, itemName, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let found = cart.find(item => item.id == itemID);
+
+        if (found) {
+            found.quantity++;
+        } else {
+            cart.push({ id: itemID, name: itemName, price: price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartQuantityDisplay();
+    }
+
+    function updateCartQuantityDisplay() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+        document.getElementById('cartQuantity').textContent = totalQuantity;
+    }
+
+    document.addEventListener('DOMContentLoaded', updateCartQuantityDisplay);
+</script>

@@ -37,12 +37,12 @@
             </tr>
         </thead>
         <tbody>
-           @foreach (var item in Model.OfType<Consumable>().Where(c => c.QuantityAvailable <= c.MinimumQuantity))
+            @foreach (var item in Model.Where(i => i.ItemType == ItemType.Consumable && i.Consumable != null && i.Consumable.QuantityAvailable <= i.Consumable.MinimumQuantity))
             {
                 <tr>
                     <td>@item.InventoryItemID</td>
                     <td>@item.Name</td>
-                    <td>@item.QuantityAvailable</td>
+                    <td>@item.Consumable.QuantityAvailable</td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.InventoryItemID }, new { @class = "btn btn-secondary btn-sm" })
                     </td>

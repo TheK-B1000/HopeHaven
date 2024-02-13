@@ -7,16 +7,12 @@ public interface IInventoryService
 {
     Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString);
     Task<bool> AddCategoryAsync(Category category);
-    Task<bool> AddConsumableAsync(Consumable consumable);
-    Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable);
+    Task<bool> AddItemAsync(InventoryItem item);
     Task<IEnumerable<Department>> GetDepartmentsAsync();
-    Task<InventoryItem> GetItemByIdAsync(int id);
+    Task<InventoryItem> GetItemDetailsAsync(int id);
+    Task<IEnumerable<InventoryItem>> GetItemsByTypeAsync(ItemType itemType);
     Task<IEnumerable<SelectListItem>> GetCategoriesAsync();
-    Task<bool> EditItemAsync(InventoryItem item, ItemType type);
-    Task<List<Consumable>> ConsumableItems();
-    Task<List<NonConsumable>> NonConsumableItems();
-    Task<Consumable> ConsumableDetails(int? id);
-    Task<NonConsumable> NonConsumableDetails(int? id);
-    Task<bool> SoftDeleteItemAsync(int id, ItemType type);
-
+    Task<bool> EditItemAsync(InventoryItem item); 
+    Task<bool> SoftDeleteItemAsync(int id); 
 }
+

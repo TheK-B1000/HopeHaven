@@ -52,14 +52,14 @@ namespace Collaborative_Resource_Management_System.Controllers
 
         public async Task<IActionResult> ConsumableItems()
         {
-            var consumables = await _inventoryService.ConsumableItems();
-            return View(consumables);
+            var consumables = await _inventoryService.GetItemsByTypeAsync(ItemType.Consumable);
+            return View("Items", consumables); 
         }
 
         public async Task<IActionResult> NonConsumableItems()
         {
-            var nonConsumables = await _inventoryService.NonConsumableItems();
-            return View(nonConsumables);
+            var nonConsumables = await _inventoryService.GetItemsByTypeAsync(ItemType.NonConsumable);
+            return View("Items", nonConsumables); 
         }
 
         public async Task<IActionResult> ConsumableDetails(int? id)
@@ -69,14 +69,13 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
-            var consumable = await _inventoryService.ConsumableDetails(id);
-
-            if (consumable == null)
+            var item = await _inventoryService.GetItemDetailsAsync(id.Value);
+            if (item == null || item.ItemType != ItemType.Consumable)
             {
                 return NotFound();
             }
 
-            return View(consumable);
+            return View("ItemDetails", item); 
         }
 
         public async Task<IActionResult> NonConsumableDetails(int? id)
@@ -86,15 +85,15 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
-            var nonConsumable = await _inventoryService.NonConsumableDetails(id);
-
-            if (nonConsumable == null)
+            var item = await _inventoryService.GetItemDetailsAsync(id.Value);
+            if (item == null || item.ItemType != ItemType.NonConsumable)
             {
                 return NotFound();
             }
 
-            return View(nonConsumable);
+            return View("ItemDetails", item);
         }
+
 
         public async Task<IActionResult> Add()
         {
@@ -128,9 +127,8 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddConsumable(Consumable consumable, IFormFile VisibleImage)
+        public async Task<IActionResult> AddItem(InventoryItem item, IFormFile VisibleImage, string itemType)
         {
-
             if (VisibleImage != null && VisibleImage.Length > 0)
             {
                 var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
@@ -147,10 +145,30 @@ namespace Collaborative_Resource_Management_System.Controllers
                     await VisibleImage.CopyToAsync(fileStream);
                 }
 
-                consumable.Image = fileName; 
+                item.Image = "/img/" + fileName;
             }
 
-            bool success = await _inventoryService.AddConsumableAsync(consumable);
+
+            if (itemType.Equals("Consumable", StringComparison.OrdinalIgnoreCase))
+            {
+                item.ItemType = ItemType.Consumable;
+                item.Consumable = new Consumable
+                {
+                    PricePerUnit = Convert.ToSingle(Request.Form["PricePerUnit"]),
+                    QuantityAvailable = Convert.ToInt32(Request.Form["QuantityAvailable"]),
+                    MinimumQuantity = Convert.ToInt32(Request.Form["MinimumQuantity"])
+                };
+            }
+            else if (itemType.Equals("NonConsumable", StringComparison.OrdinalIgnoreCase))
+            {
+                item.ItemType = ItemType.NonConsumable;
+                item.NonConsumable = new NonConsumable
+                {
+                    AssetTag = Request.Form["AssetTag"]
+                };
+            }
+
+            var success = await _inventoryService.AddItemAsync(item);
             if (success)
             {
                 return RedirectToAction("Manage");
@@ -161,51 +179,6 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddNonConsumable(NonConsumable nonConsumable, IFormFile VisibleImage)
-        {
-            if (VisibleImage != null && VisibleImage.Length > 0)
-            {
-                // TODO - Swap out old way of storing images with Azure Blob Storage
-                /* Azure Storage account connection string
-                string connectionString = "";
-                string containerName = "";
-
-                var blobServiceClient = new BlobServiceClient(connectionString);
-                var blobContainerClient = blobServiceClient.GetBlobContainerClient(containerName);
-                var blobClient = blobContainerClient.GetBlobClient(fileName);
-
-                // Upload to Azure Blob Storage
-                await blobClient.UploadAsync(VisibleImage.OpenReadStream(), new BlobHttpHeaders { ContentType = VisibleImage.ContentType });
-                */
-
-                var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-                if (!Directory.Exists(imagesPath))
-                {
-                    Directory.CreateDirectory(imagesPath);
-                }
-
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(VisibleImage.FileName);
-                var filePath = Path.Combine(imagesPath, fileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await VisibleImage.CopyToAsync(fileStream);
-                }
-
-                nonConsumable.Image = fileName; 
-            }
-
-            bool success = await _inventoryService.AddNonConsumableAsync(nonConsumable);
-            if (success)
-            {
-                return RedirectToAction("Manage");
-            }
-            else
-            {
-                return View("Error");
-            }
-        }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
@@ -215,7 +188,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
-            var item = await _inventoryService.GetItemByIdAsync(id.Value);
+            var item = await _inventoryService.GetItemDetailsAsync(id.Value);
             if (item == null)
             {
                 return NotFound();
@@ -225,18 +198,11 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View(item);
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Edit(InventoryItem item)
         {
-            var originalItem = await _inventoryService.GetItemByIdAsync(item.InventoryItemID);
-            if (originalItem == null)
-            {
-                return NotFound();
-            }
-
-            ItemType type = originalItem is Consumable ? ItemType.Consumable : ItemType.NonConsumable;
-
-            bool success = await _inventoryService.EditItemAsync(item, type);
+            bool success = await _inventoryService.EditItemAsync(item); 
             if (success)
             {
                 return RedirectToAction("Manage");
@@ -247,9 +213,10 @@ namespace Collaborative_Resource_Management_System.Controllers
             }
         }
 
-        public async Task<IActionResult> SoftDelete(int id, ItemType type)
+
+        public async Task<IActionResult> SoftDelete(int id)
         {
-            var success = await _inventoryService.SoftDeleteItemAsync(id, type);
+            var success = await _inventoryService.SoftDeleteItemAsync(id);
             if (success)
             {
                 return RedirectToAction("Manage");
@@ -259,6 +226,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return View("Error");
             }
         }
+
 
         public IActionResult Confirmation()
         {

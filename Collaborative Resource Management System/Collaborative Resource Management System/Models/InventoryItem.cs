@@ -20,16 +20,7 @@ namespace Collaborative_Resource_Management_System.Models
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
 
-        public string DisplayImageUrl
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(Image))
-                    return "/img/NotFound.jpg"; 
-                else
-                    return Image;
-            }
-        }
+        public string DisplayImageUrl => string.IsNullOrWhiteSpace(Image) ? "/img/NotFound.jpg" : Image;
 
         [Required]
         [StringLength(100)]
@@ -63,19 +54,21 @@ namespace Collaborative_Resource_Management_System.Models
         public string? Comments { get; set; }
         public bool IsActive { get; set; }
 
-
+        // Composition properties
+        public Consumable? Consumable { get; set; }
+        public NonConsumable? NonConsumable { get; set; }
     }
-    public class Consumable : InventoryItem
+    public class Consumable
     {
         public float PricePerUnit { get; set; }
-
         public int QuantityAvailable { get; set; }
-
         public int MinimumQuantity { get; set; }
     }
 
-    public class NonConsumable : InventoryItem
+    public class NonConsumable
     {
         public string AssetTag { get; set; }
     }
+
+
 }

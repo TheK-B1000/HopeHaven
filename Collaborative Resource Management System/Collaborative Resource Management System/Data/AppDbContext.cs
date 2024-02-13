@@ -10,8 +10,6 @@ namespace Collaborative_Resource_Management_System.Data
             : base(options)
         { }
         public DbSet<InventoryItem> InventoryItems { get; set; }
-        public DbSet<Consumable> Consumables { get; set; }
-        public DbSet<NonConsumable> NonConsumables { get; set; }
         public DbSet<CheckOut> CheckOuts { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -21,6 +19,14 @@ namespace Collaborative_Resource_Management_System.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<InventoryItem>()
+                .OwnsOne(i => i.Consumable)
+                .WithOwner();
+
+            modelBuilder.Entity<InventoryItem>()
+                .OwnsOne(i => i.NonConsumable)
+                .WithOwner();
         }
     }
 }

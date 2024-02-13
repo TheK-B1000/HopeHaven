@@ -24,40 +24,14 @@ namespace Collaborative_Resource_Management_System.Services
             _context = context;
         }
 
-        public async Task<List<Consumable>> ConsumableItems()
-        {
-            return await _context.Consumables.ToListAsync();
-        }
-
-        public async Task<List<NonConsumable>> NonConsumableItems()
-        {
-            return await _context.NonConsumables.ToListAsync();
-        }
-
-        public async Task<Consumable> ConsumableDetails(int? id)
-        {
-            return id == null ? null : await _context.Consumables.FindAsync(id);
-        }
-
-        public async Task<NonConsumable> NonConsumableDetails(int? id)
-        {
-            return id == null ? null : await _context.NonConsumables.FindAsync(id);
-        }
-
         public async Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString)
         {
-            var consumablesList = await _context.Consumables
-                .Where(c => c.IsActive && (string.IsNullOrEmpty(searchString) || EF.Functions.Like(c.Name, $"%{searchString}%")))
+            return await _context.InventoryItems
+                .Where(item => item.IsActive &&
+                               (string.IsNullOrEmpty(searchString) || EF.Functions.Like(item.Name, $"%{searchString}%")))
+                .Include(item => item.Consumable)
+                .Include(item => item.NonConsumable)
                 .ToListAsync();
-
-            var nonConsumablesList = await _context.NonConsumables
-                .Where(nc => nc.IsActive && (string.IsNullOrEmpty(searchString) || EF.Functions.Like(nc.Name, $"%{searchString}%")))
-                .ToListAsync();
-
-            var allItems = consumablesList.Cast<InventoryItem>()
-                .Concat(nonConsumablesList.Cast<InventoryItem>());
-
-             return allItems;
         }
 
         public async Task<bool> AddCategoryAsync(Category category)
@@ -80,18 +54,17 @@ namespace Collaborative_Resource_Management_System.Services
             }
         }
 
-
-        public async Task<bool> AddConsumableAsync(Consumable consumable)
+        public async Task<bool> AddItemAsync(InventoryItem item)
         {
             try
             {
-                consumable.CreatedDate = DateTime.UtcNow;
-                consumable.EditedDate = DateTime.UtcNow;
-                consumable.CreatedBy = _loggedInUserName;
-                consumable.EditedBy = _loggedInUserName;
-                consumable.IsActive = _isActive;
+                item.CreatedDate = DateTime.UtcNow;
+                item.EditedDate = DateTime.UtcNow;
+                item.CreatedBy = _loggedInUserName;
+                item.EditedBy = _loggedInUserName;
+                item.IsActive = _isActive;
 
-                _context.Consumables.Add(consumable);
+                _context.InventoryItems.Add(item);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -101,37 +74,19 @@ namespace Collaborative_Resource_Management_System.Services
             }
         }
 
-        public async Task<bool> AddNonConsumableAsync(NonConsumable nonConsumable)
+        public async Task<IEnumerable<InventoryItem>> GetItemsByTypeAsync(ItemType itemType)
         {
-            try
-            {     
-                nonConsumable.CreatedDate = DateTime.UtcNow;
-                nonConsumable.EditedDate = DateTime.UtcNow;
-                nonConsumable.CreatedBy = _loggedInUserName;
-                nonConsumable.EditedBy = _loggedInUserName;
-                nonConsumable.IsActive = _isActive;
-                
-                _context.NonConsumables.Add(nonConsumable);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return await _context.InventoryItems
+                        .Where(item => item.ItemType == itemType)
+                        .ToListAsync();
         }
 
-
-        public async Task<InventoryItem> GetItemByIdAsync(int id)
+        public async Task<InventoryItem> GetItemDetailsAsync(int id)
         {
-            InventoryItem item = await _context.Consumables.FindAsync(id);
-            if (item != null)
-            {
-                return item;
-            }
-
-            item = await _context.NonConsumables.FindAsync(id);
-            return item;
+            return await _context.InventoryItems
+                        .Include(item => item.Consumable) 
+                        .Include(item => item.NonConsumable) 
+                        .FirstOrDefaultAsync(item => item.InventoryItemID == id);
         }
 
 
@@ -145,7 +100,7 @@ namespace Collaborative_Resource_Management_System.Services
                 }).ToListAsync();
         }
 
-        public async Task<bool> EditItemAsync(InventoryItem updatedItem, ItemType type)
+        public async Task<bool> EditItemAsync(InventoryItem updatedItem)
         {
             if (updatedItem == null)
             {
@@ -153,33 +108,14 @@ namespace Collaborative_Resource_Management_System.Services
             }
             try
             {
-                updatedItem.CreatedDate = DateTime.UtcNow;
-                updatedItem.EditedDate = DateTime.UtcNow;
-                updatedItem.CreatedBy = _loggedInUserName;
-                updatedItem.EditedBy = _loggedInUserName;
-                updatedItem.IsActive = _isActive;
+                var item = await _context.InventoryItems
+                    .Include(i => i.Consumable)
+                    .Include(i => i.NonConsumable)
+                    .FirstOrDefaultAsync(i => i.InventoryItemID == updatedItem.InventoryItemID);
 
-                if (type == ItemType.Consumable)
-                {
-                    var item = await _context.Consumables.FindAsync(updatedItem.InventoryItemID);
-                    if (item == null) return false;
+                if (item == null) return false;
 
-                    updatedItem.Image = item.Image;
-                    _context.Entry(item).CurrentValues.SetValues(updatedItem);
-                }
-                else if (type == ItemType.NonConsumable)
-                {
-                    
-                    var item = await _context.NonConsumables.FindAsync(updatedItem.InventoryItemID);
-                    if (item == null) return false;
-
-                    updatedItem.Image = item.Image;
-                    _context.Entry(item).CurrentValues.SetValues(updatedItem);
-                }
-                else
-                {
-                    return false;
-                }
+                _context.Entry(item).CurrentValues.SetValues(updatedItem);
 
                 await _context.SaveChangesAsync();
                 return true;
@@ -189,26 +125,11 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
         }
-
-
-        public async Task<bool> SoftDeleteItemAsync(int id, ItemType type)
+        public async Task<bool> SoftDeleteItemAsync(int id)
         {
             try
             {
-                InventoryItem item;
-                if (type == ItemType.Consumable)
-                {
-                    item = await _context.Consumables.FindAsync(id);
-                }
-                else if (type == ItemType.NonConsumable)
-                {
-                    item = await _context.NonConsumables.FindAsync(id);
-                }
-                else
-                {
-                    return false;
-                }
-
+                var item = await _context.InventoryItems.FindAsync(id);
                 if (item == null)
                 {
                     return false;
@@ -227,6 +148,7 @@ namespace Collaborative_Resource_Management_System.Services
                 return false;
             }
         }
+
 
         public async Task<IEnumerable<Department>> GetDepartmentsAsync()
         {

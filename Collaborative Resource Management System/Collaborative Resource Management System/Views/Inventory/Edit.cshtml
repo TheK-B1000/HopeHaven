@@ -49,31 +49,32 @@
             <input class="form-control" name="Comments" value="@Model.Comments" />
         </div>
 
-        @if (Model is Collaborative_Resource_Management_System.Models.Consumable consumable)
+        @if (Model.ItemType == ItemType.Consumable && Model.Consumable != null)
         {
             <div class="form-group">
                 <label>Price per Unit:</label>
-                <input type="number" step="0.01" class="form-control" name="PricePerUnit" value="@consumable.PricePerUnit" />
+                <input type="number" step="0.01" class="form-control" name="Consumable.PricePerUnit" value="@Model.Consumable.PricePerUnit" />
             </div>
 
             <div class="form-group">
                 <label>Quantity Available:</label>
-                <input type="number" class="form-control" name="QuantityAvailable" value="@consumable.QuantityAvailable" />
+                <input type="number" class="form-control" name="Consumable.QuantityAvailable" value="@Model.Consumable.QuantityAvailable" />
             </div>
 
             <div class="form-group">
                 <label>Minimum Quantity:</label>
-                <input type="number" class="form-control" name="MinimumQuantity" value="@consumable.MinimumQuantity" />
+                <input type="number" class="form-control" name="Consumable.MinimumQuantity" value="@Model.Consumable.MinimumQuantity" />
             </div>
         }
 
-        @if (Model is Collaborative_Resource_Management_System.Models.NonConsumable nonConsumable)
+        @if (Model.ItemType == ItemType.NonConsumable && Model.NonConsumable != null)
         {
             <div class="form-group">
                 <label>Asset Tag:</label>
-                <input class="form-control" name="AssetTag" value="@nonConsumable.AssetTag" />
+                <input class="form-control" name="NonConsumable.AssetTag" value="@Model.NonConsumable.AssetTag" />
             </div>
         }
+
 
         <button type="submit" class="btn btn-primary">Save</button>
         <a href="javascript:history.back()" class="btn btn-secondary">Back</a>

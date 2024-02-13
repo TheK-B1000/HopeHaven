@@ -83,48 +83,42 @@ namespace Collaborative_Resource_Management_System.Models
 
                 context.SaveChanges();
 
-                if (!context.InventoryItems.OfType<Consumable>().Any())
+                if (!context.InventoryItems.Any())
                 {
                     context.InventoryItems.AddRange(
-                        new Consumable
+                        new InventoryItem
                         {
-                            Image = "GlueSticks.jpg",
                             Name = "Glue Sticks",
                             Description = "We love glue sticks",
+                            Image = "GlueSticks.jpg",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
-                            RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID,
+                            IsActive = true,
+                            Consumable = new Consumable
+                            {
+                                PricePerUnit = 1.99f,
+                                QuantityAvailable = 100,
+                                MinimumQuantity = 10
+                            },
                             ItemType = ItemType.Consumable,
-                            Comments = "Glue sticks for everyone",
-                            PricePerUnit = 1.50F,
-                            QuantityAvailable = 100,
-                            MinimumQuantity = 10,
-                            IsActive = true
-                        }
-                    );
-                }
-
-                if (!context.InventoryItems.OfType<NonConsumable>().Any())
-                {
-                    context.InventoryItems.AddRange(
-                        new NonConsumable
+                        },
+                        new InventoryItem
                         {
-                            Image = "Dell.jpg",
                             Name = "Laptop",
                             Description = "Dell Laptop",
+                            Image = "Dell.jpg",
                             CreatedBy = "Stella",
                             EditedBy = "Kim",
                             CreatedDate = DateTime.UtcNow,
                             EditedDate = DateTime.UtcNow,
-                            RoomNumber = 1,
-                            CategoryID = context.Categories.First().CategoryID,
+                            IsActive = true,
+                            NonConsumable = new NonConsumable
+                            {
+                                AssetTag = "A001"
+                            },                      
                             ItemType = ItemType.NonConsumable,
-                            Comments = "Dell Laptop for staff",
-                            AssetTag = "A001",
-                            IsActive = true
                         }
                     );
                 }
@@ -136,7 +130,7 @@ namespace Collaborative_Resource_Management_System.Models
                     context.CheckOuts.AddRange(
                         new CheckOut
                         {
-                            InventoryItemID = 1,
+                            InventoryItemID = 3,
                             CheckOutDate = DateTime.UtcNow,
                             ReturnDate = DateTime.UtcNow.AddDays(10),
                             TotalPrice = 1000,

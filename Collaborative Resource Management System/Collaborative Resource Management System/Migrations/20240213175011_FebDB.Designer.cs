@@ -4,16 +4,18 @@ using Collaborative_Resource_Management_System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Collaborative_Resource_Management_System.Data.Migrations
+namespace Collaborative_Resource_Management_System.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240213175011_FebDB")]
+    partial class FebDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,10 +182,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EditedBy")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -212,8 +210,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.HasKey("InventoryItemID");
 
                     b.ToTable("InventoryItems");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("InventoryItem");
                 });
 
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Report", b =>
@@ -461,33 +457,6 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.Consumable", b =>
-                {
-                    b.HasBaseType("Collaborative_Resource_Management_System.Models.InventoryItem");
-
-                    b.Property<int>("MinimumQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<float>("PricePerUnit")
-                        .HasColumnType("real");
-
-                    b.Property<int>("QuantityAvailable")
-                        .HasColumnType("int");
-
-                    b.HasDiscriminator().HasValue("Consumable");
-                });
-
-            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.NonConsumable", b =>
-                {
-                    b.HasBaseType("Collaborative_Resource_Management_System.Models.InventoryItem");
-
-                    b.Property<string>("AssetTag")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("NonConsumable");
-                });
-
             modelBuilder.Entity("Collaborative_Resource_Management_System.Models.CheckOut", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "AspNetUser")
@@ -511,6 +480,52 @@ namespace Collaborative_Resource_Management_System.Data.Migrations
                     b.Navigation("Department");
 
                     b.Navigation("Item");
+                });
+
+            modelBuilder.Entity("Collaborative_Resource_Management_System.Models.InventoryItem", b =>
+                {
+                    b.OwnsOne("Collaborative_Resource_Management_System.Models.Consumable", "Consumable", b1 =>
+                        {
+                            b1.Property<int>("InventoryItemID")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("MinimumQuantity")
+                                .HasColumnType("int");
+
+                            b1.Property<float>("PricePerUnit")
+                                .HasColumnType("real");
+
+                            b1.Property<int>("QuantityAvailable")
+                                .HasColumnType("int");
+
+                            b1.HasKey("InventoryItemID");
+
+                            b1.ToTable("InventoryItems");
+
+                            b1.WithOwner()
+                                .HasForeignKey("InventoryItemID");
+                        });
+
+                    b.OwnsOne("Collaborative_Resource_Management_System.Models.NonConsumable", "NonConsumable", b1 =>
+                        {
+                            b1.Property<int>("InventoryItemID")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("AssetTag")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("InventoryItemID");
+
+                            b1.ToTable("InventoryItems");
+
+                            b1.WithOwner()
+                                .HasForeignKey("InventoryItemID");
+                        });
+
+                    b.Navigation("Consumable");
+
+                    b.Navigation("NonConsumable");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

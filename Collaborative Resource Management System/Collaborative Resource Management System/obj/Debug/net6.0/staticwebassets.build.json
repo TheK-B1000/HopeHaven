@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PU5zsxE7NvCnVBYSdZFKnCGgki6hLt+euYFC8iIKsgc=",
+  "Hash": "Z1QnhCP4jfwaesYTCO7aNvlyN+hJRa0QLB9LeVUITCI=",
   "Source": "Collaborative Resource Management System",
   "BasePath": "_content/Collaborative Resource Management System",
   "Mode": "Default",
@@ -1154,6 +1154,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\1667-4758-2-PB.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project Part 1\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\1e460062-b53f-4570-9ed8-d90989cf0fcb.jpg",
+      "SourceId": "Collaborative Resource Management System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project Part 1\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "BasePath": "_content/Collaborative Resource Management System",
+      "RelativePath": "img/1e460062-b53f-4570-9ed8-d90989cf0fcb.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\1e460062-b53f-4570-9ed8-d90989cf0fcb.jpg"
     },
     {
       "Identity": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project Part 1\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg",
