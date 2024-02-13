@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rm7ai4uAdGtYoGEmAFjLqc44y2Sty9ZDrYsVztiNtBA=",
+  "Hash": "+JS4y8GeO6a9EIMUdC6FPjLSyUWibj+2DMn8hNEv8Cw=",
   "Source": "Collaborative Resource Management System",
   "BasePath": "_content/Collaborative Resource Management System",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "Collaborative Resource Management System\\wwwroot",
       "Source": "Collaborative Resource Management System",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "Pattern": "**"
     }
@@ -1157,10 +1157,10 @@
       "OriginalItemSpec": "C:\\Users\\Corey\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\6.0.21\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Collaborative Resource Management System.styles.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Collaborative Resource Management System.styles.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "Collaborative Resource Management System.styles.css",
       "AssetKind": "All",
@@ -1173,13 +1173,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Collaborative Resource Management System.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Collaborative Resource Management System.styles.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Collaborative Resource Management System.bundle.scp.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Collaborative Resource Management System.bundle.scp.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "Collaborative Resource Management System.bundle.scp.css",
       "AssetKind": "All",
@@ -1192,13 +1192,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Collaborative Resource Management System.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Collaborative Resource Management System.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\BootStyle.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\BootStyle.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "BootStyle.css",
       "AssetKind": "All",
@@ -1214,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\BootStyle.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\css\\site.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -1233,10 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\favicon.ico",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -1252,10 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\0015a546-6b71-4c83-b656-28fd19603d20.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\0015a546-6b71-4c83-b656-28fd19603d20.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/0015a546-6b71-4c83-b656-28fd19603d20.jpg",
       "AssetKind": "All",
@@ -1271,10 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\img\\0015a546-6b71-4c83-b656-28fd19603d20.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\1667-4758-2-PB.pdf",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\1667-4758-2-PB.pdf",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/1667-4758-2-PB.pdf",
       "AssetKind": "All",
@@ -1290,10 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\img\\1667-4758-2-PB.pdf"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\1e460062-b53f-4570-9ed8-d90989cf0fcb.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\1e460062-b53f-4570-9ed8-d90989cf0fcb.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/1e460062-b53f-4570-9ed8-d90989cf0fcb.jpg",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\img\\1e460062-b53f-4570-9ed8-d90989cf0fcb.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg",
       "AssetKind": "All",
@@ -1328,10 +1328,10 @@
       "OriginalItemSpec": "wwwroot\\img\\3b1708c6-2f4e-43da-ad01-9cae4528c318.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\42ef977c-db26-4295-9e88-11eb076961f3.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\42ef977c-db26-4295-9e88-11eb076961f3.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/42ef977c-db26-4295-9e88-11eb076961f3.jpg",
       "AssetKind": "All",
@@ -1347,10 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\img\\42ef977c-db26-4295-9e88-11eb076961f3.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\554a6ebe-b765-4741-9a88-b8e17549bbe9.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\554a6ebe-b765-4741-9a88-b8e17549bbe9.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/554a6ebe-b765-4741-9a88-b8e17549bbe9.jpg",
       "AssetKind": "All",
@@ -1366,10 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\img\\554a6ebe-b765-4741-9a88-b8e17549bbe9.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\8217a255-0d2a-4799-b407-959245ddc79b.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\8217a255-0d2a-4799-b407-959245ddc79b.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/8217a255-0d2a-4799-b407-959245ddc79b.jpg",
       "AssetKind": "All",
@@ -1385,10 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\img\\8217a255-0d2a-4799-b407-959245ddc79b.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\91b00c06-0e9f-4a07-934a-0cb9acd21f1c.png",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\91b00c06-0e9f-4a07-934a-0cb9acd21f1c.png",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/91b00c06-0e9f-4a07-934a-0cb9acd21f1c.png",
       "AssetKind": "All",
@@ -1404,10 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\img\\91b00c06-0e9f-4a07-934a-0cb9acd21f1c.png"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\a79408ec-aa6a-4420-88bc-95fddd3765ea.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\a79408ec-aa6a-4420-88bc-95fddd3765ea.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/a79408ec-aa6a-4420-88bc-95fddd3765ea.jpg",
       "AssetKind": "All",
@@ -1423,10 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\img\\a79408ec-aa6a-4420-88bc-95fddd3765ea.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\beatap,+jcsi25(2022)345-349.pdf",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\beatap,+jcsi25(2022)345-349.pdf",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/beatap,+jcsi25(2022)345-349.pdf",
       "AssetKind": "All",
@@ -1442,10 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\img\\beatap,+jcsi25(2022)345-349.pdf"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg",
       "AssetKind": "All",
@@ -1461,10 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\img\\c2f07ca9-57b0-4429-9e23-c3d90e01eb21.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\cd9bd12c-273a-4443-b55a-78c1389279b0.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\cd9bd12c-273a-4443-b55a-78c1389279b0.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/cd9bd12c-273a-4443-b55a-78c1389279b0.jpg",
       "AssetKind": "All",
@@ -1480,10 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\img\\cd9bd12c-273a-4443-b55a-78c1389279b0.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Dell.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\Dell.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/Dell.jpg",
       "AssetKind": "All",
@@ -1499,10 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Dell.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\e8b3c247-cc00-4dbf-88f3-9e2ae70a51af.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\e8b3c247-cc00-4dbf-88f3-9e2ae70a51af.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/e8b3c247-cc00-4dbf-88f3-9e2ae70a51af.jpg",
       "AssetKind": "All",
@@ -1518,10 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\img\\e8b3c247-cc00-4dbf-88f3-9e2ae70a51af.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Evolving_JavaScript_Code_to_Reduce_Load_Time.pdf",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\Evolving_JavaScript_Code_to_Reduce_Load_Time.pdf",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/Evolving_JavaScript_Code_to_Reduce_Load_Time.pdf",
       "AssetKind": "All",
@@ -1537,10 +1537,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Evolving_JavaScript_Code_to_Reduce_Load_Time.pdf"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\GlueSticks.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\GlueSticks.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/GlueSticks.jpg",
       "AssetKind": "All",
@@ -1556,10 +1556,10 @@
       "OriginalItemSpec": "wwwroot\\img\\GlueSticks.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\HH_LogoStacked_CMYK.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\HH_LogoStacked_CMYK.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/HH_LogoStacked_CMYK.jpg",
       "AssetKind": "All",
@@ -1575,10 +1575,10 @@
       "OriginalItemSpec": "wwwroot\\img\\HH_LogoStacked_CMYK.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\HopeHaven_CMYK Logo.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\HopeHaven_CMYK Logo.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/HopeHaven_CMYK Logo.jpg",
       "AssetKind": "All",
@@ -1594,10 +1594,10 @@
       "OriginalItemSpec": "wwwroot\\img\\HopeHaven_CMYK Logo.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\NotFound.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\NotFound.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/NotFound.jpg",
       "AssetKind": "All",
@@ -1613,10 +1613,10 @@
       "OriginalItemSpec": "wwwroot\\img\\NotFound.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Pencils.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\Pencils.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/Pencils.jpg",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Pencils.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\RainbowErasers.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\RainbowErasers.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/RainbowErasers.jpg",
       "AssetKind": "All",
@@ -1651,10 +1651,10 @@
       "OriginalItemSpec": "wwwroot\\img\\RainbowErasers.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\img\\Rulers.jpg",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\img\\Rulers.jpg",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "img/Rulers.jpg",
       "AssetKind": "All",
@@ -1670,10 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\img\\Rulers.jpg"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\js\\site.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -1689,10 +1689,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -1708,10 +1708,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -1727,10 +1727,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -1746,10 +1746,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1765,10 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -1784,10 +1784,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -1803,10 +1803,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -1822,10 +1822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -1841,10 +1841,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -1860,10 +1860,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -1879,10 +1879,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -1898,10 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -1917,10 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -1936,10 +1936,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -1974,10 +1974,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -1993,10 +1993,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2012,10 +2012,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2031,10 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2050,10 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2069,10 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2088,10 +2088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2107,10 +2107,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2126,10 +2126,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2145,10 +2145,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2164,10 +2164,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2183,10 +2183,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2202,10 +2202,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2221,10 +2221,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2240,10 +2240,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2259,10 +2259,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2297,10 +2297,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2316,10 +2316,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2335,10 +2335,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2354,10 +2354,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2373,10 +2373,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2392,10 +2392,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2411,10 +2411,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2430,10 +2430,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2449,10 +2449,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2468,10 +2468,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2487,10 +2487,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2506,10 +2506,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2525,10 +2525,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2544,10 +2544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2563,10 +2563,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2582,10 +2582,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2620,10 +2620,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2639,10 +2639,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2658,10 +2658,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2677,10 +2677,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2696,10 +2696,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -2715,10 +2715,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2734,10 +2734,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -2753,10 +2753,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -2772,10 +2772,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\StyleSheet.css",
+      "Identity": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\StyleSheet.css",
       "SourceId": "Collaborative Resource Management System",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\wwwroot\\",
       "BasePath": "_content/Collaborative Resource Management System",
       "RelativePath": "StyleSheet.css",
       "AssetKind": "All",

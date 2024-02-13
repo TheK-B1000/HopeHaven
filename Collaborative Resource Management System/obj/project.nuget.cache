@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD:Collaborative Resource Management System/Collaborative Resource Management System/obj/project.nuget.cache
-  "dgSpecHash": "lBL+hcoBnFW2uPvWIn0EWHltVxyFoUdaWhll9tYFnmeiRiXHdTsbsJaJQzwXmd4lWai2UhY1iNjtVpR6SdNkbA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
-=======
   "dgSpecHash": "lWlxU1CPKYaOgiFWAhKltIPwBnqyRXJZ8vy6G3eLvHnCxzIFGm5rOdYII9x3NSO/AXUc5BZ82ySPkXlSYCnq9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
->>>>>>> main:Collaborative Resource Management System/obj/project.nuget.cache
   "expectedPackageFiles": [
     "C:\\Users\\Corey\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Corey\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -95,6 +89,12 @@
     "C:\\Users\\Corey\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1903",
       "level": "Warning",
