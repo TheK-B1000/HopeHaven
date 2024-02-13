@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lWlxU1CPKYaOgiFWAhKltIPwBnqyRXJZ8vy6G3eLvHnCxzIFGm5rOdYII9x3NSO/AXUc5BZ82ySPkXlSYCnq9A==",
+  "dgSpecHash": "vMYkSMB8oQvAB7yojqJg+zGYIXRewC9EIMNrwg9V5sG9S07f1HNp/KCR70I+pktVgTjGmeWyPKS7rqvzMZJ6wg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Corey\\source\\SeniorProject\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
+  "projectFilePath": "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Corey\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Corey\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
