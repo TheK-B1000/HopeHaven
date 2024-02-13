@@ -106,37 +106,65 @@ namespace Collaborative_Resource_Management_System.Services
             {
                 return false;
             }
+
+            var existingItem = await _context.InventoryItems
+                .Include(i => i.Consumable)
+                .Include(i => i.NonConsumable)
+                .FirstOrDefaultAsync(i => i.InventoryItemID == updatedItem.InventoryItemID);
+
+            if (existingItem == null)
+            {
+                return false;
+            }
+
+            var createdByOriginal = existingItem.CreatedBy;
+            var imageOriginal = existingItem.Image;
+            var isActiveOriginal = existingItem.IsActive;
+
+            _context.Entry(existingItem).CurrentValues.SetValues(updatedItem);
+
+            existingItem.CreatedBy = createdByOriginal; 
+            existingItem.Image = imageOriginal; 
+            existingItem.IsActive = true; 
+            existingItem.EditedBy = "K-B"; 
+            existingItem.EditedDate = DateTime.UtcNow; 
+
+
+            if (updatedItem.ItemType == ItemType.Consumable)
+            {
+                if (existingItem.Consumable != null && updatedItem.Consumable != null)
+                {
+                    _context.Entry(existingItem.Consumable).CurrentValues.SetValues(updatedItem.Consumable);
+                }
+                else if (updatedItem.Consumable != null)
+                {
+                    existingItem.Consumable = updatedItem.Consumable;
+                }
+            }
+            else if (updatedItem.ItemType == ItemType.NonConsumable)
+            {
+                if (existingItem.NonConsumable != null && updatedItem.NonConsumable != null)
+                {
+                    _context.Entry(existingItem.NonConsumable).CurrentValues.SetValues(updatedItem.NonConsumable);
+                }
+                else if (updatedItem.NonConsumable != null)
+                {
+                    existingItem.NonConsumable = updatedItem.NonConsumable;
+                }
+            }
+
             try
             {
-                var item = await _context.InventoryItems
-                    .Include(i => i.Consumable)
-                    .Include(i => i.NonConsumable)
-                    .FirstOrDefaultAsync(i => i.InventoryItemID == updatedItem.InventoryItemID);
-
-                if (item == null) return false;
-
-                _context.Entry(item).CurrentValues.SetValues(updatedItem);
-
-                if (item.ItemType == ItemType.Consumable && item.Consumable != null && updatedItem.Consumable != null)
-                {
-                    item.Consumable.PricePerUnit = updatedItem.Consumable.PricePerUnit;
-                    item.Consumable.QuantityAvailable = updatedItem.Consumable.QuantityAvailable;
-                    item.Consumable.MinimumQuantity = updatedItem.Consumable.MinimumQuantity;
-                }
-
-                if (item.ItemType == ItemType.NonConsumable && item.NonConsumable != null && updatedItem.NonConsumable != null)
-                {
-                    item.NonConsumable.AssetTag = updatedItem.NonConsumable.AssetTag;
-                }
-
                 await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return false;
             }
         }
+
 
         public async Task<bool> SoftDeleteItemAsync(int id)
         {
