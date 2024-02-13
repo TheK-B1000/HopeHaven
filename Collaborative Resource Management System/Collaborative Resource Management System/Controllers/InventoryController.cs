@@ -87,62 +87,22 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View(new InventoryItem()); 
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Add(InventoryItem item, IFormFile visibleImage)
-        {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
-                return View(item);
-            }
-
-            if (visibleImage != null && visibleImage.Length > 0)
-            {
-                var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-                if (!Directory.Exists(imagesPath))
-                {
-                    Directory.CreateDirectory(imagesPath);
-                }
-
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(visibleImage.FileName);
-                var filePath = Path.Combine(imagesPath, fileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await visibleImage.CopyToAsync(fileStream);
-                }
-
-                item.Image = fileName;
-            }
-
-            bool success = await _inventoryService.AddItemAsync(item);
-            if (success)
-            {
-                return RedirectToAction("Manage");
-            }
-            else
-            {
-                ModelState.AddModelError("", "An error occurred saving the item.");
-                return View("AddInventoryItem", item);
-            }
-        }
+       
 
         [HttpPost]
         public async Task<IActionResult> AddConsumable(InventoryItem item, IFormFile visibleImage)
         {
+            ViewBag.Categories = await _inventoryService.GetCategoriesAsync(); 
+
             if (!ModelState.IsValid)
             {
-                ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
-                return View(item);
+                return View("Consumable", item); 
             }
 
             if (visibleImage != null && visibleImage.Length > 0)
             {
                 var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-                if (!Directory.Exists(imagesPath))
-                {
-                    Directory.CreateDirectory(imagesPath);
-                }
+                Directory.CreateDirectory(imagesPath); 
 
                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(visibleImage.FileName);
                 var filePath = Path.Combine(imagesPath, fileName);
@@ -152,10 +112,51 @@ namespace Collaborative_Resource_Management_System.Controllers
                     await visibleImage.CopyToAsync(fileStream);
                 }
 
-                item.Image = fileName;
+                item.Image = fileName; 
             }
 
-            item.ItemType = ItemType.Consumable;
+            item.ItemType = ItemType.Consumable; 
+
+            bool success = await _inventoryService.AddItemAsync(item);
+            if (success)
+            {
+                return RedirectToAction("Manage"); 
+            }
+            else
+            {
+                ModelState.AddModelError("", "An error occurred saving the item.");
+                return View("Consumable", item);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddNonConsumable(InventoryItem item, IFormFile visibleImage)
+        {
+            ViewBag.Categories = await _inventoryService.GetCategoriesAsync(); 
+
+            if (!ModelState.IsValid)
+            {
+                return View("NonConsumable", item);
+            }
+
+            if (visibleImage != null && visibleImage.Length > 0)
+            {
+                var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+                Directory.CreateDirectory(imagesPath); 
+
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(visibleImage.FileName);
+                var filePath = Path.Combine(imagesPath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await visibleImage.CopyToAsync(fileStream);
+                }
+
+                item.Image = fileName; 
+            }
+
+            item.ItemType = ItemType.NonConsumable; 
 
             bool success = await _inventoryService.AddItemAsync(item);
             if (success)
@@ -165,50 +166,10 @@ namespace Collaborative_Resource_Management_System.Controllers
             else
             {
                 ModelState.AddModelError("", "An error occurred saving the item.");
-                return View("AddInventoryItem", item);
+                return View("NonConsumable", item);
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddNonConsumable(InventoryItem item, IFormFile visibleImage)
-        {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.Categories = await _inventoryService.GetCategoriesAsync();
-                return View(item);
-            }
-
-            if (visibleImage != null && visibleImage.Length > 0)
-            {
-                var imagesPath = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-                if (!Directory.Exists(imagesPath))
-                {
-                    Directory.CreateDirectory(imagesPath);
-                }
-
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(visibleImage.FileName);
-                var filePath = Path.Combine(imagesPath, fileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await visibleImage.CopyToAsync(fileStream);
-                }
-
-                item.Image = fileName;
-            }
-
-            item.ItemType = ItemType.NonConsumable;
-
-            bool success = await _inventoryService.AddItemAsync(item);
-            if (success)
-            {
-                return RedirectToAction("Manage");
-            }
-            else
-            {
-                return View("Error");
-            }
-        }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
