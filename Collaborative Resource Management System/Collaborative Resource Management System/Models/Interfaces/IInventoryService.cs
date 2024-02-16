@@ -13,6 +13,7 @@ public interface IInventoryService
     Task<IEnumerable<InventoryItem>> GetItemsByTypeAsync(ItemType itemType);
     Task<IEnumerable<SelectListItem>> GetCategoriesAsync();
     Task<bool> EditItemAsync(InventoryItem item); 
-    Task<bool> SoftDeleteItemAsync(int id); 
+    Task<bool> SoftDeleteItemAsync(int id);
+    Task<IEnumerable<InventoryItem>> GetLowStockItemsAsync();
 }
 

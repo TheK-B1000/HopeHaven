@@ -84,8 +84,8 @@ namespace Collaborative_Resource_Management_System.Services
         public async Task<InventoryItem> GetItemDetailsAsync(int id)
         {
             return await _context.InventoryItems
-                        .Include(item => item.Consumable) 
-                        .Include(item => item.NonConsumable) 
+                        .Include(item => item.Consumable)
+                        .Include(item => item.NonConsumable)
                         .FirstOrDefaultAsync(item => item.InventoryItemID == id);
         }
 
@@ -123,11 +123,11 @@ namespace Collaborative_Resource_Management_System.Services
 
             _context.Entry(existingItem).CurrentValues.SetValues(updatedItem);
 
-            existingItem.CreatedBy = createdByOriginal; 
-            existingItem.Image = imageOriginal; 
-            existingItem.IsActive = true; 
-            existingItem.EditedBy = "K-B"; 
-            existingItem.EditedDate = DateTime.UtcNow; 
+            existingItem.CreatedBy = createdByOriginal;
+            existingItem.Image = imageOriginal;
+            existingItem.IsActive = true;
+            existingItem.EditedBy = "K-B";
+            existingItem.EditedDate = DateTime.UtcNow;
 
 
             if (updatedItem.ItemType == ItemType.Consumable)
@@ -195,5 +195,14 @@ namespace Collaborative_Resource_Management_System.Services
         {
             return await _context.Departments.ToListAsync();
         }
+
+        public async Task<IEnumerable<InventoryItem>> GetLowStockItemsAsync()
+        {
+            return await _context.InventoryItems
+                .Include(item => item.Consumable)
+                .Where(item => item.ItemType == ItemType.Consumable && item.Consumable.QuantityAvailable <= item.Consumable.MinimumQuantity)
+                .ToListAsync();
+        }
     }
+
 }

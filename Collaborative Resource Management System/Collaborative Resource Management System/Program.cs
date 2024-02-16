@@ -11,6 +11,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddHostedService<WeeklyEmailService>();
+
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
@@ -79,3 +81,4 @@ static async Task InitializeRoles(IServiceProvider services)
             await roleManager.CreateAsync(new IdentityRole(role));
     }
 }
+ 
