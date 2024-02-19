@@ -18,12 +18,14 @@ namespace Collaborative_Resource_Management_System.Controllers
         }
 
 
-        public async Task<IActionResult> Manage(string searchString)
+        public async Task<IActionResult> Manage(string searchString, bool includeInactive = false)
         {
-            var allItems = await _inventoryService.SearchInventoryAsync(searchString);
+            var allItems = await _inventoryService.SearchInventoryAsync(searchString, includeInactive);
             ViewBag.SearchString = searchString;
+            ViewBag.IncludeInactive = includeInactive; 
             return View(allItems);
         }
+
 
         public IActionResult CheckIn()
         {

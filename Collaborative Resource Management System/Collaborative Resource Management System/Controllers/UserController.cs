@@ -25,6 +25,7 @@ namespace Collaborative_Resource_Management_System.Controllers
 
             var userRoleViewModels = await _userService.GetUsersWithRolesAsync(searchString, includeInactive);
             ViewBag.SearchString = searchString;
+            ViewBag.IncludeInactive = includeInactive;
             return View(userRoleViewModels);
         }
 

@@ -19,6 +19,7 @@
         <option value="itemType">Item Type</option>
         <option value="category">Category</option>
     </select>
+    <a href="@Url.Action("Manage", "Inventory", new { searchString = ViewBag.SearchString, includeInactive = !ViewBag.IncludeInactive })" class="btn @(ViewBag.IncludeInactive ? "btn-primary" : "btn-info")">@((ViewBag.IncludeInactive ? "Show Active Items" : "Show Inactive Items"))</a>
     <a href="@Url.Action("Add", "Inventory")" class="btn btn-primary">Add Inventory Item</a>
     <a href="@Url.Action("AddCategory", "Inventory")" class="btn btn-secondary">Add Category</a>
     <a href="@Url.Action("Report", "Report")" class="btn btn-secondary">Check-Out Report</a>

@@ -15,5 +15,7 @@ public interface IInventoryService
     Task<bool> EditItemAsync(InventoryItem item); 
     Task<bool> SoftDeleteItemAsync(int id);
     Task<IEnumerable<InventoryItem>> GetLowStockItemsAsync();
+    Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString, bool includeInactive);
+
 }
 

@@ -203,6 +203,23 @@ namespace Collaborative_Resource_Management_System.Services
                 .Where(item => item.ItemType == ItemType.Consumable && item.Consumable.QuantityAvailable <= item.Consumable.MinimumQuantity)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<InventoryItem>> SearchInventoryAsync(string searchString, bool includeInactive)
+        {
+            IQueryable<InventoryItem> query = _context.InventoryItems;
+
+            if (!includeInactive)
+            {
+                query = query.Where(item => item.IsActive);
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query.Where(item => item.Name.Contains(searchString) || item.Description.Contains(searchString));
+            }
+
+            return await query.ToListAsync();
+        }
     }
 
 }
