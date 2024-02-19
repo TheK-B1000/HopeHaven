@@ -1,7 +1,10 @@
 using Collaborative_Resource_Management_System.Models;
+using CsvHelper.Configuration;
+using CsvHelper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -158,6 +161,40 @@ namespace Collaborative_Resource_Management_System.Controllers
             return RedirectToAction("Manage");
         }
 
+        public async Task<IActionResult> ImportUsers(IFormFile fileUpload)
+        {
+            if (fileUpload == null || fileUpload.Length == 0)
+            {
+                // No file selected or file is empty
+                return View("Error");
+            }
+
+            var users = new List<IdentityUser>();
+            var path = Path.GetTempFileName();
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await fileUpload.CopyToAsync(stream);
+            }
+
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true, Delimiter = "," };
+            using (var streamReader = new StreamReader(path))
+            using (var csvReader = new CsvReader(streamReader, config))
+            {
+                users = csvReader.GetRecords<IdentityUser>().ToList();
+            }
+
+            foreach (var user in users)
+            {
+                var result = await _userManager.CreateAsync(user, "DefaultPassword123!"); 
+                if (!result.Succeeded)
+                {
+                    // User could not be created
+                }
+            }
+
+            return RedirectToAction("Manage");
+        }
 
     }
 }

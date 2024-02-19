@@ -45,6 +45,14 @@
     </tbody>
 </table>
 
+<form asp-controller="User" asp-action="ImportUsers" method="post" enctype="multipart/form-data" class="mb-3">
+    <div class="form-group">
+        <label for="fileUpload">Upload CSV File:</label>
+        <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required />
+    </div>
+    <button type="submit" class="btn btn-success">Upload Users</button>
+</form>
+
 <div>
     <a href="@Url.Action("AdminIndex", "Admin")" class="button-link">Admin Home</a>
     <a href="@Url.Action("Index", "Home")" class="button-link">Log Out</a>

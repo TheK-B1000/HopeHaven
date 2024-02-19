@@ -78,3 +78,11 @@
         }
     </tbody>
 </table>
+
+<form asp-action="ImportItems" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="fileUpload">Upload CSV File:</label>
+        <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FXEgcoitn8ihwOyi8HVj4PZEskDB7TiXoowhoSA9602sK0kALRKE1MhHucALOcwjrFdHe54cAUVblznx0xb+QQ==",
+  "dgSpecHash": "WNZijMbhfkSu1ccBq9ylbAHHdeGPw2eoZ1iTsBnpqGDuLvOvGE/EWb3JyryljtsMJICfSD/fTrxXnxg5XUxFMA==",
   "success": true,
   "projectFilePath": "C:\\Users\\K-B05\\OneDrive\\Desktop\\K-B Folder\\UNF\\Senior Project Part 1\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\K-B05\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\K-B05\\.nuget\\packages\\csvhelper\\31.0.0\\csvhelper.31.0.0.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\efcore.schemacompare\\6.0.0\\efcore.schemacompare.6.0.0.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.21\\microsoft.aspnetcore.cryptography.internal.6.0.21.nupkg.sha512",
@@ -70,6 +71,7 @@
     "C:\\Users\\K-B05\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.24.0\\system.identitymodel.tokens.jwt.6.24.0.nupkg.sha512",
+    "C:\\Users\\K-B05\\.nuget\\packages\\system.linq.async\\4.0.0\\system.linq.async.4.0.0.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\K-B05\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

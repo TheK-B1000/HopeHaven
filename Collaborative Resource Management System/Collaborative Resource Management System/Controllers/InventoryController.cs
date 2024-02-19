@@ -1,7 +1,12 @@
 using Collaborative_Resource_Management_System.Models;
+using CRMS_MVC.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Formats.Asn1;
+using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Collaborative_Resource_Management_System.Controllers
@@ -221,6 +226,39 @@ namespace Collaborative_Resource_Management_System.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ImportItems(IFormFile fileUpload)
+        {
+            if (fileUpload == null || fileUpload.Length == 0)
+            {
+                return View("Error", new ErrorViewModel { RequestId = "File is empty" });
+            }
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", fileUpload.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await fileUpload.CopyToAsync(stream);
+            }
+
+            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                PrepareHeaderForMatch = args => args.Header.ToLower(),
+            };
+
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, configuration))
+            {
+                var records = csv.GetRecords<InventoryItem>();
+                foreach (var item in records)
+                {
+                    await _inventoryService.AddItemAsync(item); 
+                }
+            }
+
+            System.IO.File.Delete(path); 
+
+            return RedirectToAction("Manage");
+        }
     }
 }
 

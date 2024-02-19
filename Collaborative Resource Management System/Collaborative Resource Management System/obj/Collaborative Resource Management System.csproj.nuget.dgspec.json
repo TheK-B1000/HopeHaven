@@ -45,6 +45,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[31.0.0, )"
+            },
             "EfCore.SchemaCompare": {
               "target": "Package",
               "version": "[6.0.0, )"
