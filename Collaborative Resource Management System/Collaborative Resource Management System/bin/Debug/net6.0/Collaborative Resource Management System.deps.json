@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Collaborative Resource Management System/1.0.0": {
         "dependencies": {
+          "CsvHelper": "31.0.0",
           "EfCore.SchemaCompare": "6.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.21",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.21",
@@ -51,6 +52,17 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.7.0.0",
             "fileVersion": "1.700.22.46903"
+          }
+        }
+      },
+      "CsvHelper/31.0.0": {
+        "dependencies": {
+          "System.Linq.Async": "4.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/CsvHelper.dll": {
+            "assemblyVersion": "31.0.0.0",
+            "fileVersion": "31.0.0.12"
           }
         }
       },
@@ -754,6 +766,14 @@
           }
         }
       },
+      "System.Linq.Async/4.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Linq.Async.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.2"
+          }
+        }
+      },
       "System.Memory/4.5.4": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
@@ -893,6 +913,13 @@
       "sha512": "sha512-eHEiCO/8+MfNc9nH5dVew/+FvxdaGrkRL4OMNwIz0W79+wtJyEoeRlXJ3SrXhoy9XR58geBYKmzMR83VO7bcAw==",
       "path": "azure.identity/1.7.0",
       "hashPath": "azure.identity.1.7.0.nupkg.sha512"
+    },
+    "CsvHelper/31.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PypRJq7AugnCJjq6Zu5EqFDTfRv7Gh+MtSH2T/kwiGmg1UHAflq4cE8j3uMkvXSxaayVtcwi+8hC0w+30YzzWA==",
+      "path": "csvhelper/31.0.0",
+      "hashPath": "csvhelper.31.0.0.nupkg.sha512"
     },
     "EfCore.SchemaCompare/6.0.0": {
       "type": "package",
@@ -1341,6 +1368,13 @@
       "sha512": "sha512-Qibsj9MPWq8S/C0FgvmsLfIlHLE7ay0MJIaAmK94ivN3VyDdglqReed5qMvdQhSL0BzK6v0Z1wB/sD88zVu6Jw==",
       "path": "system.identitymodel.tokens.jwt/6.24.0",
       "hashPath": "system.identitymodel.tokens.jwt.6.24.0.nupkg.sha512"
+    },
+    "System.Linq.Async/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WbiYEedFZeM+psmMyoCt1AKbZppAZg8Eq1ZTQ+521fGNeXqlgJj0tZYV5n1LsKRO5osQuitYxGNuzPTy3213sg==",
+      "path": "system.linq.async/4.0.0",
+      "hashPath": "system.linq.async.4.0.0.nupkg.sha512"
     },
     "System.Memory/4.5.4": {
       "type": "package",
