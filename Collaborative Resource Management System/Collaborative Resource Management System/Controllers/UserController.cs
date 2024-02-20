@@ -48,6 +48,7 @@ namespace Collaborative_Resource_Management_System.Controllers
                 return NotFound();
             }
 
+            ViewBag.Departments = await _userService.GetDepartmentsAsync();
             var currentRoles = await _userManager.GetRolesAsync(user);
             var userRole = currentRoles.FirstOrDefault(); 
 
