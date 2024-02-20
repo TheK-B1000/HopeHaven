@@ -9,6 +9,33 @@
 
         <form asp-action="Edit" asp-controller="User" method="POST" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
+            <!--
+            <div class="form-group">
+                <label for="FirstName">First Name:</label>
+                <input type="text" class="form-control" id="FirstName" name="FirstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="LastName">Last Name:</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="RFID">RFID Number:</label>
+                <input type="text" class="form-control" id="RFID" name="RFID">
+            </div>
+
+            <div class="form-group">
+                <label for="departmentSelect">Department for this transaction:</label>
+                <select id="departmentSelect" class="form-control" name="DepartmentID">
+            @foreach (var department in ViewBag.Departments)
+            {
+                            <option value="@department.Value">@department.Text</option>
+            }
+            </select>
+
+            </div>
+            -->
             <div class="form-group">
                 <label for="UserName">Username:</label>
                 <input type="text" class="form-control" asp-for="UserName" />
@@ -37,7 +64,6 @@
                     }
                 </select>
             </div>
-
 
             <div class="form-group">
                 <label for="Password">Password:</label>

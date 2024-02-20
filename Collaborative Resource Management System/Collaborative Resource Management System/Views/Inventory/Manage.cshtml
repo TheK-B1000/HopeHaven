@@ -79,10 +79,10 @@
     </tbody>
 </table>
 
-<form asp-action="ImportItems" method="post" enctype="multipart/form-data">
+<form asp-controller="Inventory" asp-action="ImportInventoryItems" method="post" enctype="multipart/form-data" class="mb-3">
     <div class="form-group">
         <label for="fileUpload">Upload CSV File:</label>
         <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required />
     </div>
-    <button type="submit" class="btn btn-primary">Upload</button>
+    <button type="submit" class="btn btn-success">Upload Inventory Items</button>
 </form>
