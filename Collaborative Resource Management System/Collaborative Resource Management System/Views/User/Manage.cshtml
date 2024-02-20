@@ -12,7 +12,7 @@
         <input type="text" name="searchString" placeholder="Search users..." class="form-control" style="width:auto; display:inline-block;" value="@ViewBag.SearchString" />
         <input type="submit" value="Search" class="btn btn-secondary btn-sm" />
     }
-    <a href="@Url.Action("Manage", "User", new { searchString = ViewBag.SearchString, includeInactive = !ViewBag.IncludeInactive })" class="btn @(ViewBag.IncludeInactive ? "btn-primary" : "btn-info")">@((ViewBag.IncludeInactive ? "Show Active Users" : "Show Inactive Users"))</a>
+    <a href="@Url.Action("Manage", "User", new { searchString = ViewBag.SearchString, includeInactive = !ViewBag.IncludeInactive })" class="btn @(ViewBag.IncludeInactive ? "btn-info" : "btn-primary")">@((ViewBag.IncludeInactive ? "Show Active Users" : "Show Inactive Users"))</a>
     <a href="@Url.Action("Add", "User")" class="btn btn-primary">Add User</a>
     <a href="@Url.Action("AddDepartment", "User")" class="btn btn-secondary">Add Department</a>
     <a href="javascript:history.back()" class="btn btn-secondary">Back</a>

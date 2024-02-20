@@ -22,13 +22,14 @@ namespace Collaborative_Resource_Management_System.Controllers
             _roleManager = roleManager;
         }
 
-        public async Task<IActionResult> Manage(string searchString)
+        public async Task<IActionResult> Manage(string searchString, bool? includeInactive)
         {
-            bool includeInactive = false;
+            bool includeInactiveValue = includeInactive.HasValue ? includeInactive.Value : false;
 
-            var userRoleViewModels = await _userService.GetUsersWithRolesAsync(searchString, includeInactive);
+            var userRoleViewModels = await _userService.GetUsersWithRolesAsync(searchString, includeInactiveValue);
             ViewBag.SearchString = searchString;
-            ViewBag.IncludeInactive = includeInactive;
+            ViewBag.IncludeInactive = includeInactiveValue; 
+
             return View(userRoleViewModels);
         }
 
