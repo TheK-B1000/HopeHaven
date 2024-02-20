@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj": {}
+    "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj": {
+    "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
+        "projectUniqueName": "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System.csproj",
         "projectName": "Collaborative Resource Management System",
-        "projectPath": "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\Collaborative Resource Management System.csproj",
+        "projectPath": "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System.csproj",
         "packagesPath": "C:\\Users\\Corey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\Collaborative Resource Management System\\obj\\",
+        "outputPath": "C:\\Users\\Corey\\source\\Senior Project\\HopeHaven\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
